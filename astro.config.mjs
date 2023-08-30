@@ -10,7 +10,15 @@ export default defineConfig({
   // base: '.',
 
   // The actual URL of the deployed site
-  site: 'https://davittportfolio.com/',
+  site: 'http://localhost:3000/',
+
+  routes: {
+    '/': { page: '/index.astro' },
+    '/fi/': { page: '/fi/index.astro' },
+    '/about': { page: '/about.astro' },
+    '/fi/about': { page: '/about-fi.astro' },
+    '/fi/posts/forth-postfi': { page: '/posts-fi/forth-postfi.astro' },
+  },
 
   // Markdown settings
   markdown: {

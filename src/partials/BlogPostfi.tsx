@@ -9,7 +9,7 @@ type IBlogPostProps = {
   children: ReactNode;
 };
 
-const BlogPost = (props: IBlogPostProps) => {
+const BlogPostfi = (props: IBlogPostProps) => {
   // console.log('Props in BlogPost:', props);
 
   let innerHTML: string | null = null;
@@ -41,4 +41,4 @@ const BlogPost = (props: IBlogPostProps) => {
   );
 };
 
-export { BlogPost };
+export { BlogPostfi };

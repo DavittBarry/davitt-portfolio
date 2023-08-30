@@ -6,37 +6,37 @@ import {
   Tags,
 } from 'astro-boilerplate-components';
 
-const ProjectList = () => (
+const ProjectListfi = () => (
   <Section
     title={
       <>
-        Recent <GradientText>Projects</GradientText>
+        Viimeaikaiset <GradientText>Projektit</GradientText>
       </>
     }
   >
     <div className="flex flex-col gap-6">
       <Project
         name="Portfolio"
-        description=" Personal portfolio website built with Astro, Tailwind, and TypeScript. This site will feature a selection of my projects to come and a blog for sharing thoughts on tech."
+        description="Henkilökohtainen portfoliosivusto, rakennettu Astro, Tailwind ja TypeScript -tekniikoilla. Tältä sivustolta löydät valikoiman tulevia projektejani sekä blogeja."
         link="https://github.com/DavittBarry/davitt-portfolio"
         img={{
           src: '/assets/images/profile.png',
-          alt: 'Portfolio website',
+          alt: 'Portfolioprojekti',
         }}
         category={
           <>
             <Tags color={ColorTags.FUCHSIA}>Astro.js</Tags>
-            <Tags color={ColorTags.LIME}>Web design</Tags>
+            <Tags color={ColorTags.LIME}>Verkkosuunnittelu</Tags>
             <Tags color={ColorTags.SKY}>Tailwind.css</Tags>
             <Tags color={ColorTags.ROSE}>TypeScript</Tags>
           </>
         }
       />
       <Project
-        name="Weather App (in development)"
-        description="A simple weather app to provide accurate, up-to-date forecasts. Built with React.js, Node.js and Express.js for API handling."
+        name="Sääsovellus (kehityksessä)"
+        description="Yksinkertainen sääsovellus tarjoamaan tarkkoja ja ajantasaisia sääennusteita. Rakennettu React.js, Node.js ja Express.js -teknologioilla."
         link="/"
-        img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
+        img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
         category={
           <>
             <Tags color={ColorTags.BLUE}>React.js</Tags>
@@ -46,12 +46,12 @@ const ProjectList = () => (
         }
       />
       <Project
-        name="Job Advertisement App (in development)"
-        description="A job listing platform built on Laravel and MySQL, this application offers features like real-time job postings, advanced search filters, and employer/employee dashboards."
+        name="Työpaikkailmoitussovellus (kehityksessä)"
+        description="Työpaikkailmoitusalusta, rakennettu Laravelin ja MySQL:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkojetaulut."
         link="/"
         img={{
           src: '/assets/images/classified.png',
-          alt: 'Job Advertisement App',
+          alt: 'Työpaikkailmoitussovellus',
         }}
         category={
           <>
@@ -65,4 +65,4 @@ const ProjectList = () => (
   </Section>
 );
 
-export { ProjectList };
+export { ProjectListfi };

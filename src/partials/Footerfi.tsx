@@ -1,12 +1,12 @@
 import { Section } from 'astro-boilerplate-components';
 
-const Footer = () => (
+const Footerfi = () => (
   <Section>
     <div className="flex flex-col items-center justify-center space-y-4">
       <div className="text-center">
         <p>&copy; {new Date().getFullYear()} Davitt Barry</p>
         <p>
-          <strong>Email: </strong>
+          <strong>Sähköposti: </strong>
           <a
             href="mailto:davittbarry333@gmail.com"
             className="hover:text-cyan-400"
@@ -17,7 +17,7 @@ const Footer = () => (
       </div>
       <div className="flex space-x-8">
         {/* <a href="/posts/" className="hover:text-cyan-400">
-          Blogs
+          Blogit
         </a> */}
         <a
           href="https://github.com/DavittBarry"
@@ -33,12 +33,12 @@ const Footer = () => (
         </a>
       </div>
       <div>
-        <a href="/privacy" className="hover:text-cyan-400">
-          Privacy Statement
+        <a href="/tietosuoja" className="hover:text-cyan-400">
+          Tietosuojakäytäntö
         </a>
       </div>
     </div>
   </Section>
 );
 
-export { Footer };
+export { Footerfi };

@@ -5,29 +5,30 @@ import {
   Section,
 } from 'astro-boilerplate-components';
 
-const Hero = () => (
+const Herofi = () => (
   <Section>
     <HeroAvatar
       title={
         <>
-          Hello, I'm <GradientText>Davitt</GradientText> 👋
+          Hei, olen <GradientText>Davitt</GradientText> 👋
         </>
       }
       description={
         <>
-          A focused and dedicated ICT professional with also a background in
-          music spanning over 15 years. Transitioned back into{' '}
-          <a className="text-cyan-400">IT/web development</a> four years ago,
-          seeking opportunities to leverage a diverse skill set in website
-          management/creation, service desk technical help, and various{' '}
-          <a className="text-cyan-400">programming languages.</a>{' '}
+          Keskittynyt ja omistautunut tietotekniikan ammattilainen, jolla on
+          myös yli 15 vuoden kokemus musiikkialalta. Siirtynyt takaisin{' '}
+          <a className="text-cyan-400">IT-/web-kehitykseen</a> neljä vuotta
+          sitten ja etsii nyt mahdollisuuksia hyödyntää monipuolista osaamistaan
+          verkkosivujen hallinnassa ja luomisessa, palvelupöydän teknisessä
+          tuessa sekä erilaisissa{' '}
+          <a className="text-cyan-400">ohjelmointikielissä.</a>{' '}
         </>
       }
       avatar={
         <img
           className="mt-8 h-80 w-80 rounded-3xl"
           src="/assets/images/avatar.png"
-          alt="Avatar image"
+          alt="Avatar-kuva"
           loading="lazy"
         />
       }
@@ -36,13 +37,13 @@ const Hero = () => (
           <a href="/" className="h-full w-20">
             <HeroSocial
               src="/assets/images/github-mark-white.svg"
-              alt="GitHub icon"
+              alt="GitHub-kuvake"
             />
           </a>
           <a href="/" className="h-full w-full">
             <HeroSocial
               src="/assets/images/square-linkedin-512.webp"
-              alt="LinkedIn icon"
+              alt="LinkedIn-kuvake"
             />
           </a>
         </>
@@ -51,4 +52,4 @@ const Hero = () => (
   </Section>
 );
 
-export { Hero };
+export { Herofi };

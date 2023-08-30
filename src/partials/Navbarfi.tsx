@@ -6,7 +6,7 @@ import {
   Section,
 } from 'astro-boilerplate-components';
 
-const Navbar = () => (
+const Navbarfi = () => (
   <Section>
     <NavbarTwoColumns>
       <a href="/">
@@ -28,12 +28,12 @@ const Navbar = () => (
               <path d="M4 20h14"></path>
             </svg>
           }
-          name="Davitt's portfolio"
+          name="Davittin portfolio"
         />
       </a>
 
       <NavMenu>
-        {/* <NavMenuItem href="/posts/">Blogs</NavMenuItem> */}
+        {/* <NavMenuItem href="/posts/">Blogit</NavMenuItem> */}
         <div className="px-2 py-1">
           <NavMenuItem href="https://github.com/DavittBarry">
             GitHub
@@ -58,4 +58,4 @@ const Navbar = () => (
   </Section>
 );
 
-export { Navbar };
+export { Navbarfi };

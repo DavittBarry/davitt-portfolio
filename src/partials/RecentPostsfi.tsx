@@ -10,16 +10,15 @@ type IRecentPostsProps = {
   postList: MarkdownInstance<IFrontmatter>[];
 };
 
-const RecentPosts = (props: IRecentPostsProps) => (
+const RecentPostsfi = (props: IRecentPostsProps) => (
   <Section
     title={
       <div className="flex items-baseline justify-between">
         <div>
-          Recent <GradientText>Posts</GradientText>
+          Viimeisimmät <GradientText>artikkelit</GradientText>
         </div>
-
         {/* <div className="text-sm">
-          <a href="/posts/">View all Posts →</a>
+          <a href="/posts/">Näytä kaikki artikkelit →</a>
         </div> */}
       </div>
     }
@@ -28,4 +27,4 @@ const RecentPosts = (props: IRecentPostsProps) => (
   </Section>
 );
 
-export { RecentPosts };
+export { RecentPostsfi };
