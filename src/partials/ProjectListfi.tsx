@@ -35,7 +35,7 @@ const ProjectListfi = () => (
       <Project
         name="Sääsovellus (kehityksessä)"
         description="Yksinkertainen sääsovellus tarjoamaan tarkkoja ja ajantasaisia sääennusteita. Rakennettu React.js, Node.js ja Express.js -teknologioilla."
-        link="/"
+        link="https://github.com/DavittBarry"
         img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
         category={
           <>
@@ -48,7 +48,7 @@ const ProjectListfi = () => (
       <Project
         name="Työpaikkailmoitussovellus (kehityksessä)"
         description="Työpaikkailmoitusalusta, rakennettu Laravelin ja MySQL:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkojetaulut."
-        link="/"
+        link="https://github.com/DavittBarry"
         img={{
           src: '/assets/images/classified.png',
           alt: 'Työpaikkailmoitussovellus',

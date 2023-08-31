@@ -6,14 +6,14 @@ const CVDownloadfi = () => (
       <h2 className="mb-8 text-3xl font-semibold">Lataa CV:ni</h2>
       <div className="mb-8">
         <a
-          href="/polku/cv-in-english.pdf"
+          href="/Davitt-Barry-CV-English-2023.pdf"
           download
           className="mr-4 rounded-full bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
         >
           Lataa englanniksi
         </a>
         <a
-          href="/polku/cv-in-finnish.pdf"
+          href="/Davitt-Barry-CV-Suomeksi-2023.pdf"
           download
           className="rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-700"
         >

@@ -1,0 +1,47 @@
+---
+import Basefi from '@/templates/Basefi.astro';
+
+const head = {
+  title: 'Tietosuojaseloste',
+  description: 'Tämä on tämän portfolion verkkosivuston tietosuojaseloste.',
+};
+---
+
+<Basefi head={head}>
+  <article class="prose mx-auto my-8 text-gray-300 lg:prose-lg">
+    <h1 class="text-teal-400">Tietosuojaseloste</h1>
+    <p class="text-gray-300">Viimeksi päivitetty: 30. elokuuta 2023</p>
+
+    <h2 class="text-teal-400">Johdanto</h2>
+    <p class="text-gray-300">
+      Tämä tietosuojaseloste kuvaa, kuinka käsittelemme henkilötietoja tämän
+      portfolion verkkosivuston vierailijoille.
+    </p>
+
+    <h2 class="text-teal-400">Kerätyt henkilötiedot</h2>
+    <p class="text-gray-300">
+      Tämä portfolion verkkosivusto saattaa pyytää sähköpostiosoitetta
+      yhteydenottotarkoituksessa, jos vierailija valitsee käyttävänsä
+      yhteydenottopainiketta.
+    </p>
+
+    <h2 class="text-teal-400">Henkilötietojen käyttö</h2>
+    <p class="text-gray-300">
+      Annettu sähköpostiosoite käytetään ainoastaan tiedusteluihin tai
+      kommentteihin vastaamiseen.
+    </p>
+
+    <h2 class="text-teal-400">Tietoturva</h2>
+    <p class="text-gray-300">
+      Vaikka toimia tehdäänkin lähetettyjen sähköpostiosoitteiden suojaamiseksi,
+      on hyvä ymmärtää, ettei mikään elektronisen viestinnän menetelmä ole
+      täysin turvallinen.
+    </p>
+
+    <h2 class="text-teal-400">Yhteystiedot</h2>
+    <p class="text-gray-300">
+      Kysymykset koskien tätä tietosuojaselostetta voi ohjata
+      sähköpostiosoitteeseen, joka löytyy tämän verkkosivuston alatunnisteesta.
+    </p>
+  </article>
+</Basefi>

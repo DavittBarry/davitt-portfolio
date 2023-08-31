@@ -34,13 +34,16 @@ const Herofi = () => (
       }
       socialButtons={
         <>
-          <a href="/" className="h-full w-20">
+          <a href="https://github.com/DavittBarry" className="h-full w-20">
             <HeroSocial
               src="/assets/images/github-mark-white.svg"
               alt="GitHub-kuvake"
             />
           </a>
-          <a href="/" className="h-full w-full">
+          <a
+            href="https://www.linkedin.com/in/davittbarry/"
+            className="h-full w-full"
+          >
             <HeroSocial
               src="/assets/images/square-linkedin-512.webp"
               alt="LinkedIn-kuvake"

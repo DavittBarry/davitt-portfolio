@@ -33,23 +33,22 @@ const Navbar = () => (
       </a>
 
       <NavMenu>
-        {/* <NavMenuItem href="/posts/">Blogs</NavMenuItem> */}
-        <div className="px-2 py-1">
+        <div className="p-3">
           <NavMenuItem href="https://github.com/DavittBarry">
             GitHub
           </NavMenuItem>
         </div>
-        <div className="px-2 py-1">
+        <div className="p-3">
           <NavMenuItem href="https://www.linkedin.com/in/davittbarry/">
             LinkedIn
           </NavMenuItem>
         </div>
-        <div className="flex space-x-2 rounded bg-blue-500 px-2 py-1 hover:bg-blue-600">
-          <a href="/" className="text-white hover:text-cyan-400">
+        <div className="flex items-center space-x-2 rounded bg-blue-500 px-3 py-2 hover:bg-blue-600">
+          <a href="/" className="text-lg text-white hover:text-cyan-400">
             EN
           </a>
-          <span className="text-white">/</span>
-          <a href="/fi/" className="text-white hover:text-cyan-400">
+          <span className="text-lg text-white">|</span>
+          <a href="/fi/" className="text-lg text-white hover:text-cyan-400">
             FI
           </a>
         </div>

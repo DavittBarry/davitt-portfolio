@@ -10,7 +10,7 @@ export default defineConfig({
   // base: '.',
 
   // The actual URL of the deployed site
-  site: 'http://localhost:3000/',
+  site: 'https://davittportfolio.com/',
 
   routes: {
     '/': { page: '/index.astro' },

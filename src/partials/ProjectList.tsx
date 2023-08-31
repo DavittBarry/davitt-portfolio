@@ -35,7 +35,7 @@ const ProjectList = () => (
       <Project
         name="Weather App (in development)"
         description="A simple weather app to provide accurate, up-to-date forecasts. Built with React.js, Node.js and Express.js for API handling."
-        link="/"
+        link="https://github.com/DavittBarry"
         img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
         category={
           <>
@@ -48,7 +48,7 @@ const ProjectList = () => (
       <Project
         name="Job Advertisement App (in development)"
         description="A job listing platform built on Laravel and MySQL, this application offers features like real-time job postings, advanced search filters, and employer/employee dashboards."
-        link="/"
+        link="https://github.com/DavittBarry"
         img={{
           src: '/assets/images/classified.png',
           alt: 'Job Advertisement App',

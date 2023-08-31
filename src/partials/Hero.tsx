@@ -33,13 +33,16 @@ const Hero = () => (
       }
       socialButtons={
         <>
-          <a href="/" className="h-full w-20">
+          <a href="https://github.com/DavittBarry" className="h-full w-20">
             <HeroSocial
               src="/assets/images/github-mark-white.svg"
               alt="GitHub icon"
             />
           </a>
-          <a href="/" className="h-full w-full">
+          <a
+            href="https://www.linkedin.com/in/davittbarry/"
+            className="h-full w-full"
+          >
             <HeroSocial
               src="/assets/images/square-linkedin-512.webp"
               alt="LinkedIn icon"
