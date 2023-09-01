@@ -35,7 +35,7 @@ const ProjectList = () => (
       <Project
         name="Weather App (in development)"
         description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies."
-        link="https://github.com/DavittBarry"
+        link="https://github.com/DavittBarry/weather-app"
         img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
         category={
           <>
@@ -51,7 +51,7 @@ const ProjectList = () => (
       <Project
         name="Job Advertisement App (in development)"
         description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
-        link="https://github.com/DavittBarry"
+        link="https://github.com/DavittBarry/job-advertisement-app"
         img={{
           src: '/assets/images/classified.png',
           alt: 'Job Advertisement App',

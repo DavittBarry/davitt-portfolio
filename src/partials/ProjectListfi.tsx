@@ -35,7 +35,7 @@ const ProjectListfi = () => (
       <Project
         name="Sääsovellus (kehityksessä)"
         description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS ja API-teknologioita."
-        link="https://github.com/DavittBarry"
+        link="https://github.com/DavittBarry/weather-app"
         img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
         category={
           <>
@@ -51,7 +51,7 @@ const ProjectListfi = () => (
       <Project
         name="Työpaikkailmoitussovellus (kehityksessä)"
         description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
-        link="https://github.com/DavittBarry"
+        link="https://github.com/DavittBarry/job-advertisement-app"
         img={{
           src: '/assets/images/classified.png',
           alt: 'Työpaikkailmoitussovellus',
