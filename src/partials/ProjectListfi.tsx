@@ -34,7 +34,7 @@ const ProjectListfi = () => (
       />
       <Project
         name="Sääsovellus (kehityksessä)"
-        description="Yksinkertainen sääsovellus tarjoamaan tarkkoja ja ajantasaisia sääennusteita. Rakennettu React.js, Node.js ja Express.js -teknologioilla."
+        description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS ja API-teknologioita."
         link="https://github.com/DavittBarry"
         img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
         category={
@@ -42,12 +42,15 @@ const ProjectListfi = () => (
             <Tags color={ColorTags.BLUE}>React.js</Tags>
             <Tags color={ColorTags.GREEN}>Node.js</Tags>
             <Tags color={ColorTags.GRAY}>Express</Tags>
+            <Tags color={ColorTags.EMERALD}>MongoDB</Tags>
+            <Tags color={ColorTags.YELLOW}>API:t</Tags>
+            <Tags color={ColorTags.PINK}>SASS</Tags>
           </>
         }
       />
       <Project
         name="Työpaikkailmoitussovellus (kehityksessä)"
-        description="Työpaikkailmoitusalusta, rakennettu Laravelin ja MySQL:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkojetaulut."
+        description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
         link="https://github.com/DavittBarry"
         img={{
           src: '/assets/images/classified.png',
@@ -55,9 +58,9 @@ const ProjectListfi = () => (
         }}
         category={
           <>
-            <Tags color={ColorTags.RED}>Laravel</Tags>
-            <Tags color={ColorTags.BLUE}>MySQL</Tags>
-            <Tags color={ColorTags.PURPLE}>PHP</Tags>
+            <Tags color={ColorTags.GREEN}>Vue.js</Tags>
+            <Tags color={ColorTags.EMERALD}>MongoDB</Tags>
+            <Tags color={ColorTags.BLUE}>Tailwind</Tags>
           </>
         }
       />

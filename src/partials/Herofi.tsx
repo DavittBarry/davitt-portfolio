@@ -15,13 +15,13 @@ const Herofi = () => (
       }
       description={
         <>
-          Keskittynyt ja omistautunut tietotekniikan ammattilainen, jolla on
-          myös yli 15 vuoden kokemus musiikkialalta. Siirtynyt takaisin{' '}
-          <a className="text-cyan-400">IT-/web-kehitykseen</a> neljä vuotta
-          sitten ja etsii nyt mahdollisuuksia hyödyntää monipuolista osaamistaan
-          verkkosivujen hallinnassa ja luomisessa, palvelupöydän teknisessä
-          tuessa sekä erilaisissa{' '}
-          <a className="text-cyan-400">ohjelmointikielissä.</a>{' '}
+          Työlleen omistautunut ja innostunut tietotekniikan ammattilainen,
+          jolla on myös yli 15:n vuoden kokemus musiikkialalta. Siirtynyt
+          takaisin <a className="text-cyan-400">IT-/web-kehitykseen</a> neljä
+          vuotta sitten ja etsii nyt mahdollisuuksia hyödyntää monipuolista
+          osaamistaan verkkosivujen hallinnassa ja luomisessa, erilaisissa{' '}
+          <a className="text-cyan-400">ohjelmointikielissä </a> ja teknisen tuen
+          tarjoamisessa asiakkaille.
         </>
       }
       avatar={

@@ -34,7 +34,7 @@ const ProjectList = () => (
       />
       <Project
         name="Weather App (in development)"
-        description="A simple weather app to provide accurate, up-to-date forecasts. Built with React.js, Node.js and Express.js for API handling."
+        description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies."
         link="https://github.com/DavittBarry"
         img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
         category={
@@ -42,12 +42,15 @@ const ProjectList = () => (
             <Tags color={ColorTags.BLUE}>React.js</Tags>
             <Tags color={ColorTags.GREEN}>Node.js</Tags>
             <Tags color={ColorTags.GRAY}>Express</Tags>
+            <Tags color={ColorTags.EMERALD}>MongoDB</Tags>
+            <Tags color={ColorTags.YELLOW}>APIs</Tags>
+            <Tags color={ColorTags.PINK}>SASS</Tags>
           </>
         }
       />
       <Project
         name="Job Advertisement App (in development)"
-        description="A job listing platform built on Laravel and MySQL, this application offers features like real-time job postings, advanced search filters, and employer/employee dashboards."
+        description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
         link="https://github.com/DavittBarry"
         img={{
           src: '/assets/images/classified.png',
@@ -55,9 +58,9 @@ const ProjectList = () => (
         }}
         category={
           <>
-            <Tags color={ColorTags.RED}>Laravel</Tags>
-            <Tags color={ColorTags.BLUE}>MySQL</Tags>
-            <Tags color={ColorTags.PURPLE}>PHP</Tags>
+            <Tags color={ColorTags.GREEN}>Vue.js</Tags>
+            <Tags color={ColorTags.EMERALD}>MongoDB</Tags>
+            <Tags color={ColorTags.BLUE}>Tailwind</Tags>
           </>
         }
       />
