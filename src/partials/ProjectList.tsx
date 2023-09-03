@@ -34,8 +34,23 @@ const ProjectList = () => (
       />
       <Project
         name="Weather App (in development)"
-        description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies."
-        link="https://github.com/DavittBarry/weather-app"
+        description={
+          <>
+            A simple weather app that provides accurate and up-to-date weather
+            forecasts. The application is built using React.js, Node.js,
+            Express.js, SASS, and API technologies. You can also check the
+            repository on{' '}
+            <a
+              href="https://github.com/DavittBarry/weather-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub: https://github.com/DavittBarry/weather-app
+            </a>
+            .
+          </>
+        }
+        link="https://marvelous-hamster-87b7aa.netlify.app"
         img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
         category={
           <>

@@ -34,8 +34,23 @@ const ProjectListfi = () => (
       />
       <Project
         name="Sääsovellus (kehityksessä)"
-        description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS ja API-teknologioita."
-        link="https://github.com/DavittBarry/weather-app"
+        description={
+          <>
+            Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia
+            sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js,
+            Express.js, SASS, ja API-teknologioita. Voit myös tarkistaa
+            repositio{' '}
+            <a
+              href="https://github.com/DavittBarry/weather-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHubissa: https://github.com/DavittBarry/weather-app
+            </a>
+            .
+          </>
+        }
+        link="https://marvelous-hamster-87b7aa.netlify.app"
         img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
         category={
           <>
