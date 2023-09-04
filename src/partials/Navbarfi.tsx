@@ -9,7 +9,7 @@ import {
 const Navbarfi = () => (
   <Section>
     <NavbarTwoColumns>
-      <a href="/">
+      <a href="https://davittportfolio.com/fi/">
         <Logo
           icon={
             <svg
