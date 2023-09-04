@@ -16,11 +16,10 @@ const Hero = () => (
       description={
         <>
           A focused and dedicated ICT professional with also a background in
-          music spanning over 15 years. Transitioned back into{' '}
-          <a className="text-cyan-400">IT/web development</a> four years ago,
-          seeking opportunities to leverage a diverse skill set in website
-          management/creation, service desk technical help, and various{' '}
-          <a className="text-cyan-400">programming languages.</a>{' '}
+          music spanning over 15 years. Transitioned back into IT/web
+          development four years ago, seeking opportunities to leverage a
+          diverse skill set in website management/creation, service desk
+          technical help, and various programming languages.
         </>
       }
       avatar={

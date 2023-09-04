@@ -17,11 +17,10 @@ const Herofi = () => (
         <>
           Työlleen omistautunut ja innostunut tietotekniikan ammattilainen,
           jolla on myös yli 15:n vuoden kokemus musiikkialalta. Siirtynyt
-          takaisin <a className="text-cyan-400">IT-/web-kehitykseen</a> neljä
-          vuotta sitten ja etsii nyt mahdollisuuksia hyödyntää monipuolista
-          osaamistaan verkkosivujen hallinnassa ja luomisessa, erilaisissa{' '}
-          <a className="text-cyan-400">ohjelmointikielissä </a> ja teknisen tuen
-          tarjoamisessa asiakkaille.
+          takaisin IT-/web-kehitykseen neljä vuotta sitten ja etsii nyt
+          mahdollisuuksia hyödyntää monipuolista osaamistaan verkkosivujen
+          hallinnassa ja luomisessa, erilaisissa ohjelmointikielissä ja teknisen
+          tuen tarjoamisessa asiakkaille.
         </>
       }
       avatar={
