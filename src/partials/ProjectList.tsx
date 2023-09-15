@@ -30,7 +30,7 @@ const ProjectList = () => (
               Web design
             </CustomTag>
             <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
-              Tailwind.css
+              Tailwind
             </CustomTag>
             <CustomTag
               color={ColorTags.ROSE}
@@ -75,7 +75,7 @@ const ProjectList = () => (
       />
       <CustomProject
         name="'Helsinkey' music store (In development)"
-        description="An e-commerce platform to sell music and musical instruments built using WordPress, Docker, MySQL, PHP, and ACF."
+        description="An e-commerce platform to sell music and musical instruments built using WordPress, Docker, Tailwind, MySQL, PHP, and ACF."
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
         img={{
           src: '/assets/images/icons8-music-512.png',
@@ -94,6 +94,9 @@ const ProjectList = () => (
             </CustomTag>
             <CustomTag color="PURPLE" url="https://www.php.net">
               PHP
+            </CustomTag>
+            <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
+              Tailwind
             </CustomTag>
             <CustomTag color="GREEN" url="https://www.advancedcustomfields.com">
               ACF

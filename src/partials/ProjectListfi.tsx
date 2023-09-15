@@ -30,7 +30,7 @@ const ProjectListfi = () => (
               Verkkosuunnittelu
             </CustomTag>
             <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
-              Tailwind.css
+              Tailwind
             </CustomTag>
             <CustomTag
               color={ColorTags.ROSE}
@@ -75,7 +75,7 @@ const ProjectListfi = () => (
       />
       <CustomProjectfi
         name="'Helsinkey' musiikkiverkkokauppa (kehityksessä)"
-        description="Verkkokauppa-alusta musiikin ja soittimien myymiseen, rakennettu käyttäen WordPress, Docker, MySQL, PHP ja ACF -teknologioita."
+        description="Verkkokauppa-alusta musiikin ja soittimien myymiseen, rakennettu käyttäen WordPress, Docker, Tailwind, MySQL, PHP ja ACF -teknologioita."
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
         img={{
           src: '/assets/images/icons8-music-512.png',
@@ -94,6 +94,9 @@ const ProjectListfi = () => (
             </CustomTag>
             <CustomTag color="PURPLE" url="https://www.php.net">
               PHP
+            </CustomTag>
+            <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
+              Tailwind
             </CustomTag>
             <CustomTag color="GREEN" url="https://www.advancedcustomfields.com">
               ACF
