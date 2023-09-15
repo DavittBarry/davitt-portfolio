@@ -1,5 +1,6 @@
 import { ColorTags, GradientText, Section } from 'astro-boilerplate-components';
 
+import CustomProject from './CustomProject';
 import CustomProjectfi from './CustomProjectfi';
 import CustomTag from './CustomTag';
 
@@ -69,6 +70,34 @@ const ProjectListfi = () => (
             </CustomTag>
             <CustomTag color={ColorTags.PINK} url="https://sass-lang.com">
               SASS
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProject
+        name="'Helsinkey' musiikkiverkkokauppa (kehityksessä)"
+        description="Verkkokauppa-alusta musiikin ja soittimien myymiseen, rakennettu käyttäen WordPress, Docker, MySQL, PHP ja ACF -teknologioita."
+        githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
+        img={{
+          src: '/assets/images/icons8-music-512.png',
+          alt: 'Helsinkey musiikkiverkkokauppa',
+        }}
+        category={
+          <>
+            <CustomTag color="BLUE" url="https://wordpress.org">
+              WordPress
+            </CustomTag>
+            <CustomTag color="LIGHTBLUE" url="https://www.docker.com">
+              Docker
+            </CustomTag>
+            <CustomTag color="ORANGE" url="https://www.mysql.com">
+              MySQL
+            </CustomTag>
+            <CustomTag color="PURPLE" url="https://www.php.net">
+              PHP
+            </CustomTag>
+            <CustomTag color="GREEN" url="https://www.advancedcustomfields.com">
+              ACF
             </CustomTag>
           </>
         }

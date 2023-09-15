@@ -13,6 +13,12 @@ const mapColorTagsToTailwind = (colorTag: string): string => {
       return 'bg-rose-300';
     case 'BLUE':
       return 'bg-blue-300';
+    case 'LIGHTBLUE':
+      return 'bg-blue-200';
+    case 'ORANGE':
+      return 'bg-orange-300';
+    case 'PURPLE':
+      return 'bg-purple-300';
     case 'GREEN':
       return 'bg-green-300';
     case 'GRAY':

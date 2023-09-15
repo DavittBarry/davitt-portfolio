@@ -74,6 +74,34 @@ const ProjectList = () => (
         }
       />
       <CustomProject
+        name="'Helsinkey' music store (In development)"
+        description="An e-commerce platform to sell music and musical instruments built using WordPress, Docker, MySQL, PHP, and ACF."
+        githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
+        img={{
+          src: '/assets/images/icons8-music-512.png',
+          alt: 'WP Helsinki E-commerce',
+        }}
+        category={
+          <>
+            <CustomTag color="BLUE" url="https://wordpress.org">
+              WordPress
+            </CustomTag>
+            <CustomTag color="LIGHTBLUE" url="https://www.docker.com">
+              Docker
+            </CustomTag>
+            <CustomTag color="ORANGE" url="https://www.mysql.com">
+              MySQL
+            </CustomTag>
+            <CustomTag color="PURPLE" url="https://www.php.net">
+              PHP
+            </CustomTag>
+            <CustomTag color="GREEN" url="https://www.advancedcustomfields.com">
+              ACF
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProject
         name="Job Advertisement App (in development)"
         description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
         githubLink="https://github.com/DavittBarry/job-advertisement-app"
