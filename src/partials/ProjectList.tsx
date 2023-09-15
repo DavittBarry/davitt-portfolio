@@ -42,7 +42,7 @@ const ProjectList = () => (
         }
       />
       <CustomProject
-        name="Weather App (in development)"
+        name="Weather App"
         description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies. "
         githubLink="https://github.com/DavittBarry/weather-app"
         previewLink="https://marvelous-hamster-87b7aa.netlify.app"

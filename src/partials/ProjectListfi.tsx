@@ -42,7 +42,7 @@ const ProjectListfi = () => (
         }
       />
       <CustomProjectfi
-        name="Sääsovellus (kehityksessä)"
+        name="Sääsovellus"
         description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS, ja API-teknologioita."
         githubLink="https://github.com/DavittBarry/weather-app"
         previewLink="https://marvelous-hamster-87b7aa.netlify.app"
