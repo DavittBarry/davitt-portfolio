@@ -1,6 +1,5 @@
 import { ColorTags, GradientText, Section } from 'astro-boilerplate-components';
 
-import CustomProject from './CustomProject';
 import CustomProjectfi from './CustomProjectfi';
 import CustomTag from './CustomTag';
 
@@ -74,7 +73,7 @@ const ProjectListfi = () => (
           </>
         }
       />
-      <CustomProject
+      <CustomProjectfi
         name="'Helsinkey' musiikkiverkkokauppa (kehityksessä)"
         description="Verkkokauppa-alusta musiikin ja soittimien myymiseen, rakennettu käyttäen WordPress, Docker, MySQL, PHP ja ACF -teknologioita."
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
