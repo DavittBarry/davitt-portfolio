@@ -13,35 +13,6 @@ const ProjectListfi = () => (
   >
     <div className="flex flex-col gap-6">
       <CustomProjectfi
-        name="Portfolio"
-        description="Henkilökohtainen portfoliosivusto, rakennettu Astro, Tailwind ja TypeScript -tekniikoilla. Tältä sivustolta löydät valikoiman tulevia projektejani sekä blogeja."
-        githubLink="https://github.com/DavittBarry/davitt-portfolio"
-        previewLink="https://davittportfolio.com/fi"
-        img={{ src: '/assets/images/profile.png', alt: 'Portfolioprojekti' }}
-        category={
-          <>
-            <CustomTag color={ColorTags.FUCHSIA} url="https://astro.build">
-              Astro.js
-            </CustomTag>
-            <CustomTag
-              color={ColorTags.LIME}
-              url="https://fi.wikipedia.org/wiki/Verkkosivujen_suunnittelu"
-            >
-              Verkkosuunnittelu
-            </CustomTag>
-            <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
-              Tailwind
-            </CustomTag>
-            <CustomTag
-              color={ColorTags.ROSE}
-              url="https://www.typescriptlang.org"
-            >
-              TypeScript
-            </CustomTag>
-          </>
-        }
-      />
-      <CustomProjectfi
         name="Sääsovellus"
         description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS, ja API-teknologioita."
         githubLink="https://github.com/DavittBarry/weather-app"
@@ -75,8 +46,9 @@ const ProjectListfi = () => (
       />
       <CustomProjectfi
         name="'Helsinkey' musiikkiverkkokauppa (kehityksessä)"
-        description="Verkkokauppa-alusta musiikin ja soittimien myymiseen, rakennettu käyttäen WordPress, Docker, Tailwind, MySQL, PHP ja ACF -teknologioita."
+        description="Verkkokauppa-alusta musiikin ja soittimien myymiseen, rakennettu käyttäen WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce ja ACF -teknologioita. Jos näet live-esikatselusivulla kielivalikko (asennussivu), se tarkoittaa että suurin sallittu yhteyksien määrä (15) on ylitetty. Käy uudelleen tunnin kuluttua!"
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
+        previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com"
         img={{
           src: '/assets/images/icons8-music-512.png',
           alt: 'Helsinkey musiikkiverkkokauppa',
@@ -100,6 +72,38 @@ const ProjectListfi = () => (
             </CustomTag>
             <CustomTag color="GREEN" url="https://www.advancedcustomfields.com">
               ACF
+            </CustomTag>
+            <CustomTag color="PURPLE" url="https://woocommerce.com/">
+              WooCommerce
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProjectfi
+        name="Portfolio"
+        description="Henkilökohtainen portfoliosivusto, rakennettu Astro, Tailwind ja TypeScript -tekniikoilla. Tältä sivustolta löydät valikoiman tulevia projektejani sekä blogeja."
+        githubLink="https://github.com/DavittBarry/davitt-portfolio"
+        previewLink="https://davittportfolio.com/fi"
+        img={{ src: '/assets/images/profile.png', alt: 'Portfolioprojekti' }}
+        category={
+          <>
+            <CustomTag color={ColorTags.FUCHSIA} url="https://astro.build">
+              Astro.js
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.LIME}
+              url="https://fi.wikipedia.org/wiki/Verkkosivujen_suunnittelu"
+            >
+              Verkkosuunnittelu
+            </CustomTag>
+            <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
+              Tailwind
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.ROSE}
+              url="https://www.typescriptlang.org"
+            >
+              TypeScript
             </CustomTag>
           </>
         }

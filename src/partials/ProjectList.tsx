@@ -13,35 +13,6 @@ const ProjectList = () => (
   >
     <div className="flex flex-col gap-6">
       <CustomProject
-        name="Portfolio"
-        description="Personal portfolio website built with Astro, Tailwind, and TypeScript. This site will feature a selection of my projects to come and a blog for sharing thoughts on tech."
-        githubLink="https://github.com/DavittBarry/davitt-portfolio"
-        previewLink="https://davittportfolio.com/"
-        img={{ src: '/assets/images/profile.png', alt: 'Portfolio website' }}
-        category={
-          <>
-            <CustomTag color={ColorTags.FUCHSIA} url="https://astro.build">
-              Astro.js
-            </CustomTag>
-            <CustomTag
-              color={ColorTags.LIME}
-              url="https://en.wikipedia.org/wiki/Web_design"
-            >
-              Web design
-            </CustomTag>
-            <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
-              Tailwind
-            </CustomTag>
-            <CustomTag
-              color={ColorTags.ROSE}
-              url="https://www.typescriptlang.org"
-            >
-              TypeScript
-            </CustomTag>
-          </>
-        }
-      />
-      <CustomProject
         name="Weather App"
         description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies. "
         githubLink="https://github.com/DavittBarry/weather-app"
@@ -74,9 +45,10 @@ const ProjectList = () => (
         }
       />
       <CustomProject
-        name="'Helsinkey' music store (In development)"
-        description="An e-commerce platform to sell music and musical instruments built using WordPress, Docker, Tailwind, MySQL, PHP, and ACF."
+        name="'Helsinkey' music store"
+        description="An e-commerce platform to sell music and musical instruments built using WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce and ACF. If you see on the live preview page a language selection list (Install page), then that means the max number of connections (15) has been exceeded. Visit again in 1 hour!"
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
+        previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com"
         img={{
           src: '/assets/images/icons8-music-512.png',
           alt: 'WP Helsinki E-commerce',
@@ -100,6 +72,38 @@ const ProjectList = () => (
             </CustomTag>
             <CustomTag color="GREEN" url="https://www.advancedcustomfields.com">
               ACF
+            </CustomTag>
+            <CustomTag color="PURPLE" url="https://woocommerce.com/">
+              WooCommerce
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProject
+        name="Portfolio"
+        description="Personal portfolio website built with Astro, Tailwind, and TypeScript. This site will feature a selection of my projects to come and a blog for sharing thoughts on tech."
+        githubLink="https://github.com/DavittBarry/davitt-portfolio"
+        previewLink="https://davittportfolio.com/"
+        img={{ src: '/assets/images/profile.png', alt: 'Portfolio website' }}
+        category={
+          <>
+            <CustomTag color={ColorTags.FUCHSIA} url="https://astro.build">
+              Astro.js
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.LIME}
+              url="https://en.wikipedia.org/wiki/Web_design"
+            >
+              Web design
+            </CustomTag>
+            <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
+              Tailwind
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.ROSE}
+              url="https://www.typescriptlang.org"
+            >
+              TypeScript
             </CustomTag>
           </>
         }
