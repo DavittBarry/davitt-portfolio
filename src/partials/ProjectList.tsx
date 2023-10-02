@@ -48,7 +48,7 @@ const ProjectList = () => (
         name="'Helsinkey' music store"
         description="An e-commerce platform to sell music and musical instruments built using WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce and ACF. If you see on the live preview page a language selection list (Install page), then that means the max number of connections (15) has been exceeded. Visit again in 1 hour!"
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
-        previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com"
+        previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com/?page_id=267&lang=en"
         img={{
           src: '/assets/images/icons8-music-512.png',
           alt: 'WP Helsinki E-commerce',
