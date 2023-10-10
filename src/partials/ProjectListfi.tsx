@@ -46,7 +46,7 @@ const ProjectListfi = () => (
       />
       <CustomProjectfi
         name="'Helsinkey' musiikkiverkkokauppa (kehityksessä)"
-        description="Verkkokauppa-alusta musiikin ja soittimien myymiseen, rakennettu käyttäen WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce ja ACF -teknologioita. Jos näet live-esikatselusivulla kielivalikko (asennussivu), se tarkoittaa että suurin sallittu yhteyksien määrä (15) on ylitetty. Käy uudelleen tunnin kuluttua!"
+        description="Musiikin ja soittimien myyntialusta, jossa on alusta asti itse tehty teema. Rakennettu käyttäen WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce ja ACF -teknologioita. Jos näet live-esikatselusivulla kielivalikko (asennussivu), se tarkoittaa että suurin sallittu yhteyksien määrä (15) on ylitetty. Käy uudelleen tunnin kuluttua!"
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
         previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com"
         img={{
