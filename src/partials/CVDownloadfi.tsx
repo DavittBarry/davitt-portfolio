@@ -15,7 +15,7 @@ const CVDownloadfi = () => (
         <a
           href="/Davitt-Barry-CV-Suomeksi.pdf"
           download
-          className="rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-700"
+          className="mb-4 rounded-full bg-green-500 px-4 py-2 text-center text-white hover:bg-green-700 lg:mb-0 lg:mr-4"
         >
           Lataa suomeksi
         </a>
