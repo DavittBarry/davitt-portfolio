@@ -13,6 +13,29 @@ const ProjectList = () => (
   >
     <div className="flex flex-col gap-6">
       <CustomProject
+        name="Job Advertisement App"
+        description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
+        githubLink="https://github.com/DavittBarry/job-advertisement-app"
+        previewLink="https://bucolic-hamster-c91ee3.netlify.app/"
+        img={{
+          src: '/assets/images/classified.png',
+          alt: 'Job Advertisement App',
+        }}
+        category={
+          <>
+            <CustomTag color={ColorTags.GREEN} url="https://vuejs.org">
+              Vue.js
+            </CustomTag>
+            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
+              MongoDB
+            </CustomTag>
+            <CustomTag color={ColorTags.BLUE} url="https://tailwindcss.com">
+              Tailwind
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProject
         name="Weather App"
         description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies. "
         githubLink="https://github.com/DavittBarry/weather-app"
@@ -104,28 +127,6 @@ const ProjectList = () => (
               url="https://www.typescriptlang.org"
             >
               TypeScript
-            </CustomTag>
-          </>
-        }
-      />
-      <CustomProject
-        name="Job Advertisement App (in development)"
-        description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
-        githubLink="https://github.com/DavittBarry/job-advertisement-app"
-        img={{
-          src: '/assets/images/classified.png',
-          alt: 'Job Advertisement App',
-        }}
-        category={
-          <>
-            <CustomTag color={ColorTags.GREEN} url="https://vuejs.org">
-              Vue.js
-            </CustomTag>
-            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
-              MongoDB
-            </CustomTag>
-            <CustomTag color={ColorTags.BLUE} url="https://tailwindcss.com">
-              Tailwind
             </CustomTag>
           </>
         }

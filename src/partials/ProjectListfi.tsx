@@ -13,6 +13,29 @@ const ProjectListfi = () => (
   >
     <div className="flex flex-col gap-6">
       <CustomProjectfi
+        name="Työpaikkailmoitussovellus"
+        description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
+        githubLink="https://github.com/DavittBarry/job-advertisement-app"
+        previewLink="https://bucolic-hamster-c91ee3.netlify.app/"
+        img={{
+          src: '/assets/images/classified.png',
+          alt: 'Työpaikkailmoitussovellus',
+        }}
+        category={
+          <>
+            <CustomTag color={ColorTags.GREEN} url="https://vuejs.org">
+              Vue.js
+            </CustomTag>
+            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
+              MongoDB
+            </CustomTag>
+            <CustomTag color={ColorTags.BLUE} url="https://tailwindcss.com">
+              Tailwind
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProjectfi
         name="Sääsovellus"
         description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS, ja API-teknologioita."
         githubLink="https://github.com/DavittBarry/weather-app"
@@ -45,7 +68,7 @@ const ProjectListfi = () => (
         }
       />
       <CustomProjectfi
-        name="'Helsinkey' musiikkiverkkokauppa (kehityksessä)"
+        name="'Helsinkey' musiikkiverkkokauppa"
         description="Musiikin ja soittimien myyntialusta, jossa on alusta asti itse tehty teema. Rakennettu käyttäen WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce ja ACF -teknologioita. Jos näet live-esikatselusivulla kielivalikko (asennussivu), se tarkoittaa että suurin sallittu yhteyksien määrä (15) on ylitetty. Käy uudelleen tunnin kuluttua!"
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
         previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com"
@@ -104,28 +127,6 @@ const ProjectListfi = () => (
               url="https://www.typescriptlang.org"
             >
               TypeScript
-            </CustomTag>
-          </>
-        }
-      />
-      <CustomProjectfi
-        name="Työpaikkailmoitussovellus (kehityksessä)"
-        description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
-        githubLink="https://github.com/DavittBarry/job-advertisement-app"
-        img={{
-          src: '/assets/images/classified.png',
-          alt: 'Työpaikkailmoitussovellus',
-        }}
-        category={
-          <>
-            <CustomTag color={ColorTags.GREEN} url="https://vuejs.org">
-              Vue.js
-            </CustomTag>
-            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
-              MongoDB
-            </CustomTag>
-            <CustomTag color={ColorTags.BLUE} url="https://tailwindcss.com">
-              Tailwind
             </CustomTag>
           </>
         }
