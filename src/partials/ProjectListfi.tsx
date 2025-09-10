@@ -16,7 +16,6 @@ const ProjectListfi = () => (
         name="Työpaikkailmoitussovellus"
         description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
         githubLink="https://github.com/DavittBarry/job-advertisement-app"
-        previewLink="https://bucolic-hamster-c91ee3.netlify.app/"
         img={{
           src: '/assets/images/classified.png',
           alt: 'Työpaikkailmoitussovellus',
@@ -39,7 +38,6 @@ const ProjectListfi = () => (
         name="Sääsovellus"
         description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS, ja API-teknologioita."
         githubLink="https://github.com/DavittBarry/weather-app"
-        previewLink="https://marvelous-hamster-87b7aa.netlify.app"
         img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
         category={
           <>
@@ -71,7 +69,6 @@ const ProjectListfi = () => (
         name="'Helsinkey' musiikkiverkkokauppa"
         description="Musiikin ja soittimien myyntialusta, jossa on alusta asti itse tehty teema. Rakennettu käyttäen WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce ja ACF -teknologioita. Jos näet live-esikatselusivulla kielivalikko (asennussivu), se tarkoittaa että suurin sallittu yhteyksien määrä (15) on ylitetty. Käy uudelleen tunnin kuluttua!"
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
-        previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com"
         img={{
           src: '/assets/images/icons8-music-512.png',
           alt: 'Helsinkey musiikkiverkkokauppa',
@@ -106,7 +103,6 @@ const ProjectListfi = () => (
         name="Portfolio"
         description="Henkilökohtainen portfoliosivusto, rakennettu Astro, Tailwind ja TypeScript -tekniikoilla. Tältä sivustolta löydät valikoiman tulevia projektejani sekä blogeja."
         githubLink="https://github.com/DavittBarry/davitt-portfolio"
-        previewLink="https://davittportfolio.com/fi"
         img={{ src: '/assets/images/profile.png', alt: 'Portfolioprojekti' }}
         category={
           <>

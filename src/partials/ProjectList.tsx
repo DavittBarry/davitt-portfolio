@@ -16,7 +16,6 @@ const ProjectList = () => (
         name="Job Advertisement App"
         description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
         githubLink="https://github.com/DavittBarry/job-advertisement-app"
-        previewLink="https://bucolic-hamster-c91ee3.netlify.app/"
         img={{
           src: '/assets/images/classified.png',
           alt: 'Job Advertisement App',
@@ -39,7 +38,6 @@ const ProjectList = () => (
         name="Weather App"
         description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies. "
         githubLink="https://github.com/DavittBarry/weather-app"
-        previewLink="https://marvelous-hamster-87b7aa.netlify.app"
         img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
         category={
           <>
@@ -71,7 +69,6 @@ const ProjectList = () => (
         name="'Helsinkey' music store"
         description="An e-commerce platform to sell music and musical instruments with a theme made from stratch. Built using WordPress, Docker, Tailwind, MySQL, PHP, WooCommerce and ACF. If you see on the live preview page a language selection list (Install page), then that means the max number of connections (15) has been exceeded. Visit again in 1 hour!"
         githubLink="https://github.com/DavittBarry/wp-helsinkey-ecommerce"
-        previewLink="https://wp-helsinkey-ecommerce-7e342ea96f2a.herokuapp.com/?page_id=267&lang=en"
         img={{
           src: '/assets/images/icons8-music-512.png',
           alt: 'WP Helsinki E-commerce',
@@ -106,7 +103,6 @@ const ProjectList = () => (
         name="Portfolio"
         description="Personal portfolio website built with Astro, Tailwind, and TypeScript. This site will feature a selection of my projects to come and a blog for sharing thoughts on tech."
         githubLink="https://github.com/DavittBarry/davitt-portfolio"
-        previewLink="https://davittportfolio.com/"
         img={{ src: '/assets/images/profile.png', alt: 'Portfolio website' }}
         category={
           <>
