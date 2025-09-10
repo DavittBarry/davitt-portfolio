@@ -9,7 +9,6 @@ type CustomProjectProps = {
   name: string;
   description: ReactNode;
   githubLink?: string;
-  previewLink?: string;
   category: ReactNode;
 };
 
@@ -18,7 +17,6 @@ const CustomProject: React.FC<CustomProjectProps> = ({
   name,
   description,
   githubLink,
-  previewLink,
   category,
 }) => {
   return (
@@ -35,16 +33,6 @@ const CustomProject: React.FC<CustomProjectProps> = ({
         </div>
         <div className="mt-4">{description}</div>
         <div className="mt-4 flex gap-2">
-          {previewLink && (
-            <a
-              href={previewLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded bg-green-500 px-4 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-green-600"
-            >
-              Esikatselu
-            </a>
-          )}
           {githubLink && (
             <a
               href={githubLink}
