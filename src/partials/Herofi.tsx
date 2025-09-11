@@ -6,7 +6,7 @@ const Herofi = () => (
       title={
         <>
           <span className="font-light">Hei, olen </span>
-          <span className="font-normal text-cyan-400">Davitt</span>
+          <span className="font-normal text-accent">Davitt</span>
           <span className="ml-2 animate-pulse-slow">_</span>
         </>
       }
@@ -23,8 +23,8 @@ const Herofi = () => (
       avatar={
         <div className="group relative">
           <img
-            className="mt-8 h-[250px] w-[225px] border-2 border-neutral-800 transition-all duration-500 hover:border-accent"
-            src="/assets/images/avatar.png"
+            className="mt-8 w-64 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
+            src="/assets/images/avatar.jpg"
             alt="Avatar-kuva"
             loading="lazy"
           />
