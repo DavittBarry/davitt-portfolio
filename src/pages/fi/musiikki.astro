@@ -1,0 +1,28 @@
+---
+import Basefi from '@/templates/Basefi.astro';
+import { Section } from 'astro-boilerplate-components';
+
+const title = "Musiikin tuotanto - Davitt Barry";
+const description = "Alkuperäinen musiikkisävellys ja tuotantopalvelut";
+---
+
+<Basefi head={{ title, description }}>
+  <Section>
+    <div className="min-h-[60vh] flex flex-col justify-center items-center text-center">
+      <h1 className="text-4xl font-light text-white mb-4">
+        Musiikin <span className="text-cyan-400">tuotanto</span>
+      </h1>
+      <p className="text-xl text-neutral-400 mb-8">Tulossa pian</p>
+      <p className="text-neutral-500 max-w-md">
+        Tämä osio on parhaillaan kehitteillä. 
+        Palaa pian takaisin tutustuaksesi musiikkiportfolioon, viimeisimpiin julkaisuihin ja tuotantopalveluihin.
+      </p>
+      <a 
+        href="/fi/" 
+        className="mt-8 border border-neutral-700 px-4 py-2 text-neutral-400 hover:text-accent hover:border-accent transition-all"
+      >
+        ← Takaisin etusivulle
+      </a>
+    </div>
+  </Section>
+</Basefi>

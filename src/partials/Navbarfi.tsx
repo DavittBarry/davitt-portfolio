@@ -14,6 +14,12 @@ const Navbarfi = () => (
 
       <NavMenu>
         <div className="p-2">
+          <NavMenuItem href="/fi/">Etusivu</NavMenuItem>
+        </div>
+        <div className="p-2">
+          <NavMenuItem href="/fi/dev">Dev</NavMenuItem>
+        </div>
+        <div className="p-2">
           <NavMenuItem href="https://github.com/DavittBarry">
             GitHub
           </NavMenuItem>

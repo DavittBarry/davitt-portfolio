@@ -1,0 +1,25 @@
+---
+import type { IFrontmatter } from 'astro-boilerplate-components';
+
+import { CVDownloadfi } from '@/partials/CVDownloadfi';
+import { Herofi } from '@/partials/Herofi';
+import { ProjectListfi } from '@/partials/ProjectListfi';
+import { RecentPostsfi } from '@/partials/RecentPostsfi';
+import Basefi from '@/templates/Basefi.astro';
+import { AppConfig } from '@/utils/AppConfig';
+import { sortByDate } from '@/utils/Posts';
+
+const allPosts = await Astro.glob<IFrontmatter>('../posts/*.md');
+const sortedPosts = sortByDate(allPosts);
+const lastThreePosts = sortedPosts.slice(0, 3);
+
+const { title } = AppConfig;
+const { description } = AppConfig;
+---
+
+<Basefi head={{ title, description }}>
+  <Herofi />
+  <ProjectListfi />
+  <RecentPostsfi postList={lastThreePosts} />
+  <CVDownloadfi />
+</Basefi>

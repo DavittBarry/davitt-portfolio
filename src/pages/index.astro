@@ -1,25 +1,16 @@
 ---
-import type { IFrontmatter } from 'astro-boilerplate-components';
-
-import { CVDownload } from '@/partials/CVDownload';
-import { Hero } from '@/partials/Hero';
-import { ProjectList } from '@/partials/ProjectList';
-import { RecentPosts } from '@/partials/RecentPosts';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
-import { sortByDate } from '@/utils/Posts';
-
-const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
-const sortedPosts = sortByDate(allPosts);
-const lastThreePosts = sortedPosts.slice(0, 3);
+import { LandingHero } from '@/partials/LandingHero';
+import { ServicesGrid } from '@/partials/ServicesGrid';
+import { Footer } from '@/partials/Footer';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
 ---
 
 <Base head={{ title, description }}>
-  <Hero />
-  <ProjectList />
-  <RecentPosts postList={lastThreePosts} />
-  <CVDownload />
+  <LandingHero />
+  <ServicesGrid />
+  <Footer />
 </Base>
