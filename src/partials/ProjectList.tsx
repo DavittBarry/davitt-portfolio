@@ -1,4 +1,4 @@
-import { ColorTags, GradientText, Section } from 'astro-boilerplate-components';
+import { ColorTags, Section } from 'astro-boilerplate-components';
 
 import CustomProject from './CustomProject';
 import CustomTag from './CustomTag';
@@ -6,12 +6,12 @@ import CustomTag from './CustomTag';
 const ProjectList = () => (
   <Section
     title={
-      <>
-        Recent <GradientText>Projects</GradientText>
-      </>
+      <div className="text-3xl font-light text-white">
+        Recent <span className="text-cyan-400">Projects</span>
+      </div>
     }
   >
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4">
       <CustomProject
         name="Job Advertisement App"
         description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
@@ -36,7 +36,7 @@ const ProjectList = () => (
       />
       <CustomProject
         name="Weather App"
-        description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies. "
+        description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies."
         githubLink="https://github.com/DavittBarry/weather-app"
         img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
         category={

@@ -1,4 +1,4 @@
-import { ColorTags, GradientText, Section } from 'astro-boilerplate-components';
+import { ColorTags, Section } from 'astro-boilerplate-components';
 
 import CustomProjectfi from './CustomProjectfi';
 import CustomTag from './CustomTag';
@@ -6,12 +6,12 @@ import CustomTag from './CustomTag';
 const ProjectListfi = () => (
   <Section
     title={
-      <>
-        Viimeaikaiset <GradientText>Projektit</GradientText>
-      </>
+      <div className="text-3xl font-light text-white">
+        Viimeaikaiset <span className="text-cyan-400">Projektit</span>
+      </div>
     }
   >
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4">
       <CustomProjectfi
         name="Työpaikkailmoitussovellus"
         description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
