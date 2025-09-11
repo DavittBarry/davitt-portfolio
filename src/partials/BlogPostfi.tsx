@@ -10,8 +10,6 @@ type IBlogPostProps = {
 };
 
 const BlogPostfi = (props: IBlogPostProps) => {
-  // console.log('Props in BlogPost:', props);
-
   let innerHTML: string | null = null;
 
   if (typeof props.children === 'object' && props.children !== null) {
@@ -30,7 +28,7 @@ const BlogPostfi = (props: IBlogPostProps) => {
       <PostContent content={props.frontmatter}>
         {innerHTML && (
           <div
-            className="text-cyan-400"
+            className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-p:text-neutral-300 prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent/80 prose-strong:text-white"
             dangerouslySetInnerHTML={{
               __html: innerHTML,
             }}

@@ -2,22 +2,26 @@ import { Section } from 'astro-boilerplate-components';
 
 const CVDownloadfi = () => (
   <Section>
-    <div className="flex flex-col items-center justify-center">
-      <h2 className="mb-8 text-3xl font-semibold">Lataa CV:ni</h2>
-      <div className="mb-8 flex flex-col lg:flex-row">
+    <div className="flex flex-col items-center justify-center py-8">
+      <h2 className="mb-8 text-3xl font-light text-white">
+        Lataa <span className="text-cyan-400">CV:ni</span>
+      </h2>
+      <div className="flex flex-col gap-4 lg:flex-row">
         <a
           href="/Davitt-Barry-CV-English.pdf"
           download
-          className="mb-4 rounded-full bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 lg:mb-0 lg:mr-4"
+          className="group relative overflow-hidden border border-cyan-500 px-6 py-3 text-center text-cyan-400 transition-all duration-300 hover:text-dark"
         >
-          Lataa englanniksi
+          <span className="absolute inset-0 origin-left scale-x-0 bg-cyan-500 transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="relative font-light">Lataa englanniksi</span>
         </a>
         <a
           href="/Davitt-Barry-CV-Suomeksi.pdf"
           download
-          className="mb-4 rounded-full bg-green-500 px-4 py-2 text-center text-white hover:bg-green-700 lg:mb-0 lg:mr-4"
+          className="group relative overflow-hidden border border-emerald-500 px-6 py-3 text-center text-emerald-400 transition-all duration-300 hover:text-dark"
         >
-          Lataa suomeksi
+          <span className="absolute inset-0 origin-left scale-x-0 bg-emerald-500 transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="relative font-light">Lataa suomeksi</span>
         </a>
       </div>
     </div>
