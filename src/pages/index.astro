@@ -1,9 +1,8 @@
 ---
-import Base from '@/templates/Base.astro';
-import { AppConfig } from '@/utils/AppConfig';
 import { LandingHero } from '@/partials/LandingHero';
 import { ServicesGrid } from '@/partials/ServicesGrid';
-import { Footer } from '@/partials/Footer';
+import Base from '@/templates/Base.astro';
+import { AppConfig } from '@/utils/AppConfig';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -12,5 +11,4 @@ const { description } = AppConfig;
 <Base head={{ title, description }}>
   <LandingHero />
   <ServicesGrid />
-  <Footer />
 </Base>

@@ -3,7 +3,6 @@ import Basefi from '@/templates/Basefi.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { LandingHerofi } from '@/partials/LandingHerofi';
 import { ServicesGridfi } from '@/partials/ServicesGridfi';
-import { Footerfi } from '@/partials/Footerfi';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -12,5 +11,4 @@ const { description } = AppConfig;
 <Basefi head={{ title, description }}>
   <LandingHerofi />
   <ServicesGridfi />
-  <Footerfi />
 </Basefi>
