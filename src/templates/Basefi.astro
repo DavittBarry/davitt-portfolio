@@ -22,6 +22,24 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={AppConfig.author} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/assets/images/og-image.jpg" />
+    <meta property="og:locale" content="fi_FI" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/assets/images/og-image.jpg" />
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="Davitt Barry, web-kehittäjä, musiikin tuottaja, ääniteknikko, Helsinki, Suomi" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://davittbarry.com/fi/" />
 
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
