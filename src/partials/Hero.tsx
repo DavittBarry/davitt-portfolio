@@ -5,9 +5,18 @@ const Hero = () => (
     <HeroAvatar
       title={
         <>
+          <style>{`
+            @keyframes blink {
+              0%, 50% { opacity: 1; }
+              51%, 100% { opacity: 0; }
+            }
+            .cursor-blink {
+              animation: blink 1s step-end infinite;
+            }
+          `}</style>
           <span className="font-light">Hello, I'm </span>
           <span className="font-normal text-accent">Davitt</span>
-          <span className="ml-2 animate-pulse-slow">_</span>
+          <span className="cursor-blink ml-1 text-accent">_</span>
         </>
       }
       description={
@@ -22,7 +31,7 @@ const Hero = () => (
       avatar={
         <div className="group relative">
           <img
-            className="mt-8 w-64 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
+            className="mt-8 h-64 w-64 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
             src="/assets/images/avatar.jpg"
             alt="Avatar image"
             loading="lazy"
