@@ -3,8 +3,14 @@ import { Section } from 'astro-boilerplate-components';
 const LandingHerofi = () => (
   <Section>
     <div className="flex min-h-[70vh] flex-col items-center justify-center text-center">
+      <img
+        src="/assets/images/avatar.jpg"
+        alt="Davitt Barry"
+        className="mb-8 w-64 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
+      />
+
       <h1 className="mb-6 text-6xl font-light text-white md:text-7xl">
-        Davitt <span className="text-accent">Barry</span>
+        Davitt Barry
       </h1>
 
       <p className="mb-2 text-xl font-light text-neutral-400 md:text-2xl">
@@ -20,7 +26,7 @@ const LandingHerofi = () => (
       </div>
 
       <p className="mt-8 max-w-2xl px-4 text-neutral-400">
-        Monitaitoinen luova ammattilainen Suomesta, erikoistunut
+        Monitaitoinen luova ammattilainen Helsingistä. Erikoistunut
         web-kehitykseen, musiikin tuotantoon ja äänen jälkikäsittelyyn. Yhdistän
         teknisen osaamisen ja taiteellisen näkemyksen jokaisessa projektissa.
       </p>

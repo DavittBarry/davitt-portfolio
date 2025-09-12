@@ -1,0 +1,77 @@
+---
+import Basefi from '@/templates/Basefi.astro';
+import { Section } from 'astro-boilerplate-components';
+
+const title = "Yhteystiedot - Davitt Barry";
+const description = "Ota yhteyttä yhteistyö- ja projektiehdotuksista";
+---
+
+<Basefi head={{ title, description }}>
+  <Section>
+    <div className="min-h-[60vh] flex flex-col justify-center items-center">
+      <div className="max-w-2xl w-full px-4">
+        <h1 className="text-4xl font-light text-white mb-8 text-center">
+          Ota <span className="text-cyan-400">yhteyttä</span>
+        </h1>
+        
+        <div className="bg-dark-100 border border-neutral-800 p-8">
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xl font-light text-white mb-2">Sijainti</h2>
+              <p className="text-neutral-400">Helsinki, Suomi</p>
+              <p className="text-sm text-neutral-500 mt-1">Käytettävissä etätöihin maailmanlaajuisesti</p>
+            </div>
+            
+            <div>
+              <h2 className="text-xl font-light text-white mb-2">Sähköposti</h2>
+              <a 
+                href="mailto:davittbarry333@gmail.com" 
+                className="text-cyan-400 hover:text-cyan-300 transition-colors"
+              >
+                davittbarry333@gmail.com
+              </a>
+            </div>
+            
+            <div>
+              <h2 className="text-xl font-light text-white mb-2">Yhteydet</h2>
+              <div className="flex gap-4">
+                <a 
+                  href="https://github.com/DavittBarry" 
+                  className="text-neutral-400 hover:text-accent transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/davittbarry/" 
+                  className="text-neutral-400 hover:text-accent transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            
+            <div className="pt-4 border-t border-neutral-800">
+              <p className="text-neutral-400 text-sm">
+                Projektitiedusteluihin, yhteistyömahdollisuuksiin tai yleisiin kysymyksiin 
+                voit ottaa yhteyttä sähköpostitse. Vastaan yleensä 24-48 tunnin sisällä.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="text-center mt-8">
+          <a 
+            href="/fi/" 
+            className="border border-neutral-700 px-4 py-2 text-neutral-400 hover:text-accent hover:border-accent transition-all inline-block"
+          >
+            ← Takaisin etusivulle
+          </a>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Basefi>

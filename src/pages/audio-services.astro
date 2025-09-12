@@ -1,0 +1,28 @@
+---
+import Base from '@/templates/Base.astro';
+import { Section } from 'astro-boilerplate-components';
+
+const title = "Audio Services - Davitt Barry";
+const description = "Professional music production, mixing and mastering services";
+---
+
+<Base head={{ title, description }}>
+  <Section>
+    <div className="min-h-[60vh] flex flex-col justify-center items-center text-center">
+      <h1 className="text-4xl font-light text-white mb-4">
+        Audio <span className="text-cyan-400">Services</span>
+      </h1>
+      <p className="text-xl text-neutral-400 mb-8">Production • Mixing • Mastering</p>
+      <p className="text-neutral-500 max-w-md">
+        This section is currently under development. 
+        Information about audio production, mixing and mastering services, rates, and portfolio coming soon.
+      </p>
+      <a 
+        href="/" 
+        className="mt-8 border border-neutral-700 px-4 py-2 text-neutral-400 hover:text-accent hover:border-accent transition-all"
+      >
+        ← Back to Home
+      </a>
+    </div>
+  </Section>
+</Base>

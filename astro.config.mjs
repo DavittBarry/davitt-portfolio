@@ -6,11 +6,7 @@ import robotsTxt from 'astro-robots-txt';
 import { astroImageTools } from 'astro-imagetools';
 
 export default defineConfig({
-  // Base path for the site. Useful if deploying to a subdirectory.
-  // base: '.',
-
-  // The actual URL of the deployed site
-  site: 'https://davittportfolio.com/',
+  site: 'https://davittbarry.net/',
 
   routes: {
     '/': { page: '/index.astro' },
@@ -20,15 +16,12 @@ export default defineConfig({
     '/fi/posts/forth-postfi': { page: '/posts-fi/forth-postfi.astro' },
   },
 
-  // Markdown settings
   markdown: {
-    // Syntax highlighting theme
     shikiConfig: {
       theme: 'monokai',
     },
   },
 
-  // Integrations and plugins
   integrations: [
     react(),
     tailwind({}),
