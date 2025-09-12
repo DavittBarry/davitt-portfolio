@@ -2,46 +2,81 @@
 import Basefi from '@/templates/Basefi.astro';
 
 const head = {
-  title: 'Tietosuojaseloste',
-  description: 'Tämä on tämän portfolion verkkosivuston tietosuojaseloste.',
+  title: 'Tietosuojaseloste - Davitt Barry',
+  description: 'Davitt Barry portfoliosivuston tietosuojaseloste.',
 };
 ---
 
 <Basefi head={head}>
-  <article class="prose mx-auto my-8 text-gray-300 lg:prose-lg">
-    <h1 class="text-teal-400">Tietosuojaseloste</h1>
-    <p class="text-gray-300">Viimeksi päivitetty: 30. elokuuta 2023</p>
+  <div class="container mx-auto px-6 py-12">
+    <article class="mx-auto max-w-4xl">
+      <h1 class="mb-4 text-4xl font-light text-white">Tietosuojaseloste</h1>
+      <p class="mb-8 text-neutral-500">Viimeksi päivitetty: Syyskuu 2025</p>
 
-    <h2 class="text-teal-400">Johdanto</h2>
-    <p class="text-gray-300">
-      Tämä tietosuojaseloste kuvaa, kuinka käsittelemme henkilötietoja tämän
-      portfolion verkkosivuston vierailijoille.
-    </p>
+      <div class="space-y-8 text-neutral-400">
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">Johdanto</h2>
+          <p>
+            Tämä tietosuojaseloste kuvaa, kuinka käsittelemme henkilötietoja
+            tämän portfoliosivuston vierailijoille.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Kerätyt henkilötiedot</h2>
-    <p class="text-gray-300">
-      Tämä portfolion verkkosivusto saattaa pyytää sähköpostiosoitetta
-      yhteydenottotarkoituksessa, jos vierailija valitsee käyttävänsä
-      yhteydenottopainiketta.
-    </p>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">
+            Kerätyt henkilötiedot
+          </h2>
+          <p>
+            Tämä portfoliosivusto ei käytä evästeitä tai seurantateknologioita.
+            Keräämme sähköpostiosoitteesi vain, jos päätät ottaa meihin yhteyttä
+            suoraan sähköpostilinkin kautta.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Henkilötietojen käyttö</h2>
-    <p class="text-gray-300">
-      Annettu sähköpostiosoite käytetään ainoastaan tiedusteluihin tai
-      kommentteihin vastaamiseen.
-    </p>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">
+            Henkilötietojen käyttö
+          </h2>
+          <p>
+            Annettu sähköpostiosoite käytetään ainoastaan tiedusteluihin tai
+            kommentteihin vastaamiseen. Emme jaa, myy tai käytä tietojasi
+            mihinkään muuhun tarkoitukseen.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Tietoturva</h2>
-    <p class="text-gray-300">
-      Vaikka toimia tehdäänkin lähetettyjen sähköpostiosoitteiden suojaamiseksi,
-      on hyvä ymmärtää, ettei mikään elektronisen viestinnän menetelmä ole
-      täysin turvallinen.
-    </p>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">
+            Kolmannen osapuolen palvelut
+          </h2>
+          <p>
+            Tämä sivusto saattaa sisältää linkkejä ulkoisiin palveluihin
+            (GitHub, LinkedIn). Näillä palveluilla on omat
+            tietosuojakäytäntönsä, emmekä ole vastuussa niiden käytännöistä.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Yhteystiedot</h2>
-    <p class="text-gray-300">
-      Kysymykset koskien tätä tietosuojaselostetta voi ohjata
-      sähköpostiosoitteeseen, joka löytyy tämän verkkosivuston alatunnisteesta.
-    </p>
-  </article>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">Tietoturva</h2>
+          <p>
+            Vaikka pyrimme suojaamaan kaikki lähetetyt henkilötiedot, mikään
+            elektronisen viestinnän menetelmä ei ole täysin turvallinen.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">Yhteystiedot</h2>
+          <p>
+            Tätä tietosuojaselostetta koskevat kysymykset voi ohjata
+            osoitteeseen
+            <a
+              href="mailto:davittbarry333@gmail.com"
+              class="text-accent transition-colors hover:text-accent/80"
+            >
+              davittbarry333@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
 </Basefi>

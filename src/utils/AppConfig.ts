@@ -1,8 +1,11 @@
 export const AppConfig = {
   site_name: 'Davitt Barry',
   title: 'Davitt Barry',
-  description: 'Portfolio built with Astro using React and Tailwind CSS',
-  author: 'Davitt',
+  description:
+    'Multi-disciplinary creative based in Helsinki. Web developer, music producer, and audio engineer bringing technical expertise and artistic vision to every project.',
+  author: 'Davitt Barry',
   locale_region: 'en-us',
-  locale: 'fi',
+  locale: 'en',
+  url: 'https://davittbarry.com',
+  email: 'davittbarry333@gmail.com',
 };

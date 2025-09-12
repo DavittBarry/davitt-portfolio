@@ -2,45 +2,80 @@
 import Base from '@/templates/Base.astro';
 
 const head = {
-  title: 'Privacy Statement',
-  description: 'This is the privacy statement of this portfolio website.',
+  title: 'Privacy Statement - Davitt Barry',
+  description: 'Privacy statement for Davitt Barry portfolio website.',
 };
 ---
 
 <Base head={head}>
-  <article class="prose mx-auto my-8 text-gray-300 lg:prose-lg">
-    <h1 class="text-teal-400">Privacy Statement</h1>
-    <p class="text-gray-300">Last Updated: August 30, 2023</p>
+  <div class="container mx-auto px-6 py-12">
+    <article class="mx-auto max-w-4xl">
+      <h1 class="mb-4 text-4xl font-light text-white">Privacy Statement</h1>
+      <p class="mb-8 text-neutral-500">Last Updated: September 2025</p>
 
-    <h2 class="text-teal-400">Introduction</h2>
-    <p class="text-gray-300">
-      This privacy statement outlines the handling of personal data for visitors
-      to this portfolio website.
-    </p>
+      <div class="space-y-8 text-neutral-400">
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">Introduction</h2>
+          <p>
+            This privacy statement outlines the handling of personal data for
+            visitors to this portfolio website.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Personal Data Collected</h2>
-    <p class="text-gray-300">
-      This portfolio website may request an email address for the purpose of
-      communication if the visitor chooses to use the email button for contact.
-    </p>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">
+            Personal Data Collected
+          </h2>
+          <p>
+            This portfolio website does not use cookies or tracking
+            technologies. We may collect your email address only if you choose
+            to contact us directly via the provided email link.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Utilization of Personal Data</h2>
-    <p class="text-gray-300">
-      The email address, if provided, is used solely for the purpose of
-      responding to inquiries or comments.
-    </p>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">
+            Use of Personal Data
+          </h2>
+          <p>
+            Any email address provided is used solely for responding to your
+            inquiries or comments. We do not share, sell, or use your
+            information for any other purpose.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Security</h2>
-    <p class="text-gray-300">
-      While efforts are made to protect any submitted email addresses, it is
-      acknowledged that no method of electronic communication is entirely
-      secure.
-    </p>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">
+            Third-Party Services
+          </h2>
+          <p>
+            This website may contain links to external services (GitHub,
+            LinkedIn). These services have their own privacy policies, and we
+            are not responsible for their practices.
+          </p>
+        </div>
 
-    <h2 class="text-teal-400">Contact</h2>
-    <p class="text-gray-300">
-      Questions regarding this privacy statement can be directed to the email
-      address found in the footer of this website.
-    </p>
-  </article>
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">Security</h2>
+          <p>
+            While we strive to protect any submitted personal information, no
+            method of electronic communication is entirely secure.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-2xl font-light text-white">Contact</h2>
+          <p>
+            Questions regarding this privacy statement can be directed to
+            <a
+              href="mailto:davittbarry333@gmail.com"
+              class="text-accent transition-colors hover:text-accent/80"
+            >
+              davittbarry333@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
 </Base>

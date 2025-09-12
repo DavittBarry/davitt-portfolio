@@ -1,0 +1,22 @@
+---
+import Base from '@/templates/Base.astro';
+
+const title = "404 - Page Not Found";
+const description = "The page you're looking for doesn't exist.";
+---
+
+<Base head={{ title, description }}>
+  <div class="min-h-[60vh] flex flex-col justify-center items-center text-center">
+    <h1 className="text-8xl font-light text-accent mb-4">404</h1>
+    <h2 className="text-2xl text-white mb-4">Page Not Found</h2>
+    <p className="text-neutral-400 mb-8 max-w-md">
+      The page you're looking for doesn't exist or has been moved.
+    </p>
+    <a 
+      href="/" 
+      className="border border-neutral-700 px-6 py-3 text-neutral-400 hover:text-accent hover:border-accent transition-all"
+    >
+      Back to Home
+    </a>
+  </div>
+</Base>

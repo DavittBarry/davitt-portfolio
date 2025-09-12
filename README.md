@@ -1,50 +1,57 @@
-# Davitt Barry's Astro Portfolio with TypeScript and Tailwind CSS
+# Davitt Barry Portfolio
 
-[![Connect with me on LinkedIn](https://img.shields.io/badge/LinkedIn-Connect%20with%20me-blue?style=social&logo=linkedin)](https://www.linkedin.com/in/davittbarry/)
-
-## Introduction
-
-👋 Hello, I'm Davitt Barry! Welcome to my portfolio project built with Astro, TypeScript, and Tailwind CSS 3.0. This portfolio aims to showcase my skills, projects, and interests in web development.
+Professional portfolio website built with Astro, React, and Tailwind CSS.
 
 ## Features
 
-- **Astro**: Utilizes Astro for optimized, lightning-fast websites.
-- **TypeScript**: Strongly typed JavaScript to catch errors early.
-- **Tailwind CSS 3.0**: Highly customizable utility-first CSS framework.
-- **ESLint**: Code linting for better code quality.
-- **Prettier**: Code formatting for consistent style.
+- Multi-language support (English/Finnish)
+- Dark theme with modern design
+- Responsive layout
+- Web development portfolio
+- Audio services section
+- Music section
+- Blog/Posts functionality
+- SEO optimized
 
-## Getting Started
+## Tech Stack
 
-1. **Clone the Repository**
+- **Framework**: Astro
+- **UI Components**: React
+- **Styling**: Tailwind CSS
+- **Languages**: TypeScript, JavaScript
+- **Deployment**: Netlify/Vercel ready
 
-    ```bash
-    git clone https://github.com/DavittBarry/davitt-portfolio.git
-    ```
+## Development
 
-2. **Navigate to the Directory**
+```bash
+# Install dependencies
+npm install
 
-    ```bash
-    cd davitt-portfolio
-    ```
+# Start development server
+npm run dev
 
-3. **Install Dependencies**
+# Build for production
+npm run build
 
-    ```bash
-    npm install
-    ```
+# Preview production build
+npm run preview
+```
 
-4. **Run Development Server**
+## Structure
 
-    ```bash
-    npm run dev
-    ```
+- `/` - Main landing page
+- `/dev` - Development portfolio
+- `/audio-services` - Audio production services
+- `/music` - Original music
+- `/contact` - Contact information
+- `/fi/*` - Finnish versions of all pages
 
-## Contact Me
+## Contact
 
-I'm always open to discussing web development projects, ideas, or collaborations. Reach out to me on [LinkedIn](https://www.linkedin.com/in/davittbarry/) or via [email](mailto:davittbarry333@gmail.com).
+- Email: davittbarry333@gmail.com
+- GitHub: https://github.com/DavittBarry
+- LinkedIn: https://www.linkedin.com/in/davittbarry/
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
-
+© 2024 Davitt Barry. All rights reserved.
