@@ -29,14 +29,12 @@ const Hero = () => (
         </div>
       }
       avatar={
-        <div className="group relative">
-          <img
-            className="mt-8 h-64 w-64 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
-            src="/assets/images/avatar.jpg"
-            alt="Avatar image"
-            loading="lazy"
-          />
-        </div>
+        <img
+          className="h-64 w-56 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
+          src="/assets/images/avatar.jpg"
+          alt="Avatar image"
+          loading="lazy"
+        />
       }
       socialButtons={
         <div className="flex gap-4">

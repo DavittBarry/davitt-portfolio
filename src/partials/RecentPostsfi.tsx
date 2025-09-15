@@ -7,18 +7,19 @@ type IRecentPostsProps = {
 };
 
 const RecentPostsfi = (props: IRecentPostsProps) => (
-  <Section
-    title={
-      <div className="flex items-baseline justify-between">
-        <div className="text-3xl font-light text-white">
-          Viimeisimmät <span className="text-cyan-400">artikkelit</span>
-        </div>
-        {/* <div className="text-sm">
-          <a href="/posts/">Näytä kaikki artikkelit →</a>
-        </div> */}
+  <Section>
+    <div className="mb-6 flex items-baseline justify-between">
+      <div className="text-3xl font-light text-white">
+        Viimeisimmät <span className="text-cyan-400">artikkelit</span>
       </div>
-    }
-  >
+      <a
+        href="/fi/"
+        className="border border-neutral-700 px-3 py-1 text-sm text-neutral-400 transition-colors hover:border-accent hover:text-accent"
+      >
+        ← Takaisin etusivulle
+      </a>
+    </div>
+
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
       {props.postList.map((post) => (
         <a

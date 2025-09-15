@@ -7,19 +7,19 @@ type IRecentPostsProps = {
 };
 
 const RecentPosts = (props: IRecentPostsProps) => (
-  <Section
-    title={
-      <div className="flex items-baseline justify-between">
-        <div className="text-3xl font-light text-white">
-          Recent <span className="text-cyan-400">Posts</span>
-        </div>
-
-        {/* <div className="text-sm">
-          <a href="/posts/">View all Posts →</a>
-        </div> */}
+  <Section>
+    <div className="mb-6 flex items-baseline justify-between">
+      <div className="text-3xl font-light text-white">
+        Recent <span className="text-cyan-400">Posts</span>
       </div>
-    }
-  >
+      <a
+        href="/"
+        className="border border-neutral-700 px-3 py-1 text-sm text-neutral-400 transition-colors hover:border-accent hover:text-accent"
+      >
+        ← Back to Home
+      </a>
+    </div>
+
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
       {props.postList.map((post) => (
         <a
