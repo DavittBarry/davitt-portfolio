@@ -1,5 +1,5 @@
 ---
-layout: "@/templates/BasePost.astro"
+layout: "@/templates/BasePostfi.astro"
 title: My journey so far in web development
 description: A brief overview of my career in web development and my search for work.
 pubDate: 2023-08-30T00:00:00Z
