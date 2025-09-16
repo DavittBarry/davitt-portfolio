@@ -1,9 +1,9 @@
 ---
 import Basefi from '@/templates/Basefi.astro';
 
-const title = 'Musiikkituotanto - Davitt Barry';
+const title = 'Musiikki - Davitt Barry';
 const description =
-  'Alkuperäinen musiikkisävellys ja tuotantopalvelut. Monipuolisia tuotantoja konseptista valmiiseen masteriin.';
+  'Alkuperäiset musiikkisävellykset Davitt Barryltä. Elektronista, ambienttia ja kokeellista äänimaailmaa.';
 ---
 
 <Basefi head={{ title, description }}>
@@ -11,102 +11,141 @@ const description =
     <!-- Hero Section -->
     <div class="mx-auto mb-16 max-w-4xl text-center">
       <h1 class="mb-4 text-5xl font-light text-white">
-        Musiikki<span class="text-emerald-400">tuotanto</span>
+        Alkuperäinen <span class="text-emerald-400">musiikki</span>
       </h1>
-      <p class="text-xl text-neutral-400">
-        Tuon taiteellisen vision eloon äänen kautta
-      </p>
+      <p class="text-xl text-neutral-400">Omat sävellykset ja tuotannot</p>
     </div>
 
-    <!-- Portfolio Section -->
+    <!-- Featured Tracks -->
     <div class="mx-auto mb-16 max-w-6xl">
-      <h2 class="mb-8 text-3xl font-light text-white">Viimeisimmät työt</h2>
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Placeholder tracks -->
+      <h2 class="mb-8 text-3xl font-light text-white">Esitellyt kappaleet</h2>
+      <div class="space-y-6">
+        <!-- Track 1: Cooloosa SL -->
         <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
         >
           <div
-            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+            class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between"
           >
-            <span class="text-4xl text-emerald-400">♪</span>
+            <div>
+              <h3 class="mb-2 text-xl text-white">Cooloosa St.</h3>
+              <p class="text-sm text-neutral-500">Elektroninen / Kokeellinen</p>
+            </div>
           </div>
-          <h3 class="mb-2 text-lg text-white">Kappaleen nimi</h3>
-          <p class="mb-2 text-sm text-neutral-500">Elektroninen / Ambient</p>
+
+          <audio controls class="mb-4 h-12 w-full">
+            <source src="/assets/audio/Cooloosa St..mp3" type="audio/mpeg" />
+            Selaimesi ei tue audio-elementtiä.
+          </audio>
+
           <p class="text-sm text-neutral-400">
-            Alkuperäinen sävellys, joka esittelee atmosfäärisiä äänimaailmoja.
+            Kokeellinen elektroninen kappale, joka tutkii atmosfäärisiä
+            tekstuureja ja rytmisiä kuvioita.
           </p>
         </div>
 
+        <!-- Track 2: Mole in Mine -->
         <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
         >
           <div
-            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+            class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between"
           >
-            <span class="text-4xl text-emerald-400">♪</span>
+            <div>
+              <h3 class="mb-2 text-xl text-white">Mote in Mine</h3>
+              <p class="text-sm text-neutral-500">Elektroninen / Prog</p>
+            </div>
           </div>
-          <h3 class="mb-2 text-lg text-white">Kappaleen nimi</h3>
-          <p class="mb-2 text-sm text-neutral-500">Rock / Vaihtoehtoinen</p>
+
+          <audio controls class="mb-4 h-12 w-full">
+            <source src="/assets/audio/Mote in Mine.mp3" type="audio/mpeg" />
+            Selaimesi ei tue audio-elementtiä.
+          </audio>
+
           <p class="text-sm text-neutral-400">
-            Täyden bändin tuotanto dynaamisilla sovituksilla.
+            Syvä, mukaansatempaava matka maanalaisissa äänimaailmoissa ja
+            kehittyvissä harmonioissa.
           </p>
         </div>
 
+        <!-- Track 3: Polishing Stones -->
         <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
         >
           <div
-            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+            class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between"
           >
-            <span class="text-4xl text-emerald-400">♪</span>
+            <div>
+              <h3 class="mb-2 text-xl text-white">Polishing Stones</h3>
+              <p class="text-sm text-neutral-500">
+                Kokeellinen / Äänisuunnittelu
+              </p>
+            </div>
           </div>
-          <h3 class="mb-2 text-lg text-white">Kappaleen nimi</h3>
-          <p class="mb-2 text-sm text-neutral-500">Klassinen / Orkesteri</p>
+
+          <audio controls class="mb-4 h-12 w-full">
+            <source src="/assets/audio/Polishing Stones.mp3" type="audio/mpeg"
+            />
+            Selaimesi ei tue audio-elementtiä.
+          </audio>
+
           <p class="text-sm text-neutral-400">
-            Orkesterisovitus elokuvamusiikkiin.
+            Tekstuurinen tutkielma, joka yhdistää orgaanisia ja synteettisiä
+            elementtejä meditatiivisessa sävellyksessä.
           </p>
         </div>
       </div>
+
+      <!-- Custom styling for audio players -->
+      <style>
+        audio {
+          background-color: #171717;
+          border-radius: 4px;
+          border: 1px solid #404040;
+        }
+        audio::-webkit-media-controls-panel {
+          background-color: #171717;
+        }
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+          color: #fff;
+        }
+      </style>
     </div>
 
-    <!-- Services Section -->
-    <div class="mx-auto mb-16 max-w-4xl">
-      <h2 class="mb-8 text-3xl font-light text-white">Tuotantopalvelut</h2>
-      <div class="space-y-4">
-        <div class="border-l-2 border-emerald-400 pl-6">
-          <h3 class="mb-2 text-xl text-white">Alkuperäinen sävellys</h3>
-          <p class="text-neutral-400">
-            Räätälöityä musiikkia projektisi tarpeisiin, alkuperäisestä
-            konseptista valmiiseen sovitukseen.
-          </p>
-        </div>
-        <div class="border-l-2 border-emerald-400 pl-6">
-          <h3 class="mb-2 text-xl text-white">Sovitus & orkestraatio</h3>
-          <p class="text-neutral-400">
-            Musiikillisten ideoiden muuntaminen täysin toteutetuiksi
-            sovituksiksi mille tahansa kokoonpanolle.
-          </p>
-        </div>
-        <div class="border-l-2 border-emerald-400 pl-6">
-          <h3 class="mb-2 text-xl text-white">Elokuva- ja pelimusiikki</h3>
-          <p class="text-neutral-400">
-            Emotionaalisten ääniraitojen luominen visuaalisen tarinankerronnan
-            tehostamiseksi.
-          </p>
-        </div>
-        <div class="border-l-2 border-emerald-400 pl-6">
-          <h3 class="mb-2 text-xl text-white">Äänisuunnittelu</h3>
-          <p class="text-neutral-400">
-            Ainutlaatuisten äänitekstuurien ja tunnelmien luominen luoviin
-            projekteihin.
-          </p>
+    <!-- Production Services Link -->
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <div
+        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+      >
+        <h2 class="mb-4 text-2xl font-light text-white">
+          Tarvitsetko musiikkia, miksausta tai tuotantoa projektiisi?
+        </h2>
+        <p class="mb-6 text-neutral-400">
+          Tarjoan ammattimaisia musiikkituotanto-, miksaus- ja
+          masterointipalveluita. Tarvitsetpa alkuperäisiä sävellyksiä,
+          äänisuunnittelua tai jälkituotantoa, voin auttaa toteuttamaan
+          äänivisiosi.
+        </p>
+        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+          <a
+            href="/fi/audiopalvelut"
+            class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
+          >
+            Äänitekniikkapalvelut →
+          </a>
+          <a
+            href="/fi/yhteystiedot"
+            class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+          >
+            Ota yhteyttä →
+          </a>
         </div>
       </div>
     </div>
 
     <!-- Equipment Section -->
-    <div class="mx-auto mb-16 max-w-4xl">
+    <div class="mx-auto max-w-4xl">
       <h2 class="mb-8 text-3xl font-light text-white">Studio-setup</h2>
       <div
         class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
@@ -132,19 +171,6 @@ const description =
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="text-center">
-      <p class="mb-6 text-neutral-400">
-        Kiinnostaako yhteistyö seuraavassa musiikkiprojektissasi?
-      </p>
-      <a
-        href="/fi/yhteystiedot"
-        class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-      >
-        Ota yhteyttä →
-      </a>
     </div>
   </div>
 </Basefi>
