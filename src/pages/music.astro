@@ -1,28 +1,149 @@
 ---
 import Base from '@/templates/Base.astro';
-import { Section } from 'astro-boilerplate-components';
 
-const title = "Music Production - Davitt Barry";
-const description = "Original music composition and production services";
+const title = 'Music Production - Davitt Barry';
+const description =
+  'Original music composition and production services. Multi-genre productions from concept to final master.';
 ---
 
 <Base head={{ title, description }}>
-  <Section>
-    <div className="min-h-[60vh] flex flex-col justify-center items-center text-center">
-      <h1 className="text-4xl font-light text-white mb-4">
-        Music <span className="text-cyan-400">Production</span>
+  <div class="container mx-auto px-6 py-12">
+    <!-- Hero Section -->
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <h1 class="mb-4 text-5xl font-light text-white">
+        Music <span class="text-emerald-400">Production</span>
       </h1>
-      <p className="text-xl text-neutral-400 mb-8">Coming Soon</p>
-      <p className="text-neutral-500 max-w-md">
-        This section is currently under development. 
-        Check back soon for my music portfolio, latest releases, and production services.
+      <p class="text-xl text-neutral-400">
+        Bringing artistic vision to life through sound
       </p>
-      <a 
-        href="/" 
-        className="mt-8 border border-neutral-700 px-4 py-2 text-neutral-400 hover:text-accent hover:border-accent transition-all"
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="mx-auto mb-16 max-w-6xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Recent Work</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Placeholder tracks -->
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+        >
+          <div
+            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+          >
+            <span class="text-4xl text-emerald-400">♪</span>
+          </div>
+          <h3 class="mb-2 text-lg text-white">Track Title</h3>
+          <p class="mb-2 text-sm text-neutral-500">Electronic / Ambient</p>
+          <p class="text-sm text-neutral-400">
+            Original composition showcasing atmospheric soundscapes.
+          </p>
+        </div>
+
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+        >
+          <div
+            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+          >
+            <span class="text-4xl text-emerald-400">♪</span>
+          </div>
+          <h3 class="mb-2 text-lg text-white">Track Title</h3>
+          <p class="mb-2 text-sm text-neutral-500">Rock / Alternative</p>
+          <p class="text-sm text-neutral-400">
+            Full band production with dynamic arrangements.
+          </p>
+        </div>
+
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+        >
+          <div
+            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+          >
+            <span class="text-4xl text-emerald-400">♪</span>
+          </div>
+          <h3 class="mb-2 text-lg text-white">Track Title</h3>
+          <p class="mb-2 text-sm text-neutral-500">Classical / Orchestral</p>
+          <p class="text-sm text-neutral-400">
+            Orchestral arrangement for film scoring.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Production Services</h2>
+      <div class="space-y-4">
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Original Composition</h3>
+          <p class="text-neutral-400">
+            Custom music tailored to your project's needs, from initial concept
+            to final arrangement.
+          </p>
+        </div>
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Arrangement & Orchestration</h3>
+          <p class="text-neutral-400">
+            Transforming musical ideas into fully realized arrangements for any
+            ensemble size.
+          </p>
+        </div>
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Film & Game Scoring</h3>
+          <p class="text-neutral-400">
+            Creating emotional soundtracks that enhance visual storytelling.
+          </p>
+        </div>
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Sound Design</h3>
+          <p class="text-neutral-400">
+            Crafting unique sonic textures and atmospheres for creative
+            projects.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equipment Section -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Studio Setup</h2>
+      <div
+        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
       >
-        ← Back to Home
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="mb-4 text-lg text-emerald-400">Software</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>• Ableton Live</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-4 text-lg text-emerald-400">Hardware</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>
+                • Audio Interface: Audient (preamp with Ferrofish converter)
+              </li>
+              <li>
+                • Monitors: Genelec monitoring speakers (volume controlled via
+                SPL monitor controller)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center">
+      <p class="mb-6 text-neutral-400">
+        Interested in working together on your next musical project?
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+      >
+        Get in Touch →
       </a>
     </div>
-  </Section>
+  </div>
 </Base>

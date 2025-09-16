@@ -20,8 +20,18 @@ const CustomProject: React.FC<CustomProjectProps> = ({
   githubLink,
   category,
 }) => {
+  const handleProjectClick = (e: React.MouseEvent) => {
+    // Only open GitHub if not clicking on a tag
+    if (githubLink && !(e.target as HTMLElement).closest('a')) {
+      window.open(githubLink, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
-    <div className="group relative border border-neutral-800 bg-dark-100 p-6 transition-all duration-300 hover:border-accent/50">
+    <div
+      className="group relative cursor-pointer border border-neutral-800 bg-dark-100 p-6 transition-all duration-300 hover:border-accent/50"
+      onClick={handleProjectClick}
+    >
       <div className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100"></div>
 
       <div className="flex flex-col items-start md:flex-row">
@@ -50,6 +60,7 @@ const CustomProject: React.FC<CustomProjectProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-neutral-700 px-4 py-2 text-sm text-neutral-300 transition-all duration-200 hover:translate-x-1 hover:border-accent hover:text-accent"
+                onClick={(e) => e.stopPropagation()}
               >
                 <svg
                   className="h-4 w-4"

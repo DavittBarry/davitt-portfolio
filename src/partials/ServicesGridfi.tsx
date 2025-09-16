@@ -2,149 +2,122 @@ import { Section } from 'astro-boilerplate-components';
 
 const ServicesGridfi = () => (
   <Section>
-    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
-      {/* Web Development Card */}
+    <div className="mb-12 text-center">
+      <h2 className="mb-4 text-3xl font-light text-white">
+        Ammatti<span className="text-accent">palvelut</span>
+      </h2>
+      <p className="mx-auto max-w-2xl text-neutral-400">
+        Yhdistän teknisen osaamisen luovaan näkemykseen kolmella erikoisalalla
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {/* IT & Kehitys */}
       <a
         href="/fi/dev"
-        className="group relative border border-neutral-800 bg-dark-100 p-8 transition-all duration-300 hover:border-accent/50"
+        className="group block cursor-pointer border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-accent/50"
       >
-        <div className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100"></div>
-
-        <div className="mb-4 flex items-start justify-between">
-          <h2 className="text-2xl font-light text-white transition-colors group-hover:text-accent">
-            Web-kehitys
-          </h2>
-          <span className="font-mono text-2xl text-accent">&lt;/&gt;</span>
-        </div>
-
+        <div className="mb-4 font-mono text-4xl text-accent">{'</>'}</div>
+        <h3 className="mb-3 text-xl font-medium text-white transition-colors group-hover:text-accent">
+          IT & Kehitys
+        </h3>
         <p className="mb-6 text-neutral-400">
-          Full-stack kehityspalvelut responsiivisista verkkosivuista
-          monimutkaisiin web-sovelluksiin. Erikoistunut moderneihin
-          JavaScript-kehyksiin, WordPressiin ja räätälöityihin ratkaisuihin.
+          Full-stack web-kehityspalvelut responsiivisista verkkosivustoista
+          monimutkaisiin sovelluksiin. Erikoistunut moderneihin
+          JavaScript-frameworkeihin, WordPressiin ja räätälöityihin
+          ratkaisuihin.
         </p>
-
-        <div className="flex flex-wrap gap-2">
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            React
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Vue
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Node.js
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            WordPress
-          </span>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-accent">▸</span>
+            React, Vue, Node.js
+          </div>
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-accent">▸</span>
+            WordPress, Laravel
+          </div>
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-accent">▸</span>
+            Tietokanta & API-suunnittelu
+          </div>
         </div>
-
-        <div className="mt-6 text-sm text-accent opacity-0 transition-opacity group-hover:opacity-100">
-          Näytä portfolio & CV →
+        <div className="mt-6 inline-block text-sm text-accent transition-colors group-hover:text-accent/80">
+          Näytä portfolio →
         </div>
       </a>
 
-      {/* Audio Services Card */}
-      <a
-        href="/fi/audiopalvelut"
-        className="group relative border border-neutral-800 bg-dark-100 p-8 transition-all duration-300 hover:border-cyan-400/50"
-      >
-        <div className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-cyan-400 transition-transform duration-300 group-hover:scale-y-100"></div>
-
-        <div className="mb-4 flex items-start justify-between">
-          <h2 className="text-2xl font-light text-white transition-colors group-hover:text-cyan-400">
-            Audiopalvelut
-          </h2>
-          <span className="text-2xl text-cyan-400">♪</span>
-        </div>
-
-        <p className="mb-6 text-neutral-400">
-          Ammattimaiset musiikin tuotanto-, miksaus- ja masterointipalvelut.
-          Alkuperäisistä sävellyksistä kaupalliseen kiillotukseen.
-        </p>
-
-        <div className="flex flex-wrap gap-2">
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Tuotanto
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Miksaus
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Masterointi
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Äänisuunnittelu
-          </span>
-        </div>
-
-        <div className="mt-6 text-sm text-cyan-400 opacity-0 transition-opacity group-hover:opacity-100">
-          Palvelut & hinnat →
-        </div>
-      </a>
-
-      {/* Original Music Card */}
+      {/* Musiikin tuotanto */}
       <a
         href="/fi/musiikki"
-        className="group relative border border-neutral-800 bg-dark-100 p-8 transition-all duration-300 hover:border-emerald-400/50"
+        className="group block cursor-pointer border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
       >
-        <div className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-emerald-400 transition-transform duration-300 group-hover:scale-y-100"></div>
-
-        <div className="mb-4 flex items-start justify-between">
-          <h2 className="text-2xl font-light text-white transition-colors group-hover:text-emerald-400">
-            Oma musiikki
-          </h2>
-          <span className="text-2xl text-emerald-400">⚡</span>
-        </div>
-
+        <div className="mb-4 text-4xl text-emerald-400">♪</div>
+        <h3 className="mb-3 text-xl font-medium text-white transition-colors group-hover:text-emerald-400">
+          Musiikin tuotanto
+        </h3>
         <p className="mb-6 text-neutral-400">
-          Omat sävellykseni ja julkaisuni. Elektronista, ambient- ja kokeellista
-          musiikkia äänirajojen tutkimiseen.
+          Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Alkuperäisestä
+          konseptista valmiiseen masterointiin, tuoden taiteellisen vision eloon
+          äänen kautta.
         </p>
-
-        <div className="flex flex-wrap gap-2">
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Elektroninen
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Ambient
-          </span>
-          <span className="border border-neutral-700 px-2 py-1 text-xs text-neutral-500">
-            Kokeellinen
-          </span>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-emerald-400">▸</span>
+            Alkuperäiset sävellykset
+          </div>
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-emerald-400">▸</span>
+            Sovitus & orkestraatio
+          </div>
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-emerald-400">▸</span>
+            Monipuolinen tuotanto
+          </div>
         </div>
-
-        <div className="mt-6 text-sm text-emerald-400 opacity-0 transition-opacity group-hover:opacity-100">
-          Kuuntele & tutustu →
+        <div className="mt-6 inline-block text-sm text-emerald-400 transition-colors group-hover:text-emerald-400/80">
+          Kuuntele musiikkia →
         </div>
       </a>
 
-      {/* Contact Card */}
+      {/* Äänitekniikka */}
       <a
-        href="/fi/yhteystiedot"
-        className="group relative border border-neutral-800 bg-dark-100 p-8 transition-all duration-300 hover:border-neutral-600"
+        href="/fi/audiopalvelut"
+        className="group block cursor-pointer border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-cyan-400/50"
       >
-        <div className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-neutral-400 transition-transform duration-300 group-hover:scale-y-100"></div>
-
-        <div className="mb-4 flex items-start justify-between">
-          <h2 className="text-2xl font-light text-white transition-colors group-hover:text-neutral-300">
-            Ota yhteyttä
-          </h2>
-          <span className="text-2xl text-neutral-400">@</span>
-        </div>
-
+        <div className="mb-4 text-4xl text-cyan-400">⚡</div>
+        <h3 className="mb-3 text-xl font-medium text-white transition-colors group-hover:text-cyan-400">
+          Äänitekniikka
+        </h3>
         <p className="mb-6 text-neutral-400">
-          Sijainti Helsinki, Suomi. Käytettävissä etätöihin maailmanlaajuisesti
-          ja paikan päällä tehtäviin projekteihin Pohjoismaissa.
+          Ammattimaiset miksaus- ja masterointipalvelut. Raaka-äänityksistä
+          kaupalliseen laatuun, varmistaen että kappaleesi kuulostavat parhailta
+          kaikilla alustoilla.
         </p>
-
-        <div className="space-y-2">
-          <p className="text-neutral-400">Keskustellaan projektistasi</p>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-cyan-400">▸</span>
+            Miksaus & masterointi
+          </div>
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-cyan-400">▸</span>
+            Äänen restaurointi
+          </div>
+          <div className="flex items-center text-neutral-500">
+            <span className="mr-2 text-cyan-400">▸</span>
+            Podcast-tuotanto
+          </div>
         </div>
-
-        <div className="mt-6 text-sm text-neutral-400 opacity-0 transition-opacity group-hover:opacity-100">
-          Yhteystiedot →
+        <div className="mt-6 inline-block text-sm text-cyan-400 transition-colors group-hover:text-cyan-400/80">
+          Näytä palvelut →
         </div>
       </a>
+    </div>
+
+    <div className="mt-12 text-center">
+      <p className="text-sm text-neutral-500">
+        Sijainti Helsinki, Suomi • Saatavilla etä- ja paikan päällä
+        -projekteihin
+      </p>
     </div>
   </Section>
 );

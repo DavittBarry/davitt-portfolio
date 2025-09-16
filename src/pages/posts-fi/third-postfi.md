@@ -1,5 +1,5 @@
 ---
-layout: "@/templates/BasePost.astro"
+layout: "@/templates/BasePostfi.astro"
 title: "Exploring Astro"
 description: In this blog post, I delve into my experience with Astro, and its unique features.
 pubDate: 2023-08-30T00:00:00Z

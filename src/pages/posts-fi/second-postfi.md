@@ -1,5 +1,5 @@
 ---
-layout: "@/templates/BasePost.astro"
+layout: "@/templates/BasePostfi.astro"
 title: Future Projects
 description: An outline of my plans for this portfolio website and the projects I intend to create and display here.
 pubDate: 2023-08-30T00:00:00Z
