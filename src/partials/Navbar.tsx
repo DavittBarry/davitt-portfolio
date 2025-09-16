@@ -4,10 +4,10 @@ const Navbar = () => {
   return (
     <div className="border-b border-neutral-900 bg-neutral-950">
       <Section>
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between p-4 md:px-0">
           <a
             href="/"
-            className="text-xl font-medium text-white transition-colors hover:text-accent"
+            className="text-2xl font-medium text-white transition-colors hover:text-accent md:text-xl"
           >
             dB
           </a>
@@ -66,11 +66,11 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="text-neutral-400 hover:text-accent md:hidden"
+              className="p-2 text-neutral-400 hover:text-accent md:hidden"
               id="mobile-menu-button"
             >
               <svg
-                className="h-6 w-6"
+                className="h-7 w-7"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
