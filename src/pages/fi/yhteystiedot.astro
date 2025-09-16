@@ -1,77 +1,177 @@
 ---
 import Basefi from '@/templates/Basefi.astro';
-import { Section } from 'astro-boilerplate-components';
 
-const title = "Yhteystiedot - Davitt Barry";
-const description = "Ota yhteyttä yhteistyö- ja projektiehdotuksista";
+const title = 'Yhteystiedot - Davitt Barry';
+const description =
+  'Ota yhteyttä IT-kehitys-, musiikkituotanto- tai äänitekniikkapalveluista.';
 ---
 
 <Basefi head={{ title, description }}>
-  <Section>
-    <div className="min-h-[60vh] flex flex-col justify-center items-center">
-      <div className="max-w-2xl w-full px-4">
-        <h1 className="text-4xl font-light text-white mb-8 text-center">
-          Ota <span className="text-cyan-400">yhteyttä</span>
-        </h1>
-        
-        <div className="bg-dark-100 border border-neutral-800 p-8">
-          <div className="space-y-6">
+  <div class="container mx-auto px-6 py-12">
+    <!-- Hero Section -->
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <h1 class="mb-4 text-5xl font-light text-white">
+        Ota <span class="text-accent">yhteyttä</span>
+      </h1>
+      <p class="text-xl text-neutral-400">
+        Keskustellaan seuraavasta projektistasi
+      </p>
+    </div>
+
+    <!-- Contact Options -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <!-- Direct Contact -->
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+        >
+          <h2 class="mb-6 text-2xl font-light text-white">Suora yhteys</h2>
+
+          <div class="mb-8 space-y-4">
             <div>
-              <h2 className="text-xl font-light text-white mb-2">Sijainti</h2>
-              <p className="text-neutral-400">Helsinki, Suomi</p>
-              <p className="text-sm text-neutral-500 mt-1">Käytettävissä etätöihin maailmanlaajuisesti</p>
-            </div>
-            
-            <div>
-              <h2 className="text-xl font-light text-white mb-2">Sähköposti</h2>
-              <a 
-                href="mailto:davittbarry333@gmail.com" 
-                className="text-cyan-400 hover:text-cyan-300 transition-colors"
+              <p class="mb-1 text-sm text-neutral-500">Sähköposti</p>
+              <a
+                href="mailto:davittbarry333@gmail.com"
+                class="text-lg text-accent transition-colors hover:text-accent/80"
               >
                 davittbarry333@gmail.com
               </a>
             </div>
-            
+
             <div>
-              <h2 className="text-xl font-light text-white mb-2">Yhteydet</h2>
-              <div className="flex gap-4">
-                <a 
-                  href="https://github.com/DavittBarry" 
-                  className="text-neutral-400 hover:text-accent transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/davittbarry/" 
-                  className="text-neutral-400 hover:text-accent transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </div>
+              <p class="mb-1 text-sm text-neutral-500">Sijainti</p>
+              <p class="text-lg text-neutral-300">Helsinki, Suomi</p>
             </div>
-            
-            <div className="pt-4 border-t border-neutral-800">
-              <p className="text-neutral-400 text-sm">
-                Projektitiedusteluihin, yhteistyömahdollisuuksiin tai yleisiin kysymyksiin 
-                voit ottaa yhteyttä sähköpostitse. Vastaan yleensä 24-48 tunnin sisällä.
+
+            <div>
+              <p class="mb-1 text-sm text-neutral-500">Saatavuus</p>
+              <p class="text-lg text-neutral-300">Avoinna projekteille</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <a
+              href="https://github.com/DavittBarry"
+              class="border border-neutral-700 px-4 py-2 text-neutral-400 transition-all hover:border-accent hover:text-accent"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/davittbarry/"
+              class="border border-neutral-700 px-4 py-2 text-neutral-400 transition-all hover:border-cyan-400 hover:text-cyan-400"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+        >
+          <h2 class="mb-6 text-2xl font-light text-white">
+            Saatavilla olevat palvelut
+          </h2>
+
+          <div class="space-y-4">
+            <div class="border-l-2 border-accent pl-4">
+              <h3 class="mb-1 text-white">IT & Kehitys</h3>
+              <p class="text-sm text-neutral-400">
+                Web-kehitys, konsultointi, tekniset ratkaisut
+              </p>
+            </div>
+
+            <div class="border-l-2 border-emerald-400 pl-4">
+              <h3 class="mb-1 text-white">Musiikkituotanto</h3>
+              <p class="text-sm text-neutral-400">
+                Sävellys, sovitus, tuotanto
+              </p>
+            </div>
+
+            <div class="border-l-2 border-cyan-400 pl-4">
+              <h3 class="mb-1 text-white">Äänitekniikka</h3>
+              <p class="text-sm text-neutral-400">
+                Miksaus, masterointi, äänen restaurointi
               </p>
             </div>
           </div>
-        </div>
-        
-        <div className="text-center mt-8">
-          <a 
-            href="/fi/" 
-            className="border border-neutral-700 px-4 py-2 text-neutral-400 hover:text-accent hover:border-accent transition-all inline-block"
-          >
-            ← Takaisin etusivulle
-          </a>
+
+          <div class="mt-8">
+            <p class="mb-2 text-sm text-neutral-500">Vastausaika</p>
+            <p class="text-neutral-300">Yleensä 24-48 tunnin sisällä</p>
+          </div>
         </div>
       </div>
     </div>
-  </Section>
+
+    <!-- Project Inquiry Section -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <div
+        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+      >
+        <h2 class="mb-6 text-2xl font-light text-white">Projektitiedustelut</h2>
+
+        <p class="mb-6 text-neutral-400">
+          Kun otat yhteyttä projektista, sisällytä mukaan:
+        </p>
+
+        <ul class="mb-8 space-y-3 text-neutral-400">
+          <li class="flex items-start">
+            <span class="mr-3 text-accent">•</span>
+            <span>Projektin tyyppi ja laajuus</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-3 text-accent">•</span>
+            <span>Aikataulu ja määräajat</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-3 text-accent">•</span>
+            <span>Budjettialue (jos sovellettavissa)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-3 text-accent">•</span>
+            <span>Mahdolliset erityisvaatimukset tai toiveet</span>
+          </li>
+        </ul>
+
+        <a
+          href="mailto:davittbarry333@gmail.com?subject=Projektitiedustelu"
+          class="inline-block border border-accent px-6 py-3 text-accent transition-all hover:bg-accent/10"
+        >
+          Lähetä projektitiedustelu →
+        </a>
+      </div>
+    </div>
+
+    <!-- CV Downloads with fancy style -->
+    <div class="mx-auto max-w-4xl">
+      <h2 class="mb-6 text-center text-2xl font-light text-white">Lataa CV</h2>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
+        <a
+          href="/Davitt-Barry-CV-English.pdf"
+          download
+          class="group relative overflow-hidden border border-cyan-500 px-6 py-3 text-center text-cyan-400 transition-all duration-300 hover:text-dark"
+        >
+          <span
+            class="absolute inset-0 origin-left scale-x-0 bg-cyan-500 transition-transform duration-300 group-hover:scale-x-100"
+          ></span>
+          <span class="relative font-light">Download in English</span>
+        </a>
+        <a
+          href="/Davitt-Barry-CV-Suomeksi.pdf"
+          download
+          class="group relative overflow-hidden border border-emerald-500 px-6 py-3 text-center text-emerald-400 transition-all duration-300 hover:text-dark"
+        >
+          <span
+            class="absolute inset-0 origin-left scale-x-0 bg-emerald-500 transition-transform duration-300 group-hover:scale-x-100"
+          ></span>
+          <span class="relative font-light">Lataa suomeksi</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </Basefi>

@@ -1,28 +1,150 @@
 ---
 import Basefi from '@/templates/Basefi.astro';
-import { Section } from 'astro-boilerplate-components';
 
-const title = "Musiikin tuotanto - Davitt Barry";
-const description = "Alkuperäinen musiikkisävellys ja tuotantopalvelut";
+const title = 'Musiikkituotanto - Davitt Barry';
+const description =
+  'Alkuperäinen musiikkisävellys ja tuotantopalvelut. Monipuolisia tuotantoja konseptista valmiiseen masteriin.';
 ---
 
 <Basefi head={{ title, description }}>
-  <Section>
-    <div className="min-h-[60vh] flex flex-col justify-center items-center text-center">
-      <h1 className="text-4xl font-light text-white mb-4">
-        Musiikin <span className="text-cyan-400">tuotanto</span>
+  <div class="container mx-auto px-6 py-12">
+    <!-- Hero Section -->
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <h1 class="mb-4 text-5xl font-light text-white">
+        Musiikki<span class="text-emerald-400">tuotanto</span>
       </h1>
-      <p className="text-xl text-neutral-400 mb-8">Tulossa pian</p>
-      <p className="text-neutral-500 max-w-md">
-        Tämä osio on parhaillaan kehitteillä. 
-        Palaa pian takaisin tutustuaksesi musiikkiportfolioon, viimeisimpiin julkaisuihin ja tuotantopalveluihin.
+      <p class="text-xl text-neutral-400">
+        Tuon taiteellisen vision eloon äänen kautta
       </p>
-      <a 
-        href="/fi/" 
-        className="mt-8 border border-neutral-700 px-4 py-2 text-neutral-400 hover:text-accent hover:border-accent transition-all"
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="mx-auto mb-16 max-w-6xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Viimeisimmät työt</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Placeholder tracks -->
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+        >
+          <div
+            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+          >
+            <span class="text-4xl text-emerald-400">♪</span>
+          </div>
+          <h3 class="mb-2 text-lg text-white">Kappaleen nimi</h3>
+          <p class="mb-2 text-sm text-neutral-500">Elektroninen / Ambient</p>
+          <p class="text-sm text-neutral-400">
+            Alkuperäinen sävellys, joka esittelee atmosfäärisiä äänimaailmoja.
+          </p>
+        </div>
+
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+        >
+          <div
+            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+          >
+            <span class="text-4xl text-emerald-400">♪</span>
+          </div>
+          <h3 class="mb-2 text-lg text-white">Kappaleen nimi</h3>
+          <p class="mb-2 text-sm text-neutral-500">Rock / Vaihtoehtoinen</p>
+          <p class="text-sm text-neutral-400">
+            Täyden bändin tuotanto dynaamisilla sovituksilla.
+          </p>
+        </div>
+
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-emerald-400/50"
+        >
+          <div
+            class="mb-4 flex h-48 items-center justify-center bg-neutral-800"
+          >
+            <span class="text-4xl text-emerald-400">♪</span>
+          </div>
+          <h3 class="mb-2 text-lg text-white">Kappaleen nimi</h3>
+          <p class="mb-2 text-sm text-neutral-500">Klassinen / Orkesteri</p>
+          <p class="text-sm text-neutral-400">
+            Orkesterisovitus elokuvamusiikkiin.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Tuotantopalvelut</h2>
+      <div class="space-y-4">
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Alkuperäinen sävellys</h3>
+          <p class="text-neutral-400">
+            Räätälöityä musiikkia projektisi tarpeisiin, alkuperäisestä
+            konseptista valmiiseen sovitukseen.
+          </p>
+        </div>
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Sovitus & orkestraatio</h3>
+          <p class="text-neutral-400">
+            Musiikillisten ideoiden muuntaminen täysin toteutetuiksi
+            sovituksiksi mille tahansa kokoonpanolle.
+          </p>
+        </div>
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Elokuva- ja pelimusiikki</h3>
+          <p class="text-neutral-400">
+            Emotionaalisten ääniraitojen luominen visuaalisen tarinankerronnan
+            tehostamiseksi.
+          </p>
+        </div>
+        <div class="border-l-2 border-emerald-400 pl-6">
+          <h3 class="mb-2 text-xl text-white">Äänisuunnittelu</h3>
+          <p class="text-neutral-400">
+            Ainutlaatuisten äänitekstuurien ja tunnelmien luominen luoviin
+            projekteihin.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equipment Section -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Studio-setup</h2>
+      <div
+        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
       >
-        ← Takaisin etusivulle
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="mb-4 text-lg text-emerald-400">Ohjelmistot</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>• Ableton Live</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-4 text-lg text-emerald-400">Laitteisto</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>
+                • Äänikortti: Audient (mikrofonietuaste Ferrofish-muuntimella)
+              </li>
+              <li>
+                • Monitorit: Genelec-tarkkailukaiuttimet (äänenvoimakkuus
+                säädetään SPL-monitorikontrollerilla)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center">
+      <p class="mb-6 text-neutral-400">
+        Kiinnostaako yhteistyö seuraavassa musiikkiprojektissasi?
+      </p>
+      <a
+        href="/fi/yhteystiedot"
+        class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+      >
+        Ota yhteyttä →
       </a>
     </div>
-  </Section>
+  </div>
 </Basefi>

@@ -1,28 +1,167 @@
 ---
 import Base from '@/templates/Base.astro';
-import { Section } from 'astro-boilerplate-components';
 
-const title = "Audio Services - Davitt Barry";
-const description = "Professional music production, mixing and mastering services";
+const title = "Audio Engineering Services - Davitt Barry";
+const description = "Professional mixing, mastering, and audio production services. From raw recordings to commercial-ready polish.";
 ---
 
 <Base head={{ title, description }}>
-  <Section>
-    <div className="min-h-[60vh] flex flex-col justify-center items-center text-center">
-      <h1 className="text-4xl font-light text-white mb-4">
-        Audio <span className="text-cyan-400">Services</span>
+  <div class="container mx-auto px-6 py-12">
+    <!-- Hero Section -->
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h1 class="text-5xl font-light text-white mb-4">
+        Audio <span class="text-cyan-400">Engineering</span>
       </h1>
-      <p className="text-xl text-neutral-400 mb-8">Production • Mixing • Mastering</p>
-      <p className="text-neutral-500 max-w-md">
-        This section is currently under development. 
-        Information about audio production, mixing and mastering services, rates, and portfolio coming soon.
+      <p class="text-xl text-neutral-400">
+        Professional mixing and mastering for all genres
       </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="max-w-6xl mx-auto mb-16">
+      <h2 class="text-3xl font-light text-white mb-8">Services Offered</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
+          <div class="text-cyan-400 text-3xl mb-4">⚡</div>
+          <h3 class="text-xl text-white mb-3">Mixing</h3>
+          <p class="text-neutral-400 mb-4">
+            Professional mixing services to bring clarity, depth, and balance to your tracks.
+          </p>
+          <ul class="space-y-2 text-sm text-neutral-500">
+            <li>• EQ and compression optimization</li>
+            <li>• Spatial positioning and panning</li>
+            <li>• Effects processing</li>
+            <li>• Stem mixing available</li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
+          <div class="text-cyan-400 text-3xl mb-4">🎯</div>
+          <h3 class="text-xl text-white mb-3">Mastering</h3>
+          <p class="text-neutral-400 mb-4">
+            Final polish to ensure your music sounds great on all playback systems.
+          </p>
+          <ul class="space-y-2 text-sm text-neutral-500">
+            <li>• Loudness optimization for streaming</li>
+            <li>• Tonal balance and enhancement</li>
+            <li>• Format preparation (Spotify, Apple Music, etc.)</li>
+            <li>• DDP creation for physical media</li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
+          <div class="text-cyan-400 text-3xl mb-4">🎙️</div>
+          <h3 class="text-xl text-white mb-3">Podcast Production</h3>
+          <p class="text-neutral-400 mb-4">
+            Complete podcast post-production from raw recordings to publish-ready episodes.
+          </p>
+          <ul class="space-y-2 text-sm text-neutral-500">
+            <li>• Dialogue editing and cleanup</li>
+            <li>• Noise reduction and enhancement</li>
+            <li>• Music and sound design integration</li>
+            <li>• Multi-track editing</li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
+          <div class="text-cyan-400 text-3xl mb-4">🔧</div>
+          <h3 class="text-xl text-white mb-3">Audio Restoration</h3>
+          <p class="text-neutral-400 mb-4">
+            Breathe new life into old or damaged recordings with modern restoration techniques.
+          </p>
+          <ul class="space-y-2 text-sm text-neutral-500">
+            <li>• Noise and hiss removal</li>
+            <li>• Click and pop elimination</li>
+            <li>• Frequency restoration</li>
+            <li>• Format conversion and archival</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process Section -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <h2 class="text-3xl font-light text-white mb-8">The Process</h2>
+      <div class="space-y-6">
+        <div class="flex gap-4">
+          <div class="text-cyan-400 text-2xl font-mono">01</div>
+          <div>
+            <h3 class="text-xl text-white mb-2">Consultation</h3>
+            <p class="text-neutral-400">Discuss your project goals, reference tracks, and timeline.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-cyan-400 text-2xl font-mono">02</div>
+          <div>
+            <h3 class="text-xl text-white mb-2">File Transfer</h3>
+            <p class="text-neutral-400">Secure upload of your audio files with detailed session notes.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-cyan-400 text-2xl font-mono">03</div>
+          <div>
+            <h3 class="text-xl text-white mb-2">Production</h3>
+            <p class="text-neutral-400">Professional processing using industry-standard tools and techniques.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-cyan-400 text-2xl font-mono">04</div>
+          <div>
+            <h3 class="text-xl text-white mb-2">Revision</h3>
+            <p class="text-neutral-400">Up to 2 rounds of revisions to ensure your complete satisfaction.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-cyan-400 text-2xl font-mono">05</div>
+          <div>
+            <h3 class="text-xl text-white mb-2">Delivery</h3>
+            <p class="text-neutral-400">Final files delivered in your preferred format and resolution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <h2 class="text-3xl font-light text-white mb-8">Pricing</h2>
+      <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8">
+        <p class="text-neutral-400 mb-6">
+          Pricing varies based on project scope and requirements. Typical rates:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg text-cyan-400 mb-3">Single Track</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>• Mixing: €XX - €XX</li>
+              <li>• Mastering: €XX - €XX</li>
+              <li>• Mix + Master: €XX - €XX</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg text-cyan-400 mb-3">Album/EP</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>• Full album mixing: Contact for quote</li>
+              <li>• Album mastering: Contact for quote</li>
+              <li>• Package deals available</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-500 mt-6">
+          * Discounts available for multiple tracks and ongoing projects
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center">
+      <p class="text-neutral-400 mb-6">Ready to take your audio to the next level?</p>
       <a 
-        href="/" 
-        className="mt-8 border border-neutral-700 px-4 py-2 text-neutral-400 hover:text-accent hover:border-accent transition-all"
+        href="/contact" 
+        class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 hover:bg-cyan-400/10 transition-all"
       >
-        ← Back to Home
+        Get a Quote →
       </a>
     </div>
-  </Section>
+  </div>
 </Base>

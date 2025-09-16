@@ -14,21 +14,24 @@ const LandingHero = () => (
       </h1>
 
       <p className="mb-2 text-xl font-light text-neutral-400 md:text-2xl">
-        Creative Professional
+        IT Professional • Musician • Audio Engineer
       </p>
 
       <div className="mt-4 flex flex-wrap justify-center gap-3 text-sm text-neutral-500">
-        <span className="border-l-2 border-accent pl-3">Developer</span>
+        <span className="border-l-2 border-accent pl-3">
+          Full-Stack Developer
+        </span>
         <span className="border-l-2 border-cyan-400 pl-3">Music Producer</span>
         <span className="border-l-2 border-emerald-400 pl-3">
-          Audio Engineer
+          Mixing & Mastering
         </span>
       </div>
 
       <p className="mt-8 max-w-2xl px-4 text-neutral-400">
-        Multi-disciplinary creative based in Helsinki, Finland. Specializing in
-        web development, music production, and audio engineering. Bringing
-        technical expertise and artistic vision to every project.
+        Multi-disciplinary creative professional based in Helsinki, Finland.
+        Combining technical expertise in IT and web development with artistic
+        vision in music production and audio engineering. Bringing 15+ years of
+        experience across technology and creative industries.
       </p>
 
       <div className="mt-12 flex gap-4">

@@ -14,21 +14,26 @@ const LandingHerofi = () => (
       </h1>
 
       <p className="mb-2 text-xl font-light text-neutral-400 md:text-2xl">
-        Luova ammattilainen
+        IT-ammattilainen • Muusikko • Ääniteknikko
       </p>
 
       <div className="mt-4 flex flex-wrap justify-center gap-3 text-sm text-neutral-500">
-        <span className="border-l-2 border-accent pl-3">Kehittäjä</span>
+        <span className="border-l-2 border-accent pl-3">
+          Full-Stack kehittäjä
+        </span>
         <span className="border-l-2 border-cyan-400 pl-3">
           Musiikin tuottaja
         </span>
-        <span className="border-l-2 border-emerald-400 pl-3">Ääniteknikko</span>
+        <span className="border-l-2 border-emerald-400 pl-3">
+          Miksaus & masterointi
+        </span>
       </div>
 
       <p className="mt-8 max-w-2xl px-4 text-neutral-400">
-        Monitaitoinen luova ammattilainen Helsingistä. Erikoistunut
-        web-kehitykseen, musiikin tuotantoon ja äänen jälkikäsittelyyn. Yhdistän
-        teknisen osaamisen ja taiteellisen näkemyksen jokaisessa projektissa.
+        Monitaitoinen luova ammattilainen Helsingistä. Yhdistän teknisen IT- ja
+        web-kehitysosaamisen taiteelliseen näkemykseen musiikin tuotannossa ja
+        äänitekniikassa. Yli 15 vuoden kokemus teknologian ja luovien alojen
+        parissa.
       </p>
 
       <div className="mt-12 flex gap-4">

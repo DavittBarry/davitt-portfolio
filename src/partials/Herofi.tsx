@@ -31,7 +31,7 @@ const Herofi = () => (
       }
       avatar={
         <img
-          className="h-64 w-56 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
+          className="w-56 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
           src="/assets/images/avatar.jpg"
           alt="Avatar-kuva"
           loading="lazy"
