@@ -31,9 +31,9 @@ const Hero = () => (
       avatar={
         <div className="flex flex-col items-center">
           <img
-            className="w-56 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent"
-            src="public\assets\images\cv-shot.jpg"
-            alt="CV shot"
+            className="w-64 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:border-accent md:w-72"
+            src="/assets/images/cv-shot.jpg"
+            alt="Davitt Barry"
             loading="lazy"
           />
           <div className="mt-6 flex gap-4">
