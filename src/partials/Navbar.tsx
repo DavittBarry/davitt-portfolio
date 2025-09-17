@@ -2,7 +2,7 @@ import { Section } from 'astro-boilerplate-components';
 
 const Navbar = () => {
   return (
-    <div className="border-b border-neutral-900 bg-neutral-950">
+    <div className="border-b border-slate-700 bg-slate-800">
       <Section>
         <div className="flex items-center justify-between p-4 md:px-0">
           <a
@@ -17,47 +17,47 @@ const Navbar = () => {
             <div className="hidden items-center gap-6 md:flex">
               <a
                 href="/"
-                className="text-base font-normal text-neutral-400 transition-colors hover:text-cyan-400"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400"
               >
                 Home
               </a>
               <a
                 href="/dev"
-                className="text-base font-normal text-neutral-400 transition-colors hover:text-accent"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-accent"
               >
                 IT & Development
               </a>
               <a
                 href="/music"
-                className="text-base font-normal text-neutral-400 transition-colors hover:text-emerald-400"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-emerald-400"
               >
                 Music
               </a>
               <a
                 href="/audio-services"
-                className="text-base font-normal text-neutral-400 transition-colors hover:text-cyan-400"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400"
               >
                 Audio Engineering
               </a>
               <a
                 href="/contact"
-                className="text-base font-normal text-neutral-400 transition-colors hover:text-neutral-300"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-neutral-300"
               >
                 Contact
               </a>
-              <div className="ml-4 flex items-center space-x-2 border border-neutral-800 bg-neutral-900/50 px-3 py-1 transition-colors hover:border-accent">
+              <div className="ml-4 flex items-center space-x-2 border border-slate-600 bg-slate-700/50 px-3 py-1 transition-colors hover:border-accent">
                 <a
                   href="#"
                   data-lang="en"
-                  className="lang-switch text-sm text-neutral-400 hover:text-accent"
+                  className="lang-switch text-sm text-slate-300 hover:text-accent"
                 >
                   EN
                 </a>
-                <span className="text-sm text-neutral-600">/</span>
+                <span className="text-sm text-slate-500">/</span>
                 <a
                   href="#"
                   data-lang="fi"
-                  className="lang-switch text-sm text-neutral-400 hover:text-accent"
+                  className="lang-switch text-sm text-slate-300 hover:text-accent"
                 >
                   FI
                 </a>
@@ -66,7 +66,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="p-2 text-neutral-400 hover:text-accent md:hidden"
+              className="p-2 text-slate-300 hover:text-accent md:hidden"
               id="mobile-menu-button"
             >
               <svg
@@ -88,47 +88,47 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className="hidden md:hidden" id="mobile-menu">
-          <div className="flex flex-col gap-4 border-t border-neutral-800 py-4 text-center">
+          <div className="flex flex-col gap-4 border-t border-slate-600 py-4 text-center">
             <a
               href="/"
-              className="py-2 text-neutral-400 transition-colors hover:text-cyan-400"
+              className="py-2 text-slate-300 transition-colors hover:text-cyan-400"
             >
               Home
             </a>
             <a
               href="/dev"
-              className="py-2 text-neutral-400 transition-colors hover:text-accent"
+              className="py-2 text-slate-300 transition-colors hover:text-accent"
             >
               IT & Development
             </a>
             <a
               href="/music"
-              className="py-2 text-neutral-400 transition-colors hover:text-emerald-400"
+              className="py-2 text-slate-300 transition-colors hover:text-emerald-400"
             >
               Music
             </a>
             <a
               href="/audio-services"
-              className="py-2 text-neutral-400 transition-colors hover:text-cyan-400"
+              className="py-2 text-slate-300 transition-colors hover:text-cyan-400"
             >
               Audio Engineering
             </a>
             <a
               href="/contact"
-              className="py-2 text-neutral-400 transition-colors hover:text-neutral-300"
+              className="py-2 text-slate-300 transition-colors hover:text-neutral-300"
             >
               Contact
             </a>
-            <div className="mt-2 flex justify-center gap-4 border-t border-neutral-800 pb-2 pt-4">
+            <div className="mt-2 flex justify-center gap-4 border-t border-slate-600 pb-2 pt-4">
               <button
                 data-lang="en"
-                className="lang-switch rounded bg-neutral-900 px-4 py-2 text-neutral-400 transition-all hover:text-accent"
+                className="lang-switch rounded bg-slate-700 px-4 py-2 text-slate-300 transition-all hover:text-accent"
               >
                 English
               </button>
               <button
                 data-lang="fi"
-                className="lang-switch rounded bg-neutral-900 px-4 py-2 text-neutral-400 transition-all hover:text-accent"
+                className="lang-switch rounded bg-slate-700 px-4 py-2 text-slate-300 transition-all hover:text-accent"
               >
                 Suomi
               </button>
