@@ -18,9 +18,9 @@ const description =
       </p>
     </div>
 
-    <!-- Contact Form and Info -->
-    <div class="mx-auto mb-16 max-w-4xl">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <!-- Contact Form and Info with Avatar -->
+    <div class="mx-auto mb-16 max-w-6xl">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <!-- Contact Form -->
         <div
           class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
@@ -104,7 +104,11 @@ const description =
             <div class="space-y-4">
               <div>
                 <p class="mb-1 text-sm text-neutral-500">Sähköposti</p>
-                <p class="text-lg text-neutral-300">davittbarry333@gmail.com</p>
+                <a
+                  href="mailto:davittbarry333@gmail.com"
+                  class="text-lg text-neutral-300 transition-colors hover:text-accent"
+                  >davittbarry333@gmail.com
+                </a>
               </div>
 
               <div>
@@ -146,25 +150,47 @@ const description =
               Saatavilla olevat palvelut
             </h3>
             <div class="space-y-3">
-              <div class="border-l-2 border-accent pl-4">
+              <a
+                href="/fi/dev"
+                class="block border-l-2 border-accent pl-4 transition-all hover:translate-x-1"
+              >
                 <h4 class="text-white">IT & Kehitys</h4>
                 <p class="text-sm text-neutral-400">
                   Web-kehitys, konsultointi, tekniset ratkaisut
                 </p>
-              </div>
-              <div class="border-l-2 border-emerald-400 pl-4">
+              </a>
+              <a
+                href="/fi/musiikki"
+                class="block border-l-2 border-emerald-400 pl-4 transition-all hover:translate-x-1"
+              >
                 <h4 class="text-white">Musiikki</h4>
                 <p class="text-sm text-neutral-400">
                   Sävellys, sovitus, tuotanto
                 </p>
-              </div>
-              <div class="border-l-2 border-cyan-400 pl-4">
+              </a>
+              <a
+                href="/fi/audiopalvelut"
+                class="block border-l-2 border-cyan-400 pl-4 transition-all hover:translate-x-1"
+              >
                 <h4 class="text-white">Äänitekniikka</h4>
                 <p class="text-sm text-neutral-400">
                   Miksaus, masterointi, äänen restaurointi
                 </p>
-              </div>
+              </a>
             </div>
+          </div>
+        </div>
+
+        <!-- Avatar Image -->
+        <div class="flex items-center justify-center lg:col-span-1">
+          <div class="relative">
+            <img
+              class="w-72 border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:scale-105 hover:border-accent md:w-80"
+              src="/assets/images/avatar-2.jpg"
+              alt="Davitt Barry"
+              loading="lazy"
+            />
+            <div class="absolute -z-10 inset-0 bg-gradient-to-br from-accent/20 to-cyan-400/20 blur-3xl"></div>
           </div>
         </div>
       </div>

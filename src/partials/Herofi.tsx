@@ -30,7 +30,7 @@ const Herofi = () => {
         .image-modal img {
           width: auto;
           height: auto;
-          max-width: 640px;
+          max-width: 80%;
           max-height: 80vh;
           object-fit: contain;
           border: 2px solid #404040;
@@ -57,7 +57,7 @@ const Herofi = () => {
         avatar={
           <div className="flex flex-col items-center">
             <img
-              className="w-72 cursor-pointer border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:scale-105 hover:border-accent md:w-80"
+              className="w-80 cursor-pointer border-2 border-neutral-800 object-cover object-center transition-all duration-500 hover:scale-105 hover:border-accent md:w-96"
               src="/assets/images/cv-shot.jpg"
               alt="Davitt Barry"
               loading="lazy"
