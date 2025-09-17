@@ -53,7 +53,7 @@ const ServicesGridfi = () => (
       >
         <div className="mb-4 text-4xl text-emerald-400">♪</div>
         <h3 className="mb-3 text-xl font-medium text-white transition-colors group-hover:text-emerald-400">
-          Musiikin tuotanto
+          Musiikki
         </h3>
         <p className="mb-6 text-neutral-400">
           Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Alkuperäisestä

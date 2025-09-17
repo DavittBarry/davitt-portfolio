@@ -1,15 +1,16 @@
 ---
 import Basefi from '@/templates/Basefi.astro';
 
-const title = "Äänitekniikkapalvelut - Davitt Barry";
-const description = "Ammattimaiset miksaus-, masterointi- ja äänituotantopalvelut. Raaka-äänityksistä kaupalliseen laatuun.";
+const title = 'Äänitekniikkapalvelut - Davitt Barry';
+const description =
+  'Ammattimaiset miksaus-, masterointi- ja äänituotantopalvelut. Raaka-äänityksistä kaupalliseen laatuun.';
 ---
 
 <Basefi head={{ title, description }}>
   <div class="container mx-auto px-6 py-12">
     <!-- Hero Section -->
-    <div class="max-w-4xl mx-auto text-center mb-16">
-      <h1 class="text-5xl font-light text-white mb-4">
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <h1 class="mb-4 text-5xl font-light text-white">
         Ääni<span class="text-cyan-400">tekniikka</span>
       </h1>
       <p class="text-xl text-neutral-400">
@@ -18,15 +19,17 @@ const description = "Ammattimaiset miksaus-, masterointi- ja äänituotantopalve
     </div>
 
     <!-- Services Grid -->
-    <div class="max-w-6xl mx-auto mb-16">
-      <h2 class="text-3xl font-light text-white mb-8">Tarjotut palvelut</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
-          <div class="text-cyan-400 text-3xl mb-4">⚡</div>
-          <h3 class="text-xl text-white mb-3">Miksaus</h3>
-          <p class="text-neutral-400 mb-4">
-            Ammattimaiset miksauspalvelut tuomaan selkeyttä, syvyyttä ja tasapainoa kappaleisiisi.
+    <div class="mx-auto mb-16 max-w-6xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Tarjotut palvelut</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-cyan-400/50"
+        >
+          <div class="mb-4 text-3xl text-cyan-400">⚡</div>
+          <h3 class="mb-3 text-xl text-white">Miksaus</h3>
+          <p class="mb-4 text-neutral-400">
+            Ammattimaiset miksauspalvelut tuomaan selkeyttä, syvyyttä ja
+            tasapainoa kappaleisiisi.
           </p>
           <ul class="space-y-2 text-sm text-neutral-500">
             <li>• EQ:n ja kompression optimointi</li>
@@ -36,11 +39,14 @@ const description = "Ammattimaiset miksaus-, masterointi- ja äänituotantopalve
           </ul>
         </div>
 
-        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
-          <div class="text-cyan-400 text-3xl mb-4">🎯</div>
-          <h3 class="text-xl text-white mb-3">Masterointi</h3>
-          <p class="text-neutral-400 mb-4">
-            Viimeinen viilaus varmistaaksesi, että musiikkisi kuulostaa hyvältä kaikissa toistoympäristöissä.
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-cyan-400/50"
+        >
+          <div class="mb-4 text-3xl text-cyan-400">🎯</div>
+          <h3 class="mb-3 text-xl text-white">Masterointi</h3>
+          <p class="mb-4 text-neutral-400">
+            Viimeinen viilaus varmistaaksesi, että musiikkisi kuulostaa hyvältä
+            kaikissa toistoympäristöissä.
           </p>
           <ul class="space-y-2 text-sm text-neutral-500">
             <li>• Äänenvoimakkuuden optimointi suoratoistopalveluille</li>
@@ -50,11 +56,14 @@ const description = "Ammattimaiset miksaus-, masterointi- ja äänituotantopalve
           </ul>
         </div>
 
-        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
-          <div class="text-cyan-400 text-3xl mb-4">🎙️</div>
-          <h3 class="text-xl text-white mb-3">Podcast-tuotanto</h3>
-          <p class="text-neutral-400 mb-4">
-            Täydellinen podcast-jälkituotanto raaka-äänityksistä julkaisuvalmiisiin jaksoihin.
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-cyan-400/50"
+        >
+          <div class="mb-4 text-3xl text-cyan-400">🎙️</div>
+          <h3 class="mb-3 text-xl text-white">Podcast-tuotanto</h3>
+          <p class="mb-4 text-neutral-400">
+            Täydellinen podcast-jälkituotanto raaka-äänityksistä
+            julkaisuvalmiisiin jaksoihin.
           </p>
           <ul class="space-y-2 text-sm text-neutral-500">
             <li>• Dialogin editointi ja puhdistus</li>
@@ -64,11 +73,14 @@ const description = "Ammattimaiset miksaus-, masterointi- ja äänituotantopalve
           </ul>
         </div>
 
-        <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8 hover:border-cyan-400/50 transition-all">
-          <div class="text-cyan-400 text-3xl mb-4">🔧</div>
-          <h3 class="text-xl text-white mb-3">Äänen restaurointi</h3>
-          <p class="text-neutral-400 mb-4">
-            Henkiin vanhat tai vaurioituneet äänitteet modernien restaurointitekniikoiden avulla.
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-cyan-400/50"
+        >
+          <div class="mb-4 text-3xl text-cyan-400">🔧</div>
+          <h3 class="mb-3 text-xl text-white">Äänen restaurointi</h3>
+          <p class="mb-4 text-neutral-400">
+            Henkiin vanhat tai vaurioituneet äänitteet modernien
+            restaurointitekniikoiden avulla.
           </p>
           <ul class="space-y-2 text-sm text-neutral-500">
             <li>• Kohinan ja sihinän poisto</li>
@@ -81,87 +93,119 @@ const description = "Ammattimaiset miksaus-, masterointi- ja äänituotantopalve
     </div>
 
     <!-- Process Section -->
-    <div class="max-w-4xl mx-auto mb-16">
-      <h2 class="text-3xl font-light text-white mb-8">Prosessi</h2>
+    <div class="mx-auto mb-16 max-w-4xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Prosessi</h2>
       <div class="space-y-6">
         <div class="flex gap-4">
-          <div class="text-cyan-400 text-2xl font-mono">01</div>
+          <div class="font-mono text-2xl text-cyan-400">01</div>
           <div>
-            <h3 class="text-xl text-white mb-2">Konsultointi</h3>
-            <p class="text-neutral-400">Keskustellaan projektisi tavoitteista, referenssikappaleista ja aikataulusta.</p>
+            <h3 class="mb-2 text-xl text-white">Konsultointi</h3>
+            <p class="text-neutral-400">
+              Keskustellaan projektisi tavoitteista, referenssikappaleista ja
+              aikataulusta.
+            </p>
           </div>
         </div>
         <div class="flex gap-4">
-          <div class="text-cyan-400 text-2xl font-mono">02</div>
+          <div class="font-mono text-2xl text-cyan-400">02</div>
           <div>
-            <h3 class="text-xl text-white mb-2">Tiedostonsiirto</h3>
-            <p class="text-neutral-400">Turvallinen äänitiedostojen lataus yksityiskohtaisilla sessiomuistiinpanoilla.</p>
+            <h3 class="mb-2 text-xl text-white">Tiedostonsiirto</h3>
+            <p class="text-neutral-400">
+              Turvallinen äänitiedostojen lataus yksityiskohtaisilla
+              sessiomuistiinpanoilla.
+            </p>
           </div>
         </div>
         <div class="flex gap-4">
-          <div class="text-cyan-400 text-2xl font-mono">03</div>
+          <div class="font-mono text-2xl text-cyan-400">03</div>
           <div>
-            <h3 class="text-xl text-white mb-2">Tuotanto</h3>
-            <p class="text-neutral-400">Ammattimainen käsittely käyttäen alan standardityökaluja ja -tekniikoita.</p>
+            <h3 class="mb-2 text-xl text-white">Tuotanto</h3>
+            <p class="text-neutral-400">
+              Ammattimainen käsittely käyttäen alan standardityökaluja ja
+              -tekniikoita.
+            </p>
           </div>
         </div>
         <div class="flex gap-4">
-          <div class="text-cyan-400 text-2xl font-mono">04</div>
+          <div class="font-mono text-2xl text-cyan-400">04</div>
           <div>
-            <h3 class="text-xl text-white mb-2">Tarkistus</h3>
-            <p class="text-neutral-400">Jopa 2 tarkistuskierrosta varmistaaksemme täydellisen tyytyväisyytesi.</p>
+            <h3 class="mb-2 text-xl text-white">Tarkistus</h3>
+            <p class="text-neutral-400">
+              Jopa 2 tarkistuskierrosta varmistaaksemme täydellisen
+              tyytyväisyytesi.
+            </p>
           </div>
         </div>
         <div class="flex gap-4">
-          <div class="text-cyan-400 text-2xl font-mono">05</div>
+          <div class="font-mono text-2xl text-cyan-400">05</div>
           <div>
-            <h3 class="text-xl text-white mb-2">Toimitus</h3>
-            <p class="text-neutral-400">Lopulliset tiedostot toimitetaan haluamassasi formaatissa ja resoluutiossa.</p>
+            <h3 class="mb-2 text-xl text-white">Toimitus</h3>
+            <p class="text-neutral-400">
+              Lopulliset tiedostot toimitetaan haluamassasi formaatissa ja
+              resoluutiossa.
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Pricing Section -->
-    <div class="max-w-4xl mx-auto mb-16">
-      <h2 class="text-3xl font-light text-white mb-8">Hinnoittelu</h2>
-      <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 p-8">
-        <p class="text-neutral-400 mb-6">
-          Hinnoittelu vaihtelee projektin laajuuden ja vaatimusten mukaan. Tyypilliset hinnat:
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="text-lg text-cyan-400 mb-3">Yksittäinen kappale</h3>
-            <ul class="space-y-2 text-neutral-400">
-              <li>• Miksaus: €XX - €XX</li>
-              <li>• Masterointi: €XX - €XX</li>
-              <li>• Miksaus + masterointi: €XX - €XX</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-lg text-cyan-400 mb-3">Albumi/EP</h3>
-            <ul class="space-y-2 text-neutral-400">
-              <li>• Koko albumin miksaus: Ota yhteyttä tarjousta varten</li>
-              <li>• Albumin masterointi: Ota yhteyttä tarjousta varten</li>
-              <li>• Pakettitarjouksia saatavilla</li>
-            </ul>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-500 mt-6">
-          * Alennuksia saatavilla useille kappaleille ja jatkuville projekteille
-        </p>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="text-center">
-      <p class="text-neutral-400 mb-6">Valmiina viemään äänesi seuraavalle tasolle?</p>
-      <a 
-        href="/fi/yhteystiedot" 
-        class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 hover:bg-cyan-400/10 transition-all"
+    <!-- Studio Setup Section (moved from Music page) -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <h2 class="mb-8 text-3xl font-light text-white">Studio-setup</h2>
+      <div
+        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
       >
-        Pyydä tarjous →
-      </a>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="mb-4 text-lg text-cyan-400">Ohjelmistot</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>• Ableton Live</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-4 text-lg text-cyan-400">Laitteisto</h3>
+            <ul class="space-y-2 text-neutral-400">
+              <li>
+                • Äänikortti: Audient (mikrofonietuaste Ferrofish-muuntimella)
+              </li>
+              <li>
+                • Monitorit: Genelec-tarkkailukaiuttimet (äänenvoimakkuus
+                säädetään SPL-monitorikontrollerilla)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Get a Quote Section -->
+    <div class="mx-auto mb-16 max-w-4xl">
+      <h2 class="mb-8 text-3xl font-light text-white">
+        Pyydä räätälöity tarjous
+      </h2>
+      <div
+        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+      >
+        <p class="mb-6 text-neutral-400">
+          Jokainen projekti on ainutlaatuinen, ja hinnoittelu riippuu useista
+          tekijöistä, kuten kappaleen pituudesta, monimutkaisuudesta, stemien
+          määrästä ja toimitusajasta. Tarjoan kilpailukykyisiä hintoja ja
+          pakettitarjouksia albumeille ja jatkuville projekteille.
+        </p>
+        <p class="mb-8 text-neutral-400">
+          Ota yhteyttä projektisi tiedoilla saadaksesi henkilökohtaisen
+          tarjouksen. Vastaan yleensä 24-48 tunnin sisällä yksityiskohtaisella
+          arviolla ja aikataululla.
+        </p>
+        <div class="text-center">
+          <a
+            href="/fi/yhteystiedot"
+            class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
+          >
+            Pyydä tarjous →
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </Basefi>

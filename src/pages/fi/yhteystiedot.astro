@@ -18,159 +18,155 @@ const description =
       </p>
     </div>
 
-    <!-- Contact Options -->
+    <!-- Contact Form and Info -->
     <div class="mx-auto mb-16 max-w-4xl">
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <!-- Direct Contact -->
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <!-- Contact Form -->
         <div
           class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
         >
-          <h2 class="mb-6 text-2xl font-light text-white">Suora yhteys</h2>
+          <h2 class="mb-6 text-2xl font-light text-white">Lähetä viesti</h2>
 
-          <div class="mb-8 space-y-4">
+          <!-- Using Formspree for form handling -->
+          <form
+            action="https://formspree.io/f/movnokwq"
+            method="POST"
+            class="space-y-4"
+          >
             <div>
-              <p class="mb-1 text-sm text-neutral-500">Sähköposti</p>
+              <label for="name" class="mb-2 block text-sm text-neutral-400"
+                >Nimi
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full border border-neutral-700 bg-neutral-900 px-4 py-2 text-white transition-colors focus:border-accent focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="mb-2 block text-sm text-neutral-400"
+                >Sähköposti
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full border border-neutral-700 bg-neutral-900 px-4 py-2 text-white transition-colors focus:border-accent focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="subject" class="mb-2 block text-sm text-neutral-400"
+                >Aihe
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                class="w-full border border-neutral-700 bg-neutral-900 px-4 py-2 text-white transition-colors focus:border-accent focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="mb-2 block text-sm text-neutral-400"
+                >Viesti
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="w-full resize-none border border-neutral-700 bg-neutral-900 px-4 py-2 text-white transition-colors focus:border-accent focus:outline-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full border border-accent px-6 py-3 text-accent transition-all hover:bg-accent/10"
+            >
+              Lähetä viesti
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div>
+          <div
+            class="mb-8 border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+          >
+            <h2 class="mb-6 text-2xl font-light text-white">Suora yhteys</h2>
+
+            <div class="space-y-4">
+              <div>
+                <p class="mb-1 text-sm text-neutral-500">Sähköposti</p>
+                <p class="text-lg text-neutral-300">davittbarry333@gmail.com</p>
+              </div>
+
+              <div>
+                <p class="mb-1 text-sm text-neutral-500">Sijainti</p>
+                <p class="text-lg text-neutral-300">Helsinki, Suomi</p>
+              </div>
+
+              <div>
+                <p class="mb-1 text-sm text-neutral-500">Saatavuus</p>
+                <p class="text-lg text-neutral-300">Avoinna projekteille</p>
+              </div>
+            </div>
+
+            <div class="mt-6 flex gap-4">
               <a
-                href="mailto:davittbarry333@gmail.com"
-                class="text-lg text-accent transition-colors hover:text-accent/80"
+                href="https://github.com/DavittBarry"
+                class="border border-neutral-700 px-4 py-2 text-neutral-400 transition-all hover:border-accent hover:text-accent"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                davittbarry333@gmail.com
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/davittbarry/"
+                class="border border-neutral-700 px-4 py-2 text-neutral-400 transition-all hover:border-cyan-400 hover:text-cyan-400"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
               </a>
             </div>
-
-            <div>
-              <p class="mb-1 text-sm text-neutral-500">Sijainti</p>
-              <p class="text-lg text-neutral-300">Helsinki, Suomi</p>
-            </div>
-
-            <div>
-              <p class="mb-1 text-sm text-neutral-500">Saatavuus</p>
-              <p class="text-lg text-neutral-300">Avoinna projekteille</p>
-            </div>
           </div>
 
-          <div class="flex gap-4">
-            <a
-              href="https://github.com/DavittBarry"
-              class="border border-neutral-700 px-4 py-2 text-neutral-400 transition-all hover:border-accent hover:text-accent"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/davittbarry/"
-              class="border border-neutral-700 px-4 py-2 text-neutral-400 transition-all hover:border-cyan-400 hover:text-cyan-400"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-
-        <!-- Services -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
-        >
-          <h2 class="mb-6 text-2xl font-light text-white">
-            Saatavilla olevat palvelut
-          </h2>
-
-          <div class="space-y-4">
-            <div class="border-l-2 border-accent pl-4">
-              <h3 class="mb-1 text-white">IT & Kehitys</h3>
-              <p class="text-sm text-neutral-400">
-                Web-kehitys, konsultointi, tekniset ratkaisut
-              </p>
+          <!-- Services Summary -->
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+          >
+            <h3 class="mb-4 text-xl font-light text-white">
+              Saatavilla olevat palvelut
+            </h3>
+            <div class="space-y-3">
+              <div class="border-l-2 border-accent pl-4">
+                <h4 class="text-white">IT & Kehitys</h4>
+                <p class="text-sm text-neutral-400">
+                  Web-kehitys, konsultointi, tekniset ratkaisut
+                </p>
+              </div>
+              <div class="border-l-2 border-emerald-400 pl-4">
+                <h4 class="text-white">Musiikki</h4>
+                <p class="text-sm text-neutral-400">
+                  Sävellys, sovitus, tuotanto
+                </p>
+              </div>
+              <div class="border-l-2 border-cyan-400 pl-4">
+                <h4 class="text-white">Äänitekniikka</h4>
+                <p class="text-sm text-neutral-400">
+                  Miksaus, masterointi, äänen restaurointi
+                </p>
+              </div>
             </div>
-
-            <div class="border-l-2 border-emerald-400 pl-4">
-              <h3 class="mb-1 text-white">Musiikkituotanto</h3>
-              <p class="text-sm text-neutral-400">
-                Sävellys, sovitus, tuotanto
-              </p>
-            </div>
-
-            <div class="border-l-2 border-cyan-400 pl-4">
-              <h3 class="mb-1 text-white">Äänitekniikka</h3>
-              <p class="text-sm text-neutral-400">
-                Miksaus, masterointi, äänen restaurointi
-              </p>
-            </div>
-          </div>
-
-          <div class="mt-8">
-            <p class="mb-2 text-sm text-neutral-500">Vastausaika</p>
-            <p class="text-neutral-300">Yleensä 24-48 tunnin sisällä</p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Project Inquiry Section -->
-    <div class="mx-auto mb-16 max-w-4xl">
-      <div
-        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
-      >
-        <h2 class="mb-6 text-2xl font-light text-white">Projektitiedustelut</h2>
-
-        <p class="mb-6 text-neutral-400">
-          Kun otat yhteyttä projektista, sisällytä mukaan:
-        </p>
-
-        <ul class="mb-8 space-y-3 text-neutral-400">
-          <li class="flex items-start">
-            <span class="mr-3 text-accent">•</span>
-            <span>Projektin tyyppi ja laajuus</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-3 text-accent">•</span>
-            <span>Aikataulu ja määräajat</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-3 text-accent">•</span>
-            <span>Budjettialue (jos sovellettavissa)</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-3 text-accent">•</span>
-            <span>Mahdolliset erityisvaatimukset tai toiveet</span>
-          </li>
-        </ul>
-
-        <a
-          href="mailto:davittbarry333@gmail.com?subject=Projektitiedustelu"
-          class="inline-block border border-accent px-6 py-3 text-accent transition-all hover:bg-accent/10"
-        >
-          Lähetä projektitiedustelu →
-        </a>
-      </div>
-    </div>
-
-    <!-- CV Downloads with fancy style -->
-    <div class="mx-auto max-w-4xl">
-      <h2 class="mb-6 text-center text-2xl font-light text-white">Lataa CV</h2>
-      <div class="flex flex-col justify-center gap-4 sm:flex-row">
-        <a
-          href="/Davitt-Barry-CV-English.pdf"
-          download
-          class="group relative overflow-hidden border border-cyan-500 px-6 py-3 text-center text-cyan-400 transition-all duration-300 hover:text-dark"
-        >
-          <span
-            class="absolute inset-0 origin-left scale-x-0 bg-cyan-500 transition-transform duration-300 group-hover:scale-x-100"
-          ></span>
-          <span class="relative font-light">Download in English</span>
-        </a>
-        <a
-          href="/Davitt-Barry-CV-Suomeksi.pdf"
-          download
-          class="group relative overflow-hidden border border-emerald-500 px-6 py-3 text-center text-emerald-400 transition-all duration-300 hover:text-dark"
-        >
-          <span
-            class="absolute inset-0 origin-left scale-x-0 bg-emerald-500 transition-transform duration-300 group-hover:scale-x-100"
-          ></span>
-          <span class="relative font-light">Lataa suomeksi</span>
-        </a>
       </div>
     </div>
   </div>
