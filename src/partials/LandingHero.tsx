@@ -64,7 +64,7 @@ const LandingHero = () => {
         </div>
 
         <p className="mt-8 max-w-2xl px-4 text-neutral-400">
-          Multi-disciplinary creative professional based in Helsinki, Finland.
+          Multi-disciplinary creative professional based in Uusimaa, Finland.
           Combining technical expertise in IT and web development with artistic
           vision in music production and audio engineering. Bringing 15+ years
           of experience across technology and creative industries.
