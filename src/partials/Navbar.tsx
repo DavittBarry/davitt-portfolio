@@ -17,47 +17,47 @@ const Navbar = () => {
             <div className="hidden items-center gap-6 md:flex">
               <a
                 href="/"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400 lg:text-lg"
               >
                 Home
               </a>
               <a
                 href="/dev"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-accent"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-accent lg:text-lg"
               >
                 IT & Development
               </a>
               <a
                 href="/music"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-emerald-400"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-emerald-400 lg:text-lg"
               >
                 Music
               </a>
               <a
                 href="/audio-services"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400 lg:text-lg"
               >
                 Audio Engineering
               </a>
               <a
                 href="/contact"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-neutral-300"
+                className="text-base font-normal text-slate-300 transition-colors hover:text-neutral-300 lg:text-lg"
               >
                 Contact
               </a>
-              <div className="ml-4 flex items-center space-x-2 border border-slate-600 bg-slate-700/50 px-3 py-1 transition-colors hover:border-accent">
+              <div className="ml-4 flex items-center space-x-2 border border-slate-600 bg-slate-700/50 px-3 py-1 transition-colors hover:border-accent lg:px-4 lg:py-1.5">
                 <a
                   href="#"
                   data-lang="en"
-                  className="lang-switch text-sm text-slate-300 hover:text-accent"
+                  className="lang-switch text-sm text-slate-300 hover:text-accent lg:text-base"
                 >
                   EN
                 </a>
-                <span className="text-sm text-slate-500">/</span>
+                <span className="text-sm text-slate-500 lg:text-base">/</span>
                 <a
                   href="#"
                   data-lang="fi"
-                  className="lang-switch text-sm text-slate-300 hover:text-accent"
+                  className="lang-switch text-sm text-slate-300 hover:text-accent lg:text-base"
                 >
                   FI
                 </a>
@@ -151,13 +151,15 @@ const Navbar = () => {
               '/audio-services': '/fi/audiopalvelut',
               '/music': '/fi/musiikki',
               '/contact': '/fi/yhteystiedot',
-              '/privacy': '/fi/tietosuoja',
+              '/privacy': '/tietosuoja',
+              '/privacy/': '/tietosuoja',
               '/fi/': '/',
               '/fi/dev': '/dev',
               '/fi/audiopalvelut': '/audio-services',
               '/fi/musiikki': '/music',
               '/fi/yhteystiedot': '/contact',
-              '/fi/tietosuoja': '/privacy'
+              '/tietosuoja': '/privacy',
+              '/tietosuoja/': '/privacy'
             };
 
             document.querySelectorAll('.lang-switch').forEach(link => {
@@ -167,7 +169,13 @@ const Navbar = () => {
                 const currentPath = window.location.pathname;
                 
                 let newPath = currentPath;
-                if (targetLang === 'fi' && !currentPath.startsWith('/fi')) {
+                
+                // Check if we're on tietosuoja page specifically
+                if (currentPath === '/tietosuoja' || currentPath === '/tietosuoja/') {
+                  newPath = targetLang === 'en' ? '/privacy' : '/tietosuoja';
+                } else if (currentPath === '/privacy' || currentPath === '/privacy/') {
+                  newPath = targetLang === 'fi' ? '/tietosuoja' : '/privacy';
+                } else if (targetLang === 'fi' && !currentPath.startsWith('/fi')) {
                   newPath = langMap[currentPath] || '/fi' + currentPath;
                 } else if (targetLang === 'en' && currentPath.startsWith('/fi')) {
                   newPath = langMap[currentPath] || currentPath.replace('/fi', '');

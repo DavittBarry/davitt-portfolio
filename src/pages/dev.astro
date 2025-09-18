@@ -1,6 +1,7 @@
 ---
 import type { IFrontmatter } from 'astro-boilerplate-components';
 
+import { CTOService } from '@/partials/CTOService';
 import { CVDownload } from '@/partials/CVDownload';
 import { Hero } from '@/partials/Hero';
 import { ProjectList } from '@/partials/ProjectList';
@@ -20,6 +21,7 @@ const { description } = AppConfig;
 <Base head={{ title, description }}>
   <Hero />
   <ProjectList />
-  <RecentPosts postList={lastThreePosts} />
   <CVDownload />
+  <CTOService />
+  <RecentPosts postList={lastThreePosts} />
 </Base>

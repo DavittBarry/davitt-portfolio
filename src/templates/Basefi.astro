@@ -39,7 +39,7 @@ const {
     <!-- Additional SEO -->
     <meta
       name="keywords"
-      content="Davitt Barry, IT-ammattilainen, web-kehittäjä, muusikko, musiikin tuottaja, ääniteknikko, Helsinki, Suomi"
+      content="Davitt Barry, IT-ammattilainen, web-kehittäjä, muusikko, musiikin tuottaja, ääniteknikko, Uusimaa, Suomi"
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://davittbarry.com/fi/" />
@@ -55,7 +55,7 @@ const {
     />
   </head>
   <body
-    class="min-h-screen bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-neutral-100 antialiased"
+    class="flex min-h-screen flex-col bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-neutral-100 antialiased"
   >
     <!-- Subtle texture overlay -->
     <div class="pointer-events-none fixed inset-0 opacity-[0.015]">
@@ -82,7 +82,7 @@ const {
 
     <Navbarfi />
 
-    <main class="relative z-10">
+    <main class="relative z-10 flex-grow">
       <slot />
     </main>
 
@@ -91,7 +91,7 @@ const {
     <!-- Scroll to Top Button -->
     <button
       id="scroll-to-top"
-      class="fixed bottom-8 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full border border-accent/50 bg-neutral-900/90 text-accent backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-accent hover:bg-accent hover:text-neutral-900 md:right-8 md:h-16 md:w-16"
+      class="fixed bottom-8 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full border border-accent bg-accent/90 text-neutral-900 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-accent hover:bg-neutral-900 hover:text-accent md:right-8 md:h-16 md:w-16"
       aria-label="Palaa ylös"
     >
       <svg

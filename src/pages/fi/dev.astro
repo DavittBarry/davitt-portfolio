@@ -1,6 +1,7 @@
 ---
 import type { IFrontmatter } from 'astro-boilerplate-components';
 
+import { CTOServicefi } from '@/partials/CTOServicefi';
 import { CVDownloadfi } from '@/partials/CVDownloadfi';
 import { Herofi } from '@/partials/Herofi';
 import { ProjectListfi } from '@/partials/ProjectListfi';
@@ -20,6 +21,7 @@ const { description } = AppConfig;
 <Basefi head={{ title, description }}>
   <Herofi />
   <ProjectListfi />
-  <RecentPostsfi postList={lastThreePosts} />
   <CVDownloadfi />
+  <CTOServicefi />
+  <RecentPostsfi postList={lastThreePosts} />
 </Basefi>

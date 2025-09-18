@@ -64,7 +64,7 @@ const LandingHerofi = () => {
         </div>
 
         <p className="mt-8 max-w-2xl px-4 text-neutral-400">
-          Monitaitoinen luova ammattilainen Helsingistä. Yhdistän teknisen IT-
+          Monitaitoinen luova ammattilainen Uudeltamaalta. Yhdistän teknisen IT-
           ja web-kehitysosaamisen taiteelliseen näkemykseen musiikin tuotannossa
           ja äänitekniikassa. Yli 15 vuoden kokemus teknologian ja luovien
           alojen parissa.
