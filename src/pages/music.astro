@@ -37,7 +37,7 @@ const description =
             </div>
           </div>
 
-          <audio controls class="mb-4 h-12 w-full">
+          <audio controls class="mb-4 h-12 w-full" controlsList="nodownload">
             <source src="/assets/audio/Cooloosa St..mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
@@ -61,7 +61,7 @@ const description =
             </div>
           </div>
 
-          <audio controls class="mb-4 h-12 w-full">
+          <audio controls class="mb-4 h-12 w-full" controlsList="nodownload">
             <source src="/assets/audio/Mote In Mine.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
@@ -87,7 +87,7 @@ const description =
             </div>
           </div>
 
-          <audio controls class="mb-4 h-12 w-full">
+          <audio controls class="mb-4 h-12 w-full" controlsList="nodownload">
             <source src="/assets/audio/Polishing Stones.mp3" type="audio/mpeg"
             />
             Your browser does not support the audio element.
@@ -105,17 +105,70 @@ const description =
       <style>
         audio {
           background-color: #171717;
-          border-radius: 4px;
+          border-radius: 12px;
           border: 1px solid #404040;
         }
         audio::-webkit-media-controls-panel {
           background-color: #171717;
+          border-radius: 12px;
         }
         audio::-webkit-media-controls-current-time-display,
         audio::-webkit-media-controls-time-remaining-display {
           color: #fff;
+          margin: 0 8px;
+        }
+        audio::-webkit-media-controls-timeline-container {
+          margin: 0 8px;
+        }
+        audio::-webkit-media-controls-timeline {
+          background: #404040;
+          border-radius: 8px;
+          margin: 0 4px;
+        }
+        audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
+          background: #10b981;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+        }
+        audio::-webkit-media-controls-timeline::-webkit-slider-runnable-track {
+          background: linear-gradient(to right, #10b981 0%, #10b981 var(--webkit-slider-fill-percentage, 0%), #404040 var(--webkit-slider-fill-percentage, 0%), #404040 100%);
+          border-radius: 8px;
+        }
+        audio::-moz-range-thumb {
+          background: #10b981;
+          border: none;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+        }
+        audio::-moz-range-track {
+          background: #404040;
+          border-radius: 8px;
+          margin: 0 8px;
+        }
+        audio::-moz-range-progress {
+          background: #10b981;
+          border-radius: 8px;
         }
       </style>
+
+      <!-- Script to handle single audio playback -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const audioElements = document.querySelectorAll('audio');
+          
+          audioElements.forEach(audio => {
+            audio.addEventListener('play', function() {
+              audioElements.forEach(otherAudio => {
+                if (otherAudio !== audio) {
+                  otherAudio.pause();
+                }
+              });
+            });
+          });
+        });
+      </script>
     </div>
 
     <!-- Past Releases -->
