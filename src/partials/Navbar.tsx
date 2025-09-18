@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between p-4 md:px-0">
           <a
             href="/"
-            className="text-2xl font-medium text-white transition-colors hover:text-accent md:text-xl"
+            className="text-3xl font-medium text-white transition-colors hover:text-accent md:text-2xl"
           >
             dB
           </a>
@@ -70,7 +70,7 @@ const Navbar = () => {
               id="mobile-menu-button"
             >
               <svg
-                className="h-7 w-7"
+                className="h-8 w-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

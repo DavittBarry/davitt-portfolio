@@ -29,7 +29,7 @@ const LandingHerofi = () => {
           border: 2px solid #404040;
         }
       `}</style>
-      <div className="flex min-h-[70vh] flex-col items-center justify-center text-center">
+      <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
         <img
           src="/assets/images/avatar.jpg"
           alt="Davitt Barry"
@@ -70,7 +70,7 @@ const LandingHerofi = () => {
           alojen parissa.
         </p>
 
-        <div className="mt-12 flex gap-4">
+        <div className="mt-8 flex gap-4">
           <a
             href="https://github.com/DavittBarry"
             className="block border border-neutral-700 p-3 transition-all duration-200 hover:scale-110 hover:border-accent hover:bg-accent/10"
