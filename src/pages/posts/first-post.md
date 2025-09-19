@@ -11,9 +11,9 @@ imgAlt: "My journey so far in web development"
 
 Hello, I'm Davitt Barry! If you've been following my work or have just stumbled upon this blog, welcome. Today I'd like to share a bit about my current situation, the skills I've honed over the years, and the fact that I'm open to new opportunities in the web development field.
 
-## My Current Role at Mysteerio Oy
+## Working at Mysteerio Oy
 
-I'm currently employed with Mysteerio Oy until September 28, 2023. Due to economic reasons within the company, I will be available for new opportunities after this date. Mysteerio Oy has been kind enough to offer to serve as a reference and can vouch for my abilities. During my time at Mysteerio, I've been responsible for various tasks including website management, development and more.
+I was employed with Mysteerio Oy until September 28, 2023. Due to economic reasons within the company, I will be available for new opportunities after this date. Mysteerio Oy has been kind enough to offer to serve as a reference and can vouch for my abilities. During my time at Mysteerio, I've been responsible for various tasks including website management, development and more.
 
 ## Skills and Experience
 
