@@ -12,7 +12,6 @@ import { sortByDate } from '@/utils/Posts';
 
 const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
 const sortedPosts = sortByDate(allPosts);
-const lastThreePosts = sortedPosts.slice(0, 3);
 
 const title = 'IT & Development - Davitt Barry';
 const { description } = AppConfig;
@@ -23,5 +22,5 @@ const { description } = AppConfig;
   <ProjectList />
   <CVDownload />
   <CTOService />
-  <RecentPosts postList={lastThreePosts} />
+  <RecentPosts client:load postList={sortedPosts} />
 </Base>
