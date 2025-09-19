@@ -1,13 +1,13 @@
 ---
 layout: '@/templates/BasePost.astro'
-title: 'My time at RELEX: growing as an application support analyst'
+title: 'My time at RELEX: growing as an Application Support Analyst'
 description: 'Reflections on my journey in enterprise software support and process improvement'
 pubDate: 2025-09-19T00:00:00Z
 imgSrc: '/assets/images/image-post.jpeg'
 imgAlt: 'RELEX Support Journey'
 ---
 
-# My time at RELEX: growing as an application support analyst
+# My time at RELEX: growing as an Application Support Analyst
 
 Since joining RELEX Solutions in March 2024, I've had the opportunity to work with some of the world's leading retailers while developing both my technical and problem-solving skills in enterprise software support.
 
