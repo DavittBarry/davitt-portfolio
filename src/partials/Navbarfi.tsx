@@ -170,8 +170,12 @@ const Navbarfi = () => {
                 
                 let newPath = currentPath;
                 
+                // Check if we're on a blog post page (posts are English-only)
+                if (currentPath.includes('/posts/') || currentPath.includes('/posts-fi/')) {
+                  newPath = targetLang === 'fi' ? '/fi/' : '/';
+                } 
                 // Check if we're on tietosuoja page specifically
-                if (currentPath === '/tietosuoja' || currentPath === '/tietosuoja/') {
+                else if (currentPath === '/tietosuoja' || currentPath === '/tietosuoja/') {
                   newPath = targetLang === 'en' ? '/privacy' : '/tietosuoja';
                 } else if (currentPath === '/privacy' || currentPath === '/privacy/') {
                   newPath = targetLang === 'fi' ? '/tietosuoja' : '/privacy';

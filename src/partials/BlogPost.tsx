@@ -24,10 +24,10 @@ const BlogPost = (props: IBlogPostProps) => {
 
   return (
     <Section>
-      <div className="mb-6">
+      <div className="m-12">
         <a
           href="/dev"
-          className="inline-flex items-center border border-neutral-700 px-3 py-1 text-sm text-neutral-400 transition-colors hover:border-accent hover:text-accent"
+          className="inline-flex items-center border border-neutral-700 px-12 py-4 text-sm text-neutral-400 transition-colors hover:border-accent hover:text-accent"
         >
           ← Back to Development
         </a>
@@ -43,10 +43,10 @@ const BlogPost = (props: IBlogPostProps) => {
           />
         )}
       </PostContent>
-      <div className="mb-6">
+      <div className="m-12">
         <a
           href="/dev"
-          className="inline-flex items-center border border-neutral-700 px-3 py-1 text-sm text-neutral-400 transition-colors hover:border-accent hover:text-accent"
+          className="inline-flex items-center border border-neutral-700 px-12 py-4 text-sm text-neutral-400 transition-colors hover:border-accent hover:text-accent"
         >
           ← Back to Development
         </a>
