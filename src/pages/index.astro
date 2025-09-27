@@ -1,6 +1,7 @@
 ---
 import { LandingHero } from '@/partials/LandingHero';
 import { ServicesGrid } from '@/partials/ServicesGrid';
+import { GeneralCTA } from '@/partials/GeneralCTA';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -11,4 +12,5 @@ const { description } = AppConfig;
 <Base head={{ title, description }}>
   <LandingHero />
   <ServicesGrid />
+  <GeneralCTA />
 </Base>
