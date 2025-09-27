@@ -1,6 +1,7 @@
 ---
 import { LandingHerofi } from '@/partials/LandingHerofi';
 import { ServicesGridfi } from '@/partials/ServicesGridfi';
+import { GeneralCTAfi } from '@/partials/GeneralCTAfi';
 import Basefi from '@/templates/Basefi.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -11,4 +12,5 @@ const { description } = AppConfig;
 <Basefi head={{ title, description }}>
   <LandingHerofi />
   <ServicesGridfi />
+  <GeneralCTAfi />
 </Basefi>
