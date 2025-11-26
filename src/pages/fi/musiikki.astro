@@ -16,164 +16,52 @@ const description =
       <p class="text-xl text-neutral-400">Omat sävellykset ja tuotannot</p>
     </div>
 
-    <!-- Latest Music from Upcoming Album -->
+    <!-- Latest Release -->
     <div class="mx-auto mb-16 max-w-6xl">
       <h2 class="mb-8 text-3xl font-light text-white">
-        Uusinta musiikkia tulevalta albumilta
+        Aliud Phantasma (2025)
       </h2>
-      <div class="space-y-6">
-        <!-- Track 1: Cooloosa St. -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-        >
-          <div
-            class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between"
-          >
-            <div>
-              <h3 class="mb-2 text-xl text-white">Cooloosa St.</h3>
-              <p class="text-sm text-neutral-500">Elektroninen / Ambient</p>
-            </div>
+      <div
+        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+      >
+        <img
+          src="/assets/images/1000055346.jpg"
+          alt="Aliud Phantasma Albumin Kansi"
+          class="mb-6 w-full max-w-2xl mx-auto object-contain rounded"
+        />
+        <p class="mb-6 text-neutral-400">
+          Uusin albumini tutkii elektronista, ambienttia ja progressiivista äänimaailmaa. Kaikki miksaus, masterointi, säveltäminen ja esitykset Davitt Barry.
+        </p>
+        <div class="mb-6">
+          <h3 class="mb-4 text-lg text-white">Kuuntele nyt suoratoistoalustoilla:</h3>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="https://open.spotify.com/artist/1BOxo6BWmD8zbIwxm28jvv"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Spotify →
+            </a>
+            <a
+              href="https://music.apple.com/us/artist/davitt-barry/1541200569"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Apple Music →
+            </a>
+            <a
+              href="https://tidal.com/artist/21939452/u"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Tidal →
+            </a>
           </div>
-
-          <audio controls class="mb-4 h-12 w-full" controlsList="nodownload">
-            <source src="/assets/audio/Cooloosa St..mp3" type="audio/mpeg" />
-            Selaimesi ei tue audio-elementtiä.
-          </audio>
-
-          <p class="text-sm text-neutral-400">
-            Kokeellinen elektroninen kappale, joka tutkii tunnelmallisia
-            tekstuureja. Kaikki miksaus/masterointi, säveltäminen ja esitykset
-            Davitt Barry.
-          </p>
-        </div>
-
-        <!-- Track 2: Mote In Mine -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-        >
-          <div
-            class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between"
-          >
-            <div>
-              <h3 class="mb-2 text-xl text-white">Mote In Mine</h3>
-              <p class="text-sm text-neutral-500">Elektroninen / Prog</p>
-            </div>
-          </div>
-
-          <audio controls class="mb-4 h-12 w-full" controlsList="nodownload">
-            <source src="/assets/audio/Mote In Mine.mp3" type="audio/mpeg" />
-            Selaimesi ei tue audio-elementtiä.
-          </audio>
-
-          <p class="text-sm text-neutral-400">
-            Syvä, mukaansatempaava matka maanalaisten äänimaisemien läpi. Kaikki
-            miksaus/masterointi, säveltäminen ja esitykset Davitt Barry.
-          </p>
-        </div>
-
-        <!-- Track 3: Polishing Stones -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-        >
-          <div
-            class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between"
-          >
-            <div>
-              <h3 class="mb-2 text-xl text-white">Polishing Stones</h3>
-              <p class="text-sm text-neutral-500">
-                Kokeellinen / Äänisuunnittelu
-              </p>
-            </div>
-          </div>
-
-          <audio controls class="mb-4 h-12 w-full" controlsList="nodownload">
-            <source src="/assets/audio/Polishing Stones.mp3" type="audio/mpeg"
-            />
-            Selaimesi ei tue audio-elementtiä.
-          </audio>
-
-          <p class="text-sm text-neutral-400">
-            Tekstuurinen tutkielma, joka yhdistää orgaanisia ja synteettisiä
-            elementtejä meditatiivisessa sävellyksessä. Kaikki
-            miksaus/masterointi, säveltäminen ja esitykset Davitt Barry.
-          </p>
         </div>
       </div>
-
-      <!-- Custom styling for audio players -->
-      <style>
-        audio {
-          background-color: #171717;
-          border-radius: 12px;
-          border: 1px solid #404040;
-        }
-        audio::-webkit-media-controls-panel {
-          background-color: #171717;
-          border-radius: 12px;
-        }
-        audio::-webkit-media-controls-current-time-display,
-        audio::-webkit-media-controls-time-remaining-display {
-          color: #fff;
-          margin: 0 8px;
-        }
-        audio::-webkit-media-controls-timeline-container {
-          margin: 0 8px;
-        }
-        audio::-webkit-media-controls-timeline {
-          background: #404040;
-          border-radius: 8px;
-          margin: 0 4px;
-        }
-        audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
-          background: #10b981;
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-        }
-        audio::-webkit-media-controls-timeline::-webkit-slider-runnable-track {
-          background: linear-gradient(
-            to right,
-            #10b981 0%,
-            #10b981 var(--webkit-slider-fill-percentage, 0%),
-            #404040 var(--webkit-slider-fill-percentage, 0%),
-            #404040 100%
-          );
-          border-radius: 8px;
-        }
-        audio::-moz-range-thumb {
-          background: #10b981;
-          border: none;
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-        }
-        audio::-moz-range-track {
-          background: #404040;
-          border-radius: 8px;
-          margin: 0 8px;
-        }
-        audio::-moz-range-progress {
-          background: #10b981;
-          border-radius: 8px;
-        }
-      </style>
-
-      <!-- Script to handle single audio playback -->
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const audioElements = document.querySelectorAll('audio');
-
-          audioElements.forEach((audio) => {
-            audio.addEventListener('play', function () {
-              audioElements.forEach((otherAudio) => {
-                if (otherAudio !== audio) {
-                  otherAudio.pause();
-                }
-              });
-            });
-          });
-        });
-      </script>
     </div>
 
     <!-- Past Releases -->
