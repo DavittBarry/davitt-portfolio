@@ -45,6 +45,7 @@ const RecentPosts = (props: IRecentPostsProps) => {
               <img
                 src={post.frontmatter.imgSrc}
                 alt={post.frontmatter.imgAlt || post.frontmatter.title}
+                loading="lazy"
                 className="mb-4 h-48 w-full object-cover opacity-80 transition-opacity group-hover:opacity-100"
               />
             )}
