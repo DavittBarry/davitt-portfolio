@@ -5,7 +5,9 @@ const Footerfi = () => (
     <Section>
       <div className="py-2">
         <div className="mb-6 text-center">
-          <p className="text-base text-slate-400">© 2025 Davitt Barry</p>
+          <p className="text-base text-slate-400">
+            © {new Date().getFullYear()} Davitt Barry
+          </p>
           <a
             href="mailto:davittbarry333@gmail.com"
             className="text-base text-slate-300 transition-colors hover:text-accent"

@@ -45,6 +45,38 @@ const ProjectList = () => (
         }
       />
       <CustomProject
+        name="Weather App"
+        description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies. Note: Login and registration are currently disabled as the backend is offline."
+        githubLink="https://github.com/DavittBarry/weather-app"
+        appLink="https://marvelous-hamster-87b7aa.netlify.app/"
+        img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
+        category={
+          <>
+            <CustomTag color={ColorTags.BLUE} url="https://reactjs.org">
+              React.js
+            </CustomTag>
+            <CustomTag color={ColorTags.GREEN} url="https://nodejs.org">
+              Node.js
+            </CustomTag>
+            <CustomTag color={ColorTags.GRAY} url="https://expressjs.com">
+              Express
+            </CustomTag>
+            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
+              MongoDB
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.YELLOW}
+              url="https://en.wikipedia.org/wiki/API"
+            >
+              APIs
+            </CustomTag>
+            <CustomTag color={ColorTags.PINK} url="https://sass-lang.com">
+              SASS
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProject
         name="Job Advertisement App"
         description="A job posting platform, built on top of Vue.js, MongoDB, and Tailwind CSS. The application offers features such as real-time job postings, advanced search filters, as well as employer and employee user accounts."
         githubLink="https://github.com/DavittBarry/job-advertisement-app"
@@ -52,25 +84,6 @@ const ProjectList = () => (
           src: '/assets/images/classified.png',
           alt: 'Job Advertisement App',
         }}
-        category={
-          <>
-            <CustomTag color={ColorTags.GREEN} url="https://vuejs.org">
-              Vue.js
-            </CustomTag>
-            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
-              MongoDB
-            </CustomTag>
-            <CustomTag color={ColorTags.BLUE} url="https://tailwindcss.com">
-              Tailwind
-            </CustomTag>
-          </>
-        }
-      />
-      <CustomProject
-        name="Weather App"
-        description="A simple weather app that provides accurate and up-to-date weather forecasts. The application is built using React.js, Node.js, Express.js, SASS, and API technologies."
-        githubLink="https://github.com/DavittBarry/weather-app"
-        img={{ src: '/assets/images/sun.png', alt: 'Weather App' }}
         category={
           <>
             <CustomTag color={ColorTags.BLUE} url="https://reactjs.org">
