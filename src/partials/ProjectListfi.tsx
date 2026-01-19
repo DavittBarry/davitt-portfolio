@@ -45,6 +45,38 @@ const ProjectListfi = () => (
         }
       />
       <CustomProjectfi
+        name="Sääsovellus"
+        description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS, ja API-teknologioita. Huom: Kirjautuminen ja rekisteröityminen ovat toistaiseksi pois käytöstä, koska backend-palvelin on offline-tilassa."
+        githubLink="https://github.com/DavittBarry/weather-app"
+        appLink="https://marvelous-hamster-87b7aa.netlify.app/"
+        img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
+        category={
+          <>
+            <CustomTag color={ColorTags.BLUE} url="https://reactjs.org">
+              React.js
+            </CustomTag>
+            <CustomTag color={ColorTags.GREEN} url="https://nodejs.org">
+              Node.js
+            </CustomTag>
+            <CustomTag color={ColorTags.GRAY} url="https://expressjs.com">
+              Express
+            </CustomTag>
+            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
+              MongoDB
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.YELLOW}
+              url="https://fi.wikipedia.org/wiki/Ohjelmointirajapinta"
+            >
+              API:t
+            </CustomTag>
+            <CustomTag color={ColorTags.PINK} url="https://sass-lang.com">
+              SASS
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProjectfi
         name="Työpaikkailmoitussovellus"
         description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
         githubLink="https://github.com/DavittBarry/job-advertisement-app"
@@ -52,25 +84,6 @@ const ProjectListfi = () => (
           src: '/assets/images/classified.png',
           alt: 'Työpaikkailmoitussovellus',
         }}
-        category={
-          <>
-            <CustomTag color={ColorTags.GREEN} url="https://vuejs.org">
-              Vue.js
-            </CustomTag>
-            <CustomTag color={ColorTags.EMERALD} url="https://www.mongodb.com">
-              MongoDB
-            </CustomTag>
-            <CustomTag color={ColorTags.BLUE} url="https://tailwindcss.com">
-              Tailwind
-            </CustomTag>
-          </>
-        }
-      />
-      <CustomProjectfi
-        name="Sääsovellus"
-        description="Yksinkertainen sääsovellus, joka tarjoaa tarkkoja ja ajantasaisia sääennusteita. Sovellus on rakennettu käyttäen React.js, Node.js, Express.js, SASS, ja API-teknologioita."
-        githubLink="https://github.com/DavittBarry/weather-app"
-        img={{ src: '/assets/images/sun.png', alt: 'Sääsovellus' }}
         category={
           <>
             <CustomTag color={ColorTags.BLUE} url="https://reactjs.org">
