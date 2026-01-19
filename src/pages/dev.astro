@@ -20,7 +20,7 @@ const { description } = AppConfig;
 <Base head={{ title, description }}>
   <Hero />
   <ProjectList />
-  <CVDownload />
-  <CTOService />
   <RecentPosts client:visible postList={sortedPosts} />
+  <CTOService />
+  <CVDownload />
 </Base>

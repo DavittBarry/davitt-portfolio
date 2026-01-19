@@ -13,6 +13,38 @@ const ProjectListfi = () => (
   >
     <div className="flex flex-col gap-4">
       <CustomProjectfi
+        name="CBTJournal"
+        description="Yksityisyyteen keskittyvä kognitiivisen käyttäytymisterapian päiväkirjasovellus. Seuraa ajatuksia, tunnista kognitiivisia vääristymiä, harjoita kiitollisuutta ja seuraa mielialaa Burns-masennustarkistuksella. Rakennettu Reactilla, TypeScriptillä ja Capacitorilla web- ja mobiilialustoille. Kaikki data tallennetaan paikallisesti laitteelle."
+        githubLink="https://github.com/DavittBarry/CBTJournal/tree/main"
+        appLink="https://cbtjournal.app/"
+        img={{ src: '/assets/images/cbtjournal-icon.png', alt: 'CBTJournal' }}
+        category={
+          <>
+            <CustomTag color={ColorTags.BLUE} url="https://reactjs.org">
+              React
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.ROSE}
+              url="https://www.typescriptlang.org"
+            >
+              TypeScript
+            </CustomTag>
+            <CustomTag color={ColorTags.SKY} url="https://tailwindcss.com">
+              Tailwind
+            </CustomTag>
+            <CustomTag color={ColorTags.PURPLE} url="https://capacitorjs.com">
+              Capacitor
+            </CustomTag>
+            <CustomTag
+              color={ColorTags.EMERALD}
+              url="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API"
+            >
+              IndexedDB
+            </CustomTag>
+          </>
+        }
+      />
+      <CustomProjectfi
         name="Työpaikkailmoitussovellus"
         description="Työpaikkailmoitusalusta, rakennettu Vue.js:n, MongoDB:n ja Tailwind CSS:n päälle. Sovellus tarjoaa ominaisuuksia kuten reaaliaikaiset työpaikkailmoitukset, edistyneet hakusuodattimet sekä työnantaja- ja työntekijäkäyttäjätilit."
         githubLink="https://github.com/DavittBarry/job-advertisement-app"
