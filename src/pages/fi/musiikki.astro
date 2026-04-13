@@ -3,174 +3,404 @@ import Basefi from '@/templates/Basefi.astro';
 
 const title = 'Musiikki - Davitt Barry';
 const description =
-  'Alkuperäiset musiikkisävellykset Davitt Barryltä. Elektronista, ambienttia ja kokeellista äänimaailmaa.';
+  'Alkuperäistä musiikkia ja live cover -keikkoja Davitt Barryltä. Akustinen trubaduuri tapahtumiin ympäri Suomen.';
 ---
 
 <Basefi head={{ title, description }}>
   <div class="container mx-auto px-6 py-12">
-    <!-- Hero Section -->
-    <div class="mx-auto mb-16 max-w-4xl text-center">
+    <!-- Page Title -->
+    <div class="mx-auto mb-10 max-w-4xl text-center">
       <h1 class="mb-4 text-5xl font-light text-white">
-        Alkuperäinen <span class="text-emerald-400">musiikki</span>
+        <span class="text-emerald-400">Musiikki</span>
       </h1>
-      <p class="text-xl text-neutral-400">Omat sävellykset ja tuotannot</p>
     </div>
 
-    <!-- Latest Release -->
-    <div class="mx-auto mb-16 max-w-6xl">
-      <h2 class="mb-8 text-3xl font-light text-white">
-        Aliud Phantasma (2025)
-      </h2>
-      <div
-        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-      >
-        <div class="mb-8">
-          <h3 class="mb-6 text-center text-2xl font-light text-white">
-            Musiikkivideo: Turquoise Wash Away:
-          </h3>
-          <div class="relative w-full" style="padding-bottom: 56.25%;">
-            <iframe
-              class="absolute left-0 top-0 h-full w-full rounded"
-              src="https://www.youtube.com/embed/zYJyVhUtR-4"
-              title="Turquoise Wash Away - Musiikkivideo"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <p class="mt-6 text-center text-lg text-neutral-300">
-            Single albumilta:
-          </p>
-        </div>
-        <img
-          src="/assets/images/1000055346.jpg"
-          alt="Aliud Phantasma Albumin Kansi"
-          class="mx-auto mb-6 w-full max-w-2xl rounded object-contain"
-        />
-        <p class="mb-6 text-neutral-400">
-          Uusin albumini tutkii elektronista, ambienttia ja progressiivista
-          äänimaailmaa. Kaikki miksaus, masterointi, säveltäminen ja esitykset
-          Davitt Barry.
-        </p>
-        <div class="mb-6">
-          <h3 class="mb-4 text-lg text-white">
-            Kuuntele nyt suoratoistoalustoilla:
-          </h3>
-          <div class="flex flex-wrap gap-4">
-            <a
-              href="https://open.spotify.com/artist/1BOxo6BWmD8zbIwxm28jvv"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Spotify →
-            </a>
-            <a
-              href="https://music.apple.com/us/artist/davitt-barry/1541200569"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Apple Music →
-            </a>
-            <a
-              href="https://tidal.com/artist/21939452/u"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Tidal →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Past Releases -->
-    <div class="mx-auto mb-16 max-w-6xl">
-      <h2 class="mb-8 text-3xl font-light text-white">Aiemmat julkaisut</h2>
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <!-- EP Release -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+    <!-- Tab Navigation -->
+    <div class="mx-auto mb-12 max-w-6xl">
+      <div class="flex justify-center gap-2" role="tablist">
+        <button
+          id="tab-original"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-original"
+          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400"
+          data-tab="original"
         >
-          <img
-            src="/assets/images/daev-ep-cover.jpg"
-            alt="dæv EP Kansi"
-            class="mb-6 h-48 w-full rounded object-cover"
-          />
-          <h3 class="mb-4 text-xl text-white">dæv EP (2017)</h3>
-          <p class="mb-6 text-neutral-400">
-            Kokoelma kokeellisia elektronisia kappaleita, joissa on ripaus
-            prog-elementtejä. Yhteiskirjoitettu Heikki Saarenkunnaksen kanssa ja
-            yhteismiksattu/masteroitu Panu Postin kanssa. Kuvitus Antti
-            Lukinmaa.
-          </p>
-          <a
-            href="https://daev.bandcamp.com/album/ep"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
-          >
-            Kuuntele Bandcampissa →
-          </a>
-        </div>
-
-        <!-- Squozen EP -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          Alkuperäinen musiikki
+        </button>
+        <button
+          id="tab-covers"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-covers"
+          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-amber-400 hover:border-amber-400/50"
+          data-tab="covers"
         >
-          <img
-            src="/assets/images/davitt-squozen-ep.jpg"
-            alt="Squozen EP Kansi"
-            class="mb-6 h-48 w-full rounded object-cover"
-          />
-          <h3 class="mb-4 text-xl text-white">Squozen EP (2014)</h3>
-          <p class="mb-6 text-neutral-400">
-            Aikaisempi kokeellinen työ, joka sisältää abstrakteja sävellyksiä ja
-            epätavallisia äänisuunnittelutapoja. Kaikki miksaus/masterointi,
-            säveltäminen ja esitykset Davitt Barry.
-          </p>
-          <a
-            href="https://davittbarry.bandcamp.com/album/squozen-ep"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
-          >
-            Kuuntele Bandcampissa →
-          </a>
-        </div>
+          Cover-keikat
+        </button>
       </div>
+      <div class="h-px w-full bg-neutral-700"></div>
     </div>
 
-    <!-- Production Services Link -->
-    <div class="mx-auto max-w-4xl text-center">
-      <div
-        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
-      >
-        <h2 class="mb-4 text-2xl font-light text-white">
-          Tarvitsetko musiikkia, miksausta tai tuotantoa projektiisi?
+    <!-- ============ ALKUPERÄINEN MUSIIKKI PANEL ============ -->
+    <div id="panel-original" role="tabpanel" aria-labelledby="tab-original" class="tab-panel">
+
+      <!-- Latest Release -->
+      <div class="mx-auto mb-16 max-w-6xl">
+        <h2 class="mb-8 text-3xl font-light text-white">
+          Aliud Phantasma (2025)
         </h2>
-        <p class="mb-6 text-neutral-400">
-          Tarjoan ammattimaisia musiikkituotanto-, miksaus- ja
-          masterointipalveluita. Tarvitsetpa alkuperäisiä sävellyksiä,
-          äänisuunnittelua tai jälkituotantoa, voin auttaa toteuttamaan
-          äänivisiosi.
-        </p>
-        <div class="flex flex-col justify-center gap-4 sm:flex-row">
-          <a
-            href="/fi/audiopalvelut"
-            class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
-          >
-            Äänitekniikkapalvelut →
-          </a>
-          <a
-            href="/fi/yhteystiedot"
-            class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-          >
-            Ota yhteyttä →
-          </a>
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+        >
+          <div class="mb-8">
+            <h3 class="mb-6 text-center text-2xl font-light text-white">
+              Musiikkivideo: Turquoise Wash Away:
+            </h3>
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/zYJyVhUtR-4"
+                title="Turquoise Wash Away - Musiikkivideo"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p class="mt-6 text-center text-lg text-neutral-300">
+              Single albumilta:
+            </p>
+          </div>
+          <img
+            src="/assets/images/1000055346.jpg"
+            alt="Aliud Phantasma Albumin Kansi"
+            class="mx-auto mb-6 w-full max-w-2xl rounded object-contain"
+          />
+          <p class="mb-6 text-neutral-400">
+            Uusin albumini tutkii elektronista, ambienttia ja progressiivista
+            äänimaailmaa. Kaikki miksaus, masterointi, säveltäminen ja esitykset
+            Davitt Barry.
+          </p>
+          <div class="mb-6">
+            <h3 class="mb-4 text-lg text-white">
+              Kuuntele nyt suoratoistoalustoilla:
+            </h3>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="https://open.spotify.com/artist/1BOxo6BWmD8zbIwxm28jvv"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+              >
+                Spotify →
+              </a>
+              <a
+                href="https://music.apple.com/us/artist/davitt-barry/1541200569"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+              >
+                Apple Music →
+              </a>
+              <a
+                href="https://tidal.com/artist/21939452/u"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+              >
+                Tidal →
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Past Releases -->
+      <div class="mx-auto mb-16 max-w-6xl">
+        <h2 class="mb-8 text-3xl font-light text-white">Aiemmat julkaisut</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          >
+            <img
+              src="/assets/images/daev-ep-cover.jpg"
+              alt="dæv EP Kansi"
+              class="mb-6 h-48 w-full rounded object-cover"
+            />
+            <h3 class="mb-4 text-xl text-white">dæv EP (2017)</h3>
+            <p class="mb-6 text-neutral-400">
+              Kokoelma kokeellisia elektronisia kappaleita, joissa on ripaus
+              prog-elementtejä. Yhteiskirjoitettu Heikki Saarenkunnaksen kanssa ja
+              yhteismiksattu/masteroitu Panu Postin kanssa. Kuvitus Antti
+              Lukinmaa.
+            </p>
+            <a
+              href="https://daev.bandcamp.com/album/ep"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Kuuntele Bandcampissa →
+            </a>
+          </div>
+
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          >
+            <img
+              src="/assets/images/davitt-squozen-ep.jpg"
+              alt="Squozen EP Kansi"
+              class="mb-6 h-48 w-full rounded object-cover"
+            />
+            <h3 class="mb-4 text-xl text-white">Squozen EP (2014)</h3>
+            <p class="mb-6 text-neutral-400">
+              Aikaisempi kokeellinen työ, joka sisältää abstrakteja sävellyksiä ja
+              epätavallisia äänisuunnittelutapoja. Kaikki miksaus/masterointi,
+              säveltäminen ja esitykset Davitt Barry.
+            </p>
+            <a
+              href="https://davittbarry.bandcamp.com/album/squozen-ep"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Kuuntele Bandcampissa →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Production Services Link -->
+      <div class="mx-auto max-w-4xl text-center">
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+        >
+          <h2 class="mb-4 text-2xl font-light text-white">
+            Tarvitsetko musiikkia, miksausta tai tuotantoa projektiisi?
+          </h2>
+          <p class="mb-6 text-neutral-400">
+            Tarjoan ammattimaisia musiikkituotanto-, miksaus- ja
+            masterointipalveluita. Tarvitsetpa alkuperäisiä sävellyksiä,
+            äänisuunnittelua tai jälkituotantoa, voin auttaa toteuttamaan
+            äänivisiosi.
+          </p>
+          <div class="flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href="/fi/audiopalvelut"
+              class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
+            >
+              Äänitekniikkapalvelut →
+            </a>
+            <a
+              href="/fi/yhteystiedot"
+              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Ota yhteyttä →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ COVER-KEIKAT PANEL ============ -->
+    <div id="panel-covers" role="tabpanel" aria-labelledby="tab-covers" class="tab-panel hidden">
+
+      <div class="mx-auto mb-16 max-w-6xl">
+        <!-- Intro / Bio -->
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-4xl font-light text-white">
+            Live-<span class="text-amber-400">keikat</span>
+          </h2>
+          <p class="mx-auto max-w-3xl text-lg text-neutral-400 mb-4">
+            Olen soittanut covereita ammattimaisesti <span id="years-playing-fi" class="text-white font-medium"></span> vuotta. Aloitin keikkailun Dublinissa, vietin kolme vuotta kiertäen Australiaa pääasiassa <a href="https://simonmeolamusic.com/about" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Simon Meolan</a> kanssa, ja pääsin soittamaan Madridin Tennis Openiin finaalipäivänä 2011 <a href="https://www.youtube.com/watch?v=PbkjcHv6MXE" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Lorcan James</a> -yhtyeen kanssa.
+          </p>
+          <p class="mx-auto max-w-3xl text-lg text-neutral-400 mb-4">
+            Suomessa olen keikkaillut vuodesta 2011 lähtien lähes jokaisella risteilyaluksella, suurimmilla hiihtokeskuksilla ja muilla isoilla lavoilla ympäri maan, yksin, duona ja bändien kanssa. Teen yhteistyötä myös suomalaisen ohjelmatoimiston <a href="https://piikkikasvi.fi/uutiset/davitt-barry/" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Piikkikasvin</a> kanssa.
+          </p>
+          <p class="mx-auto max-w-3xl text-lg text-neutral-400">
+            Varattavissa yksityistilaisuuksiin, yritystapahtumiin, häihin, ravintoiltoihin ja baarikeikoille. Akustinen kitara ja laulu kattaen rockia, poppia, folkia ja kaikkea siltä väliltä.
+          </p>
+          <div class="mt-6">
+            <a
+              href="/fi/yhteystiedot"
+              class="inline-block border border-amber-400 px-6 py-3 text-amber-400 transition-all hover:bg-amber-400/10"
+            >
+              Varaa minut →
+            </a>
+          </div>
+        </div>
+
+        <!-- Featured Video -->
+        <div class="mb-10">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/fOLMcd1RaPE"
+                title="Davitt Barry - Live cover -esitys"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heartbreakers Video (after Sting) -->
+        <div class="mb-6">
+          <p class="mb-4 text-center text-neutral-400">
+            <span class="text-white">Heartbreakers</span>-yhtyeen kanssa:
+          </p>
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/vrR3bdrt6Fg"
+                title="Davitt Barry Heartbreakers-yhtyeen kanssa"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- More Solo Videos -->
+        <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/1x1N8soRlIY"
+                title="Davitt Barry - Live cover 2"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/-3y0NLfmyG0"
+                title="Davitt Barry - Live cover 3"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="mb-10">
+          <h3 class="mb-6 text-center text-2xl font-light text-white">
+            Promokuvat
+          </h3>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25].map((n) => (
+              <a
+                href={`/assets/images/promo/promo-${String(n).padStart(2, '0')}.jpg`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative overflow-hidden border border-neutral-800 transition-all hover:border-amber-400/50"
+              >
+                <img
+                  src={`/assets/images/promo/promo-${String(n).padStart(2, '0')}.jpg`}
+                  alt={`Davitt Barry promokuva ${n}`}
+                  class="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </a>
+            ))}
+          </div>
+          <p class="mt-4 text-center text-sm text-neutral-500">
+            Klikkaa kuvaa nähdäksesi täysikokoisena. Kuvat saatavilla promootiokäyttöön pyydettäessä.
+          </p>
+        </div>
+
+        <!-- Booking CTA -->
+        <div class="text-center">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+          >
+            <h3 class="mb-4 text-2xl font-light text-white">
+              Varaa live-esiintyjä tapahtumaasi
+            </h3>
+            <p class="mb-6 text-neutral-400">
+              Etsitkö muusikkoa tapahtumaasi? Soitan akustisia cover-settejä tilaisuutesi mukaan, rennosta taustamusiikista täysillä laulettaviin bilekappaleisiin. Kotipaikkana Suomi, keikkoja koko maassa.
+            </p>
+            <a
+              href="/fi/yhteystiedot"
+              class="inline-block border border-amber-400 px-8 py-3 text-lg text-amber-400 transition-all hover:bg-amber-400/10"
+            >
+              Ota yhteyttä →
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <!-- Tab switching script -->
+  <script>
+    function initTabs() {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.tab-panel');
+
+      function switchTab(tabName) {
+        tabs.forEach(tab => {
+          const isActive = tab.getAttribute('data-tab') === tabName;
+          tab.setAttribute('aria-selected', String(isActive));
+          if (isActive && tabName === 'original') {
+            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400';
+          } else if (isActive && tabName === 'covers') {
+            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-amber-400 bg-amber-400/10 text-amber-400';
+          } else {
+            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-amber-400 hover:border-amber-400/50';
+          }
+        });
+
+        panels.forEach(panel => {
+          if (panel.id === `panel-${tabName}`) {
+            panel.classList.remove('hidden');
+          } else {
+            panel.classList.add('hidden');
+          }
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabName = tab.getAttribute('data-tab');
+          switchTab(tabName);
+          history.replaceState(null, '', `#${tabName}`);
+        });
+      });
+
+      // Check hash on load
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'covers' || hash === 'original') {
+        switchTab(hash);
+      }
+    }
+
+    function initYears() {
+      const startYear = 2007;
+      const years = new Date().getFullYear() - startYear;
+      const el = document.getElementById('years-playing-fi');
+      if (el) el.textContent = String(years);
+    }
+
+    // Run on initial load and on Astro page transitions
+    initTabs();
+    initYears();
+    document.addEventListener('astro:after-swap', () => { initTabs(); initYears(); });
+  </script>
 </Basefi>

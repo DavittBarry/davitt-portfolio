@@ -3,174 +3,402 @@ import Base from '@/templates/Base.astro';
 
 const title = 'Music - Davitt Barry';
 const description =
-  'Original music compositions by Davitt Barry. Electronic, ambient, and experimental soundscapes.';
+  'Original music and live cover gigs by Davitt Barry. Acoustic troubadour available for events across Finland.';
 ---
 
 <Base head={{ title, description }}>
   <div class="container mx-auto px-6 py-12">
-    <!-- Hero Section -->
-    <div class="mx-auto mb-16 max-w-4xl text-center">
+    <!-- Page Title -->
+    <div class="mx-auto mb-10 max-w-4xl text-center">
       <h1 class="mb-4 text-5xl font-light text-white">
-        Original <span class="text-emerald-400">Music</span>
+        <span class="text-emerald-400">Music</span>
       </h1>
-      <p class="text-xl text-neutral-400">
-        My musical compositions and productions
-      </p>
     </div>
 
-    <!-- Latest Release -->
-    <div class="mx-auto mb-16 max-w-6xl">
-      <h2 class="mb-8 text-3xl font-light text-white">
-        Aliud Phantasma (2025)
-      </h2>
-      <div
-        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-      >
-        <div class="mb-8">
-          <h3 class="mb-6 text-center text-2xl font-light text-white">
-            Music video: Turquoise Wash Away:
-          </h3>
-          <div class="relative w-full" style="padding-bottom: 56.25%;">
-            <iframe
-              class="absolute left-0 top-0 h-full w-full rounded"
-              src="https://www.youtube.com/embed/zYJyVhUtR-4"
-              title="Turquoise Wash Away - Music Video"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <p class="mt-6 text-center text-lg text-neutral-300">
-            A single from the album:
-          </p>
-        </div>
-        <img
-          src="/assets/images/1000055346.jpg"
-          alt="Aliud Phantasma Album Cover"
-          class="mx-auto mb-6 w-full max-w-2xl rounded object-contain"
-        />
-        <p class="mb-6 text-neutral-400">
-          My latest album exploring electronic, ambient, and progressive
-          soundscapes. All mixing, mastering, composing, and performances by
-          Davitt Barry.
-        </p>
-        <div class="mb-6">
-          <h3 class="mb-4 text-lg text-white">
-            Listen now on streaming platforms:
-          </h3>
-          <div class="flex flex-wrap gap-4">
-            <a
-              href="https://open.spotify.com/artist/1BOxo6BWmD8zbIwxm28jvv"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Spotify →
-            </a>
-            <a
-              href="https://music.apple.com/us/artist/davitt-barry/1541200569"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Apple Music →
-            </a>
-            <a
-              href="https://tidal.com/artist/21939452/u"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Tidal →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Past Releases -->
-    <div class="mx-auto mb-16 max-w-6xl">
-      <h2 class="mb-8 text-3xl font-light text-white">Past Releases</h2>
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <!-- EP Release -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+    <!-- Tab Navigation -->
+    <div class="mx-auto mb-12 max-w-6xl">
+      <div class="flex justify-center gap-2" role="tablist">
+        <button
+          id="tab-original"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-original"
+          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400"
+          data-tab="original"
         >
-          <img
-            src="/assets/images/daev-ep-cover.jpg"
-            alt="dæv EP Cover"
-            class="mb-6 h-48 w-full rounded object-cover"
-          />
-          <h3 class="mb-4 text-xl text-white">dæv EP (2017)</h3>
-          <p class="mb-6 text-neutral-400">
-            A collection of experimental electronic tracks sprinkled with
-            elements of prog. Co-written with Heikki Saarenkunnas and
-            co-mixed/mastered with Panu Posti. Artwork by Antti Lukinmaa.
-          </p>
-          <a
-            href="https://daev.bandcamp.com/album/ep"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
-          >
-            Listen on Bandcamp →
-          </a>
-        </div>
-
-        <!-- Squozen EP -->
-        <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          Original music
+        </button>
+        <button
+          id="tab-covers"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-covers"
+          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-amber-400 hover:border-amber-400/50"
+          data-tab="covers"
         >
-          <img
-            src="/assets/images/davitt-squozen-ep.jpg"
-            alt="Squozen EP Cover"
-            class="mb-6 h-48 w-full rounded object-cover"
-          />
-          <h3 class="mb-4 text-xl text-white">Squozen EP (2014)</h3>
-          <p class="mb-6 text-neutral-400">
-            An earlier experimental work featuring abstract compositions and
-            unconventional sound design approaches. All mixing/mastering,
-            composing and performances by Davitt Barry.
-          </p>
-          <a
-            href="https://davittbarry.bandcamp.com/album/squozen-ep"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
-          >
-            Listen on Bandcamp →
-          </a>
-        </div>
+          Cover gigs
+        </button>
       </div>
+      <div class="h-px w-full bg-neutral-700"></div>
     </div>
 
-    <!-- Production Services Link -->
-    <div class="mx-auto max-w-4xl text-center">
-      <div
-        class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
-      >
-        <h2 class="mb-4 text-2xl font-light text-white">
-          Do you need music, mixing, or production for your project?
+    <!-- ============ ORIGINAL MUSIC PANEL ============ -->
+    <div id="panel-original" role="tabpanel" aria-labelledby="tab-original" class="tab-panel">
+
+      <!-- Latest Release -->
+      <div class="mx-auto mb-16 max-w-6xl">
+        <h2 class="mb-8 text-3xl font-light text-white">
+          Aliud Phantasma (2025)
         </h2>
-        <p class="mb-6 text-neutral-400">
-          I offer professional music production, mixing, and mastering services.
-          Whether you need original compositions, sound design, or
-          post-production work, I can help bring your audio vision to life.
-        </p>
-        <div class="flex flex-col justify-center gap-4 sm:flex-row">
-          <a
-            href="/audio-services"
-            class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
-          >
-            Audio engineering services →
-          </a>
-          <a
-            href="/contact"
-            class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-          >
-            Get in touch →
-          </a>
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+        >
+          <div class="mb-8">
+            <h3 class="mb-6 text-center text-2xl font-light text-white">
+              Music video: Turquoise Wash Away:
+            </h3>
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/zYJyVhUtR-4"
+                title="Turquoise Wash Away - Music Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p class="mt-6 text-center text-lg text-neutral-300">
+              A single from the album:
+            </p>
+          </div>
+          <img
+            src="/assets/images/1000055346.jpg"
+            alt="Aliud Phantasma Album Cover"
+            class="mx-auto mb-6 w-full max-w-2xl rounded object-contain"
+          />
+          <p class="mb-6 text-neutral-400">
+            My latest album exploring electronic, ambient, and progressive
+            soundscapes. All mixing, mastering, composing, and performances by
+            Davitt Barry.
+          </p>
+          <div class="mb-6">
+            <h3 class="mb-4 text-lg text-white">
+              Listen now on streaming platforms:
+            </h3>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="https://open.spotify.com/artist/1BOxo6BWmD8zbIwxm28jvv"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+              >
+                Spotify →
+              </a>
+              <a
+                href="https://music.apple.com/us/artist/davitt-barry/1541200569"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+              >
+                Apple Music →
+              </a>
+              <a
+                href="https://tidal.com/artist/21939452/u"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+              >
+                Tidal →
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Past Releases -->
+      <div class="mx-auto mb-16 max-w-6xl">
+        <h2 class="mb-8 text-3xl font-light text-white">Past releases</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          >
+            <img
+              src="/assets/images/daev-ep-cover.jpg"
+              alt="dæv EP Cover"
+              class="mb-6 h-48 w-full rounded object-cover"
+            />
+            <h3 class="mb-4 text-xl text-white">dæv EP (2017)</h3>
+            <p class="mb-6 text-neutral-400">
+              A collection of experimental electronic tracks sprinkled with
+              elements of prog. Co-written with Heikki Saarenkunnas and
+              co-mixed/mastered with Panu Posti. Artwork by Antti Lukinmaa.
+            </p>
+            <a
+              href="https://daev.bandcamp.com/album/ep"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Listen on Bandcamp →
+            </a>
+          </div>
+
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          >
+            <img
+              src="/assets/images/davitt-squozen-ep.jpg"
+              alt="Squozen EP Cover"
+              class="mb-6 h-48 w-full rounded object-cover"
+            />
+            <h3 class="mb-4 text-xl text-white">Squozen EP (2014)</h3>
+            <p class="mb-6 text-neutral-400">
+              An earlier experimental work featuring abstract compositions and
+              unconventional sound design approaches. All mixing/mastering,
+              composing and performances by Davitt Barry.
+            </p>
+            <a
+              href="https://davittbarry.bandcamp.com/album/squozen-ep"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Listen on Bandcamp →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Production Services Link -->
+      <div class="mx-auto max-w-4xl text-center">
+        <div
+          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+        >
+          <h2 class="mb-4 text-2xl font-light text-white">
+            Do you need music, mixing, or production for your project?
+          </h2>
+          <p class="mb-6 text-neutral-400">
+            I offer professional music production, mixing, and mastering services.
+            Whether you need original compositions, sound design, or
+            post-production work, I can help bring your audio vision to life.
+          </p>
+          <div class="flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href="/audio-services"
+              class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
+            >
+              Audio engineering services →
+            </a>
+            <a
+              href="/contact"
+              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
+            >
+              Get in touch →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ COVER GIGS PANEL ============ -->
+    <div id="panel-covers" role="tabpanel" aria-labelledby="tab-covers" class="tab-panel hidden">
+
+      <div class="mx-auto mb-16 max-w-6xl">
+        <!-- Intro / Bio -->
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-4xl font-light text-white">
+            Live <span class="text-amber-400">cover gigs</span>
+          </h2>
+          <p class="mx-auto max-w-3xl text-lg text-neutral-400 mb-4">
+            I've been playing covers professionally for <span id="years-playing-en" class="text-white font-medium"></span> years. I started out gigging around Dublin, spent three years playing all over Australia mainly with <a href="https://simonmeolamusic.com/about" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Simon Meola</a>, and even got to play the Madrid Tennis Open on the day of the final in 2011 with the band <a href="https://www.youtube.com/watch?v=PbkjcHv6MXE" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Lorcan James</a>.
+          </p>
+          <p class="mx-auto max-w-3xl text-lg text-neutral-400 mb-4">
+            Since moving to Finland in 2011, I've played on nearly every cruise ship line, major ski resorts, and other big venues around the country, solo, as a duo, and with full bands. I also work with the Finnish booking agency <a href="https://piikkikasvi.fi/uutiset/davitt-barry/" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Piikkikasvi</a>.
+          </p>
+          <p class="mx-auto max-w-3xl text-lg text-neutral-400">
+            Available for private parties, corporate events, weddings, restaurant evenings, and bar gigs. Acoustic guitar and vocals covering rock, pop, folk, and everything in between.
+          </p>
+          <div class="mt-6">
+            <a
+              href="/contact"
+              class="inline-block border border-amber-400 px-6 py-3 text-amber-400 transition-all hover:bg-amber-400/10"
+            >
+              Book me →
+            </a>
+          </div>
+        </div>
+
+        <!-- Featured Video -->
+        <div class="mb-10">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/fOLMcd1RaPE"
+                title="Davitt Barry - Live Cover Performance"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heartbreakers Video (after Sting) -->
+        <div class="mb-6">
+          <p class="mb-4 text-center text-neutral-400">
+            With <span class="text-white">Heartbreakers</span>, a Finnish cover band:
+          </p>
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/vrR3bdrt6Fg"
+                title="Davitt Barry with Heartbreakers - Live"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- More Solo Videos -->
+        <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/1x1N8soRlIY"
+                title="Davitt Barry - Live Cover 2"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+          >
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute left-0 top-0 h-full w-full rounded"
+                src="https://www.youtube.com/embed/-3y0NLfmyG0"
+                title="Davitt Barry - Live Cover 3"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="mb-10">
+          <h3 class="mb-6 text-center text-2xl font-light text-white">
+            Promo photos
+          </h3>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25].map((n) => (
+              <a
+                href={`/assets/images/promo/promo-${String(n).padStart(2, '0')}.jpg`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative overflow-hidden border border-neutral-800 transition-all hover:border-amber-400/50"
+              >
+                <img
+                  src={`/assets/images/promo/promo-${String(n).padStart(2, '0')}.jpg`}
+                  alt={`Davitt Barry promo photo ${n}`}
+                  class="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </a>
+            ))}
+          </div>
+          <p class="mt-4 text-center text-sm text-neutral-500">
+            Click any photo to view full size. Photos available for promotional use on request.
+          </p>
+        </div>
+
+        <!-- Booking CTA -->
+        <div class="text-center">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+          >
+            <h3 class="mb-4 text-2xl font-light text-white">
+              Book a live performance
+            </h3>
+            <p class="mb-6 text-neutral-400">
+              Looking for a musician for your event? I play acoustic cover sets tailored to your occasion, from laid-back background music to full sing-along party sets. Based in Finland, available nationwide.
+            </p>
+            <a
+              href="/contact"
+              class="inline-block border border-amber-400 px-8 py-3 text-lg text-amber-400 transition-all hover:bg-amber-400/10"
+            >
+              Get in touch →
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <!-- Tab switching script -->
+  <script>
+    function initTabs() {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.tab-panel');
+
+      function switchTab(tabName) {
+        tabs.forEach(tab => {
+          const isActive = tab.getAttribute('data-tab') === tabName;
+          tab.setAttribute('aria-selected', String(isActive));
+          if (isActive && tabName === 'original') {
+            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400';
+          } else if (isActive && tabName === 'covers') {
+            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-amber-400 bg-amber-400/10 text-amber-400';
+          } else {
+            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-amber-400 hover:border-amber-400/50';
+          }
+        });
+
+        panels.forEach(panel => {
+          if (panel.id === `panel-${tabName}`) {
+            panel.classList.remove('hidden');
+          } else {
+            panel.classList.add('hidden');
+          }
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabName = tab.getAttribute('data-tab');
+          switchTab(tabName);
+          history.replaceState(null, '', `#${tabName}`);
+        });
+      });
+
+      // Check hash on load
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'covers' || hash === 'original') {
+        switchTab(hash);
+      }
+    }
+
+    function initYears() {
+      const startYear = 2007;
+      const years = new Date().getFullYear() - startYear;
+      const el = document.getElementById('years-playing-en');
+      if (el) el.textContent = String(years);
+    }
+
+    // Run on initial load and on Astro page transitions
+    initTabs();
+    initYears();
+    document.addEventListener('astro:after-swap', () => { initTabs(); initYears(); });
+  </script>
 </Base>
