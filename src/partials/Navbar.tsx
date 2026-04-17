@@ -1,50 +1,78 @@
 import { Section } from 'astro-boilerplate-components';
 
-const Navbar = () => {
+import type { Locale } from '@/utils/i18n';
+
+type Props = { locale: Locale };
+
+type NavItem = {
+  href: string;
+  label: string;
+  hover: string;
+};
+
+const labels = {
+  en: {
+    menuAria: 'Toggle navigation menu',
+    items: [
+      { href: '/', label: 'Home', hover: 'hover:text-cyan-400' },
+      { href: '/dev', label: 'IT & Development', hover: 'hover:text-accent' },
+      { href: '/music', label: 'Music', hover: 'hover:text-emerald-400' },
+      {
+        href: '/audio-services',
+        label: 'Audio Engineering',
+        hover: 'hover:text-cyan-400',
+      },
+      { href: '/contact', label: 'Contact', hover: 'hover:text-neutral-300' },
+    ] as NavItem[],
+  },
+  fi: {
+    menuAria: 'Avaa navigointivalikko',
+    items: [
+      { href: '/fi/', label: 'Etusivu', hover: 'hover:text-cyan-400' },
+      { href: '/fi/dev', label: 'IT & Kehitys', hover: 'hover:text-accent' },
+      {
+        href: '/fi/musiikki',
+        label: 'Musiikki',
+        hover: 'hover:text-emerald-400',
+      },
+      {
+        href: '/fi/audiopalvelut',
+        label: 'Äänitekniikka',
+        hover: 'hover:text-cyan-400',
+      },
+      {
+        href: '/fi/yhteystiedot',
+        label: 'Yhteystiedot',
+        hover: 'hover:text-neutral-300',
+      },
+    ] as NavItem[],
+  },
+} as const;
+
+const Navbar = ({ locale }: Props) => {
+  const t = labels[locale];
   return (
     <div className="border-b border-slate-700 bg-slate-800">
       <Section>
         <div className="flex items-center justify-between p-4 md:px-0">
           <a
-            href="/"
+            href={locale === 'fi' ? '/fi/' : '/'}
             className="text-3xl font-medium text-white transition-colors hover:text-accent md:text-2xl"
           >
             dB
           </a>
 
           <nav className="flex items-center">
-            {/* Desktop Menu */}
             <div className="hidden items-center gap-6 md:flex">
-              <a
-                href="/"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400 lg:text-lg"
-              >
-                Home
-              </a>
-              <a
-                href="/dev"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-accent lg:text-lg"
-              >
-                IT & Development
-              </a>
-              <a
-                href="/music"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-emerald-400 lg:text-lg"
-              >
-                Music
-              </a>
-              <a
-                href="/audio-services"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-cyan-400 lg:text-lg"
-              >
-                Audio Engineering
-              </a>
-              <a
-                href="/contact"
-                className="text-base font-normal text-slate-300 transition-colors hover:text-neutral-300 lg:text-lg"
-              >
-                Contact
-              </a>
+              {t.items.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`text-base font-normal text-slate-300 transition-colors ${item.hover} lg:text-lg`}
+                >
+                  {item.label}
+                </a>
+              ))}
               <div className="ml-4 flex items-center space-x-2 border border-slate-600 bg-slate-700/50 px-3 py-1 transition-colors hover:border-accent lg:px-4 lg:py-1.5">
                 <a
                   href="#"
@@ -64,12 +92,11 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               className="p-2 text-slate-300 hover:text-accent md:hidden"
               id="mobile-menu-button"
               type="button"
-              aria-label="Toggle navigation menu"
+              aria-label={t.menuAria}
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -91,39 +118,17 @@ const Navbar = () => {
           </nav>
         </div>
 
-        {/* Mobile Menu */}
         <div className="hidden md:hidden" id="mobile-menu">
           <div className="flex flex-col gap-4 border-t border-slate-600 py-4 text-center">
-            <a
-              href="/"
-              className="py-2 text-slate-300 transition-colors hover:text-cyan-400"
-            >
-              Home
-            </a>
-            <a
-              href="/dev"
-              className="py-2 text-slate-300 transition-colors hover:text-accent"
-            >
-              IT & Development
-            </a>
-            <a
-              href="/music"
-              className="py-2 text-slate-300 transition-colors hover:text-emerald-400"
-            >
-              Music
-            </a>
-            <a
-              href="/audio-services"
-              className="py-2 text-slate-300 transition-colors hover:text-cyan-400"
-            >
-              Audio Engineering
-            </a>
-            <a
-              href="/contact"
-              className="py-2 text-slate-300 transition-colors hover:text-neutral-300"
-            >
-              Contact
-            </a>
+            {t.items.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`py-2 text-slate-300 transition-colors ${item.hover}`}
+              >
+                {item.label}
+              </a>
+            ))}
             <div className="mt-2 flex justify-center gap-4 border-t border-slate-600 pb-2 pt-4">
               <button
                 data-lang="en"
@@ -175,15 +180,12 @@ const Navbar = () => {
                 e.preventDefault();
                 const targetLang = e.currentTarget.dataset.lang;
                 const currentPath = window.location.pathname;
-                
+
                 let newPath = currentPath;
-                
-                // Check if we're on a blog post page (posts are English-only)
+
                 if (currentPath.includes('/posts/') || currentPath.includes('/posts-fi/')) {
                   newPath = targetLang === 'fi' ? '/fi/' : '/';
-                } 
-                // Check if we're on tietosuoja page specifically
-                else if (currentPath === '/tietosuoja' || currentPath === '/tietosuoja/') {
+                } else if (currentPath === '/tietosuoja' || currentPath === '/tietosuoja/') {
                   newPath = targetLang === 'en' ? '/privacy' : '/tietosuoja';
                 } else if (currentPath === '/privacy' || currentPath === '/privacy/') {
                   newPath = targetLang === 'fi' ? '/tietosuoja' : '/privacy';
@@ -192,7 +194,7 @@ const Navbar = () => {
                 } else if (targetLang === 'en' && currentPath.startsWith('/fi')) {
                   newPath = langMap[currentPath] || currentPath.replace('/fi', '');
                 }
-                
+
                 window.location.href = newPath + window.location.hash;
               });
             });

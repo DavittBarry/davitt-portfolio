@@ -1,7 +1,29 @@
 import { Section } from 'astro-boilerplate-components';
 import { useState } from 'react';
 
-const LandingHero = () => {
+import type { Locale } from '@/utils/i18n';
+
+type Props = { locale: Locale };
+
+const labels = {
+  en: {
+    tagline: 'IT Professional • Musician • Audio Engineer',
+    dev: 'Full-Stack Developer',
+    music: 'Music Producer',
+    audio: 'Mixing & Mastering',
+    body: 'Multi-disciplinary creative professional based in Uusimaa, Finland. Combining technical expertise in IT and web development with artistic vision in music production and audio engineering. Bringing 15+ years of experience across technology and creative industries.',
+  },
+  fi: {
+    tagline: 'IT-ammattilainen • Muusikko • Ääniteknikko',
+    dev: 'Full-Stack kehittäjä',
+    music: 'Musiikin tuottaja',
+    audio: 'Miksaus & masterointi',
+    body: 'Monitaitoinen luova ammattilainen Uudeltamaalta. Yhdistän teknisen IT- ja web-kehitysosaamisen taiteelliseen näkemykseen musiikin tuotannossa ja äänitekniikassa. Yli 15 vuoden kokemus teknologian ja luovien alojen parissa.',
+  },
+} as const;
+
+const LandingHero = ({ locale }: Props) => {
+  const t = labels[locale];
   const [imageExpanded, setImageExpanded] = useState(false);
 
   return (
@@ -48,27 +70,16 @@ const LandingHero = () => {
         </h1>
 
         <p className="mb-2 text-xl font-light text-neutral-400 md:text-2xl">
-          IT Professional • Musician • Audio Engineer
+          {t.tagline}
         </p>
 
         <div className="mt-4 flex flex-wrap justify-center gap-3 text-sm text-neutral-500">
-          <span className="border-l-2 border-accent pl-3">
-            Full-Stack Developer
-          </span>
-          <span className="border-l-2 border-cyan-400 pl-3">
-            Music Producer
-          </span>
-          <span className="border-l-2 border-emerald-400 pl-3">
-            Mixing & Mastering
-          </span>
+          <span className="border-l-2 border-accent pl-3">{t.dev}</span>
+          <span className="border-l-2 border-cyan-400 pl-3">{t.music}</span>
+          <span className="border-l-2 border-emerald-400 pl-3">{t.audio}</span>
         </div>
 
-        <p className="mt-8 max-w-2xl px-4 text-neutral-400">
-          Multi-disciplinary creative professional based in Uusimaa, Finland.
-          Combining technical expertise in IT and web development with artistic
-          vision in music production and audio engineering. Bringing 15+ years
-          of experience across technology and creative industries.
-        </p>
+        <p className="mt-8 max-w-2xl px-4 text-neutral-400">{t.body}</p>
 
         <div className="mt-8 flex gap-4">
           <a
