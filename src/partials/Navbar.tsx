@@ -185,7 +185,7 @@ const Navbar = () => {
                   newPath = langMap[currentPath] || currentPath.replace('/fi', '');
                 }
                 
-                window.location.href = newPath;
+                window.location.href = newPath + window.location.hash;
               });
             });
           `,

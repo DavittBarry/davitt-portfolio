@@ -4,6 +4,57 @@ import Basefi from '@/templates/Basefi.astro';
 const title = 'Musiikki - Davitt Barry';
 const description =
   'Alkuperäistä musiikkia ja live cover -keikkoja Davitt Barryltä. Akustinen trubaduuri tapahtumiin ympäri Suomen.';
+
+type Gig = {
+  date: string;
+  day: string;
+  dayNum: string;
+  month: string;
+  year: string;
+  timeStart: string;
+  timeEnd: string;
+  venue: string;
+  city: string;
+  address: string;
+  description: string;
+  website?: string;
+  image?: string;
+};
+
+const gigs: Gig[] = [
+  {
+    date: '2026-06-06',
+    day: 'La',
+    dayNum: '06',
+    month: 'Kesä',
+    year: '2026',
+    timeStart: '19:00',
+    timeEnd: '21:00',
+    venue: 'Benitas Café',
+    city: 'Pellinki',
+    address: 'Santasaarentie 162, 07370 Pellinki, Finland',
+    description:
+      'Trubaduuri-ilta tässä idyllisessä saaristokahvilassa. Perustettu 1972, Pellingin saariston kesän klassikko Porvoon edustalla.',
+    website: 'https://benitascafe.fi',
+    image: '/assets/images/venues/benitas-cafe.jpg',
+  },
+  {
+    date: '2026-07-11',
+    day: 'La',
+    dayNum: '11',
+    month: 'Heinä',
+    year: '2026',
+    timeStart: '19:00',
+    timeEnd: '21:00',
+    venue: 'Hamarinranta',
+    city: 'Porvoo',
+    address: 'Hamarintie 1, 06100 Porvoo, Finland',
+    description:
+      'Merellinen terassikeikka Hamarinrannassa (Hamarin SEO), ympärivuotinen rantaravintola vierasvenesataman kupeessa, Hamarin kylässä aivan Porvoon keskustan tuntumassa.',
+    website: 'https://hamarinranta.fi',
+    image: '/assets/images/venues/hamarinranta.jpg',
+  },
+];
 ---
 
 <Basefi head={{ title, description }}>
@@ -37,6 +88,16 @@ const description =
           data-tab="covers"
         >
           Cover-keikat
+        </button>
+        <button
+          id="tab-gigs"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-gigs"
+          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-rose-400 hover:border-rose-400/50"
+          data-tab="gigs"
+        >
+          Tulevat keikat
         </button>
       </div>
       <div class="h-px w-full bg-neutral-700"></div>
@@ -346,6 +407,140 @@ const description =
       </div>
 
     </div>
+
+    <!-- ============ TULEVAT KEIKAT PANEL ============ -->
+    <div id="panel-gigs" role="tabpanel" aria-labelledby="tab-gigs" class="tab-panel hidden">
+
+      <div class="mx-auto mb-16 max-w-6xl">
+        <!-- Intro -->
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-4xl font-light text-white">
+            <span class="text-rose-400">Tulevat</span> keikat
+          </h2>
+          <p class="mx-auto max-w-3xl text-lg text-neutral-400">
+            Tule kuulemaan livenä. Päivämäärät päivittyvät uusien varauksien myötä. Katso alta paikkatiedot ja reittiohjeet.
+          </p>
+        </div>
+
+        <!-- Gig Cards -->
+        {gigs.length === 0 ? (
+          <div class="mx-auto max-w-3xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 text-center">
+            <p class="mb-6 text-neutral-400">Tällä hetkellä ei vahvistettuja keikkoja, mutta otan varauksia aktiivisesti vastaan.</p>
+            <a
+              href="/contact"
+              class="inline-block border border-rose-400 px-6 py-3 text-rose-400 transition-all hover:bg-rose-400/10"
+            >
+              Varaa päivä →
+            </a>
+          </div>
+        ) : (
+          <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {gigs.map((gig) => (
+              <article
+                class="flex h-full flex-col overflow-hidden border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 transition-all hover:border-rose-400/50"
+              >
+                {gig.image && (
+                  <a
+                    href={gig.website || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group relative block overflow-hidden"
+                    aria-label={`${gig.venue} verkkosivu`}
+                  >
+                    <img
+                      src={gig.image}
+                      alt={`${gig.venue} paikkakuva`}
+                      class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      onerror="this.closest('a').style.display='none'"
+                    />
+                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
+                    <div class="absolute bottom-3 right-3 border border-rose-400/40 bg-neutral-900/80 px-3 py-1 text-xs text-rose-400 backdrop-blur-sm transition-colors group-hover:border-rose-400 group-hover:bg-rose-400/10">
+                      Vieraile →
+                    </div>
+                  </a>
+                )}
+                <div class="flex flex-1 gap-6 p-6">
+                  <!-- Date Badge -->
+                  <div class="flex h-fit flex-col items-center justify-center border border-rose-400/40 bg-rose-400/5 px-4 py-3 text-center text-rose-400">
+                    <span class="text-xs uppercase tracking-widest">{gig.day}</span>
+                    <span class="my-1 text-3xl font-light leading-none text-white">{gig.dayNum}</span>
+                    <span class="text-xs uppercase tracking-widest">{gig.month}</span>
+                    <span class="mt-1 text-[10px] text-neutral-500">{gig.year}</span>
+                  </div>
+                  <!-- Details -->
+                  <div class="flex-1">
+                    <h3 class="text-xl text-white">
+                      {gig.website ? (
+                        <a
+                          href={gig.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="transition-colors hover:text-rose-400"
+                        >
+                          {gig.venue}
+                        </a>
+                      ) : gig.venue}
+                    </h3>
+                    <p class="text-sm text-neutral-400">{gig.city}, Suomi</p>
+                    <p class="mt-2 text-rose-400">{gig.timeStart} – {gig.timeEnd}</p>
+                    <p class="mt-3 text-sm text-neutral-400">{gig.description}</p>
+                  </div>
+                </div>
+                <!-- Collapsible Map -->
+                <details class="group mt-auto border-t border-neutral-800">
+                  <summary class="flex cursor-pointer items-center justify-between px-6 py-3 text-sm text-neutral-400 transition-colors hover:text-rose-400">
+                    <span>Paikka ja reittiohjeet</span>
+                    <span class="text-xs transition-transform group-open:rotate-180">▼</span>
+                  </summary>
+                  <div class="px-6 pb-6">
+                    <p class="mb-3 text-sm text-neutral-500">{gig.address}</p>
+                    <div class="relative w-full" style="padding-bottom: 56.25%;">
+                      <iframe
+                        class="absolute left-0 top-0 h-full w-full rounded border border-neutral-800"
+                        src={`https://www.google.com/maps?q=${encodeURIComponent(gig.address)}&output=embed`}
+                        title={`Kartta: ${gig.venue}`}
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen></iframe>
+                    </div>
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(gig.address)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="mt-3 inline-block text-sm text-rose-400 hover:underline"
+                    >
+                      Reittiohjeet →
+                    </a>
+                  </div>
+                </details>
+              </article>
+            ))}
+          </div>
+        )}
+
+        <!-- Booking CTA -->
+        <div class="text-center">
+          <div
+            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+          >
+            <h3 class="mb-4 text-2xl font-light text-white">
+              Eikö paikkaasi näy listalla?
+            </h3>
+            <p class="mb-6 text-neutral-400">
+              Otan keikkoja vastaan ympäri Suomen. Yksityisjuhlat, yritystapahtumat, häät, ravintolaillat ja baarikeikat. Soolo, duo tai koko bändi.
+            </p>
+            <a
+              href="/contact"
+              class="inline-block border border-rose-400 px-8 py-3 text-lg text-rose-400 transition-all hover:bg-rose-400/10"
+            >
+              Varaa päivä →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <!-- Tab switching script -->
@@ -354,16 +549,27 @@ const description =
       const tabs = document.querySelectorAll('.tab-btn');
       const panels = document.querySelectorAll('.tab-panel');
 
-      function switchTab(tabName) {
+      const inactiveHoverByTab: Record<string, string> = {
+        original: 'hover:text-emerald-400 hover:border-emerald-400/50',
+        covers: 'hover:text-amber-400 hover:border-amber-400/50',
+        gigs: 'hover:text-rose-400 hover:border-rose-400/50',
+      };
+
+      function switchTab(tabName: string | null) {
+        if (!tabName) return;
         tabs.forEach(tab => {
-          const isActive = tab.getAttribute('data-tab') === tabName;
+          const thisTab = tab.getAttribute('data-tab');
+          const isActive = thisTab === tabName;
           tab.setAttribute('aria-selected', String(isActive));
           if (isActive && tabName === 'original') {
             tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400';
           } else if (isActive && tabName === 'covers') {
             tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-amber-400 bg-amber-400/10 text-amber-400';
+          } else if (isActive && tabName === 'gigs') {
+            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-rose-400 bg-rose-400/10 text-rose-400';
           } else {
-            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-amber-400 hover:border-amber-400/50';
+            const hover = (thisTab && inactiveHoverByTab[thisTab]) || 'hover:text-amber-400 hover:border-amber-400/50';
+            tab.className = `tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 ${hover}`;
           }
         });
 
@@ -386,7 +592,7 @@ const description =
 
       // Check hash on load
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'covers' || hash === 'original') {
+      if (hash === 'covers' || hash === 'original' || hash === 'gigs') {
         switchTab(hash);
       }
     }
