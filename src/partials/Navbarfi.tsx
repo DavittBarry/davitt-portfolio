@@ -68,12 +68,17 @@ const Navbarfi = () => {
             <button
               className="p-2 text-slate-300 hover:text-accent md:hidden"
               id="mobile-menu-button"
+              type="button"
+              aria-label="Avaa navigointivalikko"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
             >
               <svg
                 className="h-8 w-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -140,8 +145,11 @@ const Navbarfi = () => {
           dangerouslySetInnerHTML={{
             __html: `
             // Mobile menu toggle
-            document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
-              document.getElementById('mobile-menu')?.classList.toggle('hidden');
+            document.getElementById('mobile-menu-button')?.addEventListener('click', (e) => {
+              const btn = e.currentTarget;
+              const menu = document.getElementById('mobile-menu');
+              const isHidden = menu?.classList.toggle('hidden');
+              btn.setAttribute('aria-expanded', String(!isHidden));
             });
 
             // Language switching with page preservation
