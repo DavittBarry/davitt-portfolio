@@ -1,5 +1,6 @@
 ---
 import Basefi from '@/templates/Basefi.astro';
+import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
 import { getLocalizedGigs } from '@/data/gigs';
 
 const title = 'Musiikki - Davitt Barry';
@@ -70,15 +71,7 @@ const gigs = getLocalizedGigs('fi');
             <h3 class="mb-6 text-center text-2xl font-light text-white">
               Musiikkivideo: Turquoise Wash Away:
             </h3>
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
-              <iframe
-                class="absolute left-0 top-0 h-full w-full rounded"
-                src="https://www.youtube.com/embed/zYJyVhUtR-4"
-                title="Turquoise Wash Away - Musiikkivideo"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
+            <YouTubeEmbed id="zYJyVhUtR-4" title="Turquoise Wash Away - Musiikkivideo" />
             <p class="mt-6 text-center text-lg text-neutral-300">
               Single albumilta:
             </p>
@@ -248,15 +241,7 @@ const gigs = getLocalizedGigs('fi');
           <div
             class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-amber-400/50"
           >
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
-              <iframe
-                class="absolute left-0 top-0 h-full w-full rounded"
-                src="https://www.youtube.com/embed/fOLMcd1RaPE"
-                title="Davitt Barry - Live cover -esitys"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
+            <YouTubeEmbed id="fOLMcd1RaPE" title="Davitt Barry - Live cover -esitys" />
           </div>
         </div>
 
@@ -268,15 +253,7 @@ const gigs = getLocalizedGigs('fi');
           <div
             class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
           >
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
-              <iframe
-                class="absolute left-0 top-0 h-full w-full rounded"
-                src="https://www.youtube.com/embed/vrR3bdrt6Fg"
-                title="Davitt Barry Heartbreakers-yhtyeen kanssa"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
+            <YouTubeEmbed id="vrR3bdrt6Fg" title="Davitt Barry Heartbreakers-yhtyeen kanssa" />
           </div>
         </div>
 
@@ -285,28 +262,12 @@ const gigs = getLocalizedGigs('fi');
           <div
             class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
           >
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
-              <iframe
-                class="absolute left-0 top-0 h-full w-full rounded"
-                src="https://www.youtube.com/embed/1x1N8soRlIY"
-                title="Davitt Barry - Live cover 2"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
+            <YouTubeEmbed id="1x1N8soRlIY" title="Davitt Barry - Live cover 2" />
           </div>
           <div
             class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
           >
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
-              <iframe
-                class="absolute left-0 top-0 h-full w-full rounded"
-                src="https://www.youtube.com/embed/-3y0NLfmyG0"
-                title="Davitt Barry - Live cover 3"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
+            <YouTubeEmbed id="-3y0NLfmyG0" title="Davitt Barry - Live cover 3" />
           </div>
         </div>
 

@@ -1,0 +1,72 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  class?: string;
+}
+
+const { id, title, class: className = '' } = Astro.props;
+const thumbUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+---
+
+<div
+  class:list={['lite-youtube', 'relative', 'w-full', className]}
+  style="padding-bottom: 56.25%;"
+  data-video-id={id}
+  data-video-title={title}
+>
+  <button
+    type="button"
+    class="group absolute inset-0 block h-full w-full cursor-pointer overflow-hidden rounded border-0 bg-neutral-900 p-0"
+    aria-label={`Play video: ${title}`}
+  >
+    <img
+      src={thumbUrl}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+      loading="lazy"
+      decoding="async"
+      width="1280"
+      height="720"
+    />
+    <span
+      class="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25"
+      aria-hidden="true"
+    >
+      <svg
+        viewBox="0 0 68 48"
+        class="h-14 w-20 drop-shadow-lg transition-transform duration-200 group-hover:scale-110"
+      >
+        <path
+          d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
+          fill="#f00"
+          fill-opacity="0.92"></path>
+        <path d="M45 24 27 14v20" fill="#fff"></path>
+      </svg>
+    </span>
+  </button>
+</div>
+
+<script>
+  // Swap poster for iframe on first click. Single delegated listener handles all instances.
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement | null;
+    const btn = target?.closest('button');
+    const container = btn?.closest<HTMLElement>('.lite-youtube');
+    if (!container || !btn || container.dataset.loaded === '1') return;
+    const id = container.dataset.videoId;
+    const videoTitle = container.dataset.videoTitle ?? '';
+    if (!id) return;
+
+    const iframe = document.createElement('iframe');
+    iframe.className = 'absolute left-0 top-0 h-full w-full rounded';
+    iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+    iframe.title = videoTitle;
+    iframe.allow =
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+
+    btn.replaceWith(iframe);
+    container.dataset.loaded = '1';
+  });
+</script>
