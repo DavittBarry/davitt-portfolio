@@ -18,9 +18,9 @@ const { description } = AppConfig;
 ---
 
 <Base head={{ title, description }}>
-  <Hero />
-  <ProjectList />
-  <RecentPosts client:visible postList={sortedPosts} />
-  <CTOService />
-  <CVDownload />
+  <Hero locale="en" />
+  <ProjectList locale="en" />
+  <RecentPosts client:visible postList={sortedPosts} locale="en" />
+  <CTOService locale="en" />
+  <CVDownload locale="en" />
 </Base>

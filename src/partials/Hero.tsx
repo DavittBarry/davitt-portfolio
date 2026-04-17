@@ -1,7 +1,25 @@
 import { HeroAvatar, Section } from 'astro-boilerplate-components';
 import { useState } from 'react';
 
-const Hero = () => {
+import type { Locale } from '@/utils/i18n';
+
+type Props = { locale: Locale };
+
+const labels = {
+  en: {
+    greeting: "Hello, I'm ",
+    description:
+      'A focused and dedicated ICT professional with also a background in music spanning over 15 years. Transitioned back into IT/web development four years ago, seeking opportunities to leverage a diverse skill set in website management/creation, service desk technical help, and various programming languages.',
+  },
+  fi: {
+    greeting: 'Hei, olen ',
+    description:
+      'Työlleen omistautunut ja innostunut tietotekniikan ammattilainen, jolla on myös yli 15:n vuoden kokemus musiikkialalta. Siirtynyt takaisin IT-/web-kehitykseen neljä vuotta sitten ja etsii nyt mahdollisuuksia hyödyntää monipuolista osaamistaan verkkosivujen hallinnassa ja luomisessa, erilaisissa ohjelmointikielissä ja teknisen tuen tarjoamisessa asiakkaille.',
+  },
+} as const;
+
+const Hero = ({ locale }: Props) => {
+  const t = labels[locale];
   const [imageExpanded, setImageExpanded] = useState(false);
 
   return (
@@ -39,18 +57,14 @@ const Hero = () => {
       <HeroAvatar
         title={
           <>
-            <span className="font-light">Hello, I'm </span>
+            <span className="font-light">{t.greeting}</span>
             <span className="font-normal text-accent">Davitt</span>
             <span className="cursor-blink ml-1 text-accent">_</span>
           </>
         }
         description={
           <div className="leading-relaxed text-neutral-400">
-            A focused and dedicated ICT professional with also a background in
-            music spanning over 15 years. Transitioned back into IT/web
-            development four years ago, seeking opportunities to leverage a
-            diverse skill set in website management/creation, service desk
-            technical help, and various programming languages.
+            {t.description}
           </div>
         }
         avatar={

@@ -1,6 +1,6 @@
 ---
-import { Footerfi } from '@/partials/Footerfi';
-import { Navbarfi } from '@/partials/Navbarfi';
+import { Footer } from '@/partials/Footer';
+import { Navbar } from '@/partials/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
 
 export interface Props {
@@ -103,13 +103,13 @@ const {
       </div>
     </div>
 
-    <Navbarfi />
+    <Navbar locale="fi" />
 
     <main class="relative z-10 grow">
       <slot />
     </main>
 
-    <Footerfi />
+    <Footer locale="fi" />
 
     <!-- Scroll to Top Button -->
     <button
