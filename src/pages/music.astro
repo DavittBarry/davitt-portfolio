@@ -1,60 +1,12 @@
 ---
 import Base from '@/templates/Base.astro';
+import { getLocalizedGigs } from '@/data/gigs';
 
 const title = 'Music - Davitt Barry';
 const description =
   'Original music and live cover gigs by Davitt Barry. Acoustic troubadour available for events across Finland.';
 
-type Gig = {
-  date: string;
-  day: string;
-  dayNum: string;
-  month: string;
-  year: string;
-  timeStart: string;
-  timeEnd: string;
-  venue: string;
-  city: string;
-  address: string;
-  description: string;
-  website?: string;
-  image?: string;
-};
-
-const gigs: Gig[] = [
-  {
-    date: '2026-06-06',
-    day: 'Sat',
-    dayNum: '06',
-    month: 'Jun',
-    year: '2026',
-    timeStart: '19:00',
-    timeEnd: '21:00',
-    venue: 'Benitas Café',
-    city: 'Pellinki',
-    address: 'Santasaarentie 162, 07370 Pellinki, Finland',
-    description:
-      'Troubadour evening at this idyllic archipelago café. Established 1972, a summer institution on the Pellinki islands east of Porvoo.',
-    website: 'https://benitascafe.fi',
-    image: '/assets/images/venues/benitas-cafe.jpg',
-  },
-  {
-    date: '2026-07-11',
-    day: 'Sat',
-    dayNum: '11',
-    month: 'Jul',
-    year: '2026',
-    timeStart: '19:00',
-    timeEnd: '21:00',
-    venue: 'Hamarinranta',
-    city: 'Porvoo',
-    address: 'Hamarintie 1, 06100 Porvoo, Finland',
-    description:
-      'Seaside terrace gig at Hamarinranta (Hamarin SEO), a year-round beach restaurant with a marina and sea-facing terrace in Hamari village, just west of central Porvoo.',
-    website: 'https://hamarinranta.fi',
-    image: '/assets/images/venues/hamarinranta.jpg',
-  },
-];
+const gigs = getLocalizedGigs('en');
 ---
 
 <Base head={{ title, description }}>
@@ -450,7 +402,7 @@ const gigs: Gig[] = [
                       alt={`${gig.venue} venue photo`}
                       class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
-                      onerror="this.closest('a').style.display='none'"
+                      data-hide-parent-on-error
                     />
                     <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
                     <div class="absolute bottom-3 right-3 border border-rose-400/40 bg-neutral-900/80 px-3 py-1 text-xs text-rose-400 backdrop-blur-sm transition-colors group-hover:border-rose-400 group-hover:bg-rose-400/10">
@@ -544,7 +496,7 @@ const gigs: Gig[] = [
   <!-- Tab switching script -->
   <script>
     function initTabs() {
-      const tabs = document.querySelectorAll('.tab-btn');
+      const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab-btn'));
       const panels = document.querySelectorAll('.tab-panel');
 
       const inactiveHoverByTab: Record<string, string> = {
@@ -553,12 +505,13 @@ const gigs: Gig[] = [
         gigs: 'hover:text-rose-400 hover:border-rose-400/50',
       };
 
-      function switchTab(tabName: string | null) {
+      function switchTab(tabName: string | null, opts: { focus?: boolean } = {}) {
         if (!tabName) return;
         tabs.forEach(tab => {
           const thisTab = tab.getAttribute('data-tab');
           const isActive = thisTab === tabName;
           tab.setAttribute('aria-selected', String(isActive));
+          tab.setAttribute('tabindex', isActive ? '0' : '-1');
           if (isActive && tabName === 'original') {
             tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400';
           } else if (isActive && tabName === 'covers') {
@@ -569,6 +522,7 @@ const gigs: Gig[] = [
             const hover = (thisTab && inactiveHoverByTab[thisTab]) || 'hover:text-amber-400 hover:border-amber-400/50';
             tab.className = `tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 ${hover}`;
           }
+          if (isActive && opts.focus) tab.focus();
         });
 
         panels.forEach(panel => {
@@ -580,11 +534,26 @@ const gigs: Gig[] = [
         });
       }
 
-      tabs.forEach(tab => {
+      tabs.forEach((tab, idx) => {
         tab.addEventListener('click', () => {
           const tabName = tab.getAttribute('data-tab');
           switchTab(tabName);
           history.replaceState(null, '', `#${tabName}`);
+        });
+
+        tab.addEventListener('keydown', (e) => {
+          let nextIdx: number | null = null;
+          if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
+          else if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabs.length) % tabs.length;
+          else if (e.key === 'Home') nextIdx = 0;
+          else if (e.key === 'End') nextIdx = tabs.length - 1;
+          if (nextIdx === null) return;
+          const nextTab = tabs[nextIdx];
+          if (!nextTab) return;
+          e.preventDefault();
+          const nextName = nextTab.getAttribute('data-tab');
+          switchTab(nextName, { focus: true });
+          history.replaceState(null, '', `#${nextName}`);
         });
       });
 
@@ -592,6 +561,11 @@ const gigs: Gig[] = [
       const hash = window.location.hash.replace('#', '');
       if (hash === 'covers' || hash === 'original' || hash === 'gigs') {
         switchTab(hash);
+      } else {
+        // Set initial roving tabindex based on the default-selected tab in the markup.
+        tabs.forEach(tab => {
+          tab.setAttribute('tabindex', tab.getAttribute('aria-selected') === 'true' ? '0' : '-1');
+        });
       }
     }
 
@@ -601,6 +575,15 @@ const gigs: Gig[] = [
       const el = document.getElementById('years-playing-en');
       if (el) el.textContent = String(years);
     }
+
+    // Hide the parent anchor of any image that fails to load (CSP-safe replacement for inline onerror).
+    document.addEventListener('error', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target instanceof HTMLImageElement && target.hasAttribute('data-hide-parent-on-error')) {
+        const parent = target.closest('a');
+        if (parent) parent.style.display = 'none';
+      }
+    }, true);
 
     // Run on initial load and on Astro page transitions
     initTabs();
