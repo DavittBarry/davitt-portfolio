@@ -1,5 +1,4 @@
-import { GradientText, Section } from 'astro-boilerplate-components';
-
+import { GradientText, Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
 type Props = { locale: Locale };

@@ -1,8 +1,8 @@
 import type { MarkdownInstance } from 'astro';
-import type { IFrontmatter } from 'astro-boilerplate-components';
-import { Section } from 'astro-boilerplate-components';
 import { useState } from 'react';
 
+import type { IFrontmatter } from '@/components/boilerplate';
+import { Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
 type Props = {
