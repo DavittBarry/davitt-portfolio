@@ -1,4 +1,6 @@
 ---
+import type { MarkdownInstance } from 'astro';
+
 import type { FrontmatterPage, IFrontmatter } from '@/components/boilerplate';
 import {
   BlogGallery,
@@ -16,7 +18,11 @@ type GetStaticPaths = {
 };
 
 export async function getStaticPaths({ paginate }: GetStaticPaths) {
-  const allPosts = await Astro.glob<IFrontmatter>('./*.md');
+  const allPosts = Object.values(
+    import.meta.glob<MarkdownInstance<IFrontmatter>>('./*.md', {
+      eager: true,
+    })
+  );
   const sortedPosts = sortByDate(allPosts);
   return paginate(sortedPosts, { pageSize: 6 });
 }
