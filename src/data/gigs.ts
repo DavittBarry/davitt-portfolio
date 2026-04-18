@@ -12,6 +12,7 @@ export type Gig = {
   description: LocalizedString;
   website?: string;
   image?: string;
+  isPrivate?: boolean;
 };
 
 export type LocalizedGig = {
@@ -28,6 +29,7 @@ export type LocalizedGig = {
   description: string;
   website?: string;
   image?: string;
+  isPrivate?: boolean;
 };
 
 const DAY_ABBR: Record<Locale, string[]> = {
@@ -95,6 +97,20 @@ export const gigs: Gig[] = [
     website: 'https://hamarinranta.fi',
     image: '/assets/images/venues/hamarinranta.jpg',
   },
+  {
+    date: '2026-08-15',
+    timeStart: '15:00',
+    timeEnd: '18:00',
+    venue: 'Private Booking',
+    city: 'Helsinki',
+    address: 'Private venue',
+    description: {
+      en: 'An exclusive private performance for an intimate summer gathering.',
+      fi: 'Eksklusiivinen yksityiskeikka pienimuotoiseen kesäjuhlaan.',
+    },
+    image: '/assets/images/venues/private-booking.jpg',
+    isPrivate: true,
+  },
 ];
 
 export function getLocalizedGigs(locale: Locale): LocalizedGig[] {
@@ -114,6 +130,7 @@ export function getLocalizedGigs(locale: Locale): LocalizedGig[] {
       description: gig.description[locale],
       website: gig.website,
       image: gig.image,
+      isPrivate: gig.isPrivate,
     };
   });
 }
