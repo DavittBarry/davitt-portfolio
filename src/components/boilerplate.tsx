@@ -78,7 +78,7 @@ export const ColorTags = {
 type PostContentProps = { content: IFrontmatter; children: ReactNode };
 export const PostContent = ({ content, children }: PostContentProps) => (
   <div className="mx-auto mt-5 max-w-prose">
-    <div className="aspect-h-2 aspect-w-3">
+    <div className="aspect-3/2">
       <img
         className="h-full w-full rounded-lg object-cover object-center"
         src={content.imgSrc}
@@ -86,7 +86,7 @@ export const PostContent = ({ content, children }: PostContentProps) => (
         loading="lazy"
       />
     </div>
-    <div className="prose prose-invert mt-8 prose-img:rounded-lg">
+    <div className="prose prose-invert prose-img:rounded-lg mt-8">
       {children}
     </div>
   </div>
@@ -109,7 +109,7 @@ const BlogCard = ({
 }) => (
   <a className="hover:translate-y-1" href={instance.url}>
     <div className="overflow-hidden rounded-md bg-slate-800">
-      <div className="aspect-h-2 aspect-w-3">
+      <div className="aspect-3/2">
         <img
           className="h-full w-full object-cover object-center"
           src={instance.frontmatter.imgSrc}
@@ -117,7 +117,7 @@ const BlogCard = ({
           loading="lazy"
         />
       </div>
-      <div className="px-3 pb-6 pt-4 text-center">
+      <div className="px-3 pt-4 pb-6 text-center">
         <h2 className="text-xl font-semibold">{instance.frontmatter.title}</h2>
         <div className="mt-1 text-xs text-gray-400">
           {format(new Date(instance.frontmatter.pubDate), 'LLL d, yyyy')}
