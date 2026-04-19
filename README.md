@@ -15,12 +15,12 @@ Professional portfolio website built with Astro, React, and Tailwind CSS.
 
 ## Tech Stack
 
-- **Framework**: Astro 5
+- **Framework**: Astro 6
 - **UI Components**: React 19
 - **Styling**: Tailwind CSS 4 (CSS-first `@theme` config)
 - **Languages**: TypeScript, JavaScript
-- **Node**: 20+ (developed on 22 / `lts/jod`)
-- **Tooling**: ESLint 9 (flat config), Prettier 3, Husky 9
+- **Node**: 22.12+ (developed on 22 / `lts/jod`)
+- **Tooling**: ESLint 10 (flat config), Prettier 3, Husky 9
 - **Deployment**: Netlify (publish dir `dist`)
 
 ## Development
