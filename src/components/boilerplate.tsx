@@ -23,7 +23,7 @@ export const Section = ({ title, children }: SectionProps) => (
 );
 
 export const GradientText = ({ children }: { children: ReactNode }) => (
-  <span className="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">
+  <span className="bg-linear-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">
     {children}
   </span>
 );

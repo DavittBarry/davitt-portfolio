@@ -77,7 +77,7 @@ const CTOService = ({ locale }: Props) => {
     <Section>
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-8 text-3xl font-light text-white">{t.heading}</h2>
-        <div className="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8">
+        <div className="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8">
           <p className="mb-6 text-neutral-400">{t.intro}</p>
 
           <div className="mb-8 space-y-4">

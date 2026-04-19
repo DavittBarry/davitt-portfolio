@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
 
     "removeComments": true,
@@ -32,7 +32,6 @@
     "isolatedModules": true,
     "types": ["vite/client"],
 
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }

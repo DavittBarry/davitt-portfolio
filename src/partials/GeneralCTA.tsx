@@ -35,7 +35,7 @@ const GeneralCTA = ({ locale }: Props) => {
   return (
     <Section>
       <div className="mx-auto max-w-4xl">
-        <div className="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 text-center">
+        <div className="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 text-center">
           <h2 className="mb-4 text-3xl font-light text-white">
             {t.headingPre}
             <GradientText>{t.headingEm}</GradientText>
