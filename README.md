@@ -15,11 +15,13 @@ Professional portfolio website built with Astro, React, and Tailwind CSS.
 
 ## Tech Stack
 
-- **Framework**: Astro
-- **UI Components**: React
-- **Styling**: Tailwind CSS
+- **Framework**: Astro 5
+- **UI Components**: React 19
+- **Styling**: Tailwind CSS 4 (CSS-first `@theme` config)
 - **Languages**: TypeScript, JavaScript
-- **Deployment**: Netlify/Vercel ready
+- **Node**: 20+ (developed on 22 / `lts/jod`)
+- **Tooling**: ESLint 9 (flat config), Prettier 3, Husky 9
+- **Deployment**: Netlify (publish dir `dist`)
 
 ## Development
 
@@ -35,6 +37,12 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Lint
+npm run lint
+
+# Type-check
+npm run build-types
 ```
 
 ## Structure
@@ -54,4 +62,4 @@ npm run preview
 
 ## License
 
-© 2024 Davitt Barry. All rights reserved.
+© 2026 Davitt Barry. All rights reserved.

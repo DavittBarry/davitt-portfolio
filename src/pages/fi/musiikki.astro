@@ -1,13 +1,34 @@
 ---
-import Basefi from '@/templates/Basefi.astro';
+import type { ImageMetadata } from 'astro';
+import { getImage, Image } from 'astro:assets';
+
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
 import { getLocalizedGigs } from '@/data/gigs';
+import Basefi from '@/templates/Basefi.astro';
 
 const title = 'Musiikki - Davitt Barry';
 const description =
   'Alkuperäistä musiikkia ja live cover -keikkoja Davitt Barryltä. Akustinen trubaduuri tapahtumiin ympäri Suomen.';
 
 const gigs = getLocalizedGigs('fi');
+
+const promoModules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/promo/*.jpg',
+  { eager: true },
+);
+const promos = await Promise.all(
+  Object.entries(promoModules)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(async ([_, mod], i) => {
+      const fullSize = await getImage({
+        src: mod.default,
+        width: 2000,
+        format: 'jpg',
+        quality: 85,
+      });
+      return { image: mod.default, fullHref: fullSize.src, n: i + 1 };
+    }),
+);
 ---
 
 <Basefi head={{ title, description }}>
@@ -65,7 +86,7 @@ const gigs = getLocalizedGigs('fi');
           Aliud Phantasma (2025)
         </h2>
         <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
         >
           <div class="mb-8">
             <h3 class="mb-6 text-center text-2xl font-light text-white">
@@ -125,7 +146,7 @@ const gigs = getLocalizedGigs('fi');
         <h2 class="mb-8 text-3xl font-light text-white">Aiemmat julkaisut</h2>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
           >
             <img
               src="/assets/images/daev-ep-cover.jpg"
@@ -150,7 +171,7 @@ const gigs = getLocalizedGigs('fi');
           </div>
 
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
           >
             <img
               src="/assets/images/davitt-squozen-ep.jpg"
@@ -178,7 +199,7 @@ const gigs = getLocalizedGigs('fi');
       <!-- Production Services Link -->
       <div class="mx-auto max-w-4xl text-center">
         <div
-          class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+          class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8"
         >
           <h2 class="mb-4 text-2xl font-light text-white">
             Tarvitsetko musiikkia, miksausta tai tuotantoa projektiisi?
@@ -239,7 +260,7 @@ const gigs = getLocalizedGigs('fi');
         <!-- Featured Video -->
         <div class="mb-10">
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-amber-400/50"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-amber-400/50"
           >
             <YouTubeEmbed id="fOLMcd1RaPE" title="Davitt Barry - Live cover -esitys" />
           </div>
@@ -251,7 +272,7 @@ const gigs = getLocalizedGigs('fi');
             <span class="text-white">Heartbreakers</span>-yhtyeen kanssa:
           </p>
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
           >
             <YouTubeEmbed id="vrR3bdrt6Fg" title="Davitt Barry Heartbreakers-yhtyeen kanssa" />
           </div>
@@ -260,12 +281,12 @@ const gigs = getLocalizedGigs('fi');
         <!-- More Solo Videos -->
         <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
           >
             <YouTubeEmbed id="1x1N8soRlIY" title="Davitt Barry - Live cover 2" />
           </div>
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
           >
             <YouTubeEmbed id="-3y0NLfmyG0" title="Davitt Barry - Live cover 3" />
           </div>
@@ -277,21 +298,35 @@ const gigs = getLocalizedGigs('fi');
             Promokuvat
           </h3>
           <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25].map((n) => (
+            {promos.map((p) => (
               <a
-                href={`/assets/images/promo/promo-${String(n).padStart(2, '0')}.jpg`}
+                href={p.fullHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="group relative overflow-hidden border border-neutral-800 transition-all hover:border-amber-400/50"
+                class:list={[
+                  'group relative overflow-hidden border border-neutral-800 transition-all hover:border-amber-400/50',
+                  p.n > 10 && 'extra-promo hidden',
+                ]}
               >
-                <img
-                  src={`/assets/images/promo/promo-${String(n).padStart(2, '0')}.jpg`}
-                  alt={`Davitt Barry promokuva ${n}`}
+                <Image
+                  src={p.image}
+                  widths={[300, 600, 900]}
+                  sizes="(min-width: 1024px) 240px, (min-width: 768px) 25vw, (min-width: 640px) 33vw, 50vw"
+                  alt={`Davitt Barry promokuva ${p.n}`}
                   class="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
               </a>
             ))}
+          </div>
+          <div id="toggle-promos-wrap" class="mt-6 text-center">
+            <button
+              id="toggle-promos"
+              type="button"
+              class="inline-block border border-amber-400 px-6 py-3 text-amber-400 transition-all hover:bg-amber-400/10"
+            >
+              Näytä lisää kuvia (15)
+            </button>
           </div>
           <p class="mt-4 text-center text-sm text-neutral-500">
             Klikkaa kuvaa nähdäksesi täysikokoisena. Kuvat saatavilla promootiokäyttöön pyydettäessä.
@@ -301,7 +336,7 @@ const gigs = getLocalizedGigs('fi');
         <!-- Booking CTA -->
         <div class="text-center">
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8"
           >
             <h3 class="mb-4 text-2xl font-light text-white">
               Varaa live-esiintyjä tapahtumaasi
@@ -337,7 +372,7 @@ const gigs = getLocalizedGigs('fi');
 
         <!-- Gig Cards -->
         {gigs.length === 0 ? (
-          <div class="mx-auto max-w-3xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 text-center">
+          <div class="mx-auto max-w-3xl border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 text-center">
             <p class="mb-6 text-neutral-400">Tällä hetkellä ei vahvistettuja keikkoja, mutta otan varauksia aktiivisesti vastaan.</p>
             <a
               href="/contact"
@@ -350,19 +385,19 @@ const gigs = getLocalizedGigs('fi');
           <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             {gigs.map((gig) => (
               <article
-                class="flex h-full flex-col overflow-hidden border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 transition-all hover:border-rose-400/50"
+                class="flex h-full flex-col overflow-hidden border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 transition-all hover:border-rose-400/50"
               >
                 {gig.image && (
                   gig.isPrivate ? (
-                    <div class="relative block overflow-hidden">
+                    <div class="group relative block overflow-hidden">
                       <img
                         src={gig.image}
                         alt={`${gig.venue} kuva`}
-                        class="h-48 w-full object-cover"
+                        class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                         data-hide-parent-on-error
                       />
-                      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
+                      <div class="pointer-events-none absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
                     </div>
                   ) : (
                     <a
@@ -379,7 +414,7 @@ const gigs = getLocalizedGigs('fi');
                         loading="lazy"
                         data-hide-parent-on-error
                       />
-                      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
+                      <div class="pointer-events-none absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
                       <div class="absolute bottom-3 right-3 border border-rose-400/40 bg-neutral-900/80 px-3 py-1 text-xs text-rose-400 backdrop-blur-sm transition-colors group-hover:border-rose-400 group-hover:bg-rose-400/10">
                         Vieraile →
                       </div>
@@ -450,7 +485,7 @@ const gigs = getLocalizedGigs('fi');
         <!-- Booking CTA -->
         <div class="text-center">
           <div
-            class="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8"
+            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8"
           >
             <h3 class="mb-4 text-2xl font-light text-white">
               Eikö paikkaasi näy listalla?
@@ -553,6 +588,16 @@ const gigs = getLocalizedGigs('fi');
       if (el) el.textContent = String(years);
     }
 
+    function initPromoToggle() {
+      const btn = document.getElementById('toggle-promos');
+      const wrap = document.getElementById('toggle-promos-wrap');
+      if (!btn || !wrap) return;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.extra-promo').forEach((el) => el.classList.remove('hidden'));
+        wrap.remove();
+      }, { once: true });
+    }
+
     // Piilota kuvan isäntä-linkki jos kuva ei lataudu (CSP-yhteensopiva korvaaja inline onerror:lle).
     document.addEventListener('error', (e) => {
       const target = e.target as HTMLElement | null;
@@ -565,6 +610,7 @@ const gigs = getLocalizedGigs('fi');
     // Run on initial load and on Astro page transitions
     initTabs();
     initYears();
-    document.addEventListener('astro:after-swap', () => { initTabs(); initYears(); });
+    initPromoToggle();
+    document.addEventListener('astro:after-swap', () => { initTabs(); initYears(); initPromoToggle(); });
   </script>
 </Basefi>

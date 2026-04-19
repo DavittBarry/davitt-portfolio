@@ -1,6 +1,6 @@
-import { ColorTags, Section } from 'astro-boilerplate-components';
 import type { ReactNode } from 'react';
 
+import { ColorTags, Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
 import CustomProject from './CustomProject';

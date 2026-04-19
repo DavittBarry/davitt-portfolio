@@ -1,0 +1,8 @@
+dist/
+.astro/
+node_modules/
+.output/
+public/
+*.min.js
+*.min.css
+package-lock.json

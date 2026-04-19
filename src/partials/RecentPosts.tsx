@@ -1,8 +1,8 @@
 import type { MarkdownInstance } from 'astro';
-import type { IFrontmatter } from 'astro-boilerplate-components';
-import { Section } from 'astro-boilerplate-components';
 import { useState } from 'react';
 
+import type { IFrontmatter } from '@/components/boilerplate';
+import { Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
 type Props = {
@@ -63,7 +63,7 @@ const RecentPosts = ({ postList, locale }: Props) => {
             <a
               href={href}
               key={href}
-              className="group block border border-neutral-800 bg-gradient-to-br from-dark-100 to-dark-200 p-6 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/10"
+              className="group block border border-neutral-800 bg-linear-to-br from-dark-100 to-dark-200 p-6 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/10"
             >
               {post.frontmatter.imgSrc && (
                 <img

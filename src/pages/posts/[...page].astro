@@ -1,15 +1,13 @@
 ---
-import type {
-  FrontmatterPage,
-  IFrontmatter,
-} from 'astro-boilerplate-components';
+import type { MarkdownInstance } from 'astro';
+
+import type { FrontmatterPage, IFrontmatter } from '@/components/boilerplate';
 import {
   BlogGallery,
   NewerOlderPagination,
   PaginationHeader,
   Section,
-} from 'astro-boilerplate-components';
-
+} from '@/components/boilerplate';
 import { CTA } from '@/partials/CTA';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
@@ -20,7 +18,11 @@ type GetStaticPaths = {
 };
 
 export async function getStaticPaths({ paginate }: GetStaticPaths) {
-  const allPosts = await Astro.glob<IFrontmatter>('./*.md');
+  const allPosts = Object.values(
+    import.meta.glob<MarkdownInstance<IFrontmatter>>('./*.md', {
+      eager: true,
+    }),
+  );
   const sortedPosts = sortByDate(allPosts);
   return paginate(sortedPosts, { pageSize: 6 });
 }

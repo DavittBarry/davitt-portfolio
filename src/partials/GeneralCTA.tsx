@@ -1,5 +1,4 @@
-import { GradientText, Section } from 'astro-boilerplate-components';
-
+import { GradientText, Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
 type Props = { locale: Locale };
@@ -36,7 +35,7 @@ const GeneralCTA = ({ locale }: Props) => {
   return (
     <Section>
       <div className="mx-auto max-w-4xl">
-        <div className="border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 text-center">
+        <div className="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 text-center">
           <h2 className="mb-4 text-3xl font-light text-white">
             {t.headingPre}
             <GradientText>{t.headingEm}</GradientText>
@@ -51,7 +50,7 @@ const GeneralCTA = ({ locale }: Props) => {
             </a>
             <a
               href={`mailto:davittbarry333@gmail.com?subject=${encodeURIComponent(
-                t.emailSubject
+                t.emailSubject,
               )}`}
               className="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
             >

@@ -1,6 +1,7 @@
 ---
-import type { IFrontmatter } from 'astro-boilerplate-components';
+import type { MarkdownInstance } from 'astro';
 
+import type { IFrontmatter } from '@/components/boilerplate';
 import { CTOService } from '@/partials/CTOService';
 import { CVDownload } from '@/partials/CVDownload';
 import { Hero } from '@/partials/Hero';
@@ -10,7 +11,11 @@ import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
 
-const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
+const allPosts = Object.values(
+  import.meta.glob<MarkdownInstance<IFrontmatter>>('./posts/*.md', {
+    eager: true,
+  }),
+);
 const sortedPosts = sortByDate(allPosts);
 
 const title = 'IT & Development - Davitt Barry';

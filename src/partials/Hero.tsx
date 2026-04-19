@@ -1,6 +1,6 @@
-import { HeroAvatar, Section } from 'astro-boilerplate-components';
 import { useState } from 'react';
 
+import { HeroAvatar, Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
 type Props = { locale: Locale };

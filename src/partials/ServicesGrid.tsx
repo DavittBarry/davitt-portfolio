@@ -1,5 +1,4 @@
-import { Section } from 'astro-boilerplate-components';
-
+import { Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
 type Props = { locale: Locale };
@@ -98,7 +97,7 @@ const ServicesGrid = ({ locale }: Props) => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <a
           href={t.devHref}
-          className="group block cursor-pointer border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-accent/50"
+          className="group block cursor-pointer border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-accent/50"
         >
           <div className="mb-4 font-mono text-4xl text-accent">{'</>'}</div>
           <h3 className="mb-3 text-xl font-medium text-white transition-colors group-hover:text-accent">
@@ -120,7 +119,7 @@ const ServicesGrid = ({ locale }: Props) => {
 
         <a
           href={t.musicHref}
-          className="group block cursor-pointer border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
+          className="group block cursor-pointer border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
         >
           <div className="mb-4 text-4xl text-emerald-400">♪</div>
           <h3 className="mb-3 text-xl font-medium text-white transition-colors group-hover:text-emerald-400">
@@ -142,7 +141,7 @@ const ServicesGrid = ({ locale }: Props) => {
 
         <a
           href={t.audioHref}
-          className="group block cursor-pointer border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-cyan-400/50"
+          className="group block cursor-pointer border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-cyan-400/50"
         >
           <div className="mb-4 text-4xl text-cyan-400">⚡</div>
           <h3 className="mb-3 text-xl font-medium text-white transition-colors group-hover:text-cyan-400">

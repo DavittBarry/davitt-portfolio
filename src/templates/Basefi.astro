@@ -1,4 +1,6 @@
 ---
+import '@/styles/global.css';
+
 import { Footer } from '@/partials/Footer';
 import { Navbar } from '@/partials/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
@@ -52,7 +54,10 @@ const {
     <!-- hreflang tags for language versions -->
     <link rel="alternate" hreflang="en" href="https://davittbarry.com/" />
     <link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/" />
-    <link rel="alternate" hreflang="x-default" href="https://davittbarry.com/"
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://davittbarry.com/"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -63,22 +68,42 @@ const {
     />
 
     <!-- Structured Data (Schema.org) -->
-    <script type="application/ld+json">
-      { "@context": "https://schema.org", "@type": "Person", "name": "Davitt
-      Barry", "url": "https://davittbarry.com", "image":
-      "https://davittbarry.com/assets/images/avatar.jpg", "sameAs": [
-      "https://github.com/DavittBarry",
-      "https://www.linkedin.com/in/davittbarry/" ], "jobTitle":
-      ["Full-Stack-kehittäjä", "Musiikin tuottaja", "Ääniteknikko"], "address":
-      { "@type": "PostalAddress", "addressRegion": "Uusimaa", "addressCountry":
-      "FI" }, "description": "IT-ammattilainen, muusikko ja ääniteknikko tarjoaa
-      web-kehitys-, musiikintuotanto- ja äänitekniikkapalveluita", "knowsAbout":
-      ["Web-kehitys", "React", "Node.js", "TypeScript", "Musiikin tuotanto",
-      "Äänitekniikka", "Miksaus", "Masterointi"] }
-    </script>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Davitt Barry',
+        url: 'https://davittbarry.com',
+        image: 'https://davittbarry.com/assets/images/avatar.jpg',
+        sameAs: [
+          'https://github.com/DavittBarry',
+          'https://www.linkedin.com/in/davittbarry/',
+        ],
+        jobTitle: ['Full-Stack-kehittäjä', 'Musiikin tuottaja', 'Ääniteknikko'],
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'Uusimaa',
+          addressCountry: 'FI',
+        },
+        description:
+          'IT-ammattilainen, muusikko ja ääniteknikko tarjoaa web-kehitys-, musiikintuotanto- ja äänitekniikkapalveluita',
+        knowsAbout: [
+          'Web-kehitys',
+          'React',
+          'Node.js',
+          'TypeScript',
+          'Musiikin tuotanto',
+          'Äänitekniikka',
+          'Miksaus',
+          'Masterointi',
+        ],
+      })}
+    />
   </head>
   <body
-    class="flex min-h-screen flex-col bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-neutral-100 antialiased"
+    class="flex min-h-screen flex-col bg-linear-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-neutral-100 antialiased"
   >
     <!-- Subtle texture overlay -->
     <div class="pointer-events-none fixed inset-0 opacity-[0.015]">
@@ -135,7 +160,6 @@ const {
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const scrollButton = document.getElementById('scroll-to-top');
-        const halfwayPoint = document.documentElement.scrollHeight / 2;
 
         function checkScroll() {
           const scrolled =
