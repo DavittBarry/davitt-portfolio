@@ -21,7 +21,7 @@ export async function getStaticPaths({ paginate }: GetStaticPaths) {
   const allPosts = Object.values(
     import.meta.glob<MarkdownInstance<IFrontmatter>>('./*.md', {
       eager: true,
-    })
+    }),
   );
   const sortedPosts = sortByDate(allPosts);
   return paginate(sortedPosts, { pageSize: 6 });

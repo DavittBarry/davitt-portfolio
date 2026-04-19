@@ -14,7 +14,7 @@ import { sortByDate } from '@/utils/Posts';
 const allPosts = Object.values(
   import.meta.glob<MarkdownInstance<IFrontmatter>>('./posts/*.md', {
     eager: true,
-  })
+  }),
 );
 const sortedPosts = sortByDate(allPosts);
 
