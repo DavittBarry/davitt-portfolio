@@ -16,7 +16,7 @@ export type FrontmatterPage = Page<MarkdownInstance<IFrontmatter>>;
 
 type SectionProps = { title?: ReactNode; children: ReactNode };
 export const Section = ({ title, children }: SectionProps) => (
-  <div className="mx-auto max-w-screen-lg px-3 py-6">
+  <div className="mx-auto max-w-5xl px-3 py-6">
     {title && <div className="mb-6 text-2xl font-bold">{title}</div>}
     {children}
   </div>
