@@ -1,207 +1,220 @@
-import { Section } from '@/components/boilerplate';
 import type { Locale } from '@/utils/i18n';
 
-type Props = { locale: Locale };
+type Props = {
+  locale: Locale;
+  currentPath?: string;
+};
 
 type NavItem = {
   href: string;
   label: string;
-  hover: string;
+  num: string;
 };
 
 const labels = {
   en: {
     menuAria: 'Toggle navigation menu',
+    homeAria: 'Davitt Barry — Home',
     items: [
-      { href: '/', label: 'Home', hover: 'hover:text-cyan-400' },
-      { href: '/dev', label: 'IT & Development', hover: 'hover:text-accent' },
-      { href: '/music', label: 'Music', hover: 'hover:text-emerald-400' },
-      {
-        href: '/audio-services',
-        label: 'Audio Engineering',
-        hover: 'hover:text-cyan-400',
-      },
-      { href: '/contact', label: 'Contact', hover: 'hover:text-neutral-300' },
+      { href: '/', label: 'Home', num: '01' },
+      { href: '/dev', label: 'IT & Development', num: '02' },
+      { href: '/music', label: 'Music', num: '03' },
+      { href: '/audio-services', label: 'Audio Engineering', num: '04' },
+      { href: '/contact', label: 'Contact', num: '05' },
     ] as NavItem[],
   },
   fi: {
     menuAria: 'Avaa navigointivalikko',
+    homeAria: 'Davitt Barry — Etusivu',
     items: [
-      { href: '/fi/', label: 'Etusivu', hover: 'hover:text-cyan-400' },
-      { href: '/fi/dev', label: 'IT & Kehitys', hover: 'hover:text-accent' },
-      {
-        href: '/fi/musiikki',
-        label: 'Musiikki',
-        hover: 'hover:text-emerald-400',
-      },
-      {
-        href: '/fi/audiopalvelut',
-        label: 'Äänitekniikka',
-        hover: 'hover:text-cyan-400',
-      },
-      {
-        href: '/fi/yhteystiedot',
-        label: 'Yhteystiedot',
-        hover: 'hover:text-neutral-300',
-      },
+      { href: '/fi/', label: 'Etusivu', num: '01' },
+      { href: '/fi/dev', label: 'IT & Kehitys', num: '02' },
+      { href: '/fi/musiikki', label: 'Musiikki', num: '03' },
+      { href: '/fi/audiopalvelut', label: 'Äänitekniikka', num: '04' },
+      { href: '/fi/yhteystiedot', label: 'Yhteystiedot', num: '05' },
     ] as NavItem[],
   },
 } as const;
 
-const Navbar = ({ locale }: Props) => {
+const normalize = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
+
+const isActive = (itemHref: string, currentPath?: string) => {
+  if (!currentPath) return false;
+  const a = normalize(itemHref);
+  const b = normalize(currentPath);
+  return a === b;
+};
+
+const Navbar = ({ locale, currentPath }: Props) => {
   const t = labels[locale];
+  const homeHref = locale === 'fi' ? '/fi/' : '/';
   return (
-    <div className="border-b border-slate-700 bg-slate-800">
-      <Section>
-        <div className="flex items-center justify-between p-4 md:px-0">
-          <a
-            href={locale === 'fi' ? '/fi/' : '/'}
-            className="text-3xl font-medium text-white transition-colors hover:text-accent md:text-2xl"
-          >
-            dB
-          </a>
+    <header className="topnav">
+      <div className="shell topnav__inner">
+        <a href={homeHref} className="logo" aria-label={t.homeAria}>
+          <db-logo className="logo__mark" size="40"></db-logo>
+          <span className="logo__wordmark">DAVITT&nbsp;BARRY</span>
+        </a>
 
-          <nav className="flex items-center">
-            <div className="hidden items-center gap-6 md:flex">
-              {t.items.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`text-base font-normal text-slate-300 transition-colors ${item.hover} lg:text-lg`}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <div className="ml-4 flex items-center space-x-2 border border-slate-600 bg-slate-700/50 px-3 py-1 transition-colors hover:border-accent lg:px-4 lg:py-1.5">
-                <a
-                  href="#"
-                  data-lang="en"
-                  className="lang-switch text-sm text-slate-300 hover:text-accent lg:text-base"
-                >
-                  EN
-                </a>
-                <span className="text-sm text-slate-500 lg:text-base">/</span>
-                <a
-                  href="#"
-                  data-lang="fi"
-                  className="lang-switch text-sm text-slate-300 hover:text-accent lg:text-base"
-                >
-                  FI
-                </a>
-              </div>
-            </div>
-
-            <button
-              className="p-2 text-slate-300 hover:text-accent md:hidden"
-              id="mobile-menu-button"
-              type="button"
-              aria-label={t.menuAria}
-              aria-controls="mobile-menu"
-              aria-expanded="false"
+        <div className="topnav__links">
+          {t.items.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              data-num={item.num}
+              className={isActive(item.href, currentPath) ? 'is-active' : ''}
             >
-              <svg
-                className="h-8 w-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </nav>
+              {item.label}
+            </a>
+          ))}
         </div>
 
-        <div className="hidden md:hidden" id="mobile-menu">
-          <div className="flex flex-col gap-4 border-t border-slate-600 py-4 text-center">
-            {t.items.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`py-2 text-slate-300 transition-colors ${item.hover}`}
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="mt-2 flex justify-center gap-4 border-t border-slate-600 pb-2 pt-4">
-              <button
-                data-lang="en"
-                className="lang-switch rounded bg-slate-700 px-4 py-2 text-slate-300 transition-all hover:text-accent"
-              >
-                English
-              </button>
-              <button
-                data-lang="fi"
-                className="lang-switch rounded bg-slate-700 px-4 py-2 text-slate-300 transition-all hover:text-accent"
-              >
-                Suomi
-              </button>
-            </div>
+        <div className="topnav__right">
+          <div className="vumeter" aria-hidden="true"></div>
+          <div className="lang-toggle" role="group" aria-label="Language">
+            <a
+              href="#"
+              data-lang="en"
+              className={`lang-switch ${locale === 'en' ? 'is-active' : ''}`}
+            >
+              EN
+            </a>
+            <a
+              href="#"
+              data-lang="fi"
+              className={`lang-switch ${locale === 'fi' ? 'is-active' : ''}`}
+            >
+              FI
+            </a>
           </div>
+
+          <button
+            className="topnav__burger p-2 text-[color:var(--color-text-dim)] hover:text-[color:var(--color-accent)]"
+            id="mobile-menu-button"
+            type="button"
+            aria-label={t.menuAria}
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.6"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
+      </div>
 
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            // Mobile menu toggle
-            document.getElementById('mobile-menu-button')?.addEventListener('click', (e) => {
-              const btn = e.currentTarget;
-              const menu = document.getElementById('mobile-menu');
-              const isHidden = menu?.classList.toggle('hidden');
-              btn.setAttribute('aria-expanded', String(!isHidden));
-            });
+      <div className="mobile-drawer" id="mobile-menu">
+        <div className="mobile-drawer__inner">
+          {t.items.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              data-num={item.num}
+              className={isActive(item.href, currentPath) ? 'is-active' : ''}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
 
-            // Language switching with page preservation
-            const langMap = {
-              '/': '/fi/',
-              '/dev': '/fi/dev',
-              '/audio-services': '/fi/audiopalvelut',
-              '/music': '/fi/musiikki',
-              '/contact': '/fi/yhteystiedot',
-              '/privacy': '/tietosuoja',
-              '/privacy/': '/tietosuoja',
-              '/fi/': '/',
-              '/fi/dev': '/dev',
-              '/fi/audiopalvelut': '/audio-services',
-              '/fi/musiikki': '/music',
-              '/fi/yhteystiedot': '/contact',
-              '/tietosuoja': '/privacy',
-              '/tietosuoja/': '/privacy'
-            };
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function () {
+              var btn = document.getElementById('mobile-menu-button');
+              var menu = document.getElementById('mobile-menu');
+              if (btn && menu) {
+                btn.addEventListener('click', function () {
+                  var open = menu.classList.toggle('is-open');
+                  btn.setAttribute('aria-expanded', String(open));
+                });
+              }
 
-            document.querySelectorAll('.lang-switch').forEach(link => {
-              link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetLang = e.currentTarget.dataset.lang;
-                const currentPath = window.location.pathname;
-
-                let newPath = currentPath;
-
-                if (currentPath.includes('/posts/') || currentPath.includes('/posts-fi/')) {
-                  newPath = targetLang === 'fi' ? '/fi/' : '/';
-                } else if (currentPath === '/tietosuoja' || currentPath === '/tietosuoja/') {
-                  newPath = targetLang === 'en' ? '/privacy' : '/tietosuoja';
-                } else if (currentPath === '/privacy' || currentPath === '/privacy/') {
-                  newPath = targetLang === 'fi' ? '/tietosuoja' : '/privacy';
-                } else if (targetLang === 'fi' && !currentPath.startsWith('/fi')) {
-                  newPath = langMap[currentPath] || '/fi' + currentPath;
-                } else if (targetLang === 'en' && currentPath.startsWith('/fi')) {
-                  newPath = langMap[currentPath] || currentPath.replace('/fi', '');
+              var vumeter = document.querySelector('.topnav .vumeter');
+              if (vumeter && !vumeter.dataset.built) {
+                vumeter.dataset.built = '1';
+                var N = 5;
+                for (var i = 0; i < N; i++) {
+                  var s = document.createElement('span');
+                  s.style.height = '6px';
+                  vumeter.appendChild(s);
                 }
+                var bars = vumeter.querySelectorAll('span');
+                var t0 = performance.now();
+                function tick(now) {
+                  var t = (now - t0) / 1000;
+                  bars.forEach(function (b, i) {
+                    var v = 0.4 + 0.6 * Math.abs(Math.sin(t * 2.4 + i * 0.7) + 0.3 * Math.sin(t * 5.1 + i));
+                    var hi = i >= 3;
+                    b.style.height = (4 + v * 16).toFixed(1) + 'px';
+                    b.style.background = v > 0.8 && hi
+                      ? 'var(--color-accent)'
+                      : v > 0.55
+                        ? 'oklch(from var(--color-accent) l c h / 0.6)'
+                        : 'var(--color-line)';
+                    b.style.boxShadow = (v > 0.8 && hi) ? '0 0 6px var(--color-accent)' : 'none';
+                  });
+                  requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+              }
 
-                window.location.href = newPath + window.location.hash;
+              var langMap = {
+                '/': '/fi/',
+                '/dev': '/fi/dev',
+                '/audio-services': '/fi/audiopalvelut',
+                '/music': '/fi/musiikki',
+                '/contact': '/fi/yhteystiedot',
+                '/privacy': '/tietosuoja',
+                '/privacy/': '/tietosuoja',
+                '/fi/': '/',
+                '/fi/dev': '/dev',
+                '/fi/audiopalvelut': '/audio-services',
+                '/fi/musiikki': '/music',
+                '/fi/yhteystiedot': '/contact',
+                '/tietosuoja': '/privacy',
+                '/tietosuoja/': '/privacy'
+              };
+
+              document.querySelectorAll('.lang-switch').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  var targetLang = e.currentTarget.dataset.lang;
+                  var currentPath = window.location.pathname;
+                  var newPath = currentPath;
+
+                  if (currentPath.includes('/posts/') || currentPath.includes('/posts-fi/')) {
+                    newPath = targetLang === 'fi' ? '/fi/' : '/';
+                  } else if (currentPath === '/tietosuoja' || currentPath === '/tietosuoja/') {
+                    newPath = targetLang === 'en' ? '/privacy' : '/tietosuoja';
+                  } else if (currentPath === '/privacy' || currentPath === '/privacy/') {
+                    newPath = targetLang === 'fi' ? '/tietosuoja' : '/privacy';
+                  } else if (targetLang === 'fi' && !currentPath.startsWith('/fi')) {
+                    newPath = langMap[currentPath] || '/fi' + currentPath;
+                  } else if (targetLang === 'en' && currentPath.startsWith('/fi')) {
+                    newPath = langMap[currentPath] || currentPath.replace('/fi', '');
+                  }
+
+                  window.location.href = newPath + window.location.hash;
+                });
               });
-            });
+            })();
           `,
-          }}
-        />
-      </Section>
-    </div>
+        }}
+      />
+    </header>
   );
 };
 
