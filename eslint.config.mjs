@@ -24,7 +24,14 @@ const sharedPlugins = {
 
 export default [
   {
-    ignores: ['dist/**', '.astro/**', 'node_modules/**', '.output/**', 'public/**'],
+    ignores: [
+      'dist/**',
+      '.astro/**',
+      '.claude/**',
+      'node_modules/**',
+      '.output/**',
+      'public/**',
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

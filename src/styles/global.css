@@ -2,10 +2,38 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
+  /* Tweakable design tokens — drive the accent palette + glow intensity */
+  --accent-h: 215;
+  --accent-c: 0.14;
+  --accent-l: 0.82;
+  --glow: 0.55;
+
+  /* Accent palette — baby blue */
+  --color-accent: oklch(var(--accent-l) var(--accent-c) var(--accent-h));
+  --color-accent-dim: oklch(
+    calc(var(--accent-l) - 0.15) calc(var(--accent-c) * 0.8) var(--accent-h)
+  );
+  --color-accent-soft: oklch(
+    var(--accent-l) var(--accent-c) var(--accent-h) / 0.14
+  );
+
+  /* Existing dark palette — kept for backward compat during the redesign */
   --color-dark: #0a0a0a;
   --color-dark-100: #1a1a1a;
   --color-dark-200: #262626;
-  --color-accent: #f97316;
+
+  /* Redesign surface + line tokens */
+  --color-bg: oklch(0.14 0.008 250);
+  --color-bg-1: oklch(0.17 0.009 250);
+  --color-bg-2: oklch(0.2 0.01 250);
+  --color-line: oklch(0.28 0.01 250);
+  --color-line-soft: oklch(0.24 0.01 250 / 0.6);
+
+  /* Type stack */
+  --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+  --font-sans:
+    'Inter Tight', 'Inter', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, sans-serif;
   --font-mono:
     'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, 'Liberation Mono', 'Courier New', monospace;
