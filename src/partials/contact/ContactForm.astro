@@ -1,0 +1,232 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const FORMSPREE = 'https://formspree.io/f/movnokwq';
+
+const labels = {
+  en: {
+    inquiryLbl: '▸ Inquiry form',
+    nameLbl: 'Name',
+    namePh: 'Your full name',
+    emailLbl: 'Email',
+    emailPh: 'you@domain.com',
+    subjectLbl: "What's this about?",
+    kinds: [
+      { id: 'k1', value: 'IT & Development', label: 'IT & Development' },
+      { id: 'k2', value: 'Music Commission', label: 'Music Commission' },
+      { id: 'k3', value: 'Mixing & Mastering', label: 'Mixing & Mastering' },
+      { id: 'k4', value: 'Podcast Production', label: 'Podcast Production' },
+      { id: 'k5', value: 'Other', label: 'Something else' },
+    ],
+    budgetLbl: 'Budget range',
+    budgets: [
+      { id: 'b1', value: 'Under €1k', label: 'Under €1k' },
+      { id: 'b2', value: '€1k – €5k', label: '€1k – €5k' },
+      { id: 'b3', value: '€5k – €20k', label: '€5k – €20k' },
+      { id: 'b4', value: '€20k+', label: '€20k+' },
+      { id: 'b5', value: "Let's discuss", label: "Let's discuss" },
+    ],
+    messageLbl: 'Tell me about the project',
+    messagePh:
+      'The more detail, the better — deadlines, references, existing materials...',
+    submit: 'Send message',
+  },
+  fi: {
+    inquiryLbl: '▸ Yhteydenottolomake',
+    nameLbl: 'Nimi',
+    namePh: 'Koko nimesi',
+    emailLbl: 'Sähköposti',
+    emailPh: 'sina@domain.fi',
+    subjectLbl: 'Mistä on kyse?',
+    kinds: [
+      { id: 'k1', value: 'IT & Kehitys', label: 'IT & Kehitys' },
+      { id: 'k2', value: 'Musiikkitilaus', label: 'Musiikkitilaus' },
+      { id: 'k3', value: 'Miksaus & Masterointi', label: 'Miksaus & Masterointi' },
+      { id: 'k4', value: 'Podcast-tuotanto', label: 'Podcast-tuotanto' },
+      { id: 'k5', value: 'Muu', label: 'Jotain muuta' },
+    ],
+    budgetLbl: 'Budjetti',
+    budgets: [
+      { id: 'b1', value: 'Alle 1k €', label: 'Alle 1k €' },
+      { id: 'b2', value: '1k – 5k €', label: '1k – 5k €' },
+      { id: 'b3', value: '5k – 20k €', label: '5k – 20k €' },
+      { id: 'b4', value: '20k+ €', label: '20k+ €' },
+      { id: 'b5', value: 'Sovitaan', label: 'Sovitaan' },
+    ],
+    messageLbl: 'Kerro projektista',
+    messagePh:
+      'Mitä yksityiskohtaisemmin, sen parempi — aikataulut, referenssit, olemassa oleva materiaali...',
+    submit: 'Lähetä viesti',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<form class="contact-form" action={FORMSPREE} method="POST">
+  <div class="label label--accent contact-form__lbl">{t.inquiryLbl}</div>
+
+  <div class="field">
+    <label for="name">
+      {t.nameLbl} <span class="req">*</span>
+    </label>
+    <input type="text" id="name" name="name" placeholder={t.namePh} required />
+  </div>
+
+  <div class="field">
+    <label for="email">
+      {t.emailLbl} <span class="req">*</span>
+    </label>
+    <input type="email" id="email" name="email" placeholder={t.emailPh} required />
+  </div>
+
+  <div class="field">
+    <label>{t.subjectLbl}</label>
+    <div class="pill-group">
+      {t.kinds.map((k, i) => (
+        <Fragment>
+          <input
+            type="radio"
+            name="subject"
+            id={k.id}
+            value={k.value}
+            checked={i === 0}
+          />
+          <label for={k.id}>{k.label}</label>
+        </Fragment>
+      ))}
+    </div>
+  </div>
+
+  <div class="field">
+    <label>{t.budgetLbl}</label>
+    <div class="pill-group">
+      {t.budgets.map((b, i) => (
+        <Fragment>
+          <input
+            type="radio"
+            name="budget"
+            id={b.id}
+            value={b.value}
+            checked={i === 1}
+          />
+          <label for={b.id}>{b.label}</label>
+        </Fragment>
+      ))}
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="message">
+      {t.messageLbl} <span class="req">*</span>
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder={t.messagePh}
+      rows="5"
+      required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn--primary contact-form__submit">
+    {t.submit} <span class="arrow">→</span>
+  </button>
+</form>
+
+<style>
+  .contact-form__lbl {
+    margin-bottom: 24px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .field > label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+  .field .req {
+    color: var(--color-accent);
+  }
+  .field input,
+  .field textarea {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    padding: 12px 0;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+    width: 100%;
+  }
+  .field textarea {
+    min-height: 120px;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: var(--color-text-mute);
+    opacity: 0.6;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--color-accent);
+  }
+
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .pill-group label {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid var(--color-line);
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--color-text);
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      color 0.2s,
+      background 0.2s;
+  }
+  .pill-group input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pill-group input:checked + label {
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  .pill-group label:hover {
+    border-color: var(--color-accent);
+  }
+  .pill-group input:focus-visible + label {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .contact-form__submit {
+    margin-top: 12px;
+  }
+</style>
