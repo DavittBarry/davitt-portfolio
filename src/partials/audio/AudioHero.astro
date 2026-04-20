@@ -1,0 +1,249 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    kicker: '04 / Audio Engineering',
+    headA: 'Raw in.',
+    headEm: 'Polish',
+    headB: ' out.',
+    lede:
+      'Professional mixing and mastering services. From raw recordings to commercial-ready polish, ensuring your tracks sound their best across all platforms — clubs, earbuds, car stereos, streaming.',
+    rackLabel: 'Mastering chain · online',
+    knobs: ['EQ', 'COMP', 'DRV', 'OUT'],
+    knobSubs: ['LOW', 'RATIO', 'SAT', 'GAIN'],
+    vuL: 'L · -3.2 dB',
+    vuR: 'R · -3.0 dB',
+  },
+  fi: {
+    kicker: '04 / Äänitekniikka',
+    headA: 'Raaka sisään.',
+    headEm: 'Viimeistelty',
+    headB: ' ulos.',
+    lede:
+      'Ammattimaiset miksaus- ja masterointipalvelut. Raakanauhoista kaupalliseen valmiuteen — kappaleesi soivat parhaiten joka alustalla: klubeilla, kuulokkeilla, autossa, suoratoistossa.',
+    rackLabel: 'Masterointiketju · online',
+    knobs: ['EQ', 'KMP', 'DRV', 'OUT'],
+    knobSubs: ['LOW', 'SUHDE', 'SAT', 'GAIN'],
+    vuL: 'L · -3.2 dB',
+    vuR: 'R · -3.0 dB',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="shell page-hero audio-hero">
+  <div class="page-hero__kicker">{t.kicker}</div>
+  <h1 class="page-hero__title">
+    {t.headA}<br /><em>{t.headEm}</em>{t.headB}
+  </h1>
+  <div class="page-hero__grid">
+    <p class="page-hero__lede">{t.lede}</p>
+    <div class="rack">
+      <div class="rack__label">{t.rackLabel}</div>
+      <div class="rack__knobs">
+        {t.knobs.map((k, i) => (
+          <div class="knob" data-pos={String((i % 4) + 1)}>
+            {k}<span>{t.knobSubs[i]}</span>
+          </div>
+        ))}
+      </div>
+      <div class="vubig">
+        <div class="chan"><span>{t.vuL}</span><div class="bar"></div></div>
+        <div class="chan"><span>{t.vuR}</span><div class="bar b"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .audio-hero {
+    padding: 80px 0 40px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .page-hero__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 28px;
+  }
+  .page-hero__kicker::before {
+    content: '● ';
+  }
+  .page-hero__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 84px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin: 0 0 32px;
+    color: var(--color-text);
+  }
+  .page-hero__title em {
+    font-style: normal;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 28px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.8));
+  }
+  .page-hero__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .page-hero__lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  .rack {
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    padding: 20px;
+  }
+  .rack__label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 14px;
+  }
+  .rack__label::before {
+    content: '● ';
+  }
+  .rack__knobs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .knob {
+    aspect-ratio: 1;
+    border: 1px solid var(--color-line);
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle at 40% 35%, var(--color-bg-2), var(--color-bg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  .knob::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 10%,
+      var(--color-accent) 30%,
+      var(--color-accent) 100%
+    );
+    box-shadow: 0 0 4px var(--color-accent);
+    transform-origin: 0% 50%;
+    border-radius: 1px;
+  }
+  .knob[data-pos='0']::after {
+    transform: rotate(-150deg);
+  }
+  .knob[data-pos='1']::after {
+    transform: rotate(-90deg);
+  }
+  .knob[data-pos='2']::after {
+    transform: rotate(-30deg);
+  }
+  .knob[data-pos='3']::after {
+    transform: rotate(30deg);
+  }
+  .knob[data-pos='4']::after {
+    transform: rotate(90deg);
+  }
+  .knob span {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: var(--color-text-mute);
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  .vubig {
+    margin-top: 28px;
+    border-top: 1px dashed var(--color-line-soft);
+    padding-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+  .vubig .chan {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .vubig .bar {
+    height: 8px;
+    background: var(--color-bg-2);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+  }
+  .vubig .bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent),
+      oklch(0.7 0.22 50),
+      oklch(0.65 0.2 25)
+    );
+    animation: audio-meter 2s ease-in-out infinite alternate;
+  }
+  .vubig .bar.b::after {
+    animation-duration: 2.3s;
+    animation-delay: 0.2s;
+  }
+  @keyframes audio-meter {
+    from {
+      width: 20%;
+    }
+    to {
+      width: 88%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .page-hero__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

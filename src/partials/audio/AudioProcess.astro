@@ -1,0 +1,141 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    num: '§ 04.2 / PROCESS',
+    titleA: 'How a ',
+    titleEm: 'session',
+    titleB: ' flows.',
+    steps: [
+      {
+        n: '01',
+        title: 'Brief',
+        desc: 'You share references, goals, stems. We agree on targets and timeline — usually a 24–48 h turnaround on the quote.',
+      },
+      {
+        n: '02',
+        title: 'Work',
+        desc: 'First pass, then honest revision cycles — as many as it needs. Industry-standard tools, zero cut corners.',
+      },
+      {
+        n: '03',
+        title: 'Compare',
+        desc: 'A/B against references on multiple systems — club, car, bus, phone, earbuds. Nothing ships without survival testing.',
+      },
+      {
+        n: '04',
+        title: 'Deliver',
+        desc: "Final files in every format you'll need — WAV, DDP, MFiT, stems. Session stays open; revisit anytime.",
+      },
+    ],
+  },
+  fi: {
+    num: '§ 04.2 / PROSESSI',
+    titleA: 'Miten ',
+    titleEm: 'sessio',
+    titleB: ' etenee.',
+    steps: [
+      {
+        n: '01',
+        title: 'Briiffi',
+        desc: 'Jaat referenssit, tavoitteet ja stemit. Sovitaan kohteet ja aikataulu — tarjous yleensä 24–48 tunnissa.',
+      },
+      {
+        n: '02',
+        title: 'Työ',
+        desc: 'Ensimmäinen veto, sitten rehelliset tarkistuskierrokset — niin monta kuin tarvitaan. Alan työkalut, ei oikoreittejä.',
+      },
+      {
+        n: '03',
+        title: 'Vertailu',
+        desc: 'A/B referensseihin useissa järjestelmissä — klubi, auto, bussi, puhelin, kuulokkeet. Mitään ei toimiteta ilman kenttätestiä.',
+      },
+      {
+        n: '04',
+        title: 'Toimitus',
+        desc: 'Lopulliset tiedostot kaikissa tarvittavissa formaateissa — WAV, DDP, MFiT, stemit. Sessio pysyy auki, palataan milloin vain.',
+      },
+    ],
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="shell audio-process">
+  <div class="section-head">
+    <div class="section-head__num">{t.num}</div>
+    <h2 class="section-head__title">{t.titleA}<em>{t.titleEm}</em>{t.titleB}</h2>
+  </div>
+
+  <div class="process__steps">
+    {t.steps.map((step) => (
+      <div class="step">
+        <div class="step__num">{step.n}</div>
+        <h3 class="step__title">{step.title}</h3>
+        <p class="step__desc">{step.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .audio-process {
+    padding: 60px 0 40px;
+  }
+  .process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+    margin-top: 20px;
+  }
+  .step {
+    background: var(--color-bg);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .step__num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+    text-shadow: 0 0 calc(var(--glow) * 20px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.6));
+  }
+  .step__title {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: var(--color-text);
+  }
+  .step__desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .process__steps {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .process__steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
