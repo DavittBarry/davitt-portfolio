@@ -1,0 +1,301 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    sectionNum: '§ 01 / PROFESSIONAL SERVICES',
+    sectionTitleA: 'Three signal paths, ',
+    sectionTitleEm: 'one operator.',
+    footerLeft: 'Based in Helsinki, Finland · Available for remote and on-site projects',
+    footerRight: '03 / 03 channels active',
+    pillars: [
+      {
+        num: '01 / DEV',
+        title: 'IT & Development',
+        desc:
+          'Full-stack web development services from responsive websites to complex applications. Specialized in modern JavaScript frameworks, WordPress, and custom solutions.',
+        list: ['React, Vue, Node.js', 'WordPress, Laravel', 'Database & API Design'],
+        cta: 'View portfolio',
+        href: '/dev',
+      },
+      {
+        num: '02 / MUSIC',
+        title: 'Music',
+        desc:
+          'Original compositions and productions across multiple genres. From initial concept to final master, bringing artistic vision to life through sound.',
+        list: ['Original Compositions', 'Arrangement & Orchestration', 'Multi-Genre Production'],
+        cta: 'Listen to music',
+        href: '/music',
+      },
+      {
+        num: '03 / AUDIO',
+        title: 'Audio Engineering',
+        desc:
+          'Professional mixing and mastering services. From raw recordings to commercial-ready polish, ensuring your tracks sound their best across all platforms.',
+        list: ['Mixing & Mastering', 'Audio Restoration', 'Podcast Production'],
+        cta: 'View services',
+        href: '/audio-services',
+      },
+    ],
+  },
+  fi: {
+    sectionNum: '§ 01 / AMMATTIPALVELUT',
+    sectionTitleA: 'Kolme signaalipolkua, ',
+    sectionTitleEm: 'yksi operaattori.',
+    footerLeft: 'Tukikohta Helsingissä · Etä- ja paikan päällä -projekteja',
+    footerRight: '03 / 03 kanavaa aktiivisena',
+    pillars: [
+      {
+        num: '01 / DEV',
+        title: 'IT & Kehitys',
+        desc:
+          'Full-stack web-kehityspalvelut responsiivisista verkkosivustoista monimutkaisiin sovelluksiin. Erikoistunut moderneihin JavaScript-frameworkeihin, WordPressiin ja räätälöityihin ratkaisuihin.',
+        list: ['React, Vue, Node.js', 'WordPress, Laravel', 'Tietokanta & API-suunnittelu'],
+        cta: 'Näytä portfolio',
+        href: '/fi/dev',
+      },
+      {
+        num: '02 / MUSIC',
+        title: 'Musiikki',
+        desc:
+          'Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Alkuperäisestä konseptista valmiiseen masterointiin, tuoden taiteellisen vision eloon äänen kautta.',
+        list: ['Alkuperäiset sävellykset', 'Sovitus & orkestraatio', 'Monipuolinen tuotanto'],
+        cta: 'Kuuntele musiikkia',
+        href: '/fi/musiikki',
+      },
+      {
+        num: '03 / AUDIO',
+        title: 'Äänitekniikka',
+        desc:
+          'Ammattimaiset miksaus- ja masterointipalvelut. Raaka-äänityksistä kaupalliseen laatuun, varmistaen että kappaleesi kuulostavat parhailta kaikilla alustoilla.',
+        list: ['Miksaus & masterointi', 'Äänen restaurointi', 'Podcast-tuotanto'],
+        cta: 'Näytä palvelut',
+        href: '/fi/audiopalvelut',
+      },
+    ],
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="shell pillars" id="pillars">
+  <div class="section-head">
+    <div class="section-head__num">{t.sectionNum}</div>
+    <h2 class="section-head__title">
+      {t.sectionTitleA}<em>{t.sectionTitleEm}</em>
+    </h2>
+  </div>
+
+  <div class="pillars__grid">
+    {
+      t.pillars.map((p, i) => (
+        <article class="pillar">
+          <div class="pillar__num">{p.num}</div>
+          <div class="pillar__viz">
+            {i === 0 && (
+              <svg viewBox="0 0 280 110" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
+                <g font-family="JetBrains Mono, monospace" font-size="9" fill="currentColor" opacity="0.5">
+                  <text x="0" y="14">const stack = [</text>
+                  <text x="14" y="30">"react", "vue", "node"</text>
+                  <text x="14" y="46">"laravel", "wp", "sql"</text>
+                  <text x="0" y="62">]</text>
+                  <text x="0" y="82" fill="var(--color-accent)">{'▸ build({ for: "you" })'}</text>
+                  <text x="0" y="98" opacity="0.4">// 15+ years · ship it</text>
+                </g>
+              </svg>
+            )}
+            {i === 1 && (
+              <svg viewBox="0 0 280 110" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
+                <g opacity="0.4">
+                  <line x1="0" x2="280" y1="16" y2="16" stroke="currentColor" />
+                  <line x1="0" x2="280" y1="36" y2="36" stroke="currentColor" />
+                  <line x1="0" x2="280" y1="56" y2="56" stroke="currentColor" />
+                  <line x1="0" x2="280" y1="76" y2="76" stroke="currentColor" />
+                  <line x1="0" x2="280" y1="96" y2="96" stroke="currentColor" />
+                </g>
+                <g fill="var(--color-accent)">
+                  <rect x="10" y="70" width="30" height="10" rx="1" />
+                  <rect x="44" y="50" width="24" height="10" rx="1" />
+                  <rect x="72" y="30" width="40" height="10" rx="1" />
+                  <rect x="116" y="50" width="20" height="10" rx="1" />
+                  <rect x="140" y="70" width="32" height="10" rx="1" />
+                  <rect x="176" y="90" width="26" height="10" rx="1" />
+                  <rect x="206" y="30" width="20" height="10" rx="1" opacity="0.5" />
+                  <rect x="230" y="50" width="40" height="10" rx="1" opacity="0.7" />
+                </g>
+              </svg>
+            )}
+            {i === 2 && (
+              <svg viewBox="0 0 280 110" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
+                <g fill="var(--color-accent)" class="pv-audio-bars" />
+                <line x1="0" x2="280" y1="55" y2="55" stroke="currentColor" stroke-opacity="0.25" stroke-dasharray="2 3" />
+                <text x="0" y="104" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.6">00:00</text>
+                <text x="250" y="104" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.6">03:42</text>
+              </svg>
+            )}
+          </div>
+          <h3 class="pillar__title">{p.title}</h3>
+          <p class="pillar__desc">{p.desc}</p>
+          <ul class="pillar__list">
+            {p.list.map((item) => <li>{item}</li>)}
+          </ul>
+          <span class="pillar__cta">{p.cta}</span>
+          <a class="pillar__link" href={p.href} aria-label={p.title} />
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="pillars__footer">
+    <span>{t.footerLeft}</span>
+    <span>{t.footerRight}</span>
+  </div>
+</section>
+
+<script>
+  const host = document.querySelector('.pv-audio-bars');
+  if (host instanceof SVGElement) {
+    const N = 70;
+    let s = '';
+    for (let i = 0; i < N; i++) {
+      const env = Math.sin((i / N) * Math.PI);
+      const h = env * (18 + 12 * Math.sin(i * 0.7) + 6 * Math.cos(i * 1.3)) + 3;
+      s += `<rect x="${(i * (280 / N)).toFixed(2)}" y="${(55 - h).toFixed(2)}" width="2" height="${(h * 2).toFixed(2)}" rx="1" opacity="${(0.5 + env * 0.5).toFixed(2)}"/>`;
+    }
+    host.innerHTML = s;
+  }
+</script>
+
+<style>
+  .pillars {
+    padding-top: 40px;
+  }
+
+  .pillars__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--color-line);
+    border-left: 1px solid var(--color-line);
+  }
+
+  .pillar {
+    position: relative;
+    padding: 40px 32px 36px;
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.35s;
+    overflow: hidden;
+  }
+  .pillar:hover {
+    background: var(--color-bg-1);
+  }
+  .pillar:hover .pillar__viz {
+    opacity: 1;
+  }
+
+  .pillar__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--color-text-mute);
+    margin-bottom: 24px;
+  }
+  .pillar__viz {
+    height: 110px;
+    margin-bottom: 28px;
+    opacity: 0.75;
+    transition: opacity 0.3s;
+    position: relative;
+    color: var(--color-text);
+  }
+  .pillar__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 32px;
+    line-height: 1;
+    margin: 0 0 16px;
+    color: var(--color-text);
+    font-weight: 400;
+  }
+  .pillar__desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    margin: 0 0 24px;
+  }
+  .pillar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pillar__list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--color-line-soft);
+  }
+  .pillar__list li::before {
+    content: '▸';
+    color: var(--color-accent);
+    font-size: 10px;
+  }
+  .pillar__cta {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pillar__cta::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+  .pillar:hover .pillar__cta::after {
+    transform: translateX(6px);
+  }
+  .pillar__link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  .pillars__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .pillars__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

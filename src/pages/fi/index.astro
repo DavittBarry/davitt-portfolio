@@ -1,7 +1,8 @@
 ---
-import { GeneralCTA } from '@/partials/GeneralCTA';
-import { LandingHero } from '@/partials/LandingHero';
-import { ServicesGrid } from '@/partials/ServicesGrid';
+import HomeCTA from '@/partials/home/HomeCTA.astro';
+import HomeHero from '@/partials/home/HomeHero.astro';
+import HomeMarquee from '@/partials/home/HomeMarquee.astro';
+import HomePillars from '@/partials/home/HomePillars.astro';
 import Basefi from '@/templates/Basefi.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -10,7 +11,8 @@ const { description } = AppConfig;
 ---
 
 <Basefi head={{ title, description }}>
-  <LandingHero locale="fi" />
-  <ServicesGrid locale="fi" />
-  <GeneralCTA locale="fi" />
+  <HomeHero locale="fi" />
+  <HomeMarquee locale="fi" />
+  <HomePillars locale="fi" />
+  <HomeCTA locale="fi" />
 </Basefi>
