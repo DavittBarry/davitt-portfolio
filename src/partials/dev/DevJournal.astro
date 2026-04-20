@@ -1,0 +1,163 @@
+---
+import type { IFrontmatter, MarkdownInstance } from '@/components/boilerplate';
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+  posts: MarkdownInstance<IFrontmatter>[];
+  limit?: number;
+}
+
+const { locale, posts, limit = 4 } = Astro.props;
+
+const labels = {
+  en: {
+    sectionNum: '§ 02.3 / JOURNAL',
+    sectionA: 'Recent ',
+    sectionEm: 'writing.',
+    viewAll: 'All posts',
+    dateLocale: 'en-US',
+  },
+  fi: {
+    sectionNum: '§ 02.3 / JULKAISUT',
+    sectionA: 'Viimeaikaista ',
+    sectionEm: 'kirjoittelua.',
+    viewAll: 'Kaikki artikkelit',
+    dateLocale: 'fi-FI',
+  },
+} as const;
+
+const t = labels[locale];
+
+const formatDate = (d: string) =>
+  new Date(d).toLocaleDateString(t.dateLocale, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
+const selected = posts.slice(0, limit);
+const total = posts.length.toString().padStart(2, '0');
+---
+
+<section class="shell journal">
+  <div class="section-head">
+    <div class="section-head__num">{t.sectionNum}</div>
+    <h2 class="section-head__title">
+      {t.sectionA}<em>{t.sectionEm}</em>
+    </h2>
+  </div>
+
+  <ul class="journal__list">
+    {
+      selected.map((post, i) => {
+        const postUrl = post.url?.startsWith('/') ? post.url : `/${post.url ?? ''}`;
+        const href = locale === 'fi' ? postUrl.replace('/fi/', '/') : postUrl;
+        const idx = `${(i + 1).toString().padStart(2, '0')} / ${total}`;
+        return (
+          <li class="journal__item">
+            <a class="journal__link" href={href}>
+              <span class="journal__idx">{idx}</span>
+              <time class="journal__date" datetime={post.frontmatter.pubDate}>
+                {formatDate(post.frontmatter.pubDate)}
+              </time>
+              <h3 class="journal__title">{post.frontmatter.title}</h3>
+              <p class="journal__desc">{post.frontmatter.description}</p>
+              <span class="journal__arrow">→</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  .journal {
+    padding: 40px 0 0;
+  }
+  .journal__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .journal__item {
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .journal__link {
+    display: grid;
+    grid-template-columns: 80px 140px 1fr 40px;
+    gap: 28px;
+    padding: 24px 0;
+    align-items: baseline;
+    text-decoration: none;
+    color: inherit;
+    transition: padding 0.3s, background 0.3s;
+  }
+  .journal__link:hover {
+    padding-left: 18px;
+    background: linear-gradient(
+      90deg,
+      oklch(from var(--color-accent) l c h / 0.04),
+      transparent 60%
+    );
+  }
+  .journal__link:hover .journal__title {
+    color: var(--color-accent);
+  }
+  .journal__link:hover .journal__arrow {
+    transform: translateX(6px);
+    color: var(--color-accent);
+  }
+  .journal__idx {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-text-mute);
+  }
+  .journal__date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--color-text-mute);
+    text-transform: uppercase;
+  }
+  .journal__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin: 0 0 6px;
+    grid-column: 3;
+    transition: color 0.2s;
+  }
+  .journal__desc {
+    grid-column: 3;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+  .journal__arrow {
+    font-family: var(--font-mono);
+    color: var(--color-text-mute);
+    text-align: right;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  @media (max-width: 900px) {
+    .journal__link {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .journal__title,
+    .journal__desc {
+      grid-column: 1;
+    }
+    .journal__arrow {
+      display: none;
+    }
+  }
+</style>

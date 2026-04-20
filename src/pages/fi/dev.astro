@@ -2,11 +2,12 @@
 import type { MarkdownInstance } from 'astro';
 
 import type { IFrontmatter } from '@/components/boilerplate';
-import { CTOService } from '@/partials/CTOService';
-import { CVDownload } from '@/partials/CVDownload';
-import { Hero } from '@/partials/Hero';
-import { ProjectList } from '@/partials/ProjectList';
-import { RecentPosts } from '@/partials/RecentPosts';
+import DevCTA from '@/partials/dev/DevCTA.astro';
+import DevCV from '@/partials/dev/DevCV.astro';
+import DevHero from '@/partials/dev/DevHero.astro';
+import DevJournal from '@/partials/dev/DevJournal.astro';
+import DevServices from '@/partials/dev/DevServices.astro';
+import DevWork from '@/partials/dev/DevWork.astro';
 import Basefi from '@/templates/Basefi.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
@@ -23,9 +24,10 @@ const { description } = AppConfig;
 ---
 
 <Basefi head={{ title, description }}>
-  <Hero locale="fi" />
-  <ProjectList locale="fi" />
-  <RecentPosts client:load postList={sortedPosts} locale="fi" />
-  <CTOService locale="fi" />
-  <CVDownload locale="fi" />
+  <DevHero locale="fi" />
+  <DevServices locale="fi" />
+  <DevWork locale="fi" />
+  <DevJournal locale="fi" posts={sortedPosts} />
+  <DevCV locale="fi" />
+  <DevCTA locale="fi" />
 </Basefi>

@@ -1,0 +1,136 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    sectionNum: '§ 02.4 / CV',
+    sectionA: 'Download the ',
+    sectionEm: 'long form.',
+    lede:
+      'Two PDFs, two languages, one career. Take the full work history with you.',
+    en: 'English',
+    fi: 'Suomi',
+    mono: 'PDF · A4',
+  },
+  fi: {
+    sectionNum: '§ 02.4 / CV',
+    sectionA: 'Lataa ',
+    sectionEm: 'pitkä versio.',
+    lede:
+      'Kaksi PDF:ää, kaksi kieltä, yksi ura. Ota koko työhistoria mukaan.',
+    en: 'English',
+    fi: 'Suomi',
+    mono: 'PDF · A4',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="shell cv">
+  <div class="section-head">
+    <div class="section-head__num">{t.sectionNum}</div>
+    <h2 class="section-head__title">
+      {t.sectionA}<em>{t.sectionEm}</em>
+    </h2>
+  </div>
+
+  <div class="cv__row">
+    <p class="cv__lede">{t.lede}</p>
+    <div class="cv__buttons">
+      <a
+        class="cv__btn"
+        href="/Davitt-Barry-CV-English.pdf"
+        download
+      >
+        <span class="cv__btn-lang">{t.en}</span>
+        <span class="cv__btn-mono">{t.mono}</span>
+        <span class="cv__btn-arrow">↓</span>
+      </a>
+      <a
+        class="cv__btn"
+        href="/Davitt-Barry-CV-Suomeksi.pdf"
+        download
+      >
+        <span class="cv__btn-lang">{t.fi}</span>
+        <span class="cv__btn-mono">{t.mono}</span>
+        <span class="cv__btn-arrow">↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cv {
+    padding: 40px 0 0;
+  }
+  .cv__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--color-line-soft);
+    align-items: center;
+  }
+  .cv__lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--color-text-dim);
+    margin: 0;
+    max-width: 38ch;
+  }
+  .cv__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cv__btn {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 22px;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+  .cv__btn:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+    transform: translateX(4px);
+  }
+  .cv__btn-lang {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--color-text);
+  }
+  .cv__btn-mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-text-mute);
+  }
+  .cv__btn-arrow {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 900px) {
+    .cv__row {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
