@@ -1,0 +1,83 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    kicker: '● Commission work · open',
+    headA: 'Need a piece written, or want me ',
+    headEm: 'on a bill?',
+    primary: 'Get in touch',
+    primaryHref: '/contact',
+    ghost: 'Mix & master services',
+    ghostHref: '/audio-services',
+  },
+  fi: {
+    kicker: '● Tilaustyöt · auki',
+    headA: 'Tarvitsetko kappaleen, tai haluatko ',
+    headEm: 'minut lavalle?',
+    primary: 'Ota yhteyttä',
+    primaryHref: '/fi/yhteystiedot',
+    ghost: 'Miksaus & masterointi',
+    ghostHref: '/fi/audiopalvelut',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="shell music-cta">
+  <div class="music-cta__kicker">{t.kicker}</div>
+  <h2 class="music-cta__title">
+    {t.headA}<em>{t.headEm}</em>
+  </h2>
+  <div class="music-cta__row">
+    <a class="btn btn--primary" href={t.primaryHref}>
+      {t.primary} <span class="arrow">→</span>
+    </a>
+    <a class="btn" href={t.ghostHref}>
+      {t.ghost} <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .music-cta {
+    padding: 80px 0 40px;
+  }
+  .music-cta__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 24px;
+  }
+  .music-cta__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(32px, 4.5vw, 54px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    max-width: 20ch;
+    margin: 0 0 28px;
+    color: var(--color-text);
+  }
+  .music-cta__title em {
+    font-style: italic;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 24px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.7));
+  }
+  .music-cta__row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>

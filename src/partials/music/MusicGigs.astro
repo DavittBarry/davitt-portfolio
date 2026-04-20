@@ -1,0 +1,428 @@
+---
+import type { LocalizedGig } from '@/data/gigs';
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+  gigs: LocalizedGig[];
+}
+
+const { locale, gigs } = Astro.props;
+
+const today = new Date().toISOString().slice(0, 10);
+const upcoming = gigs.filter((g) => g.date >= today);
+const past = gigs.filter((g) => g.date < today);
+
+const yearRange = (list: LocalizedGig[]) => {
+  if (list.length === 0) return '';
+  const years = list.map((g) => g.year);
+  const min = years.reduce((a, b) => (a < b ? a : b));
+  const max = years.reduce((a, b) => (a > b ? a : b));
+  return min === max ? min : `${min}–${max}`;
+};
+
+const labels = {
+  en: {
+    subUpcoming: '▸ UPCOMING',
+    subPast: '▸ PAST SHOWS',
+    countShows: (n: number) => `${String(n).padStart(2, '0')} ${n === 1 ? 'SHOW' : 'SHOWS'}`,
+    emptyTitle: 'No gigs on the calendar right now.',
+    emptyBody: 'I\'m actively taking bookings — acoustic, duo, or full band.',
+    emptyCta: 'Book a date',
+    doors: 'Doors / Show',
+    setTime: 'Set time',
+    venueLabel: 'Venue',
+    privateTag: 'Private',
+    ticketsTag: 'Tickets',
+    rsvpTag: 'RSVP',
+    pastTag: 'Past',
+    mapToggle: 'Venue map & directions',
+    directions: 'Get directions',
+    ctaTitle: 'Don\'t see your venue on the list?',
+    ctaBody:
+      'Booking across Finland — private parties, corporate events, weddings, restaurant evenings, bar gigs. Solo, duo, or full band.',
+    ctaBtn: 'Book a date',
+    ctaHref: '/contact',
+    finland: 'Finland',
+  },
+  fi: {
+    subUpcoming: '▸ TULEVAT',
+    subPast: '▸ MENNEET KEIKAT',
+    countShows: (n: number) => `${String(n).padStart(2, '0')} ${n === 1 ? 'KEIKKA' : 'KEIKKAA'}`,
+    emptyTitle: 'Kalenterissa ei ole tällä hetkellä keikkoja.',
+    emptyBody: 'Otan aktiivisesti varauksia — akustinen, duo tai kokoonpano.',
+    emptyCta: 'Varaa keikka',
+    doors: 'Ovet / Show',
+    setTime: 'Setin aika',
+    venueLabel: 'Paikka',
+    privateTag: 'Yksityinen',
+    ticketsTag: 'Liput',
+    rsvpTag: 'Ilm.',
+    pastTag: 'Mennyt',
+    mapToggle: 'Paikan kartta & reitti',
+    directions: 'Reittiohjeet',
+    ctaTitle: 'Etkö näe paikkaasi listalla?',
+    ctaBody:
+      'Otan varauksia ympäri Suomen — yksityisjuhlat, yritystapahtumat, häät, ravintolaillat, baarikeikat. Soolo, duo tai bändi.',
+    ctaBtn: 'Varaa keikka',
+    ctaHref: '/fi/yhteystiedot',
+    finland: 'Suomi',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="music-panel music-gigs">
+  {upcoming.length === 0 ? (
+    <div class="gigs-empty">
+      <h3 class="gigs-empty__title">{t.emptyTitle}</h3>
+      <p class="gigs-empty__body">{t.emptyBody}</p>
+      <a class="btn btn--primary" href={t.ctaHref}>
+        {t.emptyCta} <span class="arrow">→</span>
+      </a>
+    </div>
+  ) : (
+    <>
+      <div class="subhead">
+        <span>{t.subUpcoming} · {yearRange(upcoming)}</span>
+        <span class="count">{t.countShows(upcoming.length)}</span>
+      </div>
+      <div class="gigs">
+        {upcoming.map((gig) => (
+          <article class="gig">
+            <div class="gig__date">
+              <span class="day">{gig.dayNum}</span>
+              {gig.month.toUpperCase()} {gig.year} · {gig.day.toUpperCase()}
+            </div>
+            <div class="gig__title-wrap">
+              <h3 class="gig__title">
+                {gig.website ? (
+                  <a href={gig.website} target="_blank" rel="noopener">{gig.venue}</a>
+                ) : gig.venue}
+              </h3>
+              <span class="gig__venue">{gig.city} · {t.finland}</span>
+              <p class="gig__desc">{gig.description}</p>
+            </div>
+            <div class="gig__meta">
+              <span class="label">{t.doors}</span>
+              {gig.timeStart} · {gig.timeEnd}
+              {!gig.isPrivate && gig.address && (
+                <details class="gig__map">
+                  <summary>{t.mapToggle}</summary>
+                  <div class="gig__map-body">
+                    <p class="gig__address">{gig.address}</p>
+                    <div class="gig__map-frame">
+                      <iframe
+                        src={`https://www.google.com/maps?q=${encodeURIComponent(gig.address)}&output=embed`}
+                        title={`Map of ${gig.venue}`}
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen></iframe>
+                    </div>
+                    <a
+                      class="gig__directions"
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(gig.address)}`}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      {t.directions} <span class="arrow">↗</span>
+                    </a>
+                  </div>
+                </details>
+              )}
+            </div>
+            <span class:list={['gig__status', gig.isPrivate && 'private']}>
+              {gig.isPrivate ? t.privateTag : t.ticketsTag}
+            </span>
+          </article>
+        ))}
+      </div>
+    </>
+  )}
+
+  {past.length > 0 && (
+    <>
+      <div class="subhead">
+        <span>{t.subPast} · {yearRange(past)}</span>
+        <span class="count">{t.countShows(past.length)}</span>
+      </div>
+      <div class="gigs">
+        {past.map((gig) => (
+          <article class="gig past">
+            <div class="gig__date past">
+              <span class="day">{gig.dayNum}</span>
+              {gig.month.toUpperCase()} {gig.year} · {gig.day.toUpperCase()}
+            </div>
+            <div class="gig__title-wrap">
+              <h3 class="gig__title">
+                {gig.venue}
+                <span class="gig__venue">{gig.city} · {t.finland}</span>
+              </h3>
+            </div>
+            <div class="gig__meta">{gig.timeStart} · {gig.timeEnd}</div>
+            <span class="gig__status past">{t.pastTag}</span>
+          </article>
+        ))}
+      </div>
+    </>
+  )}
+
+  <div class="gigs-cta">
+    <h3 class="gigs-cta__title">{t.ctaTitle}</h3>
+    <p class="gigs-cta__body">{t.ctaBody}</p>
+    <a class="btn btn--primary" href={t.ctaHref}>
+      {t.ctaBtn} <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .music-panel {
+    display: block;
+    padding: 40px 0;
+  }
+  .subhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 12px;
+    margin-top: 24px;
+    border-top: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    gap: 16px;
+  }
+  .subhead:first-child {
+    margin-top: 0;
+  }
+  .subhead .count {
+    color: var(--color-accent);
+  }
+
+  .gigs {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .gig {
+    display: grid;
+    grid-template-columns: 120px 1.4fr 1.6fr auto;
+    gap: 32px;
+    align-items: start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .gig:hover {
+    background: var(--color-bg-1);
+  }
+  .gig.past {
+    opacity: 0.55;
+  }
+  .gig__date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text);
+    letter-spacing: 0.08em;
+  }
+  .gig__date .day {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 38px;
+    color: var(--color-accent);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .gig__date.past .day {
+    color: var(--color-text-mute);
+  }
+  .gig__title-wrap {
+    min-width: 0;
+  }
+  .gig__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--color-text);
+    line-height: 1.15;
+    margin: 0;
+  }
+  .gig__title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .gig__title a:hover {
+    color: var(--color-accent);
+  }
+  .gig__venue {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.06em;
+    margin-top: 6px;
+    display: block;
+    font-style: normal;
+  }
+  .gig__desc {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    margin: 10px 0 0;
+  }
+  .gig__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-dim);
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+  }
+  .gig__meta .label {
+    color: var(--color-text-mute);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .gig__map {
+    margin-top: 12px;
+  }
+  .gig__map summary {
+    cursor: pointer;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 6px 0;
+    list-style: none;
+  }
+  .gig__map summary::before {
+    content: '▸ ';
+  }
+  .gig__map[open] summary::before {
+    content: '▾ ';
+  }
+  .gig__map-body {
+    padding-top: 10px;
+  }
+  .gig__address {
+    font-size: 11px;
+    color: var(--color-text-mute);
+    margin: 0 0 10px;
+    letter-spacing: 0.04em;
+  }
+  .gig__map-frame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border: 1px solid var(--color-line);
+  }
+  .gig__map-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .gig__directions {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-accent);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .gig__directions:hover {
+    text-decoration: underline;
+  }
+  .gig__status {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    white-space: nowrap;
+    align-self: start;
+  }
+  .gig__status.private {
+    border-color: var(--color-text-mute);
+    color: var(--color-text-mute);
+  }
+  .gig__status.past {
+    border-color: var(--color-line);
+    color: var(--color-text-mute);
+  }
+
+  .gigs-empty {
+    padding: 48px 24px;
+    border: 1px solid var(--color-line);
+    text-align: center;
+    background: var(--color-bg-1);
+  }
+  .gigs-empty__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0 0 12px;
+  }
+  .gigs-empty__body {
+    font-size: 14px;
+    color: var(--color-text-dim);
+    margin: 0 0 24px;
+  }
+
+  .gigs-cta {
+    margin-top: 40px;
+    padding: 32px 0 8px;
+    border-top: 1px solid var(--color-line);
+  }
+  .gigs-cta__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin: 0 0 16px;
+    max-width: 26ch;
+  }
+  .gigs-cta__body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    max-width: 58ch;
+    margin: 0 0 24px;
+  }
+
+  @media (max-width: 820px) {
+    .gig {
+      grid-template-columns: 96px 1fr;
+      gap: 20px;
+    }
+    .gig__meta,
+    .gig__status {
+      grid-column: 2 / -1;
+    }
+  }
+  @media (max-width: 520px) {
+    .gig {
+      grid-template-columns: 1fr;
+    }
+    .gig__meta,
+    .gig__status {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

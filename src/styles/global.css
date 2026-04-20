@@ -426,6 +426,11 @@ body::before {
 .btn:hover .arrow {
   transform: translateX(4px);
 }
+.btn--small {
+  padding: 9px 14px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
 
 /* ============================================================
    Footer
