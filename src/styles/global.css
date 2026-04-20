@@ -209,26 +209,58 @@ body::before {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   color: var(--color-text);
   user-select: none;
 }
 .logo__mark {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
+  display: inline-flex;
+  align-items: center;
 }
 .logo__wordmark {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.24em;
+  font-weight: 500;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-text-dim);
+  color: var(--color-text);
   border-left: 1px solid var(--color-line);
-  padding-left: 10px;
+  padding-left: 16px;
   height: 22px;
   display: flex;
   align-items: center;
+  text-shadow: 0 1px 8px oklch(from var(--color-bg) l c h / 0.9);
+}
+
+/* Italic serif dB monogram (Attempt B — plan §4) */
+.db-mark {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-accent);
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 22px
+    oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.55));
+}
+.db-mark__d,
+.db-mark__b {
+  font-size: var(--db-size, 40px);
+  line-height: 0.82;
+}
+.db-mark__b {
+  color: var(--color-text);
+  margin-left: -0.08em;
+  opacity: 0.95;
+}
+.db-mark--hero {
+  gap: 0.02em;
+}
+.db-mark--hero .db-mark__d,
+.db-mark--hero .db-mark__b {
+  font-size: var(--db-size, 220px);
 }
 
 .topnav__links {
