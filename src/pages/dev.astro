@@ -3,7 +3,6 @@ import type { MarkdownInstance } from 'astro';
 
 import type { IFrontmatter } from '@/components/boilerplate';
 import DevCTA from '@/partials/dev/DevCTA.astro';
-import DevCV from '@/partials/dev/DevCV.astro';
 import DevHero from '@/partials/dev/DevHero.astro';
 import DevJournal from '@/partials/dev/DevJournal.astro';
 import DevServices from '@/partials/dev/DevServices.astro';
@@ -28,6 +27,5 @@ const { description } = AppConfig;
   <DevServices locale="en" />
   <DevWork locale="en" />
   <DevJournal locale="en" posts={sortedPosts} />
-  <DevCV locale="en" />
   <DevCTA locale="en" />
 </Base>

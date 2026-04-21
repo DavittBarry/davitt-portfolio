@@ -45,7 +45,7 @@
   /* Layout */
   --radius-sm: 2px;
   --shell-max: 1280px;
-  --shell-gutter: clamp(18px, 5vw, 48px);
+  --shell-gutter: clamp(24px, 6vw, 48px);
 }
 
 /* ============================================================
@@ -151,6 +151,35 @@ body::before {
   max-width: var(--shell-max);
   margin: 0 auto;
   padding: 0 var(--shell-gutter);
+}
+
+@media (max-width: 1100px) {
+  .hero,
+  .page-hero,
+  .contact-hero,
+  .posts-hero {
+    text-align: center;
+  }
+  .hero .hero__roles,
+  .hero .hero__cta,
+  .hero .socials {
+    justify-content: center;
+  }
+  .hero .hero__bio,
+  .page-hero__lede,
+  .contact-hero__lede,
+  .posts-hero__lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-hero__portrait,
+  .contact-portrait,
+  .hero__aside {
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 }
 
 .rule {
@@ -508,10 +537,10 @@ body::before {
   align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 14px 22px;
+  padding: 14px 24px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-line);
   background: transparent;
@@ -524,19 +553,27 @@ body::before {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
-.btn--primary {
-  background: var(--color-accent);
-  color: var(--color-bg);
-  border-color: var(--color-accent);
-  box-shadow:
-    0 0 0 1px var(--color-accent),
-    0 12px 40px -12px
-      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.8));
+.btn--primary,
+a.btn--primary,
+button.btn--primary {
+  background: oklch(0.72 0.14 215);
+  color: #000 !important;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  border-color: oklch(0.72 0.14 215);
+  box-shadow: 0 4px 14px -8px oklch(0.72 0.14 215 / 0.5);
 }
-.btn--primary:hover {
-  background: oklch(from var(--color-accent) calc(l + 0.04) c h);
-  color: var(--color-bg);
+.btn--primary:hover,
+a.btn--primary:hover,
+button.btn--primary:hover {
+  background: oklch(0.78 0.14 215);
+  color: #000 !important;
   transform: translateY(-1px);
+}
+.btn--primary .arrow,
+.btn--primary * {
+  color: #000 !important;
 }
 .btn .arrow {
   transition: transform 0.2s;

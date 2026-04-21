@@ -29,8 +29,8 @@ const labels = {
   },
   fi: {
     kicker: '05 / Yhteystiedot',
-    headA: 'Puhutaan ',
-    headEm: 'kahden.',
+    headA: 'Otetaan ',
+    headEm: 'yhteyttä.',
     lede:
       'Oli kyse kehittäjästä seuraavaan projektiisi, äänitekniikasta tai alkuperäisistä sävellyksistä — autan toteuttamaan vision.',
     tag: 'TERVE',
@@ -211,13 +211,26 @@ const t = labels[locale];
     color: var(--color-accent);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .contact-hero {
       grid-template-columns: 1fr;
       gap: 32px;
+      text-align: center;
+    }
+    .contact-hero__intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .contact-hero__lede {
+      margin-left: auto;
+      margin-right: auto;
     }
     .contact-portrait {
-      max-width: 320px;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
     }
   }
 </style>

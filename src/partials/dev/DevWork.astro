@@ -1,4 +1,12 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+import cbtjournalIcon from '@/assets/images/dev/cbtjournal-icon.png';
+import helsinkeyIcon from '@/assets/images/dev/helsinkey-icon.png';
+import jobboardIcon from '@/assets/images/dev/jobboard-icon.png';
+import portfolioIcon from '@/assets/images/dev/portfolio-icon.png';
+import weatherIcon from '@/assets/images/dev/weather-icon.png';
 import type { Locale } from '@/utils/i18n';
 
 export interface Props {
@@ -13,6 +21,7 @@ type Project = {
   desc: string;
   stack: string;
   year: string;
+  icon: ImageMetadata;
   githubLink?: string;
   appLink?: string;
 };
@@ -31,6 +40,7 @@ const labels = {
         desc: 'A cognitive behavioral therapy journaling app. Track thoughts, identify distortions, monitor mood with the Burns checklist. Local-only storage, mobile via Capacitor.',
         stack: 'React · TypeScript · Tailwind · Capacitor · IndexedDB',
         year: '2025',
+        icon: cbtjournalIcon,
         githubLink: 'https://github.com/DavittBarry/CBTJournal/tree/main',
         appLink: 'https://cbtjournal.app/',
       },
@@ -40,6 +50,7 @@ const labels = {
         desc: 'Full e-commerce platform for music and instruments with a ground-up custom theme. WooCommerce, Dockerized infra, ACF-driven editor experience.',
         stack: 'WordPress · WooCommerce · PHP · MySQL · Docker · ACF · Tailwind',
         year: '2024',
+        icon: helsinkeyIcon,
         githubLink: 'https://github.com/DavittBarry/wp-helsinkey-ecommerce',
       },
       {
@@ -48,6 +59,7 @@ const labels = {
         desc: 'A compact weather forecast application with a thin Express API layer. Built to explore SASS architecture and third-party API composition.',
         stack: 'React · Node · Express · SASS · APIs',
         year: '2023',
+        icon: weatherIcon,
         githubLink: 'https://github.com/DavittBarry/weather-app',
         appLink: 'https://marvelous-hamster-87b7aa.netlify.app/',
       },
@@ -57,6 +69,7 @@ const labels = {
         desc: 'Real-time job posting platform with advanced filters and separate employer / employee account flows. MongoDB-backed, Vue on the front.',
         stack: 'Vue · MongoDB · Tailwind',
         year: '2023',
+        icon: jobboardIcon,
         githubLink: 'https://github.com/DavittBarry/job-advertisement-app',
       },
       {
@@ -65,6 +78,7 @@ const labels = {
         desc: 'The studio-dark portfolio and writing home you are looking at. Static-first via Astro, bilingual routing, React islands for interactive bits.',
         stack: 'Astro · TypeScript · Tailwind · React',
         year: '2026',
+        icon: portfolioIcon,
         githubLink: 'https://github.com/DavittBarry/davitt-portfolio',
       },
     ] satisfies Project[],
@@ -78,10 +92,11 @@ const labels = {
     projects: [
       {
         title: 'CBTJournal',
-        subtitle: '— yksityinen CBT-päiväkirja',
+        subtitle: '— yksityisyyttä kunnioittava CBT-päiväkirja',
         desc: 'Kognitiivisen käyttäytymisterapian päiväkirjasovellus. Seuraa ajatuksia, tunnista vääristymiä, seuraa mielialaa Burns-tarkistuksella. Paikallinen data, mobiili Capacitorilla.',
         stack: 'React · TypeScript · Tailwind · Capacitor · IndexedDB',
         year: '2025',
+        icon: cbtjournalIcon,
         githubLink: 'https://github.com/DavittBarry/CBTJournal/tree/main',
         appLink: 'https://cbtjournal.app/',
       },
@@ -91,14 +106,16 @@ const labels = {
         desc: 'Musiikin ja soittimien verkkokauppa, teema rakennettu alusta asti. WooCommerce, Dockeroitu ympäristö, ACF-pohjainen sisällönhallinta.',
         stack: 'WordPress · WooCommerce · PHP · MySQL · Docker · ACF · Tailwind',
         year: '2024',
+        icon: helsinkeyIcon,
         githubLink: 'https://github.com/DavittBarry/wp-helsinkey-ecommerce',
       },
       {
         title: 'Sääsovellus',
         subtitle: '— sääennuste-SPA',
-        desc: 'Kompakti sääennustesovellus ohuella Express-API-kerroksella. Tehty SASS-arkkitehtuurin ja ulkoisten rajapintojen kokeiluun.',
+        desc: 'Kompakti sääennustesovellus ohuella Express-API-kerroksella. Rakennettu SASS-arkkitehtuurin ja ulkopuolisten rajapintojen tutkimista varten.',
         stack: 'React · Node · Express · SASS · API:t',
         year: '2023',
+        icon: weatherIcon,
         githubLink: 'https://github.com/DavittBarry/weather-app',
         appLink: 'https://marvelous-hamster-87b7aa.netlify.app/',
       },
@@ -108,14 +125,16 @@ const labels = {
         desc: 'Reaaliaikainen työpaikkailmoitusalusta edistyneillä suodattimilla sekä työnantajan ja työntekijän omilla tileillä. MongoDB-taustainen, Vue-frontti.',
         stack: 'Vue · MongoDB · Tailwind',
         year: '2023',
+        icon: jobboardIcon,
         githubLink: 'https://github.com/DavittBarry/job-advertisement-app',
       },
       {
         title: 'Portfolio',
         subtitle: '— tämä sivusto',
-        desc: 'Studiopimeä portfolio ja kirjoitusten koti, jota katsot nyt. Staattinen Astro, kaksikielinen reititys, React-saarekkeita interaktiivisiin osiin.',
+        desc: 'Tummasävyinen studiotyylinen portfolio ja blogisivusto, jota parhaillaan selaat. Staattinen Astro, kaksikielinen reititys, React-saarekkeita interaktiivisiin osiin.',
         stack: 'Astro · TypeScript · Tailwind · React',
         year: '2026',
+        icon: portfolioIcon,
         githubLink: 'https://github.com/DavittBarry/davitt-portfolio',
       },
     ] satisfies Project[],
@@ -142,7 +161,10 @@ const total = t.projects.length.toString().padStart(2, '0');
         return (
           <li class="work__item">
             {primary && <a class="work__link" href={primary} target="_blank" rel="noopener" aria-label={p.title} />}
-            <div class="work__idx">{idx}</div>
+            <div class="work__icon">
+              <Image src={p.icon} alt="" width={64} height={64} loading="lazy" />
+              <span class="work__idx">{idx}</span>
+            </div>
             <h3 class="work__title">
               {p.title} <em>{p.subtitle}</em>
             </h3>
@@ -182,12 +204,32 @@ const total = t.projects.length.toString().padStart(2, '0');
   .work__item {
     position: relative;
     display: grid;
-    grid-template-columns: 80px 1.4fr 2fr 120px;
+    grid-template-columns: 88px 1.4fr 2fr 120px;
     gap: 28px;
     padding: 32px 0;
     border-bottom: 1px solid var(--color-line-soft);
     align-items: start;
     transition: padding 0.3s, background 0.3s;
+  }
+  .work__icon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .work__icon :global(img) {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    border-radius: var(--radius-sm, 4px);
+    padding: 6px;
+    object-fit: contain;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .work__item:hover .work__icon :global(img) {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
   }
   .work__item:hover {
     padding-left: 18px;
@@ -210,7 +252,6 @@ const total = t.projects.length.toString().padStart(2, '0');
     font-size: 11px;
     letter-spacing: 0.12em;
     color: var(--color-text-mute);
-    padding-top: 6px;
   }
   .work__title {
     font-family: var(--font-serif);

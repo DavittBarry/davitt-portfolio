@@ -31,7 +31,6 @@ const labels = {
           { href: '/dev#services', label: 'Services' },
           { href: '/dev#work', label: 'Selected work' },
           { href: '/dev#journal', label: 'Journal' },
-          { href: '/dev#cv', label: 'CV' },
           { href: '/posts', label: 'All posts' },
         ],
       },
@@ -69,9 +68,8 @@ const labels = {
         num: '02',
         submenu: [
           { href: '/fi/dev#services', label: 'Palvelut' },
-          { href: '/fi/dev#work', label: 'Valikoitua' },
+          { href: '/fi/dev#work', label: 'Valitut työt' },
           { href: '/fi/dev#journal', label: 'Julkaisut' },
-          { href: '/fi/dev#cv', label: 'CV' },
           { href: '/fi/posts', label: 'Kaikki artikkelit' },
         ],
       },
@@ -227,9 +225,19 @@ const homeHref = locale === 'fi' ? '/fi/' : '/';
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     if (btn && menu) {
+      const closeMenu = () => {
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      };
       btn.addEventListener('click', () => {
         const open = menu.classList.toggle('is-open');
         btn.setAttribute('aria-expanded', String(open));
+      });
+      menu.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((a) => {
+        a.addEventListener('click', () => closeMenu());
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
       });
     }
 
@@ -294,24 +302,17 @@ const homeHref = locale === 'fi' ? '/fi/' : '/';
         const currentPath = window.location.pathname;
         let newPath = currentPath;
 
-        if (
-          currentPath === '/posts' ||
-          currentPath === '/posts/' ||
-          currentPath.startsWith('/posts/')
-        ) {
-          newPath =
-            targetLang === 'fi'
-              ? currentPath.replace(/^\/posts/, '/fi/posts')
-              : currentPath;
+        if (currentPath === '/posts' || currentPath === '/posts/') {
+          newPath = targetLang === 'fi' ? '/fi/posts' : currentPath;
+        } else if (currentPath.startsWith('/posts/')) {
+          newPath = targetLang === 'fi' ? '/fi/posts' : currentPath;
         } else if (
           currentPath === '/fi/posts' ||
-          currentPath === '/fi/posts/' ||
-          currentPath.startsWith('/fi/posts/')
+          currentPath === '/fi/posts/'
         ) {
-          newPath =
-            targetLang === 'en'
-              ? currentPath.replace(/^\/fi\/posts/, '/posts')
-              : currentPath;
+          newPath = targetLang === 'en' ? '/posts' : currentPath;
+        } else if (currentPath.startsWith('/fi/posts/')) {
+          newPath = targetLang === 'en' ? '/posts' : currentPath;
         } else if (
           currentPath === '/tietosuoja' ||
           currentPath === '/tietosuoja/'

@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
+import bioPortrait from '@/images/promo/promo-06.jpg';
 import type { Locale } from '@/utils/i18n';
 
 export interface Props {
@@ -60,10 +61,10 @@ const labels = {
       ' vuotta. Aloitin Dublinissa, kiersin kolme vuotta Australiaa pääasiassa ',
     bio1Simon: 'Simon Meolan',
     bio1SimonUrl: 'https://simonmeolamusic.com/about',
-    bio1c: ' kanssa, ja soitin Madridin Tennis Openin finaalipäivänä 2011 ',
-    bio1Lorcan: 'Lorcan James',
+    bio1c: ' kanssa ja soitin Madridin Tennis Openin finaalipäivänä 2011 yhdessä ',
+    bio1Lorcan: 'Lorcan Jamesin',
     bio1LorcanUrl: 'https://www.youtube.com/watch?v=PbkjcHv6MXE',
-    bio1d: ' -yhtyeen kanssa.',
+    bio1d: ' kanssa.',
     bio2a:
       'Suomessa olen keikkaillut vuodesta 2011 lähes jokaisella risteilyaluksella, suurimmilla hiihtokeskuksilla ja isoilla lavoilla ympäri maan — yksin, duona ja bändien kanssa. Teen yhteistyötä myös suomalaisen ohjelmatoimiston ',
     bio2Piikkikasvi: 'Piikkikasvin',
@@ -99,6 +100,15 @@ const t = labels[locale];
 
   <div class="covers-bio">
     <div class="covers-bio__meta">{t.bio}</div>
+    <div class="covers-bio__photo">
+      <Image
+        src={bioPortrait}
+        alt="Davitt Barry — live performance promo"
+        width={720}
+        height={527}
+        loading="lazy"
+      />
+    </div>
     <div class="covers-bio__body">
       <h3 class="covers-bio__head">{t.bioHead}</h3>
       <p>
@@ -217,12 +227,60 @@ const t = labels[locale];
 </script>
 
 <style>
+  .subhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 12px;
+    margin-top: 24px;
+    border-top: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    gap: 16px;
+  }
+  .subhead:first-child {
+    margin-top: 0;
+  }
+  .subhead .count {
+    color: var(--color-accent);
+  }
+
+  .production {
+    padding: 24px 0 8px;
+  }
+  .production__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin: 0 0 16px;
+    max-width: 28ch;
+  }
+  .production__body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    max-width: 58ch;
+    margin: 0 0 24px;
+  }
+  .production__row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
   .covers-bio {
     display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 40px;
+    grid-template-columns: 60px minmax(420px, 620px) 1fr;
+    gap: 32px;
     padding: 24px 0 40px;
     border-bottom: 1px solid var(--color-line-soft);
+    align-items: start;
   }
   .covers-bio__meta {
     font-family: var(--font-mono);
@@ -230,6 +288,18 @@ const t = labels[locale];
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-text-mute);
+  }
+  .covers-bio__photo {
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    width: 100%;
+  }
+  .covers-bio__photo :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(0.1) contrast(1.02);
   }
   .covers-bio__body {
     display: flex;
@@ -362,13 +432,27 @@ const t = labels[locale];
       grid-template-columns: repeat(5, 1fr);
     }
   }
-  @media (max-width: 760px) {
+  @media (max-width: 1080px) {
     .covers-bio {
       grid-template-columns: 1fr;
       gap: 20px;
+      justify-items: stretch;
+    }
+    .covers-bio__photo {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
     }
     .covers-video-grid {
       grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 760px) {
+    .covers-bio {
+      text-align: left;
+    }
+    .covers-bio__photo {
+      max-width: 100%;
     }
   }
 </style>

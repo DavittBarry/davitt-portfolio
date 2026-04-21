@@ -50,7 +50,7 @@ const labels = {
     subPast: '▸ MENNEET KEIKAT',
     countShows: (n: number) => `${String(n).padStart(2, '0')} ${n === 1 ? 'KEIKKA' : 'KEIKKAA'}`,
     emptyTitle: 'Kalenterissa ei ole tällä hetkellä keikkoja.',
-    emptyBody: 'Otan aktiivisesti varauksia — akustinen, duo tai kokoonpano.',
+    emptyBody: 'Otan aktiivisesti varauksia — soolo, akustinen, duo tai täysi bändi.',
     emptyCta: 'Varaa keikka',
     doors: 'Ovet / Esitys',
     setTime: 'Setin kesto',
@@ -221,11 +221,14 @@ const t = labels[locale];
   }
   .gig {
     display: grid;
-    grid-template-columns: 108px 140px 1.4fr 1.4fr auto;
+    grid-template-columns: 108px 220px 1.4fr 1.4fr auto;
     gap: 24px;
     align-items: start;
     padding: 24px 0;
     border-bottom: 1px solid var(--color-line-soft);
+  }
+  .gig__status {
+    justify-self: end;
   }
   .gig__thumb {
     border: 1px solid var(--color-line);
@@ -441,11 +444,16 @@ const t = labels[locale];
 
   @media (max-width: 960px) {
     .gig {
-      grid-template-columns: 96px 120px 1fr auto;
+      grid-template-columns: 96px 180px 1fr auto;
       gap: 20px;
     }
     .gig__meta {
       grid-column: 2 / -1;
+    }
+    .gig__status {
+      grid-column: 4;
+      grid-row: 1;
+      justify-self: end;
     }
   }
   @media (max-width: 680px) {
@@ -454,12 +462,16 @@ const t = labels[locale];
     }
     .gig__thumb {
       grid-column: 1 / -1;
-      max-width: 280px;
+      max-width: 420px;
       aspect-ratio: 16 / 9;
     }
-    .gig__meta,
-    .gig__status {
+    .gig__meta {
       grid-column: 2 / -1;
+    }
+    .gig__status {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
     }
   }
   @media (max-width: 520px) {
@@ -473,6 +485,8 @@ const t = labels[locale];
     .gig__meta,
     .gig__status {
       grid-column: 1 / -1;
+      grid-row: auto;
+      justify-self: start;
     }
   }
 </style>

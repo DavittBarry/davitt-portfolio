@@ -149,6 +149,16 @@ const promos = await Promise.all(
           tab.getAttribute('aria-selected') === 'true' ? '0' : '-1',
         ),
       );
+
+    const onHash = () => {
+      const h = window.location.hash.replace('#', '');
+      if (VALID.has(h)) {
+        switchTab(h);
+        const panel = document.getElementById(`panel-${h}`);
+        panel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+    window.addEventListener('hashchange', onHash);
   }
 
   function initPromoToggle() {

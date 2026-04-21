@@ -17,12 +17,12 @@ const sections = [
   {
     id: '02',
     heading: 'Kerätyt henkilötiedot',
-    body: 'Sivusto ei käytä evästeitä tai seurantateknologioita. Sähköpostiosoitteesi kerätään vain, jos valitset ottaa yhteyttä suoraan sähköpostilinkin tai yhteydenottolomakkeen kautta.',
+    body: 'Sivusto ei käytä evästeitä eikä seurantateknologioita. Sähköpostiosoitettasi kerätään vain, jos otat yhteyttä suoraan sähköpostilinkin tai yhteydenottolomakkeen kautta.',
   },
   {
     id: '03',
     heading: 'Henkilötietojen käyttö',
-    body: 'Annettu sähköpostiosoite käytetään ainoastaan tiedusteluihin vastaamiseen. En jaa, myy tai käytä tietojasi mihinkään muuhun tarkoitukseen.',
+    body: 'Antamaasi sähköpostiosoitetta käytetään ainoastaan yhteydenottoihin vastaamiseen. En jaa, myy enkä käytä tietojasi mihinkään muuhun tarkoitukseen.',
   },
   {
     id: '04',
@@ -82,11 +82,6 @@ const sections = [
 </Basefi>
 
 <style>
-  .shell {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
   .legal {
     padding: 60px 0 80px;
     max-width: 900px;
@@ -221,8 +216,12 @@ const sections = [
   }
 
   @media (max-width: 620px) {
+    .legal {
+      padding: 40px 0 64px;
+    }
     .legal__section {
       grid-template-columns: 1fr;
+      padding: 22px 20px;
     }
     .legal__heading,
     .legal__body {

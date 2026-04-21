@@ -22,6 +22,7 @@ const labels = {
     albumDesc:
       'My latest album exploring electronic, ambient, and progressive soundscapes. All mixing, mastering, composing, and performances by Davitt Barry.',
     listen: 'Listen on',
+    watchYoutube: 'Watch on YouTube',
     past: '▸ PAST RELEASES',
     pastCount: '02',
     daev: {
@@ -55,6 +56,7 @@ const labels = {
     albumDesc:
       'Uusin albumini tutkii elektronista, ambienttia ja progressiivista äänimaailmaa. Kaikki miksaus, masterointi, sävellys ja esitykset: Davitt Barry.',
     listen: 'Kuuntele',
+    watchYoutube: 'Katso YouTubessa',
     past: '▸ AIEMMAT JULKAISUT',
     pastCount: '02',
     daev: {
@@ -100,6 +102,16 @@ const t = labels[locale];
     <div class="release__video" id="aliud-phantasma-video">
       <div class="release__video-label">{t.videoLabel}</div>
       <YouTubeEmbed id="zYJyVhUtR-4" title={t.videoLabel} />
+      <div class="release__video-cta">
+        <a
+          class="btn btn--small"
+          href="https://www.youtube.com/@davittbarry"
+          target="_blank"
+          rel="noopener"
+        >
+          {t.watchYoutube} <span class="arrow">↗</span>
+        </a>
+      </div>
     </div>
 
     <div class="release__body">
@@ -288,6 +300,11 @@ const t = labels[locale];
     color: var(--color-text-dim);
     margin-bottom: 10px;
     text-align: center;
+  }
+  .release__video-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
   }
   .release__body {
     display: grid;

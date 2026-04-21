@@ -115,7 +115,7 @@ const t = labels[locale];
 
     <div class="hero__aside">
       <div class="portrait">
-        <Image src={avatarImg} alt="Davitt Barry" width={560} height={560} loading="eager" />
+        <Image src={avatarImg} alt="Davitt Barry" width={320} height={400} loading="eager" />
         <div class="portrait__grid"></div>
         <div class="portrait__crosshair"></div>
         <div class="portrait__stats">
@@ -206,7 +206,7 @@ const t = labels[locale];
 
   .hero__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 320px;
     gap: 60px;
     align-items: end;
   }
@@ -306,6 +306,9 @@ const t = labels[locale];
     display: grid;
     grid-template-columns: 1fr;
     gap: 28px;
+    max-width: 320px;
+    justify-self: end;
+    width: 100%;
   }
   .portrait {
     position: relative;
@@ -397,10 +400,30 @@ const t = labels[locale];
     color: var(--color-text-mute);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .hero__grid {
       grid-template-columns: 1fr;
       gap: 32px;
+      text-align: center;
+    }
+    .hero__grid > div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero__bio {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero__roles,
+    .hero__cta,
+    .socials {
+      justify-content: center;
+    }
+    .hero__aside {
+      max-width: 280px;
+      justify-self: center;
+      width: 100%;
     }
     .mark-caption {
       position: static;

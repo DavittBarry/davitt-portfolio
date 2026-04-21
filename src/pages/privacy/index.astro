@@ -81,11 +81,6 @@ const sections = [
 </Base>
 
 <style>
-  .shell {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
   .legal {
     padding: 60px 0 80px;
     max-width: 900px;
@@ -220,8 +215,12 @@ const sections = [
   }
 
   @media (max-width: 620px) {
+    .legal {
+      padding: 40px 0 64px;
+    }
     .legal__section {
       grid-template-columns: 1fr;
+      padding: 22px 20px;
     }
     .legal__heading,
     .legal__body {
