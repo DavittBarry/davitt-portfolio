@@ -15,7 +15,7 @@ const description =
   'Original music and live cover gigs by Davitt Barry. Acoustic troubadour available for events across Finland.';
 
 const gigs = getLocalizedGigs('en');
-const yearsPlaying = new Date().getFullYear() - 2007;
+const yearsPlaying = new Date().getFullYear() - 2005;
 
 const promoModules = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/promo/*.jpg',
@@ -72,7 +72,7 @@ const promos = await Promise.all(
         data-tab="gigs"
         id="tab-gigs"
       >
-        <span class="n">03</span> Gigs Calendar
+        <span class="n">03</span> Gig Calendar
       </button>
     </div>
 
@@ -192,30 +192,34 @@ const promos = await Promise.all(
 
 <style>
   .tabs {
-    display: flex;
-    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
     border-bottom: 1px solid var(--color-line);
     margin-top: 40px;
-    overflow-x: auto;
   }
   .tabs .tab {
-    background: transparent;
-    border: 0;
+    background: var(--color-bg-1);
+    border: 1px solid var(--color-line);
+    border-bottom: 2px solid transparent;
     font: inherit;
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-text-dim);
-    padding: 16px 20px;
+    padding: 14px 12px;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-    transition: color 0.2s;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    transition:
+      color 0.2s,
+      background 0.2s,
+      border-color 0.2s;
   }
   .tabs .tab .n {
     color: var(--color-text-mute);
@@ -223,9 +227,12 @@ const promos = await Promise.all(
   }
   .tabs .tab:hover {
     color: var(--color-text);
+    border-color: var(--color-accent);
   }
   .tabs .tab.on {
     color: var(--color-accent);
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
     border-bottom-color: var(--color-accent);
   }
   .tabs .tab.on .n {
@@ -242,5 +249,16 @@ const promos = await Promise.all(
   }
   .tab-panel.on {
     display: block;
+  }
+
+  @media (max-width: 520px) {
+    .tabs .tab {
+      font-size: 11px;
+      padding: 12px 6px;
+      letter-spacing: 0.04em;
+    }
+    .tabs .tab .n {
+      display: none;
+    }
   }
 </style>

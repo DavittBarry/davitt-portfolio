@@ -1,10 +1,15 @@
 ---
 import type { Locale } from '@/utils/i18n';
 
+type SubItem = {
+  href: string;
+  label: string;
+};
 type NavItem = {
   href: string;
   label: string;
   num: string;
+  submenu?: SubItem[];
 };
 
 export interface Props {
@@ -18,9 +23,38 @@ const labels = {
     homeAria: 'Davitt Barry — Home',
     items: [
       { href: '/', label: 'Home', num: '01' },
-      { href: '/dev', label: 'IT & Development', num: '02' },
-      { href: '/music', label: 'Music', num: '03' },
-      { href: '/audio-services', label: 'Audio Engineering', num: '04' },
+      {
+        href: '/dev',
+        label: 'IT & Development',
+        num: '02',
+        submenu: [
+          { href: '/dev#services', label: 'Services' },
+          { href: '/dev#work', label: 'Selected work' },
+          { href: '/dev#journal', label: 'Journal' },
+          { href: '/dev#cv', label: 'CV' },
+          { href: '/posts', label: 'All posts' },
+        ],
+      },
+      {
+        href: '/music',
+        label: 'Music',
+        num: '03',
+        submenu: [
+          { href: '/music#original', label: 'Originals' },
+          { href: '/music#covers', label: 'Covers' },
+          { href: '/music#gigs', label: 'Gig calendar' },
+        ],
+      },
+      {
+        href: '/audio-services',
+        label: 'Audio Engineering',
+        num: '04',
+        submenu: [
+          { href: '/audio-services#audio-services', label: 'Services' },
+          { href: '/audio-services#process', label: 'Process' },
+          { href: '/audio-services#studio', label: 'Studio' },
+        ],
+      },
       { href: '/contact', label: 'Contact', num: '05' },
     ] as NavItem[],
   },
@@ -29,9 +63,38 @@ const labels = {
     homeAria: 'Davitt Barry — Etusivu',
     items: [
       { href: '/fi/', label: 'Etusivu', num: '01' },
-      { href: '/fi/dev', label: 'IT & Kehitys', num: '02' },
-      { href: '/fi/musiikki', label: 'Musiikki', num: '03' },
-      { href: '/fi/audiopalvelut', label: 'Äänitekniikka', num: '04' },
+      {
+        href: '/fi/dev',
+        label: 'IT & Kehitys',
+        num: '02',
+        submenu: [
+          { href: '/fi/dev#services', label: 'Palvelut' },
+          { href: '/fi/dev#work', label: 'Valikoitua' },
+          { href: '/fi/dev#journal', label: 'Julkaisut' },
+          { href: '/fi/dev#cv', label: 'CV' },
+          { href: '/fi/posts', label: 'Kaikki artikkelit' },
+        ],
+      },
+      {
+        href: '/fi/musiikki',
+        label: 'Musiikki',
+        num: '03',
+        submenu: [
+          { href: '/fi/musiikki#original', label: 'Omat' },
+          { href: '/fi/musiikki#covers', label: 'Coverit' },
+          { href: '/fi/musiikki#gigs', label: 'Keikkakalenteri' },
+        ],
+      },
+      {
+        href: '/fi/audiopalvelut',
+        label: 'Äänitekniikka',
+        num: '04',
+        submenu: [
+          { href: '/fi/audiopalvelut#audio-services', label: 'Palvelut' },
+          { href: '/fi/audiopalvelut#process', label: 'Prosessi' },
+          { href: '/fi/audiopalvelut#studio', label: 'Studio' },
+        ],
+      },
       { href: '/fi/yhteystiedot', label: 'Yhteystiedot', num: '05' },
     ] as NavItem[],
   },
@@ -58,29 +121,52 @@ const homeHref = locale === 'fi' ? '/fi/' : '/';
 
     <div class="topnav__links">
       {t.items.map((item) => (
-        <a
-          href={item.href}
-          data-num={item.num}
-          class={isActive(item.href, currentPath) ? 'is-active' : ''}
-        >
-          {item.label}
-        </a>
+        <div class:list={['nav-item', item.submenu && 'nav-item--has-submenu']}>
+          <a
+            href={item.href}
+            data-num={item.num}
+            class={isActive(item.href, currentPath) ? 'is-active' : ''}
+          >
+            {item.label}
+            {item.submenu && <span class="nav-item__chev" aria-hidden="true">▾</span>}
+          </a>
+          {item.submenu && (
+            <div class="nav-submenu" role="menu">
+              {item.submenu.map((sub) => (
+                <a class="nav-submenu__link" href={sub.href} role="menuitem">
+                  {sub.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       ))}
     </div>
 
     <div class="topnav__right">
       <div class="vumeter" aria-hidden="true"></div>
-      <div class="lang-toggle" role="group" aria-label="Language">
+      <div class="lang-toggle" role="group" aria-label="Language / Kieli">
+        <span class="lang-toggle__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3a13 13 0 0 1 0 18"></path>
+            <path d="M12 3a13 13 0 0 0 0 18"></path>
+          </svg>
+        </span>
         <a
           href="#"
           data-lang="en"
+          aria-label="Switch to English"
           class={`lang-switch ${locale === 'en' ? 'is-active' : ''}`}
         >
           EN
         </a>
+        <span class="lang-toggle__sep" aria-hidden="true">/</span>
         <a
           href="#"
           data-lang="fi"
+          aria-label="Vaihda suomeksi"
           class={`lang-switch ${locale === 'fi' ? 'is-active' : ''}`}
         >
           FI
@@ -115,13 +201,22 @@ const homeHref = locale === 'fi' ? '/fi/' : '/';
   <div class="mobile-drawer" id="mobile-menu">
     <div class="mobile-drawer__inner">
       {t.items.map((item) => (
-        <a
-          href={item.href}
-          data-num={item.num}
-          class={isActive(item.href, currentPath) ? 'is-active' : ''}
-        >
-          {item.label}
-        </a>
+        <div class="mobile-drawer__group">
+          <a
+            href={item.href}
+            data-num={item.num}
+            class={isActive(item.href, currentPath) ? 'is-active' : ''}
+          >
+            {item.label}
+          </a>
+          {item.submenu && (
+            <div class="mobile-drawer__sub">
+              {item.submenu.map((sub) => (
+                <a class="mobile-drawer__sub-link" href={sub.href}>{sub.label}</a>
+              ))}
+            </div>
+          )}
+        </div>
       ))}
     </div>
   </div>
@@ -200,10 +295,23 @@ const homeHref = locale === 'fi' ? '/fi/' : '/';
         let newPath = currentPath;
 
         if (
-          currentPath.includes('/posts/') ||
-          currentPath.includes('/posts-fi/')
+          currentPath === '/posts' ||
+          currentPath === '/posts/' ||
+          currentPath.startsWith('/posts/')
         ) {
-          newPath = targetLang === 'fi' ? '/fi/' : '/';
+          newPath =
+            targetLang === 'fi'
+              ? currentPath.replace(/^\/posts/, '/fi/posts')
+              : currentPath;
+        } else if (
+          currentPath === '/fi/posts' ||
+          currentPath === '/fi/posts/' ||
+          currentPath.startsWith('/fi/posts/')
+        ) {
+          newPath =
+            targetLang === 'en'
+              ? currentPath.replace(/^\/fi\/posts/, '/posts')
+              : currentPath;
         } else if (
           currentPath === '/tietosuoja' ||
           currentPath === '/tietosuoja/'

@@ -144,7 +144,8 @@ const t = labels[locale];
 <style>
   .hero {
     position: relative;
-    padding: 80px 0 40px;
+    padding-top: 80px;
+    padding-bottom: 40px;
   }
   .hero__meta {
     display: flex;
@@ -405,6 +406,46 @@ const t = labels[locale];
       position: static;
       margin-bottom: 12px;
       text-align: left;
+    }
+  }
+  @media (max-width: 720px) {
+    .hero {
+      padding-top: 28px;
+      padding-bottom: 24px;
+    }
+    .hero__meta {
+      padding-bottom: 16px;
+      gap: 8px 14px;
+      font-size: 10px;
+    }
+    .hero__meta-sys {
+      display: none;
+    }
+    .hero__mark {
+      margin: 24px 0 20px;
+      padding: 20px 0 16px;
+    }
+    .mark-caption {
+      font-size: 9px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .hero__name {
+      margin: 0 0 14px;
+    }
+    .hero__roles {
+      gap: 8px;
+      margin: 14px 0 20px;
+    }
+    .role-tag {
+      padding: 6px 12px;
+      font-size: 10px;
+    }
+    .hero__cta {
+      margin-top: 20px;
+    }
+    .socials {
+      margin-top: 16px;
     }
   }
 </style>

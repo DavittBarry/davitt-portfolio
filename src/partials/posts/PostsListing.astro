@@ -1,0 +1,364 @@
+---
+import type { ImageMetadata, MarkdownInstance, Page } from 'astro';
+import { Image } from 'astro:assets';
+
+import type { IFrontmatter } from '@/components/boilerplate';
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+  page: Page<MarkdownInstance<IFrontmatter>>;
+}
+
+const { locale, page } = Astro.props as Props;
+
+const thumbModules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/posts/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+const thumbBySlug: Record<string, ImageMetadata> = {};
+for (const [path, mod] of Object.entries(thumbModules)) {
+  const stem = path.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
+  thumbBySlug[stem] = mod.default;
+}
+
+const slugAliases: Record<string, string> = {
+  'cbtjournal-app': 'cbtjournal',
+  'ai-enablement-consultant': 'ai-enablement',
+};
+
+const getThumb = (url: string | undefined): ImageMetadata | undefined => {
+  if (!url) return undefined;
+  const slug = url.replace(/\/$/, '').split('/').pop() ?? '';
+  return thumbBySlug[slugAliases[slug] ?? slug];
+};
+
+const labels = {
+  en: {
+    kicker: '▸ Journal',
+    titleA: 'Notes from the ',
+    titleEm: 'studio & stack.',
+    description:
+      'Long-form notes on code, sound, and the places they overlap. Tutorials, project post-mortems, and occasional rants.',
+    recent: 'Recent posts',
+    page: (c: number, total: number) => `Page ${c} / ${total}`,
+    author: 'DAVITT BARRY',
+    read: 'Read →',
+    newer: 'Newer posts',
+    older: 'Older posts',
+    cats: {
+      career: 'Career',
+      ai: 'AI',
+      project: 'Project',
+      development: 'Development',
+      writing: 'Writing',
+    },
+    min: 'MIN',
+  },
+  fi: {
+    kicker: '▸ Julkaisut',
+    titleA: 'Muistiinpanoja ',
+    titleEm: 'studiolta & stackilta.',
+    description:
+      'Pitkiä muistiinpanoja koodista, äänestä ja niiden risteyskohdista. Ohjeita, projektien jälkianalyysejä ja satunnaisia purskauksia.',
+    recent: 'Viimeaikaiset',
+    page: (c: number, total: number) => `Sivu ${c} / ${total}`,
+    author: 'DAVITT BARRY',
+    read: 'Lue →',
+    newer: 'Uudemmat',
+    older: 'Vanhemmat',
+    cats: {
+      career: 'Ura',
+      ai: 'AI',
+      project: 'Projekti',
+      development: 'Kehitys',
+      writing: 'Kirjoittelu',
+    },
+    min: 'MIN',
+  },
+} as const;
+
+const t = labels[locale];
+
+const total = page.total;
+const rangeStart = page.start + 1;
+const rangeEnd = page.end + 1;
+
+const categoryOf = (post: MarkdownInstance<IFrontmatter>): string => {
+  const title = post.frontmatter.title.toLowerCase();
+  if (title.includes('relex') || title.includes('support')) return t.cats.career;
+  if (title.includes('ai') || title.includes('enablement')) return t.cats.ai;
+  if (title.includes('cbt') || title.includes('journal')) return t.cats.project;
+  if (title.includes('web') || title.includes('development')) return t.cats.development;
+  return t.cats.writing;
+};
+
+const readTimeOf = (post: MarkdownInstance<IFrontmatter>): string => {
+  const body = post.rawContent ? post.rawContent() : '';
+  const words = body.trim().split(/\s+/).length;
+  const mins = Math.max(1, Math.round(words / 220));
+  return `${mins} ${t.min}`;
+};
+
+const formatDate = (d: string) => new Date(d).toISOString().slice(0, 10);
+
+const normalizeHref = (url: string | undefined) => {
+  if (!url) return '#';
+  return locale === 'fi' ? url.replace(/^\/fi\//, '/') : url;
+};
+
+const toLocalePaginationHref = (url: string | undefined) => {
+  if (!url) return undefined;
+  if (locale === 'fi') {
+    if (url === '/posts' || url === '/posts/') return '/fi/posts';
+    return url.startsWith('/posts/') ? `/fi${url}` : url;
+  }
+  return url;
+};
+---
+
+<section class="shell posts-hero">
+  <div class="posts-hero__kicker">{t.kicker}</div>
+  <h1 class="posts-hero__title">
+    {t.titleA}<em>{t.titleEm}</em>
+  </h1>
+  <p class="posts-hero__lede">{t.description}</p>
+</section>
+
+<section class="shell posts-section">
+  <div class="posts-section__meta">
+    <span>
+      ▸ {page.currentPage === 1 ? t.recent : t.page(page.currentPage, page.lastPage)}
+    </span>
+    <span>
+      {String(rangeStart).padStart(2, '0')}–{String(rangeEnd).padStart(2, '0')} / {String(total).padStart(2, '0')}
+    </span>
+  </div>
+
+  <div class="posts-grid">
+    {page.data.map((post) => {
+      const href = normalizeHref(post.url);
+      const thumb = getThumb(post.url);
+      return (
+        <article class="post-card">
+          <a class="post-card__link" href={href} aria-label={post.frontmatter.title} />
+          <div class="post-card__thumb">
+            {thumb ? (
+              <Image src={thumb} alt="" width={480} height={270} loading="lazy" />
+            ) : (
+              <div class="post-card__thumb-placeholder" aria-hidden="true">▸</div>
+            )}
+          </div>
+          <div class="post-card__body">
+            <div class="post-card__meta">
+              <span class="cat">{categoryOf(post)}</span>
+              <span>{readTimeOf(post)}</span>
+              <span>{formatDate(post.frontmatter.pubDate)}</span>
+            </div>
+            <h2 class="post-card__title">{post.frontmatter.title}</h2>
+            <p class="post-card__excerpt">{post.frontmatter.description}</p>
+            <div class="post-card__foot">
+              <span>{t.author}</span>
+              <span class="read">{t.read}</span>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+
+  <nav class="posts-nav">
+    {page.url.prev ? (
+      <a class="btn" href={toLocalePaginationHref(page.url.prev)}>
+        <span class="arrow">←</span> {t.newer}
+      </a>
+    ) : <span />}
+    <span class="posts-nav__pos">
+      {page.currentPage} / {page.lastPage}
+    </span>
+    {page.url.next ? (
+      <a class="btn" href={toLocalePaginationHref(page.url.next)}>
+        {t.older} <span class="arrow">→</span>
+      </a>
+    ) : <span />}
+  </nav>
+</section>
+
+<style>
+  .posts-hero {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .posts-hero__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 24px;
+  }
+  .posts-hero__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 84px);
+    line-height: 0.95;
+    margin: 0 0 20px;
+    color: var(--color-text);
+  }
+  .posts-hero__title em {
+    font-style: normal;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 28px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.8));
+  }
+  .posts-hero__lede {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 58ch;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+
+  .posts-section {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+  .posts-section__meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+  }
+  .post-card {
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .post-card:hover {
+    background: var(--color-bg-1);
+  }
+  .post-card:hover .post-card__title {
+    color: var(--color-accent);
+  }
+  .post-card:hover .post-card__thumb :global(img) {
+    transform: scale(1.03);
+  }
+  .post-card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .post-card__thumb {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-bg-1);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .post-card__thumb :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .post-card__thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--color-text-mute);
+    font-family: var(--font-mono);
+    font-size: 32px;
+  }
+  .post-card__body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .post-card__meta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    margin-bottom: 18px;
+  }
+  .post-card__meta .cat {
+    color: var(--color-accent);
+  }
+  .post-card__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0 0 14px;
+    transition: color 0.2s;
+  }
+  .post-card__excerpt {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    margin: 0 0 auto;
+    max-width: 48ch;
+  }
+  .post-card__foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--color-text-mute);
+  }
+  .post-card__foot .read {
+    color: var(--color-accent);
+  }
+
+  .posts-nav {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .posts-nav__pos {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+
+  @media (max-width: 820px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

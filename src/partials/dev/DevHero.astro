@@ -24,6 +24,7 @@ const labels = {
       ['Stack', 'React · Vue · Node'],
       ['Platforms', 'WordPress · Laravel'],
       ['Backend', 'Database & API Design'],
+      ['This site', 'Astro · TypeScript · Tailwind'],
       ['Location', 'Helsinki, Finland · Remote'],
       ['Status', '● Available Q2 2026'],
     ] as const,
@@ -44,6 +45,7 @@ const labels = {
       ['Stack', 'React · Vue · Node'],
       ['Alustat', 'WordPress · Laravel'],
       ['Backend', 'Tietokanta & API-suunnittelu'],
+      ['Tämä sivu', 'Astro · TypeScript · Tailwind'],
       ['Sijainti', 'Helsinki · etänä'],
       ['Tila', '● Avoinna Q2 2026'],
     ] as const,
@@ -90,7 +92,8 @@ const t = labels[locale];
 
 <style>
   .page-hero {
-    padding: 60px 0 40px;
+    padding-top: 60px;
+    padding-bottom: 40px;
     display: grid;
     grid-template-columns: 1fr 320px 280px;
     gap: 48px;

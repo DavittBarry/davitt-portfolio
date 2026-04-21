@@ -11,7 +11,7 @@ const labels = {
   en: {
     kicker: '● 03 / MUSIC',
     mid: 'ORIGINALS · COVERS · GIGS',
-    right: 'EST. 2011',
+    right: 'EST. 2005',
     headA: 'Compositions, covers ',
     headEm: '& live shows.',
     lede:
@@ -19,13 +19,13 @@ const labels = {
     npLabel: 'Featured',
     npTitle: 'Aliud Phantasma · Turquoise Wash Away',
     npMeta: 'Davitt Barry · 2025 · Music video',
-    npHref: '#original',
+    npHref: '#aliud-phantasma-video',
     npCta: 'Watch',
   },
   fi: {
     kicker: '● 03 / MUSIIKKI',
     mid: 'ALKUPERÄISET · COVERIT · KEIKAT',
-    right: 'PERUSTETTU 2011',
+    right: 'PERUSTETTU 2005',
     headA: 'Sävellyksiä, covereita ',
     headEm: '& live-keikkoja.',
     lede:
@@ -33,7 +33,7 @@ const labels = {
     npLabel: 'Kohokohta',
     npTitle: 'Aliud Phantasma · Turquoise Wash Away',
     npMeta: 'Davitt Barry · 2025 · Musiikkivideo',
-    npHref: '#original',
+    npHref: '#aliud-phantasma-video',
     npCta: 'Katso',
   },
 } as const;
@@ -82,7 +82,8 @@ const t = labels[locale];
 
 <style>
   .music-hero {
-    padding: 60px 0 32px;
+    padding-top: 60px;
+    padding-bottom: 32px;
     border-bottom: 1px solid var(--color-line);
   }
   .page-hero__top {

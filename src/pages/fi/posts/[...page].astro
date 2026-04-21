@@ -3,7 +3,7 @@ import type { MarkdownInstance, Page } from 'astro';
 
 import type { IFrontmatter } from '@/components/boilerplate';
 import PostsListing from '@/partials/posts/PostsListing.astro';
-import Base from '@/templates/Base.astro';
+import Basefi from '@/templates/Basefi.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
 
@@ -14,7 +14,7 @@ type PaginateFn = (
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFn }) {
   const allPosts = Object.values(
-    import.meta.glob<MarkdownInstance<IFrontmatter>>('./*.md', {
+    import.meta.glob<MarkdownInstance<IFrontmatter>>('../../posts/*.md', {
       eager: true,
     }),
   );
@@ -28,12 +28,12 @@ interface Props {
 
 const { page } = Astro.props as Props;
 
-const pageLabel = page.currentPage === 1 ? 'Journal' : `Journal · ${page.currentPage}`;
+const pageLabel = page.currentPage === 1 ? 'Julkaisut' : `Julkaisut · ${page.currentPage}`;
 const title = `${pageLabel} - ${AppConfig.site_name}`;
 const description =
-  'Long-form notes on code, sound, and the places they overlap. Tutorials, project post-mortems, and occasional rants.';
+  'Pitkiä muistiinpanoja koodista, äänestä ja niiden risteyskohdista. Ohjeita, projektien jälkianalyysejä ja satunnaisia purskauksia.';
 ---
 
-<Base head={{ title, description }}>
-  <PostsListing locale="en" page={page} />
-</Base>
+<Basefi head={{ title, description }}>
+  <PostsListing locale="fi" page={page} />
+</Basefi>

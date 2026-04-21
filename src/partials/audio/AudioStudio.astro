@@ -49,7 +49,7 @@ const labels = {
 const t = labels[locale];
 ---
 
-<section class="shell audio-studio">
+<section id="studio" class="shell audio-studio">
   <div class="section-head">
     <div class="section-head__num">{t.num}</div>
     <h2 class="section-head__title">{t.titleA}<em>{t.titleEm}</em>{t.titleB}</h2>
@@ -86,7 +86,8 @@ const t = labels[locale];
 
 <style>
   .audio-studio {
-    padding: 60px 0 40px;
+    padding-top: 60px;
+    padding-bottom: 40px;
   }
   .studio {
     margin-top: 20px;

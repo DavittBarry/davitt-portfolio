@@ -123,7 +123,7 @@ const labels = {
 const t = labels[locale];
 ---
 
-<section class="shell audio-services">
+<section id="audio-services" class="shell audio-services">
   <div class="section-head">
     <div class="section-head__num">{t.num}</div>
     <h2 class="section-head__title">{t.titleA}<em>{t.titleEm}</em></h2>
@@ -152,7 +152,8 @@ const t = labels[locale];
 
 <style>
   .audio-services {
-    padding: 60px 0 40px;
+    padding-top: 60px;
+    padding-bottom: 40px;
   }
   .services-grid {
     margin-top: 24px;
