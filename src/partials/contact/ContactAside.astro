@@ -1,0 +1,173 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    directH: 'Direct lines',
+    emailK: 'Email',
+    githubK: 'GitHub',
+    linkedinK: 'LinkedIn',
+    locH: 'Location',
+    locA: 'Uusimaa, ',
+    locEm: 'Helsinki',
+    locB: ' · Finland',
+    locAvail:
+      'Available for remote projects worldwide and on-site work within the Nordics.',
+    altH: 'Or email directly',
+    altLink: 'Write me →',
+    altBody: 'Prefer email? Skip the form and get in touch directly.',
+    mailSubject: 'Project%20Inquiry',
+  },
+  fi: {
+    directH: 'Suorat linjat',
+    emailK: 'Sähköposti',
+    githubK: 'GitHub',
+    linkedinK: 'LinkedIn',
+    locH: 'Sijainti',
+    locA: 'Uusimaa, ',
+    locEm: 'Helsinki',
+    locB: ' · Suomi',
+    locAvail:
+      'Käytettävissä etäprojekteihin maailmanlaajuisesti ja paikan päällä Pohjoismaissa.',
+    altH: 'Tai sähköposti suoraan',
+    altLink: 'Kirjoita minulle →',
+    altBody: 'Mieluummin sähköpostitse? Ohita lomake ja ota yhteyttä suoraan.',
+    mailSubject: 'Projektikysely',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<aside class="contact-aside">
+  <div class="aside-block">
+    <h3>{t.directH}</h3>
+    <div class="direct-row">
+      <span>{t.emailK}</span>
+      <a href="mailto:davittbarry333@gmail.com">davittbarry333@gmail.com</a>
+    </div>
+    <div class="direct-row">
+      <span>{t.githubK}</span>
+      <a href="https://github.com/DavittBarry" target="_blank" rel="noopener">
+        @DavittBarry ↗
+      </a>
+    </div>
+    <div class="direct-row">
+      <span>{t.linkedinK}</span>
+      <a
+        href="https://www.linkedin.com/in/davittbarry/"
+        target="_blank"
+        rel="noopener"
+      >
+        davittbarry ↗
+      </a>
+    </div>
+  </div>
+
+  <div class="aside-block">
+    <h3>{t.locH}</h3>
+    <p class="aside-big">{t.locA}<em>{t.locEm}</em>{t.locB}</p>
+    <p class="aside-body">{t.locAvail}</p>
+  </div>
+
+  <div class="aside-block aside-block--ghost">
+    <h3>{t.altH}</h3>
+    <p class="aside-big">
+      <a href={`mailto:davittbarry333@gmail.com?subject=${t.mailSubject}`}>
+        {t.altLink}
+      </a>
+    </p>
+    <p class="aside-body">{t.altBody}</p>
+  </div>
+</aside>
+
+<style>
+  .contact-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .aside-block {
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    padding: 24px;
+  }
+  .aside-block--ghost {
+    background: transparent;
+  }
+  .aside-block h3 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    margin: 0 0 16px;
+  }
+
+  .direct-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 10px 0;
+    border-top: 1px dashed var(--color-line-soft);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  .direct-row:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .direct-row > span {
+    color: var(--color-text-mute);
+    text-transform: uppercase;
+  }
+  .direct-row a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .direct-row a:hover {
+    color: var(--color-accent);
+  }
+
+  .aside-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    margin: 0 0 10px;
+  }
+  .aside-big em {
+    font-style: normal;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 20px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.6));
+  }
+  .aside-big a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .aside-big a:hover {
+    opacity: 0.75;
+  }
+
+  .aside-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+</style>

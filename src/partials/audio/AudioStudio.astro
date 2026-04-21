@@ -1,0 +1,147 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    num: '§ 04.3 / STUDIO',
+    titleA: 'The ',
+    titleEm: 'room',
+    titleB: ' itself.',
+    lede:
+      'Compact, precise, well-calibrated. Monitoring prioritised — every decision you hear in a finished master was made on a chain that stays honest.',
+    swHead: 'Software',
+    hwHead: 'Hardware',
+    software: [
+      ['DAW', 'Ableton Live'],
+    ],
+    hardware: [
+      ['Interface', 'Audient + Ferrofish converter'],
+      ['Monitors', 'Genelec'],
+      ['Mon. control', 'SPL controller'],
+    ],
+  },
+  fi: {
+    num: '§ 04.3 / STUDIO',
+    titleA: 'Itse ',
+    titleEm: 'huone.',
+    titleB: '',
+    lede:
+      'Tiivis, tarkka, hyvin kalibroitu. Monitorointi etusijalla — jokainen masteroinnin päätös tehty ketjulla joka pysyy rehellisenä.',
+    swHead: 'Ohjelmistot',
+    hwHead: 'Laitteisto',
+    software: [
+      ['DAW', 'Ableton Live'],
+    ],
+    hardware: [
+      ['Liitäntä', 'Audient + Ferrofish-muunnin'],
+      ['Monitorit', 'Genelec'],
+      ['Mon. ohjaus', 'SPL-kontrolleri'],
+    ],
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section id="studio" class="shell audio-studio">
+  <div class="section-head">
+    <div class="section-head__num">{t.num}</div>
+    <h2 class="section-head__title">{t.titleA}<em>{t.titleEm}</em>{t.titleB}</h2>
+  </div>
+
+  <div class="studio">
+    <p class="studio__lede">{t.lede}</p>
+    <div class="studio__cols">
+      <div class="studio__col">
+        <h3 class="studio__col-head">{t.swHead}</h3>
+        <ul class="studio__list">
+          {t.software.map(([k, v]) => (
+            <li>
+              <span>{k}</span>
+              <span>{v}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="studio__col">
+        <h3 class="studio__col-head">{t.hwHead}</h3>
+        <ul class="studio__list">
+          {t.hardware.map(([k, v]) => (
+            <li>
+              <span>{k}</span>
+              <span>{v}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .audio-studio {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  .studio {
+    margin-top: 20px;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    padding: 32px;
+  }
+  .studio__lede {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    max-width: 60ch;
+    margin: 0 0 28px;
+  }
+  .studio__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .studio__col-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 14px;
+  }
+  .studio__col-head::before {
+    content: '● ';
+  }
+  .studio__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-dim);
+  }
+  .studio__list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--color-line-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .studio__list li span:last-child {
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 680px) {
+    .studio__cols {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

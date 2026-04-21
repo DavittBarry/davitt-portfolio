@@ -2,80 +2,229 @@
 import Base from '@/templates/Base.astro';
 
 const head = {
-  title: 'Privacy Statement - Davitt Barry',
-  description: 'Privacy statement for Davitt Barry portfolio website.',
+  title: 'Privacy Statement — Davitt Barry',
+  description: 'Privacy statement for the Davitt Barry portfolio website.',
 };
+
+const lastUpdated = 'September 2025';
+
+const sections = [
+  {
+    id: '01',
+    heading: 'Introduction',
+    body: 'This privacy statement outlines the handling of personal data for visitors to this portfolio website.',
+  },
+  {
+    id: '02',
+    heading: 'Personal data collected',
+    body: 'This site does not use cookies or tracking technologies. Your email address is only collected if you choose to contact me directly via the provided email link or the contact form.',
+  },
+  {
+    id: '03',
+    heading: 'Use of personal data',
+    body: 'Any email address provided is used solely for responding to your inquiries. I do not share, sell, or use your information for any other purpose.',
+  },
+  {
+    id: '04',
+    heading: 'Third-party services',
+    body: 'This site links to external services (GitHub, LinkedIn, Spotify, Bandcamp, Formspree). Those services have their own privacy policies — I am not responsible for their practices.',
+  },
+  {
+    id: '05',
+    heading: 'Security',
+    body: 'I take reasonable measures to protect any submitted personal information. No method of electronic communication is entirely secure.',
+  },
+];
 ---
 
 <Base head={head}>
-  <div class="container mx-auto px-6 py-12">
-    <article class="mx-auto max-w-4xl">
-      <h1 class="mb-4 text-4xl font-light text-white">Privacy Statement</h1>
-      <p class="mb-8 text-neutral-500">Last Updated: September 2025</p>
+  <section class="shell legal">
+    <div class="legal__top">
+      <a class="legal__back" href="/">← Back to home</a>
+      <span class="legal__stamp">Last updated · {lastUpdated}</span>
+    </div>
 
-      <div class="space-y-8 text-neutral-400">
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">Introduction</h2>
-          <p>
-            This privacy statement outlines the handling of personal data for
-            visitors to this portfolio website.
-          </p>
-        </div>
+    <header class="legal__header">
+      <div class="legal__kicker">▸ Privacy statement</div>
+      <h1 class="legal__title">
+        Plain-English <em>privacy.</em>
+      </h1>
+      <p class="legal__lede">
+        No cookies, no trackers, no resale of anything. The only personal data
+        I see is whatever you choose to put in an email or the contact form —
+        and it goes nowhere past my inbox.
+      </p>
+    </header>
 
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">
-            Personal Data Collected
-          </h2>
-          <p>
-            This portfolio website does not use cookies or tracking
-            technologies. We may collect your email address only if you choose
-            to contact us directly via the provided email link.
-          </p>
-        </div>
+    <div class="legal__grid">
+      {sections.map((s) => (
+        <article class="legal__section">
+          <span class="legal__num">{s.id}</span>
+          <h2 class="legal__heading">{s.heading}</h2>
+          <p class="legal__body">{s.body}</p>
+        </article>
+      ))}
+    </div>
 
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">
-            Use of Personal Data
-          </h2>
-          <p>
-            Any email address provided is used solely for responding to your
-            inquiries or comments. We do not share, sell, or use your
-            information for any other purpose.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">
-            Third-Party Services
-          </h2>
-          <p>
-            This website may contain links to external services (GitHub,
-            LinkedIn). These services have their own privacy policies, and we
-            are not responsible for their practices.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">Security</h2>
-          <p>
-            While we strive to protect any submitted personal information, no
-            method of electronic communication is entirely secure.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">Contact</h2>
-          <p>
-            Questions regarding this privacy statement can be directed to
-            <a
-              href="mailto:davittbarry333@gmail.com"
-              class="text-accent transition-colors hover:text-accent/80"
-            >
-              davittbarry333@gmail.com
-            </a>
-          </p>
-        </div>
+    <footer class="legal__foot">
+      <div>
+        <span class="legal__foot-lbl">Questions</span>
+        <a class="legal__mail" href="mailto:davittbarry333@gmail.com">
+          davittbarry333@gmail.com
+        </a>
       </div>
-    </article>
-  </div>
+      <a class="btn" href="/contact">
+        Contact form <span class="arrow">→</span>
+      </a>
+    </footer>
+  </section>
 </Base>
+
+<style>
+  .legal {
+    padding: 60px 0 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .legal__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+  .legal__back {
+    color: var(--color-text-mute);
+    text-decoration: none;
+  }
+  .legal__back:hover {
+    color: var(--color-accent);
+  }
+  .legal__header {
+    margin-bottom: 48px;
+  }
+  .legal__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+  }
+  .legal__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    color: var(--color-text);
+  }
+  .legal__title em {
+    font-style: normal;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 24px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.7));
+  }
+  .legal__lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-text-dim);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .legal__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+  }
+  .legal__section {
+    background: var(--color-bg);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 8px 24px;
+    align-items: start;
+  }
+  .legal__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    padding-top: 6px;
+  }
+  .legal__heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0 0 10px;
+    grid-column: 2;
+  }
+  .legal__body {
+    grid-column: 2;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-text-dim);
+    max-width: 64ch;
+    margin: 0;
+  }
+
+  .legal__foot {
+    margin-top: 40px;
+    padding: 28px 0 0;
+    border-top: 1px solid var(--color-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .legal__foot-lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .legal__mail {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .legal__mail:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 620px) {
+    .legal {
+      padding: 40px 0 64px;
+    }
+    .legal__section {
+      grid-template-columns: 1fr;
+      padding: 22px 20px;
+    }
+    .legal__heading,
+    .legal__body {
+      grid-column: 1;
+    }
+  }
+</style>

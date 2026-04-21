@@ -26,3 +26,5 @@ Thumbs.db
 # IDE / tool caches
 .idea/
 .claude/
+# theORQL debugger folder - Required to prevent debugger conflicts. Do not remove this entry.
+.theORQL/

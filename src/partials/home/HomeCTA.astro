@@ -1,0 +1,99 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    kicker: '● Open for collaboration · 2026',
+    headA: "Let's create ",
+    headEm: 'something',
+    headB: ' together.',
+    body:
+      "Whether you need a skilled developer for your next project, professional audio engineering services, or original music compositions, I'm here to help bring your vision to life.",
+    ctaPrimary: 'Get in touch',
+    ctaPrimaryHref: '/contact',
+    ctaSecondary: 'Email directly',
+    emailSubject: 'Project Inquiry',
+  },
+  fi: {
+    kicker: '● Avoinna yhteistyölle · 2026',
+    headA: 'Luodaan ',
+    headEm: 'jotain',
+    headB: ' yhdessä.',
+    body:
+      'Tarvitsetko osaavaa kehittäjää seuraavaan projektiisi, ammattimaisia äänitekniikkapalveluita tai alkuperäisiä musiikkisävellyksiä — autan mielelläni toteuttamaan visiosi.',
+    ctaPrimary: 'Ota yhteyttä',
+    ctaPrimaryHref: '/fi/yhteystiedot',
+    ctaSecondary: 'Lähetä sähköpostia',
+    emailSubject: 'Projektikysely',
+  },
+} as const;
+
+const t = labels[locale];
+const mailto = `mailto:davittbarry333@gmail.com?subject=${encodeURIComponent(t.emailSubject)}`;
+---
+
+<section class="shell cta-block">
+  <div class="cta-block__kicker">{t.kicker}</div>
+  <h2 class="cta-block__head">
+    {t.headA}<em>{t.headEm}</em>{t.headB}
+  </h2>
+  <p class="cta-block__body">{t.body}</p>
+  <div class="cta-block__row">
+    <a class="btn btn--primary" href={t.ctaPrimaryHref}>
+      {t.ctaPrimary} <span class="arrow">→</span>
+    </a>
+    <a class="btn" href={mailto}>
+      {t.ctaSecondary} <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta-block {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    text-align: left;
+  }
+  .cta-block__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 28px;
+  }
+  .cta-block__head {
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95;
+    max-width: 18ch;
+    margin: 0 0 32px;
+    color: var(--color-text);
+  }
+  .cta-block__head em {
+    font-style: italic;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 24px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.7));
+  }
+  .cta-block__body {
+    max-width: 52ch;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-dim);
+    margin-bottom: 40px;
+  }
+  .cta-block__row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>

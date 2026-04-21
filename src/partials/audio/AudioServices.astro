@@ -1,0 +1,238 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    num: '§ 04.1 / SERVICES',
+    titleA: 'What the ',
+    titleEm: 'studio does.',
+    items: [
+      {
+        num: '01 · MIX',
+        price: 'ON REQUEST',
+        title: 'Mixing',
+        desc: 'Stems to finished stereo mix. Balance, space, movement, glue. EQ, compression, spatial positioning, effects processing, and stem work as needed.',
+        list: [
+          ['Typical turnaround', '5–10 DAYS'],
+          ['Revisions', 'UNLIMITED'],
+          ['Delivery', 'WAV 24/48'],
+          ['Stem mixing', 'AVAILABLE'],
+        ],
+      },
+      {
+        num: '02 · MST',
+        price: 'ON REQUEST',
+        title: 'Mastering',
+        desc: 'Final polish, loudness, platform targets. Streaming-ready, vinyl-ready, broadcast-ready. DDP creation for physical media on request.',
+        list: [
+          ['Turnaround', '2–4 DAYS'],
+          ['Formats', 'DDP · WAV · MFiT'],
+          ['LUFS', 'TARGETED'],
+          ['Spotify · Apple', '✓'],
+        ],
+      },
+      {
+        num: '03 · RST',
+        price: 'ON REQUEST',
+        title: 'Audio restoration',
+        desc: 'Noise, clicks, hum, phase issues, hiss — cleaned without dulling the source. Archive recordings, field recordings, dialog cleanup, frequency restoration.',
+        list: [
+          ['Archive recordings', '✓'],
+          ['Field recordings', '✓'],
+          ['Dialog cleanup', '✓'],
+          ['Format conversion', '✓'],
+        ],
+      },
+      {
+        num: '04 · POD',
+        price: 'ON REQUEST',
+        title: 'Podcast production',
+        desc: 'Full podcast pipeline — dialogue editing, cleanup, noise reduction, music beds, multi-track mixing, loudness normalisation. Per-episode or retainer.',
+        list: [
+          ['Per-episode', 'AVAILABLE'],
+          ['Retainer', 'AVAILABLE'],
+          ['Distribution', '-16 LUFS'],
+          ['Sound design', 'INCLUDED'],
+        ],
+      },
+    ],
+  },
+  fi: {
+    num: '§ 04.1 / PALVELUT',
+    titleA: 'Mitä ',
+    titleEm: 'studio tekee.',
+    items: [
+      {
+        num: '01 · MIX',
+        price: 'PYYNNÖSTÄ',
+        title: 'Miksaus',
+        desc: 'Stemeistä valmiiseen stereomiksaukseen. Tasapaino, tila, liike, kiinteys. EQ, kompressio, tilakuva, efektit ja stem-työ tarpeen mukaan.',
+        list: [
+          ['Tyypillinen toimitus', '5–10 PÄIVÄÄ'],
+          ['Korjauskierrokset', 'RAJATTOMASTI'],
+          ['Toimitus', 'WAV 24/48'],
+          ['Stem-miksaus', 'SAATAVILLA'],
+        ],
+      },
+      {
+        num: '02 · MST',
+        price: 'PYYNNÖSTÄ',
+        title: 'Masterointi',
+        desc: 'Viimeistely, loudness, alustakohtaiset tavoitteet. Suoratoisto-, vinyyli- ja broadcast-valmis. DDP fyysiselle medialle pyynnöstä.',
+        list: [
+          ['Toimitus', '2–4 PÄIVÄÄ'],
+          ['Formaatit', 'DDP · WAV · MFiT'],
+          ['LUFS', 'KOHDENNETTU'],
+          ['Spotify · Apple', '✓'],
+        ],
+      },
+      {
+        num: '03 · RST',
+        price: 'PYYNNÖSTÄ',
+        title: 'Äänen restaurointi',
+        desc: 'Kohina, napsahdukset, humina, vaihevirheet, sihinä — puhdistetaan lähteen luonnetta hukkaamatta. Arkisto, kenttä, puhepuhdistus, taajuusrestaurointi.',
+        list: [
+          ['Arkistoäänitteet', '✓'],
+          ['Kenttä-äänitteet', '✓'],
+          ['Puhepuhdistus', '✓'],
+          ['Formaattimuunnos', '✓'],
+        ],
+      },
+      {
+        num: '04 · POD',
+        price: 'PYYNNÖSTÄ',
+        title: 'Podcast-tuotanto',
+        desc: 'Koko podcast-tuotantoketju — dialogin editointi, puhdistus, kohinanpoisto, musabedit, moniraitamiksaus, loudness-normalisointi. Per jakso tai retainer.',
+        list: [
+          ['Per jakso', 'SAATAVILLA'],
+          ['Retainer', 'SAATAVILLA'],
+          ['Jakelu', '-16 LUFS'],
+          ['Äänisuunnittelu', 'SISÄLTYY'],
+        ],
+      },
+    ],
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section id="audio-services" class="shell audio-services">
+  <div class="section-head">
+    <div class="section-head__num">{t.num}</div>
+    <h2 class="section-head__title">{t.titleA}<em>{t.titleEm}</em></h2>
+  </div>
+
+  <div class="services-grid">
+    {t.items.map((srv) => (
+      <article class="srv">
+        <div class="srv__head">
+          <span class="srv__num">{srv.num}</span>
+          <span class="srv__price">{srv.price}</span>
+        </div>
+        <h3 class="srv__title">{srv.title}</h3>
+        <p class="srv__desc">{srv.desc}</p>
+        <ul class="srv__list">
+          {srv.list.map(([k, v]) => (
+            <li>
+              <span>{k}</span><span>{v}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .audio-services {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  .services-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--color-line);
+    border-left: 1px solid var(--color-line);
+  }
+  .srv {
+    padding: 32px;
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+  }
+  .srv__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .srv__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-text-mute);
+  }
+  .srv__price {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+  }
+  .srv__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.05;
+    margin: 0 0 16px;
+    color: var(--color-text);
+  }
+  .srv__desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    margin: 0 0 24px;
+    max-width: 44ch;
+  }
+  .srv__list {
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-dim);
+  }
+  .srv__list li {
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--color-line-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .srv__list li::before {
+    content: '▸';
+    color: var(--color-accent);
+    margin-right: 10px;
+  }
+  .srv__list li span:last-child {
+    color: var(--color-text);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 820px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

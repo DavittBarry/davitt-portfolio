@@ -1,6 +1,9 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+import avatarImg from '@/assets/images/avatar.jpg';
 import type { IFrontmatter } from '@/components/boilerplate';
-import { BlogPost } from '@/partials/BlogPost';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -10,9 +13,334 @@ export interface Props {
 
 const { content } = Astro.props as Props;
 const title = `${content.title} - ${AppConfig.site_name}`;
-const html = await Astro.slots.render('default');
+
+const categoryOf = (t: string): string => {
+  const s = t.toLowerCase();
+  if (s.includes('relex') || s.includes('support')) return 'Career';
+  if (s.includes('ai') || s.includes('enablement')) return 'AI';
+  if (s.includes('cbt') || s.includes('journal')) return 'Project';
+  if (s.includes('web') || s.includes('development')) return 'Development';
+  return 'Writing';
+};
+
+const thumbModules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/posts/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+const thumbBySlug: Record<string, ImageMetadata> = {};
+for (const [path, mod] of Object.entries(thumbModules)) {
+  const stem = path.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
+  thumbBySlug[stem] = mod.default;
+}
+const slugAliases: Record<string, string> = {
+  'cbtjournal-app': 'cbtjournal',
+  'ai-enablement-consultant': 'ai-enablement',
+};
+const urlSlug =
+  Astro.url.pathname.replace(/\/$/, '').split('/').pop() ?? '';
+const cover = thumbBySlug[slugAliases[urlSlug] ?? urlSlug];
+
+const rawHtml = await Astro.slots.render('default');
+const words = rawHtml.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length;
+const readMins = Math.max(1, Math.round(words / 220));
+const pubDate = new Date(content.pubDate).toISOString().slice(0, 10);
+const category = categoryOf(content.title);
 ---
 
 <Base head={{ title, description: content.description }}>
-  <BlogPost frontmatter={content} html={html} />
+  <main class="shell">
+    <article class="article">
+      <a class="article__back" href="/posts">← All posts</a>
+
+      <div class="article__meta">
+        <span class="cat">{category}</span>
+        <span>{pubDate}</span>
+        <span>{readMins} min read</span>
+      </div>
+
+      <h1 class="article__title">{content.title}</h1>
+
+      <p class="article__lede">{content.description}</p>
+
+      {cover && (
+        <figure class="article__cover">
+          <Image
+            src={cover}
+            alt={content.title}
+            width={1200}
+            height={675}
+            loading="eager"
+          />
+        </figure>
+      )}
+
+      <div class="article__author">
+        <Image src={avatarImg} alt="Davitt Barry" width={80} height={80} loading="lazy" />
+        <div>
+          <span class="by">Written by</span>
+          {AppConfig.author} · Helsinki
+        </div>
+      </div>
+
+      <div class="prose">
+        <slot />
+      </div>
+
+      <div class="article__foot">
+        <span>CATEGORY · {category.toUpperCase()}</span>
+        <div class="article__foot-links">
+          <a href="/posts">All posts ↗</a>
+          <a href="/contact">Get in touch</a>
+        </div>
+      </div>
+    </article>
+  </main>
 </Base>
+
+<style>
+  .article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 0 40px;
+  }
+  .article__cover {
+    margin: 0 0 40px;
+    border: 1px solid var(--color-line);
+    overflow: hidden;
+    background: var(--color-bg-1);
+  }
+  .article__cover :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .article__back {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    display: inline-block;
+    margin-bottom: 28px;
+    text-decoration: none;
+  }
+  .article__back:hover {
+    color: var(--color-accent);
+  }
+
+  .article__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    margin-bottom: 28px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .article__meta .cat {
+    color: var(--color-accent);
+  }
+  .article__meta .cat::before {
+    content: '● ';
+  }
+
+  .article__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    color: var(--color-text);
+  }
+  .article__title :global(em) {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .article__lede {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    max-width: 60ch;
+    margin: 0 0 40px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .article__author {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 0 0 40px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+  }
+  .article__author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-line);
+  }
+  .article__author .by {
+    color: var(--color-text-mute);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .prose :global(h1) {
+    display: none;
+  }
+  .prose :global(h2) {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    margin: 48px 0 16px;
+    color: var(--color-text);
+  }
+  .prose :global(h3) {
+    font-family: var(--font-sans);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 32px 0 12px;
+    color: var(--color-text);
+  }
+  .prose :global(p) {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text);
+    max-width: 64ch;
+    margin: 0 0 22px;
+  }
+  .prose :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .prose :global(blockquote) {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.35;
+    color: var(--color-text);
+    border-left: 2px solid var(--color-accent);
+    margin: 36px 0;
+    padding: 8px 0 8px 28px;
+  }
+  .prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--color-bg-1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--color-line);
+    color: var(--color-accent);
+  }
+  .prose :global(pre) {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--color-bg-1);
+    border: 1px solid var(--color-line);
+    padding: 20px;
+    border-radius: 2px;
+    overflow-x: auto;
+    margin: 24px 0;
+    line-height: 1.6;
+  }
+  .prose :global(pre code) {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--color-text);
+  }
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 0;
+    list-style: none;
+    margin: 20px 0;
+  }
+  .prose :global(ul li),
+  .prose :global(ol li) {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+  .prose :global(ul li::before) {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+  .prose :global(ol) {
+    counter-reset: prose-ol;
+  }
+  .prose :global(ol li) {
+    counter-increment: prose-ol;
+  }
+  .prose :global(ol li::before) {
+    content: counter(prose-ol) '.';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .prose :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--color-line);
+    margin: 48px 0;
+  }
+  .prose :global(a) {
+    color: var(--color-accent);
+    border-bottom: 1px solid
+      oklch(from var(--color-accent) l c h / 0.4);
+    text-decoration: none;
+  }
+  .prose :global(a:hover) {
+    border-bottom-color: var(--color-accent);
+  }
+  .prose :global(img) {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--color-line);
+    margin: 24px 0;
+  }
+
+  .article__foot {
+    margin: 56px 0 0;
+    padding: 32px 0;
+    border-top: 1px solid var(--color-line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--color-text-mute);
+    text-transform: uppercase;
+  }
+  .article__foot a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .article__foot a:hover {
+    color: var(--color-accent);
+  }
+  .article__foot-links {
+    display: flex;
+    gap: 14px;
+  }
+</style>

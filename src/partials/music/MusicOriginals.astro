@@ -1,0 +1,411 @@
+---
+import { Image } from 'astro:assets';
+
+import aliudPhantasmaCover from '@/assets/images/1000055346.jpg';
+import daevEpCover from '@/assets/images/daev-ep-cover.jpg';
+import davittSquozenCover from '@/assets/images/davitt-squozen-ep.jpg';
+import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    sub: '▸ LATEST RELEASE',
+    count: '2025',
+    albumTitle: 'Aliud Phantasma',
+    videoLabel: 'Music video — Turquoise Wash Away',
+    albumDesc:
+      'My latest album exploring electronic, ambient, and progressive soundscapes. All mixing, mastering, composing, and performances by Davitt Barry.',
+    listen: 'Listen on',
+    watchYoutube: 'Watch on YouTube',
+    past: '▸ PAST RELEASES',
+    pastCount: '02',
+    daev: {
+      title: 'dæv EP',
+      year: '2017',
+      desc:
+        'Experimental electronic tracks sprinkled with prog. Co-written with Heikki Saarenkunnas, co-mixed and mastered with Panu Posti. Artwork by Antti Lukinmaa.',
+      link: 'Listen on Bandcamp',
+    },
+    squozen: {
+      title: 'Squozen EP',
+      year: '2014',
+      desc:
+        'An earlier experimental work featuring abstract compositions and unconventional sound design. All mixing, mastering, composing, and performances by Davitt Barry.',
+      link: 'Listen on Bandcamp',
+    },
+    services: '▸ PRODUCTION WORK',
+    servicesTitle: 'Need music, mixing, or production for your project?',
+    servicesBody:
+      'Original compositions, sound design, post-production, mixing and mastering. From a single track to a full release.',
+    servicesAudio: 'Audio engineering services',
+    servicesAudioHref: '/audio-services',
+    servicesContact: 'Get in touch',
+    servicesContactHref: '/contact',
+  },
+  fi: {
+    sub: '▸ UUSIN JULKAISU',
+    count: '2025',
+    albumTitle: 'Aliud Phantasma',
+    videoLabel: 'Musiikkivideo — Turquoise Wash Away',
+    albumDesc:
+      'Uusin albumini tutkii elektronista, ambienttia ja progressiivista äänimaailmaa. Kaikki miksaus, masterointi, sävellys ja esitykset: Davitt Barry.',
+    listen: 'Kuuntele',
+    watchYoutube: 'Katso YouTubessa',
+    past: '▸ AIEMMAT JULKAISUT',
+    pastCount: '02',
+    daev: {
+      title: 'dæv EP',
+      year: '2017',
+      desc:
+        'Kokeellisia elektronisia kappaleita ripauksella prog-elementtejä. Yhteiskirjoitettu Heikki Saarenkunnaksen kanssa, yhteismiksattu ja -masteroitu Panu Postin kanssa. Kuvitus Antti Lukinmaa.',
+      link: 'Kuuntele Bandcampissa',
+    },
+    squozen: {
+      title: 'Squozen EP',
+      year: '2014',
+      desc:
+        'Aiempi kokeellinen työ, joka sisältää abstrakteja sävellyksiä ja epätavallista äänisuunnittelua. Kaikki miksaus, masterointi, sävellys ja esitykset: Davitt Barry.',
+      link: 'Kuuntele Bandcampissa',
+    },
+    services: '▸ TUOTANTOTYÖ',
+    servicesTitle: 'Tarvitsetko musiikkia, miksausta tai tuotantoa?',
+    servicesBody:
+      'Alkuperäiset sävellykset, äänisuunnittelu, jälkituotanto, miksaus ja masterointi. Yksittäisestä biisistä kokonaiseen julkaisuun.',
+    servicesAudio: 'Äänitekniikkapalvelut',
+    servicesAudioHref: '/fi/audiopalvelut',
+    servicesContact: 'Ota yhteyttä',
+    servicesContactHref: '/fi/yhteystiedot',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="music-panel music-originals">
+  <div class="subhead">
+    <span>{t.sub}</span>
+    <span class="count">{t.count}</span>
+  </div>
+
+  <article class="release release--feature">
+    <div class="release__head">
+      <h3 class="release__title">{t.albumTitle}</h3>
+      <span class="release__meta">Album · 2025</span>
+    </div>
+
+    <div class="release__video" id="aliud-phantasma-video">
+      <div class="release__video-label">{t.videoLabel}</div>
+      <YouTubeEmbed id="zYJyVhUtR-4" title={t.videoLabel} />
+      <div class="release__video-cta">
+        <a
+          class="btn btn--small"
+          href="https://www.youtube.com/@davittbarry"
+          target="_blank"
+          rel="noopener"
+        >
+          {t.watchYoutube} <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="release__body">
+      <Image
+        class="release__cover"
+        src={aliudPhantasmaCover}
+        alt="Aliud Phantasma album cover"
+        width={560}
+        height={560}
+        loading="lazy"
+      />
+      <div class="release__text">
+        <p class="release__desc">{t.albumDesc}</p>
+        <div class="release__links">
+          <span class="release__listen">{t.listen}</span>
+          <a
+            class="btn btn--small"
+            href="https://open.spotify.com/artist/1BOxo6BWmD8zbIwxm28jvv"
+            target="_blank"
+            rel="noopener"
+          >
+            Spotify <span class="arrow">↗</span>
+          </a>
+          <a
+            class="btn btn--small"
+            href="https://music.apple.com/us/artist/davitt-barry/1541200569"
+            target="_blank"
+            rel="noopener"
+          >
+            Apple Music <span class="arrow">↗</span>
+          </a>
+          <a
+            class="btn btn--small"
+            href="https://tidal.com/artist/21939452/u"
+            target="_blank"
+            rel="noopener"
+          >
+            Tidal <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="subhead">
+    <span>{t.past}</span>
+    <span class="count">{t.pastCount} RELEASES</span>
+  </div>
+
+  <div class="release-grid">
+    <article class="release release--past">
+      <Image
+        class="release__cover release__cover--small"
+        src={daevEpCover}
+        alt={`${t.daev.title} cover`}
+        width={400}
+        height={400}
+        loading="lazy"
+      />
+      <h3 class="release__title">
+        {t.daev.title} <em>· {t.daev.year}</em>
+      </h3>
+      <p class="release__desc">{t.daev.desc}</p>
+      <a
+        class="release__link"
+        href="https://daev.bandcamp.com/album/ep"
+        target="_blank"
+        rel="noopener"
+      >
+        {t.daev.link} <span class="arrow">↗</span>
+      </a>
+    </article>
+
+    <article class="release release--past">
+      <Image
+        class="release__cover release__cover--small"
+        src={davittSquozenCover}
+        alt={`${t.squozen.title} cover`}
+        width={400}
+        height={400}
+        loading="lazy"
+      />
+      <h3 class="release__title">
+        {t.squozen.title} <em>· {t.squozen.year}</em>
+      </h3>
+      <p class="release__desc">{t.squozen.desc}</p>
+      <a
+        class="release__link"
+        href="https://davittbarry.bandcamp.com/album/squozen-ep"
+        target="_blank"
+        rel="noopener"
+      >
+        {t.squozen.link} <span class="arrow">↗</span>
+      </a>
+    </article>
+  </div>
+
+  <div class="subhead">
+    <span>{t.services}</span>
+  </div>
+
+  <div class="production">
+    <h3 class="production__title">{t.servicesTitle}</h3>
+    <p class="production__body">{t.servicesBody}</p>
+    <div class="production__row">
+      <a class="btn btn--primary" href={t.servicesAudioHref}>
+        {t.servicesAudio} <span class="arrow">→</span>
+      </a>
+      <a class="btn" href={t.servicesContactHref}>
+        {t.servicesContact} <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .music-panel {
+    display: block;
+    padding: 40px 0;
+  }
+  .subhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 12px;
+    margin-top: 24px;
+    border-top: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    gap: 16px;
+  }
+  .subhead:first-child {
+    margin-top: 0;
+  }
+  .subhead .count {
+    color: var(--color-accent);
+  }
+
+  .release {
+    padding: 24px 0;
+  }
+  .release--feature {
+    padding: 24px 0 40px;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .release__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .release__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.05;
+    color: var(--color-text);
+    margin: 0;
+  }
+  .release__title em {
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dim);
+  }
+  .release__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--color-text-mute);
+  }
+  .release__video {
+    margin-bottom: 24px;
+  }
+  .release__video-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--color-text-dim);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .release__video-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+  }
+  .release__body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .release__cover {
+    width: 100%;
+    border: 1px solid var(--color-line);
+    display: block;
+  }
+  .release__cover--small {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  .release__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .release__desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+  .release__links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .release__listen {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    margin-right: 4px;
+  }
+
+  .release-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 24px 0 40px;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .release--past .release__title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .release--past .release__desc {
+    margin-bottom: 16px;
+  }
+  .release__link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .release__link:hover {
+    text-decoration: underline;
+  }
+
+  .production {
+    padding: 24px 0 8px;
+  }
+  .production__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin: 0 0 16px;
+    max-width: 28ch;
+  }
+  .production__body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    max-width: 58ch;
+    margin: 0 0 24px;
+  }
+  .production__row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 760px) {
+    .release__body {
+      grid-template-columns: 1fr;
+    }
+    .release-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

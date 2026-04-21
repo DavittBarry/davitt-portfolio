@@ -2,11 +2,11 @@
 import type { MarkdownInstance } from 'astro';
 
 import type { IFrontmatter } from '@/components/boilerplate';
-import { CTOService } from '@/partials/CTOService';
-import { CVDownload } from '@/partials/CVDownload';
-import { Hero } from '@/partials/Hero';
-import { ProjectList } from '@/partials/ProjectList';
-import { RecentPosts } from '@/partials/RecentPosts';
+import DevCTA from '@/partials/dev/DevCTA.astro';
+import DevHero from '@/partials/dev/DevHero.astro';
+import DevJournal from '@/partials/dev/DevJournal.astro';
+import DevServices from '@/partials/dev/DevServices.astro';
+import DevWork from '@/partials/dev/DevWork.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
@@ -23,9 +23,9 @@ const { description } = AppConfig;
 ---
 
 <Base head={{ title, description }}>
-  <Hero locale="en" />
-  <ProjectList locale="en" />
-  <RecentPosts client:visible postList={sortedPosts} locale="en" />
-  <CTOService locale="en" />
-  <CVDownload locale="en" />
+  <DevHero locale="en" />
+  <DevServices locale="en" />
+  <DevWork locale="en" />
+  <DevJournal locale="en" posts={sortedPosts} />
+  <DevCTA locale="en" />
 </Base>

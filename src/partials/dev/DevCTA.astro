@@ -1,0 +1,87 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    kicker: '● Open for new projects · 2026',
+    headA: 'Got a build in ',
+    headEm: 'mind?',
+    ctaPrimary: 'Start a project',
+    ctaPrimaryHref: '/contact',
+    ctaSecondary: 'GitHub',
+  },
+  fi: {
+    kicker: '● Avoinna uusille projekteille · 2026',
+    headA: 'Onko projekti ',
+    headEm: 'mielessä?',
+    ctaPrimary: 'Aloita projekti',
+    ctaPrimaryHref: '/fi/yhteystiedot',
+    ctaSecondary: 'GitHub',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="shell dev-cta">
+  <div class="dev-cta__kicker">{t.kicker}</div>
+  <h2 class="dev-cta__head">
+    {t.headA}<em>{t.headEm}</em>
+  </h2>
+  <div class="dev-cta__row">
+    <a class="btn btn--primary" href={t.ctaPrimaryHref}>
+      {t.ctaPrimary} <span class="arrow">→</span>
+    </a>
+    <a
+      class="btn"
+      href="https://github.com/DavittBarry"
+      target="_blank"
+      rel="noopener"
+    >
+      {t.ctaSecondary} <span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .dev-cta {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    text-align: left;
+  }
+  .dev-cta__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 28px;
+  }
+  .dev-cta__head {
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95;
+    max-width: 18ch;
+    margin: 0 0 32px;
+    color: var(--color-text);
+  }
+  .dev-cta__head em {
+    font-style: italic;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 24px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.7));
+  }
+  .dev-cta__row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>

@@ -1,23 +1,18 @@
 ---
-import type { MarkdownInstance } from 'astro';
+import type { MarkdownInstance, Page } from 'astro';
 
-import type { FrontmatterPage, IFrontmatter } from '@/components/boilerplate';
-import {
-  BlogGallery,
-  NewerOlderPagination,
-  PaginationHeader,
-  Section,
-} from '@/components/boilerplate';
-import { CTA } from '@/partials/CTA';
+import type { IFrontmatter } from '@/components/boilerplate';
+import PostsListing from '@/partials/posts/PostsListing.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
 
-type GetStaticPaths = {
-  paginate: any;
-};
+type PaginateFn = (
+  data: MarkdownInstance<IFrontmatter>[],
+  opts: { pageSize: number },
+) => { params: Record<string, string>; props: { page: Page } }[];
 
-export async function getStaticPaths({ paginate }: GetStaticPaths) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFn }) {
   const allPosts = Object.values(
     import.meta.glob<MarkdownInstance<IFrontmatter>>('./*.md', {
       eager: true,
@@ -28,33 +23,17 @@ export async function getStaticPaths({ paginate }: GetStaticPaths) {
 }
 
 interface Props {
-  page: FrontmatterPage;
+  page: Page<MarkdownInstance<IFrontmatter>>;
 }
 
 const { page } = Astro.props as Props;
 
-const titleSuffix = ` - ${AppConfig.site_name}`;
-const titleBase = `Blog page ${page.currentPage}`;
-const title = titleBase + titleSuffix;
+const pageLabel = page.currentPage === 1 ? 'Journal' : `Journal · ${page.currentPage}`;
+const title = `${pageLabel} - ${AppConfig.site_name}`;
 const description =
-  'Pagination example built with Astro styled with Tailwind CSS.';
+  'Long-form notes on code, sound, and the places they overlap. Tutorials, project post-mortems, and occasional rants.';
 ---
 
 <Base head={{ title, description }}>
-  <Section>
-    <PaginationHeader
-      title="Random title here"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    />
-  </Section>
-
-  <Section>
-    <BlogGallery postList={page.data} />
-  </Section>
-
-  <Section>
-    <NewerOlderPagination page={page} />
-  </Section>
-
-  <CTA />
+  <PostsListing locale="en" page={page} />
 </Base>

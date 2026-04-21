@@ -1,9 +1,13 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { getImage, Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 
-import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
 import { getLocalizedGigs } from '@/data/gigs';
+import MusicCovers from '@/partials/music/MusicCovers.astro';
+import MusicCTA from '@/partials/music/MusicCTA.astro';
+import MusicGigs from '@/partials/music/MusicGigs.astro';
+import MusicHero from '@/partials/music/MusicHero.astro';
+import MusicOriginals from '@/partials/music/MusicOriginals.astro';
 import Base from '@/templates/Base.astro';
 
 const title = 'Music - Davitt Barry';
@@ -11,6 +15,7 @@ const description =
   'Original music and live cover gigs by Davitt Barry. Acoustic troubadour available for events across Finland.';
 
 const gigs = getLocalizedGigs('en');
+const yearsPlaying = new Date().getFullYear() - 2005;
 
 const promoModules = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/promo/*.jpg',
@@ -32,584 +37,238 @@ const promos = await Promise.all(
 ---
 
 <Base head={{ title, description }}>
-  <div class="container mx-auto px-6 py-12">
-    <!-- Page Title -->
-    <div class="mx-auto mb-10 max-w-4xl text-center">
-      <h1 class="mb-4 text-5xl font-light text-white">
-        <span class="text-emerald-400">Music</span>
-      </h1>
+  <MusicHero locale="en" />
+
+  <section class="shell">
+    <div class="tabs" role="tablist" aria-label="Music sections">
+      <button
+        type="button"
+        class="tab on"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-original"
+        data-tab="original"
+        id="tab-original"
+      >
+        <span class="n">01</span> Originals
+      </button>
+      <button
+        type="button"
+        class="tab"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-covers"
+        data-tab="covers"
+        id="tab-covers"
+      >
+        <span class="n">02</span> Covers
+      </button>
+      <button
+        type="button"
+        class="tab"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-gigs"
+        data-tab="gigs"
+        id="tab-gigs"
+      >
+        <span class="n">03</span> Gig Calendar
+      </button>
     </div>
 
-    <!-- Tab Navigation -->
-    <div class="mx-auto mb-12 max-w-6xl">
-      <div class="flex justify-center gap-2" role="tablist">
-        <button
-          id="tab-original"
-          role="tab"
-          aria-selected="true"
-          aria-controls="panel-original"
-          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400"
-          data-tab="original"
-        >
-          Original music
-        </button>
-        <button
-          id="tab-covers"
-          role="tab"
-          aria-selected="false"
-          aria-controls="panel-covers"
-          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-amber-400 hover:border-amber-400/50"
-          data-tab="covers"
-        >
-          Cover gigs
-        </button>
-        <button
-          id="tab-gigs"
-          role="tab"
-          aria-selected="false"
-          aria-controls="panel-gigs"
-          class="tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 hover:text-rose-400 hover:border-rose-400/50"
-          data-tab="gigs"
-        >
-          Upcoming gigs
-        </button>
-      </div>
-      <div class="h-px w-full bg-neutral-700"></div>
-    </div>
+    <section class="tab-panel on" data-panel="original" id="panel-original" role="tabpanel" aria-labelledby="tab-original">
+      <MusicOriginals locale="en" />
+    </section>
+    <section class="tab-panel" data-panel="covers" id="panel-covers" role="tabpanel" aria-labelledby="tab-covers" hidden>
+      <MusicCovers locale="en" promos={promos} yearsPlaying={yearsPlaying} />
+    </section>
+    <section class="tab-panel" data-panel="gigs" id="panel-gigs" role="tabpanel" aria-labelledby="tab-gigs" hidden>
+      <MusicGigs locale="en" gigs={gigs} />
+    </section>
+  </section>
 
-    <!-- ============ ORIGINAL MUSIC PANEL ============ -->
-    <div id="panel-original" role="tabpanel" aria-labelledby="tab-original" class="tab-panel">
+  <MusicCTA locale="en" />
+</Base>
 
-      <!-- Latest Release -->
-      <div class="mx-auto mb-16 max-w-6xl">
-        <h2 class="mb-8 text-3xl font-light text-white">
-          Aliud Phantasma (2025)
-        </h2>
-        <div
-          class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-        >
-          <div class="mb-8">
-            <h3 class="mb-6 text-center text-2xl font-light text-white">
-              Music video: Turquoise Wash Away:
-            </h3>
-            <YouTubeEmbed id="zYJyVhUtR-4" title="Turquoise Wash Away - Music Video" />
-            <p class="mt-6 text-center text-lg text-neutral-300">
-              A single from the album:
-            </p>
-          </div>
-          <img
-            src="/assets/images/1000055346.jpg"
-            alt="Aliud Phantasma Album Cover"
-            class="mx-auto mb-6 w-full max-w-2xl rounded object-contain"
-          />
-          <p class="mb-6 text-neutral-400">
-            My latest album exploring electronic, ambient, and progressive
-            soundscapes. All mixing, mastering, composing, and performances by
-            Davitt Barry.
-          </p>
-          <div class="mb-6">
-            <h3 class="mb-4 text-lg text-white">
-              Listen now on streaming platforms:
-            </h3>
-            <div class="flex flex-wrap gap-4">
-              <a
-                href="https://open.spotify.com/artist/1BOxo6BWmD8zbIwxm28jvv"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-              >
-                Spotify →
-              </a>
-              <a
-                href="https://music.apple.com/us/artist/davitt-barry/1541200569"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-              >
-                Apple Music →
-              </a>
-              <a
-                href="https://tidal.com/artist/21939452/u"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-              >
-                Tidal →
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+<script>
+  function initMusicTabs() {
+    const tabs = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('.tabs .tab'),
+    );
+    const panels = Array.from(
+      document.querySelectorAll<HTMLElement>('.tab-panel'),
+    );
+    if (!tabs.length || !panels.length) return;
 
-      <!-- Past Releases -->
-      <div class="mx-auto mb-16 max-w-6xl">
-        <h2 class="mb-8 text-3xl font-light text-white">Past releases</h2>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-          >
-            <img
-              src="/assets/images/daev-ep-cover.jpg"
-              alt="dæv EP Cover"
-              class="mb-6 h-48 w-full rounded object-cover"
-            />
-            <h3 class="mb-4 text-xl text-white">dæv EP (2017)</h3>
-            <p class="mb-6 text-neutral-400">
-              A collection of experimental electronic tracks sprinkled with
-              elements of prog. Co-written with Heikki Saarenkunnas and
-              co-mixed/mastered with Panu Posti. Artwork by Antti Lukinmaa.
-            </p>
-            <a
-              href="https://daev.bandcamp.com/album/ep"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Listen on Bandcamp →
-            </a>
-          </div>
+    const VALID = new Set(['original', 'covers', 'gigs']);
 
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 transition-all hover:border-emerald-400/50"
-          >
-            <img
-              src="/assets/images/davitt-squozen-ep.jpg"
-              alt="Squozen EP Cover"
-              class="mb-6 h-48 w-full rounded object-cover"
-            />
-            <h3 class="mb-4 text-xl text-white">Squozen EP (2014)</h3>
-            <p class="mb-6 text-neutral-400">
-              An earlier experimental work featuring abstract compositions and
-              unconventional sound design approaches. All mixing/mastering,
-              composing and performances by Davitt Barry.
-            </p>
-            <a
-              href="https://davittbarry.bandcamp.com/album/squozen-ep"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block border border-emerald-400 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Listen on Bandcamp →
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Production Services Link -->
-      <div class="mx-auto max-w-4xl text-center">
-        <div
-          class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8"
-        >
-          <h2 class="mb-4 text-2xl font-light text-white">
-            Do you need music, mixing, or production for your project?
-          </h2>
-          <p class="mb-6 text-neutral-400">
-            I offer professional music production, mixing, and mastering services.
-            Whether you need original compositions, sound design, or
-            post-production work, I can help bring your audio vision to life.
-          </p>
-          <div class="flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href="/audio-services"
-              class="inline-block border border-cyan-400 px-6 py-3 text-cyan-400 transition-all hover:bg-cyan-400/10"
-            >
-              Audio engineering services →
-            </a>
-            <a
-              href="/contact"
-              class="inline-block border border-emerald-400 px-6 py-3 text-emerald-400 transition-all hover:bg-emerald-400/10"
-            >
-              Get in touch →
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ============ COVER GIGS PANEL ============ -->
-    <div id="panel-covers" role="tabpanel" aria-labelledby="tab-covers" class="tab-panel hidden">
-
-      <div class="mx-auto mb-16 max-w-6xl">
-        <!-- Intro / Bio -->
-        <div class="mb-12 text-center">
-          <h2 class="mb-4 text-4xl font-light text-white">
-            Live <span class="text-amber-400">cover gigs</span>
-          </h2>
-          <p class="mx-auto max-w-3xl text-lg text-neutral-400 mb-4">
-            I've been playing covers professionally for <span id="years-playing-en" class="text-white font-medium"></span> years. I started out gigging around Dublin, spent three years playing all over Australia mainly with <a href="https://simonmeolamusic.com/about" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Simon Meola</a>, and even got to play the Madrid Tennis Open on the day of the final in 2011 with the band <a href="https://www.youtube.com/watch?v=PbkjcHv6MXE" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Lorcan James</a>.
-          </p>
-          <p class="mx-auto max-w-3xl text-lg text-neutral-400 mb-4">
-            Since moving to Finland in 2011, I've played on nearly every cruise ship line, major ski resorts, and other big venues around the country, solo, as a duo, and with full bands. I also work with the Finnish booking agency <a href="https://piikkikasvi.fi/uutiset/davitt-barry/" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline">Piikkikasvi</a>.
-          </p>
-          <p class="mx-auto max-w-3xl text-lg text-neutral-400">
-            Available for private parties, corporate events, weddings, restaurant evenings, and bar gigs. Acoustic guitar and vocals covering rock, pop, folk, and everything in between.
-          </p>
-          <div class="mt-6">
-            <a
-              href="/contact"
-              class="inline-block border border-amber-400 px-6 py-3 text-amber-400 transition-all hover:bg-amber-400/10"
-            >
-              Book me →
-            </a>
-          </div>
-        </div>
-
-        <!-- Featured Video -->
-        <div class="mb-10">
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-6 transition-all hover:border-amber-400/50"
-          >
-            <YouTubeEmbed id="fOLMcd1RaPE" title="Davitt Barry - Live Cover Performance" />
-          </div>
-        </div>
-
-        <!-- Heartbreakers Video (after Sting) -->
-        <div class="mb-6">
-          <p class="mb-4 text-center text-neutral-400">
-            With <span class="text-white">Heartbreakers</span>, a Finnish cover band:
-          </p>
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
-          >
-            <YouTubeEmbed id="vrR3bdrt6Fg" title="Davitt Barry with Heartbreakers - Live" />
-          </div>
-        </div>
-
-        <!-- More Solo Videos -->
-        <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
-          >
-            <YouTubeEmbed id="1x1N8soRlIY" title="Davitt Barry - Live Cover 2" />
-          </div>
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-4 transition-all hover:border-amber-400/50"
-          >
-            <YouTubeEmbed id="-3y0NLfmyG0" title="Davitt Barry - Live Cover 3" />
-          </div>
-        </div>
-
-        <!-- Photo Gallery -->
-        <div class="mb-10">
-          <h3 class="mb-6 text-center text-2xl font-light text-white">
-            Promo photos
-          </h3>
-          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {promos.map((p) => (
-              <a
-                href={p.fullHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                class:list={[
-                  'group relative overflow-hidden border border-neutral-800 transition-all hover:border-amber-400/50',
-                  p.n > 10 && 'extra-promo hidden',
-                ]}
-              >
-                <Image
-                  src={p.image}
-                  widths={[300, 600, 900]}
-                  sizes="(min-width: 1024px) 240px, (min-width: 768px) 25vw, (min-width: 640px) 33vw, 50vw"
-                  alt={`Davitt Barry promo photo ${p.n}`}
-                  class="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </a>
-            ))}
-          </div>
-          <div id="toggle-promos-wrap" class="mt-6 text-center">
-            <button
-              id="toggle-promos"
-              type="button"
-              class="inline-block border border-amber-400 px-6 py-3 text-amber-400 transition-all hover:bg-amber-400/10"
-            >
-              Show more photos (15)
-            </button>
-          </div>
-          <p class="mt-4 text-center text-sm text-neutral-500">
-            Click any photo to view full size. Photos available for promotional use on request.
-          </p>
-        </div>
-
-        <!-- Booking CTA -->
-        <div class="text-center">
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8"
-          >
-            <h3 class="mb-4 text-2xl font-light text-white">
-              Book a live performance
-            </h3>
-            <p class="mb-6 text-neutral-400">
-              Looking for a musician for your event? I play acoustic cover sets tailored to your occasion, from laid-back background music to full sing-along party sets. Based in Finland, available nationwide.
-            </p>
-            <a
-              href="/contact"
-              class="inline-block border border-amber-400 px-8 py-3 text-lg text-amber-400 transition-all hover:bg-amber-400/10"
-            >
-              Get in touch →
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ============ UPCOMING GIGS PANEL ============ -->
-    <div id="panel-gigs" role="tabpanel" aria-labelledby="tab-gigs" class="tab-panel hidden">
-
-      <div class="mx-auto mb-16 max-w-6xl">
-        <!-- Intro -->
-        <div class="mb-12 text-center">
-          <h2 class="mb-4 text-4xl font-light text-white">
-            <span class="text-rose-400">Upcoming</span> gigs
-          </h2>
-          <p class="mx-auto max-w-3xl text-lg text-neutral-400">
-            Catch me live. Dates update as new bookings are confirmed. Scroll down for venue info and directions.
-          </p>
-        </div>
-
-        <!-- Gig Cards -->
-        {gigs.length === 0 ? (
-          <div class="mx-auto max-w-3xl border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8 text-center">
-            <p class="mb-6 text-neutral-400">No gigs on the calendar right now, but I'm actively taking bookings.</p>
-            <a
-              href="/contact"
-              class="inline-block border border-rose-400 px-6 py-3 text-rose-400 transition-all hover:bg-rose-400/10"
-            >
-              Book a date →
-            </a>
-          </div>
-        ) : (
-          <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {gigs.map((gig) => (
-              <article
-                class="flex h-full flex-col overflow-hidden border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 transition-all hover:border-rose-400/50"
-              >
-                {gig.image && (
-                  gig.isPrivate ? (
-                    <div class="group relative block overflow-hidden">
-                      <img
-                        src={gig.image}
-                        alt={`${gig.venue} photo`}
-                        class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                        data-hide-parent-on-error
-                      />
-                      <div class="pointer-events-none absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
-                    </div>
-                  ) : (
-                    <a
-                      href={gig.website || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group relative block overflow-hidden"
-                      aria-label={`${gig.venue} website`}
-                    >
-                      <img
-                        src={gig.image}
-                        alt={`${gig.venue} venue photo`}
-                        class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                        data-hide-parent-on-error
-                      />
-                      <div class="pointer-events-none absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
-                      <div class="absolute bottom-3 right-3 border border-rose-400/40 bg-neutral-900/80 px-3 py-1 text-xs text-rose-400 backdrop-blur-sm transition-colors group-hover:border-rose-400 group-hover:bg-rose-400/10">
-                        Visit venue →
-                      </div>
-                    </a>
-                  )
-                )}
-                <div class="flex flex-1 gap-6 p-6">
-                  <!-- Date Badge -->
-                  <div class="flex h-fit flex-col items-center justify-center border border-rose-400/40 bg-rose-400/5 px-4 py-3 text-center text-rose-400">
-                    <span class="text-xs uppercase tracking-widest">{gig.day}</span>
-                    <span class="my-1 text-3xl font-light leading-none text-white">{gig.dayNum}</span>
-                    <span class="text-xs uppercase tracking-widest">{gig.month}</span>
-                    <span class="mt-1 text-[10px] text-neutral-500">{gig.year}</span>
-                  </div>
-                  <!-- Details -->
-                  <div class="flex-1">
-                    <h3 class="text-xl text-white">
-                      {gig.website ? (
-                        <a
-                          href={gig.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="transition-colors hover:text-rose-400"
-                        >
-                          {gig.venue}
-                        </a>
-                      ) : gig.venue}
-                    </h3>
-                    <p class="text-sm text-neutral-400">{gig.city}, Finland</p>
-                    <p class="mt-2 text-rose-400">{gig.timeStart} – {gig.timeEnd}</p>
-                    <p class="mt-3 text-sm text-neutral-400">{gig.description}</p>
-                  </div>
-                </div>
-                <!-- Collapsible Map (pinned to card bottom) -->
-                {!gig.isPrivate && (
-                  <details class="group mt-auto border-t border-neutral-800">
-                    <summary class="flex cursor-pointer items-center justify-between px-6 py-3 text-sm text-neutral-400 transition-colors hover:text-rose-400">
-                      <span>Venue map &amp; directions</span>
-                      <span class="text-xs transition-transform group-open:rotate-180">▼</span>
-                    </summary>
-                    <div class="px-6 pb-6">
-                      <p class="mb-3 text-sm text-neutral-500">{gig.address}</p>
-                      <div class="relative w-full" style="padding-bottom: 56.25%;">
-                        <iframe
-                          class="absolute left-0 top-0 h-full w-full rounded border border-neutral-800"
-                          src={`https://www.google.com/maps?q=${encodeURIComponent(gig.address)}&output=embed`}
-                          title={`Map of ${gig.venue}`}
-                          loading="lazy"
-                          referrerpolicy="no-referrer-when-downgrade"
-                          allowfullscreen></iframe>
-                      </div>
-                      <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(gig.address)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="mt-3 inline-block text-sm text-rose-400 hover:underline"
-                      >
-                        Get directions →
-                      </a>
-                    </div>
-                  </details>
-                )}
-              </article>
-            ))}
-          </div>
-        )}
-
-        <!-- Booking CTA -->
-        <div class="text-center">
-          <div
-            class="border border-neutral-800 bg-linear-to-br from-neutral-900 to-neutral-800 p-8"
-          >
-            <h3 class="mb-4 text-2xl font-light text-white">
-              Don't see your venue on the list?
-            </h3>
-            <p class="mb-6 text-neutral-400">
-              I'm taking bookings across Finland. Private parties, corporate events, weddings, restaurant evenings, and bar gigs. Solo, duo, or full band.
-            </p>
-            <a
-              href="/contact"
-              class="inline-block border border-rose-400 px-8 py-3 text-lg text-rose-400 transition-all hover:bg-rose-400/10"
-            >
-              Book a date →
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Tab switching script -->
-  <script>
-    function initTabs() {
-      const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab-btn'));
-      const panels = document.querySelectorAll('.tab-panel');
-
-      const inactiveHoverByTab: Record<string, string> = {
-        original: 'hover:text-emerald-400 hover:border-emerald-400/50',
-        covers: 'hover:text-amber-400 hover:border-amber-400/50',
-        gigs: 'hover:text-rose-400 hover:border-rose-400/50',
-      };
-
-      function switchTab(tabName: string | null, opts: { focus?: boolean } = {}) {
-        if (!tabName) return;
-        tabs.forEach(tab => {
-          const thisTab = tab.getAttribute('data-tab');
-          const isActive = thisTab === tabName;
-          tab.setAttribute('aria-selected', String(isActive));
-          tab.setAttribute('tabindex', isActive ? '0' : '-1');
-          if (isActive && tabName === 'original') {
-            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-emerald-400 bg-emerald-400/10 text-emerald-400';
-          } else if (isActive && tabName === 'covers') {
-            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-amber-400 bg-amber-400/10 text-amber-400';
-          } else if (isActive && tabName === 'gigs') {
-            tab.className = 'tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-rose-400 bg-rose-400/10 text-rose-400';
-          } else {
-            const hover = (thisTab && inactiveHoverByTab[thisTab]) || 'hover:text-amber-400 hover:border-amber-400/50';
-            tab.className = `tab-btn rounded-t px-8 py-4 text-lg font-light transition-all border border-b-0 border-neutral-700 text-neutral-400 ${hover}`;
-          }
-          if (isActive && opts.focus) tab.focus();
-        });
-
-        panels.forEach(panel => {
-          if (panel.id === `panel-${tabName}`) {
-            panel.classList.remove('hidden');
-          } else {
-            panel.classList.add('hidden');
-          }
-        });
-      }
-
-      tabs.forEach((tab, idx) => {
-        tab.addEventListener('click', () => {
-          const tabName = tab.getAttribute('data-tab');
-          switchTab(tabName);
-          history.replaceState(null, '', `#${tabName}`);
-        });
-
-        tab.addEventListener('keydown', (e) => {
-          let nextIdx: number | null = null;
-          if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
-          else if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabs.length) % tabs.length;
-          else if (e.key === 'Home') nextIdx = 0;
-          else if (e.key === 'End') nextIdx = tabs.length - 1;
-          if (nextIdx === null) return;
-          const nextTab = tabs[nextIdx];
-          if (!nextTab) return;
-          e.preventDefault();
-          const nextName = nextTab.getAttribute('data-tab');
-          switchTab(nextName, { focus: true });
-          history.replaceState(null, '', `#${nextName}`);
-        });
+    function switchTab(name: string | null, opts: { focus?: boolean } = {}) {
+      if (!name || !VALID.has(name)) return;
+      tabs.forEach((tab) => {
+        const isActive = tab.getAttribute('data-tab') === name;
+        tab.classList.toggle('on', isActive);
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.setAttribute('tabindex', isActive ? '0' : '-1');
+        if (isActive && opts.focus) tab.focus();
       });
+      panels.forEach((panel) => {
+        const isActive = panel.getAttribute('data-panel') === name;
+        panel.classList.toggle('on', isActive);
+        if (isActive) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+      });
+    }
 
-      // Check hash on load
-      const hash = window.location.hash.replace('#', '');
-      if (hash === 'covers' || hash === 'original' || hash === 'gigs') {
-        switchTab(hash);
-      } else {
-        // Set initial roving tabindex based on the default-selected tab in the markup.
-        tabs.forEach(tab => {
-          tab.setAttribute('tabindex', tab.getAttribute('aria-selected') === 'true' ? '0' : '-1');
-        });
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        const name = tab.getAttribute('data-tab');
+        switchTab(name);
+        if (name) history.replaceState(null, '', `#${name}`);
+      });
+      tab.addEventListener('keydown', (e) => {
+        let next: number | null = null;
+        if (e.key === 'ArrowRight') next = (idx + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft')
+          next = (idx - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        if (next === null) return;
+        e.preventDefault();
+        const name = tabs[next]?.getAttribute('data-tab') ?? null;
+        switchTab(name, { focus: true });
+        if (name) history.replaceState(null, '', `#${name}`);
+      });
+    });
+
+    const hash = window.location.hash.replace('#', '');
+    if (VALID.has(hash)) switchTab(hash);
+    else
+      tabs.forEach((tab) =>
+        tab.setAttribute(
+          'tabindex',
+          tab.getAttribute('aria-selected') === 'true' ? '0' : '-1',
+        ),
+      );
+
+    const onHash = () => {
+      const h = window.location.hash.replace('#', '');
+      if (VALID.has(h)) {
+        switchTab(h);
+        const panel = document.getElementById(`panel-${h}`);
+        panel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }
+    };
+    window.addEventListener('hashchange', onHash);
+  }
 
-    function initYears() {
-      const startYear = 2007;
-      const years = new Date().getFullYear() - startYear;
-      const el = document.getElementById('years-playing-en');
-      if (el) el.textContent = String(years);
-    }
-
-    function initPromoToggle() {
-      const btn = document.getElementById('toggle-promos');
-      const wrap = document.getElementById('toggle-promos-wrap');
-      if (!btn || !wrap) return;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.extra-promo').forEach((el) => el.classList.remove('hidden'));
+  function initPromoToggle() {
+    const btn = document.getElementById('toggle-promos');
+    const wrap = document.getElementById('toggle-promos-wrap');
+    if (!btn || !wrap) return;
+    btn.addEventListener(
+      'click',
+      () => {
+        document
+          .querySelectorAll('.extra-promo')
+          .forEach((el) => el.classList.remove('hidden'));
         wrap.remove();
-      }, { once: true });
-    }
+      },
+      { once: true },
+    );
+  }
 
-    // Hide the parent anchor of any image that fails to load (CSP-safe replacement for inline onerror).
-    document.addEventListener('error', (e) => {
+  document.addEventListener(
+    'error',
+    (e) => {
       const target = e.target as HTMLElement | null;
-      if (target instanceof HTMLImageElement && target.hasAttribute('data-hide-parent-on-error')) {
+      if (
+        target instanceof HTMLImageElement &&
+        target.hasAttribute('data-hide-parent-on-error')
+      ) {
         const parent = target.closest('a');
         if (parent) parent.style.display = 'none';
       }
-    }, true);
+    },
+    true,
+  );
 
-    // Run on initial load and on Astro page transitions
-    initTabs();
-    initYears();
+  initMusicTabs();
+  initPromoToggle();
+  document.addEventListener('astro:after-swap', () => {
+    initMusicTabs();
     initPromoToggle();
-    document.addEventListener('astro:after-swap', () => { initTabs(); initYears(); initPromoToggle(); });
-  </script>
-</Base>
+  });
+</script>
+
+<style>
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    border-bottom: 1px solid var(--color-line);
+    margin-top: 40px;
+  }
+  .tabs .tab {
+    background: var(--color-bg-1);
+    border: 1px solid var(--color-line);
+    border-bottom: 2px solid transparent;
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    padding: 14px 12px;
+    cursor: pointer;
+    margin-bottom: -1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    transition:
+      color 0.2s,
+      background 0.2s,
+      border-color 0.2s;
+  }
+  .tabs .tab .n {
+    color: var(--color-text-mute);
+    font-size: 10px;
+  }
+  .tabs .tab:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+  }
+  .tabs .tab.on {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+  .tabs .tab.on .n {
+    color: var(--color-accent);
+  }
+  .tabs .tab:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .tab-panel {
+    display: none;
+    padding: 40px 0;
+  }
+  .tab-panel.on {
+    display: block;
+  }
+
+  @media (max-width: 520px) {
+    .tabs .tab {
+      font-size: 11px;
+      padding: 12px 6px;
+      letter-spacing: 0.04em;
+    }
+    .tabs .tab .n {
+      display: none;
+    }
+  }
+</style>

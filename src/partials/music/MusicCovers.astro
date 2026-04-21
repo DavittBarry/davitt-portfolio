@@ -1,0 +1,458 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
+import bioPortrait from '@/images/promo/promo-06.jpg';
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+  promos: { image: ImageMetadata; fullHref: string; n: number }[];
+  yearsPlaying: number;
+}
+
+const { locale, promos, yearsPlaying } = Astro.props;
+
+const labels = {
+  en: {
+    sub: '▸ LIVE COVERS',
+    count: `${yearsPlaying} YEARS`,
+    bio: '▸ BIO',
+    bioHead: 'Acoustic troubadour, Dublin → Helsinki.',
+    bio1a: "I've been playing covers professionally for ",
+    bio1b:
+      " years. Started out gigging around Dublin, spent three years across Australia mainly with ",
+    bio1Simon: 'Simon Meola',
+    bio1SimonUrl: 'https://simonmeolamusic.com/about',
+    bio1c: ', and got to play the Madrid Tennis Open final day in 2011 with ',
+    bio1Lorcan: 'Lorcan James',
+    bio1LorcanUrl: 'https://www.youtube.com/watch?v=PbkjcHv6MXE',
+    bio1d: '.',
+    bio2a:
+      "Since moving to Finland in 2011, I've played nearly every cruise-ship line, major ski resorts, and big venues around the country — solo, duo, and full band. I also work with the Finnish booking agency ",
+    bio2Piikkikasvi: 'Piikkikasvi',
+    bio2PiikkikasviUrl: 'https://piikkikasvi.fi/uutiset/davitt-barry/',
+    bio2b: '.',
+    bio3:
+      'Available for private parties, corporate events, weddings, restaurant evenings, and bar gigs. Acoustic guitar and vocals covering rock, pop, folk, and everything in between.',
+    bookBtn: 'Book a date',
+    bookHref: '/contact',
+    sessions: '▸ LIVE VIDEO',
+    featuredLabel: 'Featured performance',
+    heartbreakersLabel: 'With Heartbreakers (Finnish cover band)',
+    moreLabel: 'More live',
+    promosHead: '▸ PROMO PHOTOS',
+    promosCount: `${promos.length} SHOTS`,
+    promosFootnote:
+      'Click any photo to view full size. Available for promotional use on request.',
+    showMore: `Show more photos (${Math.max(promos.length - 10, 0)})`,
+    ctaHead: 'Book a live performance.',
+    ctaBody:
+      'Looking for a musician for your event? I play acoustic cover sets tailored to your occasion — from background music to sing-along party sets. Based in Finland, available nationwide.',
+  },
+  fi: {
+    sub: '▸ LIVE COVERIT',
+    count: `${yearsPlaying} VUOTTA`,
+    bio: '▸ BIO',
+    bioHead: 'Akustinen trubaduuri, Dublin → Helsinki.',
+    bio1a: 'Olen soittanut covereita ammattimaisesti ',
+    bio1b:
+      ' vuotta. Aloitin Dublinissa, kiersin kolme vuotta Australiaa pääasiassa ',
+    bio1Simon: 'Simon Meolan',
+    bio1SimonUrl: 'https://simonmeolamusic.com/about',
+    bio1c: ' kanssa ja soitin Madridin Tennis Openin finaalipäivänä 2011 yhdessä ',
+    bio1Lorcan: 'Lorcan Jamesin',
+    bio1LorcanUrl: 'https://www.youtube.com/watch?v=PbkjcHv6MXE',
+    bio1d: ' kanssa.',
+    bio2a:
+      'Suomessa olen keikkaillut vuodesta 2011 lähes jokaisella risteilyaluksella, suurimmilla hiihtokeskuksilla ja isoilla lavoilla ympäri maan — yksin, duona ja bändien kanssa. Teen yhteistyötä myös suomalaisen ohjelmatoimiston ',
+    bio2Piikkikasvi: 'Piikkikasvin',
+    bio2PiikkikasviUrl: 'https://piikkikasvi.fi/uutiset/davitt-barry/',
+    bio2b: ' kanssa.',
+    bio3:
+      'Varattavissa yksityistilaisuuksiin, yritystapahtumiin, häihin, ravintoiltoihin ja baarikeikoille. Akustinen kitara ja laulu: rockia, poppia, folkia ja kaikkea siltä väliltä.',
+    bookBtn: 'Varaa päivä',
+    bookHref: '/fi/yhteystiedot',
+    sessions: '▸ LIVE-VIDEOT',
+    featuredLabel: 'Esillä',
+    heartbreakersLabel: 'Heartbreakers-yhtyeen kanssa',
+    moreLabel: 'Lisää liveä',
+    promosHead: '▸ PROMOKUVAT',
+    promosCount: `${promos.length} KUVAA`,
+    promosFootnote:
+      'Klikkaa kuvaa nähdäksesi täysikokoisena. Saatavilla promootiokäyttöön pyydettäessä.',
+    showMore: `Näytä lisää kuvia (${Math.max(promos.length - 10, 0)})`,
+    ctaHead: 'Varaa live-esiintyjä tapahtumaasi.',
+    ctaBody:
+      'Etsitkö muusikkoa tapahtumaasi? Soitan akustisia cover-settejä tilaisuutesi mukaan — rennosta taustamusiikista täysillä laulettaviin bilekappaleisiin. Kotipaikkana Suomi, keikkoja koko maassa.',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="music-panel music-covers">
+  <div class="subhead">
+    <span>{t.sub}</span>
+    <span class="count">{t.count}</span>
+  </div>
+
+  <div class="covers-bio">
+    <div class="covers-bio__meta">{t.bio}</div>
+    <div class="covers-bio__photo">
+      <Image
+        src={bioPortrait}
+        alt="Davitt Barry — live performance promo"
+        width={720}
+        height={527}
+        loading="lazy"
+      />
+    </div>
+    <div class="covers-bio__body">
+      <h3 class="covers-bio__head">{t.bioHead}</h3>
+      <p>
+        {t.bio1a}<strong>{yearsPlaying}</strong>{t.bio1b}
+        <a href={t.bio1SimonUrl} target="_blank" rel="noopener">{t.bio1Simon}</a>
+        {t.bio1c}
+        <a href={t.bio1LorcanUrl} target="_blank" rel="noopener">{t.bio1Lorcan}</a>
+        {t.bio1d}
+      </p>
+      <p>
+        {t.bio2a}
+        <a href={t.bio2PiikkikasviUrl} target="_blank" rel="noopener">{t.bio2Piikkikasvi}</a>
+        {t.bio2b}
+      </p>
+      <p>{t.bio3}</p>
+      <div class="covers-bio__cta">
+        <a class="btn btn--primary" href={t.bookHref}>
+          {t.bookBtn} <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead">
+    <span>{t.sessions}</span>
+  </div>
+
+  <div class="covers-video">
+    <div class="covers-video__label">{t.featuredLabel}</div>
+    <YouTubeEmbed id="fOLMcd1RaPE" title="Davitt Barry - Live cover performance" />
+  </div>
+
+  <div class="covers-video">
+    <div class="covers-video__label">{t.heartbreakersLabel}</div>
+    <YouTubeEmbed id="vrR3bdrt6Fg" title="Davitt Barry with Heartbreakers" />
+  </div>
+
+  <div class="covers-video-grid">
+    <div class="covers-video covers-video--small">
+      <div class="covers-video__label">{t.moreLabel} · 02</div>
+      <YouTubeEmbed id="1x1N8soRlIY" title="Davitt Barry - Live cover 2" />
+    </div>
+    <div class="covers-video covers-video--small">
+      <div class="covers-video__label">{t.moreLabel} · 03</div>
+      <YouTubeEmbed id="-3y0NLfmyG0" title="Davitt Barry - Live cover 3" />
+    </div>
+  </div>
+
+  <div class="subhead">
+    <span>{t.promosHead}</span>
+    <span class="count">{t.promosCount}</span>
+  </div>
+
+  <div class="promo-grid">
+    {
+      promos.map((p) => (
+        <a
+          href={p.fullHref}
+          target="_blank"
+          rel="noopener"
+          class:list={[
+            'promo-tile',
+            p.n > 10 && 'extra-promo hidden',
+          ]}
+        >
+          <Image
+            src={p.image}
+            width={600}
+            height={600}
+            alt={`Davitt Barry promo photo ${p.n}`}
+            loading="lazy"
+          />
+          <span class="promo-tile__idx">{String(p.n).padStart(2, '0')}</span>
+        </a>
+      ))
+    }
+  </div>
+  {promos.length > 10 && (
+    <div id="toggle-promos-wrap" class="promo-toggle">
+      <button id="toggle-promos" type="button" class="btn">
+        {t.showMore} <span class="arrow">↓</span>
+      </button>
+    </div>
+  )}
+  <p class="promo-footnote">{t.promosFootnote}</p>
+
+  <div class="subhead">
+    <span>▸ BOOKING</span>
+  </div>
+  <div class="production">
+    <h3 class="production__title">{t.ctaHead}</h3>
+    <p class="production__body">{t.ctaBody}</p>
+    <div class="production__row">
+      <a class="btn btn--primary" href={t.bookHref}>
+        {t.bookBtn} <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('toggle-promos');
+  const wrap = document.getElementById('toggle-promos-wrap');
+  if (btn && wrap) {
+    btn.addEventListener(
+      'click',
+      () => {
+        document
+          .querySelectorAll('.extra-promo')
+          .forEach((el) => el.classList.remove('hidden'));
+        wrap.remove();
+      },
+      { once: true },
+    );
+  }
+</script>
+
+<style>
+  .subhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 12px;
+    margin-top: 24px;
+    border-top: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    gap: 16px;
+  }
+  .subhead:first-child {
+    margin-top: 0;
+  }
+  .subhead .count {
+    color: var(--color-accent);
+  }
+
+  .production {
+    padding: 24px 0 8px;
+  }
+  .production__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin: 0 0 16px;
+    max-width: 28ch;
+  }
+  .production__body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    max-width: 58ch;
+    margin: 0 0 24px;
+  }
+  .production__row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .covers-bio {
+    display: grid;
+    grid-template-columns: 60px minmax(420px, 620px) 1fr;
+    gap: 32px;
+    padding: 24px 0 40px;
+    border-bottom: 1px solid var(--color-line-soft);
+    align-items: start;
+  }
+  .covers-bio__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+  .covers-bio__photo {
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    width: 100%;
+  }
+  .covers-bio__photo :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(0.1) contrast(1.02);
+  }
+  .covers-bio__body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 64ch;
+  }
+  .covers-bio__head {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.1;
+    color: var(--color-text);
+    margin: 0 0 4px;
+  }
+  .covers-bio__body p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+  .covers-bio__body strong {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  .covers-bio__body p a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .covers-bio__body p a:hover {
+    text-decoration: underline;
+  }
+  .covers-bio__cta {
+    margin-top: 8px;
+  }
+
+  .covers-video {
+    padding: 24px 0;
+  }
+  .covers-video__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    margin-bottom: 12px;
+  }
+  .covers-video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 24px 0 40px;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .covers-video--small {
+    padding: 0;
+  }
+
+  .promo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 24px 0 0;
+  }
+  .promo-tile {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    display: block;
+  }
+  .promo-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s, filter 0.4s;
+    filter: grayscale(0.2) contrast(1.02);
+  }
+  .promo-tile:hover {
+    border-color: var(--color-accent);
+  }
+  .promo-tile:hover img {
+    transform: scale(1.04);
+    filter: grayscale(0) contrast(1);
+  }
+  .promo-tile__idx {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    background: oklch(from var(--color-bg) l c h / 0.7);
+    padding: 3px 6px;
+    border: 1px solid var(--color-line);
+  }
+  .extra-promo.hidden {
+    display: none;
+  }
+  .promo-toggle {
+    margin: 24px 0 8px;
+    text-align: center;
+  }
+  .promo-footnote {
+    margin: 12px 0 40px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--color-text-mute);
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+
+  @media (min-width: 640px) {
+    .promo-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .promo-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (min-width: 1200px) {
+    .promo-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  @media (max-width: 1080px) {
+    .covers-bio {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      justify-items: stretch;
+    }
+    .covers-bio__photo {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .covers-video-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 760px) {
+    .covers-bio {
+      text-align: left;
+    }
+    .covers-bio__photo {
+      max-width: 100%;
+    }
+  }
+</style>

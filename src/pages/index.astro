@@ -1,7 +1,8 @@
 ---
-import { GeneralCTA } from '@/partials/GeneralCTA';
-import { LandingHero } from '@/partials/LandingHero';
-import { ServicesGrid } from '@/partials/ServicesGrid';
+import HomeCTA from '@/partials/home/HomeCTA.astro';
+import HomeHero from '@/partials/home/HomeHero.astro';
+import HomeMarquee from '@/partials/home/HomeMarquee.astro';
+import HomePillars from '@/partials/home/HomePillars.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -10,7 +11,8 @@ const { description } = AppConfig;
 ---
 
 <Base head={{ title, description }}>
-  <LandingHero locale="en" />
-  <ServicesGrid locale="en" />
-  <GeneralCTA locale="en" />
+  <HomeHero locale="en" />
+  <HomeMarquee locale="en" />
+  <HomePillars locale="en" />
+  <HomeCTA locale="en" />
 </Base>

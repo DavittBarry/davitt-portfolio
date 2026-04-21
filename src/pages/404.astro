@@ -1,24 +1,155 @@
 ---
 import Base from '@/templates/Base.astro';
 
-const title = '404 - Page Not Found';
+const title = '404 — Signal Lost · Davitt Barry';
 const description = "The page you're looking for doesn't exist.";
 ---
 
 <Base head={{ title, description }}>
-  <div
-    class="min-h-[60vh] flex flex-col justify-center items-center text-center"
-  >
-    <h1 className="text-8xl font-light text-accent mb-4">404</h1>
-    <h2 className="text-2xl text-white mb-4">Page Not Found</h2>
-    <p className="text-neutral-400 mb-8 max-w-md">
-      The page you're looking for doesn't exist or has been moved.
-    </p>
-    <a
-      href="/"
-      className="border border-neutral-700 px-6 py-3 text-neutral-400 hover:text-accent hover:border-accent transition-all"
-    >
-      Back to Home
-    </a>
-  </div>
+  <section class="shell not-found">
+    <div class="not-found__top">
+      <span class="accent">● ERROR 404</span>
+      <span>SIGNAL_LOST</span>
+      <span>REROUTING…</span>
+    </div>
+
+    <div class="not-found__grid">
+      <div class="not-found__num">404</div>
+      <div class="not-found__body">
+        <h1 class="not-found__title">
+          You've hit a <em>dead channel.</em>
+        </h1>
+        <p class="not-found__lede">
+          The page you requested isn't on this signal path — it may have been
+          moved, renamed, or never existed. No panic. Pick a lane below.
+        </p>
+
+        <div class="not-found__cta">
+          <a class="btn btn--primary" href="/">
+            Back to home <span class="arrow">→</span>
+          </a>
+          <a class="btn" href="/posts">
+            Journal <span class="arrow">→</span>
+          </a>
+          <a class="btn" href="/contact">
+            Contact <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="not-found__nav">
+          <span class="not-found__nav-lbl">▸ Or try</span>
+          <a href="/dev">Development</a>
+          <a href="/music">Music</a>
+          <a href="/audio-services">Audio services</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .not-found {
+    min-height: 70vh;
+    padding: 80px 0 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .not-found__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .not-found__top .accent {
+    color: var(--color-accent);
+  }
+  .not-found__grid {
+    display: grid;
+    grid-template-columns: minmax(200px, 380px) 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .not-found__num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(140px, 22vw, 280px);
+    line-height: 0.85;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 40px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.7));
+    margin: 0;
+    letter-spacing: -0.04em;
+  }
+  .not-found__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    color: var(--color-text);
+  }
+  .not-found__title em {
+    font-style: normal;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 24px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.7));
+  }
+  .not-found__lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-dim);
+    max-width: 58ch;
+    margin: 0 0 32px;
+  }
+  .not-found__cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .not-found__nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .not-found__nav-lbl {
+    color: var(--color-text-mute);
+  }
+  .not-found__nav a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .not-found__nav a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 760px) {
+    .not-found__grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+</style>

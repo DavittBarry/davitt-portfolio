@@ -1,0 +1,211 @@
+---
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const labels = {
+  en: {
+    kicker: '● 03 / MUSIC',
+    mid: 'ORIGINALS · COVERS · GIGS',
+    right: 'EST. 2005',
+    headA: 'Compositions, covers ',
+    headEm: '& live shows.',
+    lede:
+      'Original compositions and productions across multiple genres. From initial concept to final master, bringing artistic vision to life through sound — and performing it live across Finland.',
+    npLabel: 'Featured',
+    npTitle: 'Aliud Phantasma · Turquoise Wash Away',
+    npMeta: 'Davitt Barry · 2025 · Music video',
+    npHref: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
+    npCta: 'Watch',
+  },
+  fi: {
+    kicker: '● 03 / MUSIIKKI',
+    mid: 'ALKUPERÄISET · COVERIT · KEIKAT',
+    right: 'PERUSTETTU 2005',
+    headA: 'Sävellyksiä, covereita ',
+    headEm: '& live-keikkoja.',
+    lede:
+      'Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Konseptista masterointiin, taiteellisen vision toteuttaminen äänen kautta — ja livenä ympäri Suomen.',
+    npLabel: 'Kohokohta',
+    npTitle: 'Aliud Phantasma · Turquoise Wash Away',
+    npMeta: 'Davitt Barry · 2025 · Musiikkivideo',
+    npHref: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
+    npCta: 'Katso',
+  },
+} as const;
+
+const t = labels[locale];
+---
+
+<section class="shell page-hero music-hero">
+  <div class="page-hero__top">
+    <span class="accent">{t.kicker}</span>
+    <span>{t.mid}</span>
+    <span>{t.right}</span>
+  </div>
+
+  <h1 class="page-hero__title">
+    {t.headA}<em>{t.headEm}</em>
+  </h1>
+  <p class="page-hero__lede">{t.lede}</p>
+
+  <div class="now-playing">
+    <div>
+      <div class="now-playing__lbl">{t.npLabel}</div>
+      <div class="now-playing__title">{t.npTitle}</div>
+      <div class="now-playing__meta">{t.npMeta}</div>
+    </div>
+    <div class="np-wave" id="np-wave"></div>
+    <a class="btn np-btn" href={t.npHref} target="_blank" rel="noopener">
+      {t.npCta} <span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<script>
+  const wave = document.getElementById('np-wave');
+  if (wave) {
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < 28; i++) {
+      const s = document.createElement('span');
+      s.style.animationDelay = `${(i * 0.07).toFixed(2)}s`;
+      s.style.height = `${(20 + Math.random() * 70).toFixed(1)}%`;
+      frag.appendChild(s);
+    }
+    wave.appendChild(frag);
+  }
+</script>
+
+<style>
+  .music-hero {
+    padding-top: 60px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .page-hero__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+  .page-hero__top .accent {
+    color: var(--color-accent);
+  }
+  .page-hero__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    color: var(--color-text);
+  }
+  .page-hero__title em {
+    font-style: normal;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 28px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.8));
+  }
+  .page-hero__lede {
+    font-size: 16px;
+    line-height: 1.55;
+    max-width: 58ch;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+
+  .now-playing {
+    margin-top: 28px;
+    border: 1px solid var(--color-line);
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: center;
+    background: var(--color-bg-1);
+  }
+  .now-playing__lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 4px;
+  }
+  .now-playing__lbl::before {
+    content: '● ';
+  }
+  .now-playing__title {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .now-playing__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-mute);
+    letter-spacing: 0.06em;
+    margin-top: 3px;
+  }
+  .np-wave {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 28px;
+  }
+  .np-wave :global(span) {
+    display: block;
+    width: 2px;
+    background: var(--color-accent);
+    border-radius: 1px;
+    box-shadow: 0 0 3px var(--color-accent);
+    animation: np-bounce 1.2s ease-in-out infinite;
+  }
+  @keyframes np-bounce {
+    0%,
+    100% {
+      transform: scaleY(0.2);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  .np-btn {
+    padding: 10px 16px;
+    font-size: 11px;
+  }
+
+  @media (max-width: 1100px) {
+    .music-hero {
+      text-align: center;
+    }
+    .page-hero__top {
+      justify-content: center;
+    }
+    .page-hero__lede {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media (max-width: 700px) {
+    .now-playing {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+    .np-wave {
+      justify-content: flex-start;
+    }
+  }
+</style>

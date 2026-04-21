@@ -2,81 +2,230 @@
 import Basefi from '@/templates/Basefi.astro';
 
 const head = {
-  title: 'Tietosuojaseloste - Davitt Barry',
-  description: 'Davitt Barry portfoliosivuston tietosuojaseloste.',
+  title: 'Tietosuojaseloste — Davitt Barry',
+  description: 'Davitt Barry -portfoliosivuston tietosuojaseloste.',
 };
+
+const lastUpdated = 'Syyskuu 2025';
+
+const sections = [
+  {
+    id: '01',
+    heading: 'Johdanto',
+    body: 'Tämä tietosuojaseloste kuvaa, kuinka käsittelen henkilötietoja tämän portfoliosivuston vierailijoilta.',
+  },
+  {
+    id: '02',
+    heading: 'Kerätyt henkilötiedot',
+    body: 'Sivusto ei käytä evästeitä eikä seurantateknologioita. Sähköpostiosoitettasi kerätään vain, jos otat yhteyttä suoraan sähköpostilinkin tai yhteydenottolomakkeen kautta.',
+  },
+  {
+    id: '03',
+    heading: 'Henkilötietojen käyttö',
+    body: 'Antamaasi sähköpostiosoitetta käytetään ainoastaan yhteydenottoihin vastaamiseen. En jaa, myy enkä käytä tietojasi mihinkään muuhun tarkoitukseen.',
+  },
+  {
+    id: '04',
+    heading: 'Kolmannen osapuolen palvelut',
+    body: 'Sivusto linkittää ulkoisiin palveluihin (GitHub, LinkedIn, Spotify, Bandcamp, Formspree). Näillä palveluilla on omat tietosuojakäytäntönsä — en vastaa niiden käytännöistä.',
+  },
+  {
+    id: '05',
+    heading: 'Tietoturva',
+    body: 'Teen kohtuulliset toimenpiteet lähetettyjen henkilötietojen suojaamiseksi. Mikään elektronisen viestinnän menetelmä ei ole täysin turvallinen.',
+  },
+];
 ---
 
 <Basefi head={head}>
-  <div class="container mx-auto px-6 py-12">
-    <article class="mx-auto max-w-4xl">
-      <h1 class="mb-4 text-4xl font-light text-white">Tietosuojaseloste</h1>
-      <p class="mb-8 text-neutral-500">Viimeksi päivitetty: Syyskuu 2025</p>
+  <section class="shell legal">
+    <div class="legal__top">
+      <a class="legal__back" href="/fi/">← Takaisin etusivulle</a>
+      <span class="legal__stamp">Päivitetty · {lastUpdated}</span>
+    </div>
 
-      <div class="space-y-8 text-neutral-400">
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">Johdanto</h2>
-          <p>
-            Tämä tietosuojaseloste kuvaa, kuinka käsittelemme henkilötietoja
-            tämän portfoliosivuston vierailijoille.
-          </p>
-        </div>
+    <header class="legal__header">
+      <div class="legal__kicker">▸ Tietosuojaseloste</div>
+      <h1 class="legal__title">
+        Selkokielinen <em>tietosuoja.</em>
+      </h1>
+      <p class="legal__lede">
+        Ei evästeitä, ei seurantaa, ei tietojen myyntiä. Ainoat henkilötiedot,
+        jotka näen, ovat ne, jotka itse kirjoitat sähköpostiin tai
+        yhteydenottolomakkeeseen — eivätkä ne mene pidemmälle kuin omaan
+        postilaatikkooni.
+      </p>
+    </header>
 
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">
-            Kerätyt henkilötiedot
-          </h2>
-          <p>
-            Tämä portfoliosivusto ei käytä evästeitä tai seurantateknologioita.
-            Keräämme sähköpostiosoitteesi vain, jos päätät ottaa meihin yhteyttä
-            suoraan sähköpostilinkin kautta.
-          </p>
-        </div>
+    <div class="legal__grid">
+      {sections.map((s) => (
+        <article class="legal__section">
+          <span class="legal__num">{s.id}</span>
+          <h2 class="legal__heading">{s.heading}</h2>
+          <p class="legal__body">{s.body}</p>
+        </article>
+      ))}
+    </div>
 
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">
-            Henkilötietojen käyttö
-          </h2>
-          <p>
-            Annettu sähköpostiosoite käytetään ainoastaan tiedusteluihin tai
-            kommentteihin vastaamiseen. Emme jaa, myy tai käytä tietojasi
-            mihinkään muuhun tarkoitukseen.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">
-            Kolmannen osapuolen palvelut
-          </h2>
-          <p>
-            Tämä sivusto saattaa sisältää linkkejä ulkoisiin palveluihin
-            (GitHub, LinkedIn). Näillä palveluilla on omat
-            tietosuojakäytäntönsä, emmekä ole vastuussa niiden käytännöistä.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">Tietoturva</h2>
-          <p>
-            Vaikka pyrimme suojaamaan kaikki lähetetyt henkilötiedot, mikään
-            elektronisen viestinnän menetelmä ei ole täysin turvallinen.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="mb-3 text-2xl font-light text-white">Yhteystiedot</h2>
-          <p>
-            Tätä tietosuojaselostetta koskevat kysymykset voi ohjata
-            osoitteeseen
-            <a
-              href="mailto:davittbarry333@gmail.com"
-              class="text-accent transition-colors hover:text-accent/80"
-            >
-              davittbarry333@gmail.com
-            </a>
-          </p>
-        </div>
+    <footer class="legal__foot">
+      <div>
+        <span class="legal__foot-lbl">Kysymykset</span>
+        <a class="legal__mail" href="mailto:davittbarry333@gmail.com">
+          davittbarry333@gmail.com
+        </a>
       </div>
-    </article>
-  </div>
+      <a class="btn" href="/fi/yhteystiedot">
+        Yhteydenottolomake <span class="arrow">→</span>
+      </a>
+    </footer>
+  </section>
 </Basefi>
+
+<style>
+  .legal {
+    padding: 60px 0 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .legal__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+  .legal__back {
+    color: var(--color-text-mute);
+    text-decoration: none;
+  }
+  .legal__back:hover {
+    color: var(--color-accent);
+  }
+  .legal__header {
+    margin-bottom: 48px;
+  }
+  .legal__kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+  }
+  .legal__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    color: var(--color-text);
+  }
+  .legal__title em {
+    font-style: normal;
+    color: var(--color-accent);
+    text-shadow: 0 0 calc(var(--glow) * 24px)
+      oklch(from var(--color-accent) l c h / calc(var(--glow) * 0.7));
+  }
+  .legal__lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-text-dim);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .legal__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+  }
+  .legal__section {
+    background: var(--color-bg);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 8px 24px;
+    align-items: start;
+  }
+  .legal__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    padding-top: 6px;
+  }
+  .legal__heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0 0 10px;
+    grid-column: 2;
+  }
+  .legal__body {
+    grid-column: 2;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-text-dim);
+    max-width: 64ch;
+    margin: 0;
+  }
+
+  .legal__foot {
+    margin-top: 40px;
+    padding: 28px 0 0;
+    border-top: 1px solid var(--color-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .legal__foot-lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .legal__mail {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .legal__mail:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 620px) {
+    .legal {
+      padding: 40px 0 64px;
+    }
+    .legal__section {
+      grid-template-columns: 1fr;
+      padding: 22px 20px;
+    }
+    .legal__heading,
+    .legal__body {
+      grid-column: 1;
+    }
+  }
+</style>

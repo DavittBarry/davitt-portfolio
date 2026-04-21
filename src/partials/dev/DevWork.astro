@@ -1,0 +1,321 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+import cbtjournalIcon from '@/assets/images/dev/cbtjournal-icon.png';
+import helsinkeyIcon from '@/assets/images/dev/helsinkey-icon.png';
+import jobboardIcon from '@/assets/images/dev/jobboard-icon.png';
+import portfolioIcon from '@/assets/images/dev/portfolio-icon.png';
+import weatherIcon from '@/assets/images/dev/weather-icon.png';
+import type { Locale } from '@/utils/i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+type Project = {
+  title: string;
+  subtitle: string;
+  desc: string;
+  stack: string;
+  year: string;
+  icon: ImageMetadata;
+  githubLink?: string;
+  appLink?: string;
+};
+
+const labels = {
+  en: {
+    sectionNum: '§ 02.2 / SELECTED WORK',
+    sectionA: "Things I've ",
+    sectionEm: 'shipped.',
+    viewCode: 'CODE ↗',
+    viewLive: 'LIVE ↗',
+    projects: [
+      {
+        title: 'CBTJournal',
+        subtitle: '— privacy-first CBT journal',
+        desc: 'A cognitive behavioral therapy journaling app. Track thoughts, identify distortions, monitor mood with the Burns checklist. Local-only storage, mobile via Capacitor.',
+        stack: 'React · TypeScript · Tailwind · Capacitor · IndexedDB',
+        year: '2025',
+        icon: cbtjournalIcon,
+        githubLink: 'https://github.com/DavittBarry/CBTJournal/tree/main',
+        appLink: 'https://cbtjournal.app/',
+      },
+      {
+        title: 'Helsinkey',
+        subtitle: '— music e-commerce',
+        desc: 'Full e-commerce platform for music and instruments with a ground-up custom theme. WooCommerce, Dockerized infra, ACF-driven editor experience.',
+        stack: 'WordPress · WooCommerce · PHP · MySQL · Docker · ACF · Tailwind',
+        year: '2024',
+        icon: helsinkeyIcon,
+        githubLink: 'https://github.com/DavittBarry/wp-helsinkey-ecommerce',
+      },
+      {
+        title: 'Weather app',
+        subtitle: '— forecast SPA',
+        desc: 'A compact weather forecast application with a thin Express API layer. Built to explore SASS architecture and third-party API composition.',
+        stack: 'React · Node · Express · SASS · APIs',
+        year: '2023',
+        icon: weatherIcon,
+        githubLink: 'https://github.com/DavittBarry/weather-app',
+        appLink: 'https://marvelous-hamster-87b7aa.netlify.app/',
+      },
+      {
+        title: 'Job board',
+        subtitle: '— classifieds app',
+        desc: 'Real-time job posting platform with advanced filters and separate employer / employee account flows. MongoDB-backed, Vue on the front.',
+        stack: 'Vue · MongoDB · Tailwind',
+        year: '2023',
+        icon: jobboardIcon,
+        githubLink: 'https://github.com/DavittBarry/job-advertisement-app',
+      },
+      {
+        title: 'Portfolio',
+        subtitle: '— this site',
+        desc: 'The studio-dark portfolio and writing home you are looking at. Static-first via Astro, bilingual routing, React islands for interactive bits.',
+        stack: 'Astro · TypeScript · Tailwind · React',
+        year: '2026',
+        icon: portfolioIcon,
+        githubLink: 'https://github.com/DavittBarry/davitt-portfolio',
+      },
+    ] satisfies Project[],
+  },
+  fi: {
+    sectionNum: '§ 02.2 / VALIKOITUA',
+    sectionA: 'Mitä olen ',
+    sectionEm: 'tehnyt.',
+    viewCode: 'KOODI ↗',
+    viewLive: 'LIVE ↗',
+    projects: [
+      {
+        title: 'CBTJournal',
+        subtitle: '— yksityisyyttä kunnioittava CBT-päiväkirja',
+        desc: 'Kognitiivisen käyttäytymisterapian päiväkirjasovellus. Seuraa ajatuksia, tunnista vääristymiä, seuraa mielialaa Burns-tarkistuksella. Paikallinen data, mobiili Capacitorilla.',
+        stack: 'React · TypeScript · Tailwind · Capacitor · IndexedDB',
+        year: '2025',
+        icon: cbtjournalIcon,
+        githubLink: 'https://github.com/DavittBarry/CBTJournal/tree/main',
+        appLink: 'https://cbtjournal.app/',
+      },
+      {
+        title: 'Helsinkey',
+        subtitle: '— musiikkiverkkokauppa',
+        desc: 'Musiikin ja soittimien verkkokauppa, teema rakennettu alusta asti. WooCommerce, Dockeroitu ympäristö, ACF-pohjainen sisällönhallinta.',
+        stack: 'WordPress · WooCommerce · PHP · MySQL · Docker · ACF · Tailwind',
+        year: '2024',
+        icon: helsinkeyIcon,
+        githubLink: 'https://github.com/DavittBarry/wp-helsinkey-ecommerce',
+      },
+      {
+        title: 'Sääsovellus',
+        subtitle: '— sääennuste-SPA',
+        desc: 'Kompakti sääennustesovellus ohuella Express-API-kerroksella. Rakennettu SASS-arkkitehtuurin ja ulkopuolisten rajapintojen tutkimista varten.',
+        stack: 'React · Node · Express · SASS · API:t',
+        year: '2023',
+        icon: weatherIcon,
+        githubLink: 'https://github.com/DavittBarry/weather-app',
+        appLink: 'https://marvelous-hamster-87b7aa.netlify.app/',
+      },
+      {
+        title: 'Työpaikkailmoitukset',
+        subtitle: '— työpaikka-alusta',
+        desc: 'Reaaliaikainen työpaikkailmoitusalusta edistyneillä suodattimilla sekä työnantajan ja työntekijän omilla tileillä. MongoDB-taustainen, Vue-frontti.',
+        stack: 'Vue · MongoDB · Tailwind',
+        year: '2023',
+        icon: jobboardIcon,
+        githubLink: 'https://github.com/DavittBarry/job-advertisement-app',
+      },
+      {
+        title: 'Portfolio',
+        subtitle: '— tämä sivusto',
+        desc: 'Tummasävyinen studiotyylinen portfolio ja blogisivusto, jota parhaillaan selaat. Staattinen Astro, kaksikielinen reititys, React-saarekkeita interaktiivisiin osiin.',
+        stack: 'Astro · TypeScript · Tailwind · React',
+        year: '2026',
+        icon: portfolioIcon,
+        githubLink: 'https://github.com/DavittBarry/davitt-portfolio',
+      },
+    ] satisfies Project[],
+  },
+} as const;
+
+const t = labels[locale];
+const total = t.projects.length.toString().padStart(2, '0');
+---
+
+<section id="work" class="shell work">
+  <div class="section-head">
+    <div class="section-head__num">{t.sectionNum}</div>
+    <h2 class="section-head__title">
+      {t.sectionA}<em>{t.sectionEm}</em>
+    </h2>
+  </div>
+
+  <ol class="work__list">
+    {
+      t.projects.map((p, i) => {
+        const idx = `${(i + 1).toString().padStart(2, '0')} / ${total}`;
+        const primary = p.appLink ?? p.githubLink;
+        return (
+          <li class="work__item">
+            {primary && <a class="work__link" href={primary} target="_blank" rel="noopener" aria-label={p.title} />}
+            <div class="work__icon">
+              <Image src={p.icon} alt="" width={64} height={64} loading="lazy" />
+              <span class="work__idx">{idx}</span>
+            </div>
+            <h3 class="work__title">
+              {p.title} <em>{p.subtitle}</em>
+            </h3>
+            <div class="work__body">
+              <p class="work__desc">{p.desc}</p>
+              <span class="work__stack">{p.stack}</span>
+              <div class="work__links">
+                {p.githubLink && (
+                  <a href={p.githubLink} target="_blank" rel="noopener">
+                    {t.viewCode}
+                  </a>
+                )}
+                {p.appLink && (
+                  <a href={p.appLink} target="_blank" rel="noopener">
+                    {t.viewLive}
+                  </a>
+                )}
+              </div>
+            </div>
+            <div class="work__year">{p.year}</div>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>
+
+<style>
+  .work {
+    padding-top: 40px;
+  }
+  .work__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .work__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 88px 1.4fr 2fr 120px;
+    gap: 28px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--color-line-soft);
+    align-items: start;
+    transition: padding 0.3s, background 0.3s;
+  }
+  .work__icon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .work__icon :global(img) {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-1);
+    border-radius: var(--radius-sm, 4px);
+    padding: 6px;
+    object-fit: contain;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .work__item:hover .work__icon :global(img) {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  .work__item:hover {
+    padding-left: 18px;
+    background: linear-gradient(
+      90deg,
+      oklch(from var(--color-accent) l c h / 0.04),
+      transparent 60%
+    );
+  }
+  .work__item:hover .work__title em {
+    color: var(--color-accent);
+  }
+  .work__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .work__idx {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-text-mute);
+  }
+  .work__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin: 0;
+  }
+  .work__title em {
+    font-style: normal;
+    color: var(--color-text-dim);
+    transition: color 0.2s;
+  }
+  .work__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .work__desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-dim);
+    margin: 0;
+  }
+  .work__stack {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--color-text-mute);
+  }
+  .work__links {
+    display: flex;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .work__links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .work__links a:hover {
+    text-decoration: underline;
+  }
+  .work__year {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    text-align: right;
+    padding-top: 6px;
+  }
+
+  @media (max-width: 900px) {
+    .work__item {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .work__year {
+      text-align: left;
+    }
+  }
+</style>
