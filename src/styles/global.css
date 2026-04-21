@@ -498,11 +498,23 @@ body::before {
 .mobile-drawer {
   display: none;
   border-top: 1px solid var(--color-line-soft);
-  background: oklch(from var(--color-bg) l c h / 0.95);
+  background: oklch(from var(--color-bg) l c h / 0.98);
   backdrop-filter: blur(14px);
 }
 .mobile-drawer.is-open {
   display: block;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  max-height: calc(100dvh - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  z-index: 60;
+}
+body.has-drawer-open {
+  overflow: hidden;
 }
 .mobile-drawer__inner {
   display: flex;
