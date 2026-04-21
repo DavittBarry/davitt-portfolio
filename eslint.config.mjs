@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import astro from 'eslint-plugin-astro';
-import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
@@ -44,14 +43,8 @@ export default [
   },
   {
     files: ['**/*.{ts,tsx}'],
-    plugins: {
-      ...sharedPlugins,
-      'react-hooks': reactHooks,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      ...sharedRules,
-    },
+    plugins: sharedPlugins,
+    rules: sharedRules,
   },
   {
     files: ['**/*.astro'],
