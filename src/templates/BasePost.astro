@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+
+import avatarImg from '@/assets/images/avatar.jpg';
 import type { IFrontmatter } from '@/components/boilerplate';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
@@ -42,7 +45,7 @@ const category = categoryOf(content.title);
       <p class="article__lede">{content.description}</p>
 
       <div class="article__author">
-        <img src="/assets/images/avatar.jpg" alt="Davitt Barry" />
+        <Image src={avatarImg} alt="Davitt Barry" width={80} height={80} loading="lazy" />
         <div>
           <span class="by">Written by</span>
           {AppConfig.author} · Helsinki

@@ -1,6 +1,9 @@
 ---
 import '@/styles/global.css';
 
+import { getImage } from 'astro:assets';
+
+import avatarImg from '@/assets/images/avatar.jpg';
 import Footer from '@/partials/Footer.astro';
 import Navbar from '@/partials/Navbar.astro';
 import { AppConfig } from '@/utils/AppConfig';
@@ -15,6 +18,14 @@ export interface Props {
 const {
   head: { title, description },
 } = Astro.props as Props;
+
+const ogImage = await getImage({
+  src: avatarImg,
+  width: 1200,
+  height: 1200,
+  format: 'jpg',
+});
+const ogImageUrl = new URL(ogImage.src, Astro.site).toString();
 ---
 
 <html lang="en" class="bg-neutral-950">
@@ -29,14 +40,14 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/assets/images/avatar.jpg" />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:alt" content="Davitt Barry profile photo" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="/assets/images/avatar.jpg" />
+    <meta property="twitter:image" content={ogImageUrl} />
     <meta property="twitter:image:alt" content="Davitt Barry profile photo" />
 
     <!-- Additional SEO -->
@@ -75,7 +86,7 @@ const {
         '@type': 'Person',
         name: 'Davitt Barry',
         url: 'https://davittbarry.com',
-        image: 'https://davittbarry.com/assets/images/avatar.jpg',
+        image: ogImageUrl,
         sameAs: [
           'https://github.com/DavittBarry',
           'https://www.linkedin.com/in/davittbarry/',

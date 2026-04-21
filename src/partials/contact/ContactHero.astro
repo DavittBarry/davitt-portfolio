@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+
+import avatar2Img from '@/assets/images/avatar-2.jpg';
 import type { Locale } from '@/utils/i18n';
 
 export interface Props {
@@ -56,11 +59,12 @@ const t = labels[locale];
 
   <div class="contact-portrait">
     <span class="contact-portrait__tag">{t.tag}</span>
-    <img
-      src="/assets/images/avatar-2.jpg"
+    <Image
+      src={avatar2Img}
       alt="Davitt Barry"
+      width={720}
+      height={720}
       loading="lazy"
-      onerror="this.style.display='none'"
     />
     <div class="contact-portrait__stat">
       <span>{t.nameTag}</span>

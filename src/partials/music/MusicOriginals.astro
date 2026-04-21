@@ -1,4 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+
+import aliudPhantasmaCover from '@/assets/images/1000055346.jpg';
+import daevEpCover from '@/assets/images/daev-ep-cover.jpg';
+import davittSquozenCover from '@/assets/images/davitt-squozen-ep.jpg';
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro';
 import type { Locale } from '@/utils/i18n';
 
@@ -98,10 +103,12 @@ const t = labels[locale];
     </div>
 
     <div class="release__body">
-      <img
+      <Image
         class="release__cover"
-        src="/assets/images/1000055346.jpg"
+        src={aliudPhantasmaCover}
         alt="Aliud Phantasma album cover"
+        width={560}
+        height={560}
         loading="lazy"
       />
       <div class="release__text">
@@ -144,10 +151,12 @@ const t = labels[locale];
 
   <div class="release-grid">
     <article class="release release--past">
-      <img
+      <Image
         class="release__cover release__cover--small"
-        src="/assets/images/daev-ep-cover.jpg"
+        src={daevEpCover}
         alt={`${t.daev.title} cover`}
+        width={400}
+        height={400}
         loading="lazy"
       />
       <h3 class="release__title">
@@ -165,10 +174,12 @@ const t = labels[locale];
     </article>
 
     <article class="release release--past">
-      <img
+      <Image
         class="release__cover release__cover--small"
-        src="/assets/images/davitt-squozen-ep.jpg"
+        src={davittSquozenCover}
         alt={`${t.squozen.title} cover`}
+        width={400}
+        height={400}
         loading="lazy"
       />
       <h3 class="release__title">

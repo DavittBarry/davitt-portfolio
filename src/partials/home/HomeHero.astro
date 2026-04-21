@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+
+import avatarImg from '@/assets/images/avatar.jpg';
 import type { Locale } from '@/utils/i18n';
 
 export interface Props {
@@ -112,7 +115,7 @@ const t = labels[locale];
 
     <div class="hero__aside">
       <div class="portrait">
-        <img src="/assets/images/avatar.jpg" alt="Davitt Barry" loading="eager" />
+        <Image src={avatarImg} alt="Davitt Barry" width={560} height={560} loading="eager" />
         <div class="portrait__grid"></div>
         <div class="portrait__crosshair"></div>
         <div class="portrait__stats">
