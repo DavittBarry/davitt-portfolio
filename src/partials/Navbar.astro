@@ -195,43 +195,49 @@ const homeHref = locale === 'fi' ? '/fi/' : '/';
       </button>
     </div>
   </div>
-
-  <div class="mobile-drawer" id="mobile-menu">
-    <div class="mobile-drawer__inner">
-      {t.items.map((item) => (
-        <div class="mobile-drawer__group">
-          <a
-            href={item.href}
-            data-num={item.num}
-            class={isActive(item.href, currentPath) ? 'is-active' : ''}
-          >
-            {item.label}
-          </a>
-          {item.submenu && (
-            <div class="mobile-drawer__sub">
-              {item.submenu.map((sub) => (
-                <a class="mobile-drawer__sub-link" href={sub.href}>{sub.label}</a>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  </div>
 </header>
+
+<div class="mobile-drawer" id="mobile-menu">
+  <div class="mobile-drawer__inner">
+    {t.items.map((item) => (
+      <div class="mobile-drawer__group">
+        <a
+          href={item.href}
+          data-num={item.num}
+          class={isActive(item.href, currentPath) ? 'is-active' : ''}
+        >
+          {item.label}
+        </a>
+        {item.submenu && (
+          <div class="mobile-drawer__sub">
+            {item.submenu.map((sub) => (
+              <a class="mobile-drawer__sub-link" href={sub.href}>{sub.label}</a>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
 
 <script>
   (function () {
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     if (btn && menu) {
+      const setBodyLock = (locked: boolean) => {
+        document.documentElement.classList.toggle('has-drawer-open', locked);
+        document.body.classList.toggle('has-drawer-open', locked);
+      };
       const closeMenu = () => {
         menu.classList.remove('is-open');
         btn.setAttribute('aria-expanded', 'false');
+        setBodyLock(false);
       };
       btn.addEventListener('click', () => {
         const open = menu.classList.toggle('is-open');
         btn.setAttribute('aria-expanded', String(open));
+        setBodyLock(open);
       });
       menu.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((a) => {
         a.addEventListener('click', () => closeMenu());
