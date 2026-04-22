@@ -102,6 +102,108 @@ const promos = await Promise.all(
 
     const VALID = new Set(['original', 'covers', 'gigs']);
 
+    const npPanel = document.getElementById('np-panel');
+    const npLbl = document.getElementById('np-lbl');
+    const npTitle = document.getElementById('np-title');
+    const npMeta = document.getElementById('np-meta');
+    const npCta = document.getElementById('np-cta') as HTMLButtonElement | null;
+    const npCtaLabel = document.getElementById('np-cta-label');
+    const npIcon = document.getElementById('np-icon');
+    const scFrame = document.getElementById('sc-widget') as HTMLIFrameElement | null;
+    const playLabel = npPanel?.getAttribute('data-play-label') || 'Play';
+    const pauseLabel = npPanel?.getAttribute('data-pause-label') || 'Pause';
+    let scWidget: any = null;
+    let isPlaying = false;
+    let currentMode: 'link' | 'audio' = 'link';
+    let currentHref = '';
+
+    const SC = (window as any).SC;
+    if (scFrame && SC?.Widget) {
+      scWidget = SC.Widget(scFrame);
+      scWidget.bind(SC.Widget.Events.PLAY, () => {
+        isPlaying = true;
+        reflectPlayState();
+      });
+      scWidget.bind(SC.Widget.Events.PAUSE, () => {
+        isPlaying = false;
+        reflectPlayState();
+      });
+      scWidget.bind(SC.Widget.Events.FINISH, () => {
+        isPlaying = false;
+        reflectPlayState();
+      });
+    }
+
+    function reflectPlayState() {
+      if (!npPanel) return;
+      npPanel.classList.toggle('is-playing', isPlaying && currentMode === 'audio');
+      if (currentMode !== 'audio') return;
+      if (npIcon) npIcon.textContent = isPlaying ? '⏸' : '▶';
+      if (npCtaLabel) npCtaLabel.textContent = isPlaying ? pauseLabel : playLabel;
+    }
+
+    let previewData: Record<string, {
+      mode: 'link' | 'audio';
+      label: string;
+      title: string;
+      meta: string;
+      href: string;
+      cta: string;
+    }> = {};
+    if (npPanel) {
+      try {
+        previewData = JSON.parse(npPanel.getAttribute('data-preview') || '{}');
+      } catch {
+        previewData = {};
+      }
+    }
+
+    function updatePreview(name: string) {
+      if (!npPanel) return;
+      const data = previewData[name];
+      if (!data) {
+        npPanel.classList.add('is-hidden');
+        if (scWidget && isPlaying) scWidget.pause();
+        return;
+      }
+      npPanel.classList.remove('is-hidden');
+      currentMode = data.mode;
+      currentHref = data.href;
+      if (npLbl) npLbl.textContent = data.label;
+      if (npTitle) npTitle.textContent = data.title;
+      if (npMeta) npMeta.textContent = data.meta;
+      if (npCta) npCta.setAttribute('data-mode', data.mode);
+      if (data.mode === 'link') {
+        if (scWidget && isPlaying) scWidget.pause();
+        if (npIcon) npIcon.textContent = '↗';
+        if (npCtaLabel) npCtaLabel.textContent = data.cta;
+        npPanel.classList.remove('is-playing');
+      } else {
+        reflectPlayState();
+      }
+    }
+
+    if (npCta) {
+      npCta.addEventListener('click', () => {
+        if (currentMode === 'link') {
+          if (currentHref) window.open(currentHref, '_blank', 'noopener');
+          return;
+        }
+        if (!scWidget) return;
+        if (isPlaying) scWidget.pause();
+        else scWidget.play();
+      });
+    }
+
+    const midLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('.page-hero__nav a[data-mid]'),
+    );
+    function updateMid(name: string) {
+      midLinks.forEach((a) => {
+        a.classList.toggle('is-current', a.getAttribute('data-mid') === name);
+      });
+    }
+
     function switchTab(name: string | null, opts: { focus?: boolean } = {}) {
       if (!name || !VALID.has(name)) return;
       tabs.forEach((tab) => {
@@ -117,6 +219,8 @@ const promos = await Promise.all(
         if (isActive) panel.removeAttribute('hidden');
         else panel.setAttribute('hidden', '');
       });
+      updatePreview(name);
+      updateMid(name);
     }
 
     tabs.forEach((tab, idx) => {
@@ -142,13 +246,16 @@ const promos = await Promise.all(
 
     const hash = window.location.hash.replace('#', '');
     if (VALID.has(hash)) switchTab(hash);
-    else
+    else {
       tabs.forEach((tab) =>
         tab.setAttribute(
           'tabindex',
           tab.getAttribute('aria-selected') === 'true' ? '0' : '-1',
         ),
       );
+      updatePreview('original');
+      updateMid('original');
+    }
 
     const onHash = () => {
       const h = window.location.hash.replace('#', '');
@@ -209,15 +316,15 @@ const promos = await Promise.all(
     margin-top: 40px;
   }
   .tabs .tab {
-    background: var(--color-bg-1);
-    border: 1px solid var(--color-line);
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-text-mute);
     border-bottom: 2px solid transparent;
     font: inherit;
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-dim);
+    color: var(--color-text);
     padding: 14px 12px;
     cursor: pointer;
     margin-bottom: -1px;
@@ -231,12 +338,19 @@ const promos = await Promise.all(
       background 0.2s,
       border-color 0.2s;
   }
+  .tabs .tab::after {
+    content: '▸';
+    color: var(--color-accent);
+    font-size: 10px;
+    opacity: 0.8;
+  }
   .tabs .tab .n {
-    color: var(--color-text-mute);
+    color: var(--color-accent);
     font-size: 10px;
   }
   .tabs .tab:hover {
-    color: var(--color-text);
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
     border-color: var(--color-accent);
   }
   .tabs .tab.on {
@@ -244,6 +358,9 @@ const promos = await Promise.all(
     background: var(--color-accent-soft);
     border-color: var(--color-accent);
     border-bottom-color: var(--color-accent);
+  }
+  .tabs .tab.on::after {
+    content: '●';
   }
   .tabs .tab.on .n {
     color: var(--color-accent);

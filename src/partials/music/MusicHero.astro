@@ -7,44 +7,107 @@ export interface Props {
 
 const { locale } = Astro.props;
 
+const SC_TRACK =
+  'https://soundcloud.com/davittbarry/if-i-ever-lose-my-faith-in-you-by-sting-davitt-barry-band-cover-live';
+const SC_WIDGET_URL = `https://w.soundcloud.com/player/?url=${encodeURIComponent(SC_TRACK)}&color=%235ec9ef&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`;
+
 const labels = {
   en: {
     kicker: '● 03 / MUSIC',
-    mid: 'ORIGINALS · COVERS · GIGS',
+    midOrig: 'ORIGINALS',
+    midCovers: 'COVERS',
+    midGigs: 'GIGS',
     right: 'EST. 2005',
     headA: 'Compositions, covers ',
     headEm: '& live shows.',
     lede:
       'Original compositions and productions across multiple genres. From initial concept to final master, bringing artistic vision to life through sound — and performing it live across Finland.',
-    npLabel: 'Featured',
-    npTitle: 'Aliud Phantasma · Turquoise Wash Away',
-    npMeta: 'Davitt Barry · 2025 · Music video',
-    npHref: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
-    npCta: 'Watch',
+    socialsLabel: 'Follow · live clips & updates',
+    playLabel: 'Play',
+    pauseLabel: 'Pause',
+    preview: {
+      original: {
+        mode: 'link',
+        label: 'Featured',
+        title: 'Aliud Phantasma · Turquoise Wash Away',
+        meta: 'Davitt Barry · 2025 · Music video',
+        href: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
+        cta: 'Watch',
+      },
+      covers: {
+        mode: 'audio',
+        label: 'Now playing',
+        title: 'If I Ever Lose My Faith In You · Sting (cover)',
+        meta: 'Davitt Barry Band · live · audio',
+        href: '',
+        cta: 'Play',
+      },
+      gigs: {
+        mode: 'audio',
+        label: 'Now playing',
+        title: 'If I Ever Lose My Faith In You · Sting (cover)',
+        meta: 'Davitt Barry Band · live · audio',
+        href: '',
+        cta: 'Play',
+      },
+    },
   },
   fi: {
     kicker: '● 03 / MUSIIKKI',
-    mid: 'ALKUPERÄISET · COVERIT · KEIKAT',
+    midOrig: 'ALKUPERÄISET',
+    midCovers: 'COVERIT',
+    midGigs: 'KEIKAT',
     right: 'PERUSTETTU 2005',
     headA: 'Sävellyksiä, covereita ',
     headEm: '& live-keikkoja.',
     lede:
       'Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Konseptista masterointiin, taiteellisen vision toteuttaminen äänen kautta — ja livenä ympäri Suomen.',
-    npLabel: 'Kohokohta',
-    npTitle: 'Aliud Phantasma · Turquoise Wash Away',
-    npMeta: 'Davitt Barry · 2025 · Musiikkivideo',
-    npHref: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
-    npCta: 'Katso',
+    socialsLabel: 'Seuraa · live-klippejä & päivityksiä',
+    playLabel: 'Toista',
+    pauseLabel: 'Tauko',
+    preview: {
+      original: {
+        mode: 'link',
+        label: 'Kohokohta',
+        title: 'Aliud Phantasma · Turquoise Wash Away',
+        meta: 'Davitt Barry · 2025 · Musiikkivideo',
+        href: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
+        cta: 'Katso',
+      },
+      covers: {
+        mode: 'audio',
+        label: 'Soi nyt',
+        title: 'If I Ever Lose My Faith In You · Sting (cover)',
+        meta: 'Davitt Barry Band · live · audio',
+        href: '',
+        cta: 'Toista',
+      },
+      gigs: {
+        mode: 'audio',
+        label: 'Soi nyt',
+        title: 'If I Ever Lose My Faith In You · Sting (cover)',
+        meta: 'Davitt Barry Band · live · audio',
+        href: '',
+        cta: 'Toista',
+      },
+    },
   },
 } as const;
 
 const t = labels[locale];
+const p = t.preview.original;
 ---
 
 <section class="shell page-hero music-hero">
   <div class="page-hero__top">
     <span class="accent">{t.kicker}</span>
-    <span>{t.mid}</span>
+    <nav class="page-hero__nav" aria-label="Music section shortcuts">
+      <a href="#original" data-mid="original">{t.midOrig}</a>
+      <span aria-hidden="true">·</span>
+      <a href="#covers" data-mid="covers">{t.midCovers}</a>
+      <span aria-hidden="true">·</span>
+      <a href="#gigs" data-mid="gigs">{t.midGigs}</a>
+    </nav>
     <span>{t.right}</span>
   </div>
 
@@ -53,22 +116,57 @@ const t = labels[locale];
   </h1>
   <p class="page-hero__lede">{t.lede}</p>
 
-  <div class="now-playing">
+  <div
+    class="now-playing"
+    id="np-panel"
+    data-preview={JSON.stringify(t.preview)}
+    data-play-label={t.playLabel}
+    data-pause-label={t.pauseLabel}
+  >
     <div>
-      <div class="now-playing__lbl">{t.npLabel}</div>
-      <div class="now-playing__title">{t.npTitle}</div>
-      <div class="now-playing__meta">{t.npMeta}</div>
+      <div class="now-playing__lbl" id="np-lbl">{p.label}</div>
+      <div class="now-playing__title" id="np-title">{p.title}</div>
+      <div class="now-playing__meta" id="np-meta">{p.meta}</div>
     </div>
     <div class="np-wave" id="np-wave"></div>
-    <a class="btn np-btn" href={t.npHref} target="_blank" rel="noopener">
-      {t.npCta} <span class="arrow">↗</span>
-    </a>
+    <button type="button" class="btn np-btn" id="np-cta" data-mode={p.mode}>
+      <span class="np-icon" id="np-icon" aria-hidden="true">↗</span>
+      <span id="np-cta-label">{p.cta}</span>
+    </button>
+  </div>
+
+  <iframe
+    id="sc-widget"
+    title="SoundCloud player"
+    src={SC_WIDGET_URL}
+    allow="autoplay"
+    aria-hidden="true"
+    tabindex="-1"
+  ></iframe>
+
+  <div class="music-socials" aria-label="Davitt Barry on social platforms">
+    <span class="music-socials__lbl">{t.socialsLabel}</span>
+    <div class="music-socials__row">
+      <a href="https://www.facebook.com/share/1Go8PEsNGN/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.5-1.5h1.6V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.4H7.7V14h2.7v8h3.1z"/></svg>
+        <span>Facebook</span>
+      </a>
+      <a href="https://www.instagram.com/davittbarry" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/@davitt.barry" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 7.5a5.8 5.8 0 0 1-3.4-1.1 5.8 5.8 0 0 1-2.2-3.2h-3v12.5a2.6 2.6 0 1 1-1.9-2.5v-3a5.6 5.6 0 1 0 4.9 5.6V9.5a8.7 8.7 0 0 0 5.6 1.9v-3a5.6 5.6 0 0 1-.1-.9z"/></svg>
+        <span>TikTok</span>
+      </a>
+    </div>
   </div>
 </section>
 
+<script is:inline src="https://w.soundcloud.com/player/api.js"></script>
 <script>
   const wave = document.getElementById('np-wave');
-  if (wave) {
+  if (wave && !wave.childElementCount) {
     const frag = document.createDocumentFragment();
     for (let i = 0; i < 28; i++) {
       const s = document.createElement('span');
@@ -100,6 +198,30 @@ const t = labels[locale];
   }
   .page-hero__top .accent {
     color: var(--color-accent);
+  }
+  .page-hero__nav {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .page-hero__nav a {
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    padding: 2px 0;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .page-hero__nav a:hover,
+  .page-hero__nav a:focus-visible {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    outline: none;
+  }
+  .page-hero__nav a.is-current {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
   }
   .page-hero__title {
     font-family: var(--font-serif);
@@ -134,6 +256,15 @@ const t = labels[locale];
     gap: 20px;
     align-items: center;
     background: var(--color-bg-1);
+  }
+  .now-playing.is-hidden {
+    display: none;
+  }
+  .now-playing.is-playing .np-wave :global(span) {
+    animation-play-state: running;
+  }
+  .now-playing:not(.is-playing) .np-wave :global(span) {
+    animation-play-state: paused;
   }
   .now-playing__lbl {
     font-family: var(--font-mono);
@@ -185,6 +316,69 @@ const t = labels[locale];
   .np-btn {
     padding: 10px 16px;
     font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .np-icon {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  #sc-widget {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    border: 0;
+    left: -9999px;
+    top: -9999px;
+  }
+
+  .music-socials {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .music-socials__lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+  .music-socials__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .music-socials__row a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm, 4px);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    background: var(--color-bg-1);
+    transition: all 0.2s;
+  }
+  .music-socials__row a:hover,
+  .music-socials__row a:focus-visible {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    outline: none;
+  }
+  .music-socials__row svg {
+    width: 16px;
+    height: 16px;
   }
 
   @media (max-width: 1100px) {
@@ -197,6 +391,12 @@ const t = labels[locale];
     .page-hero__lede {
       margin-left: auto;
       margin-right: auto;
+    }
+    .music-socials {
+      align-items: center;
+    }
+    .music-socials__row {
+      justify-content: center;
     }
   }
   @media (max-width: 700px) {

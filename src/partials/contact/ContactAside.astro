@@ -122,6 +122,12 @@ const t = labels[locale];
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.06em;
+    flex-wrap: wrap;
+  }
+  .direct-row a {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .direct-row:first-of-type {
     border-top: 0;

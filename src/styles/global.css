@@ -57,6 +57,10 @@ html {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+body {
+  overflow-x: clip;
 }
 
 body {
