@@ -42,7 +42,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
     <text font-family="'JetBrains Mono', ui-monospace, monospace" font-size="18" letter-spacing="3" fill="#c9cdd4">IT &amp; DEVELOPMENT · MUSIC · AUDIO ENGINEERING</text>
   </g>
   <g transform="translate(1140 560)" text-anchor="end">
-    <text font-family="'JetBrains Mono', ui-monospace, monospace" font-size="16" letter-spacing="2" fill="#5ec9ef">davittbarry.com ↗</text>
+    <text font-family="'JetBrains Mono', ui-monospace, monospace" font-size="16" letter-spacing="2" fill="#5ec9ef">davittbarry.dev ↗</text>
   </g>
 </svg>`;
 

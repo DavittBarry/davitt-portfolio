@@ -6,6 +6,6 @@ export const AppConfig = {
   author: 'Davitt Barry',
   locale_region: 'en-us',
   locale: 'en',
-  url: 'https://davittbarry.com',
+  url: 'https://davittbarry.dev',
   email: 'davittbarry333@gmail.com',
 };

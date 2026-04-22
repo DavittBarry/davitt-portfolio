@@ -3,49 +3,49 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <!-- English Pages -->
     <url>
-        <loc>https://davittbarry.com/</loc>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/" />
+        <loc>https://davittbarry.dev/</loc>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/dev</loc>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/dev" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/dev" />
+        <loc>https://davittbarry.dev/dev</loc>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/dev" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/dev" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/music</loc>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/musiikki" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/music" />
+        <loc>https://davittbarry.dev/music</loc>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/musiikki" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/music" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/audio-services</loc>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/audiopalvelut" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/audio-services" />
+        <loc>https://davittbarry.dev/audio-services</loc>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/audiopalvelut" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/audio-services" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/contact</loc>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/yhteystiedot" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/contact" />
+        <loc>https://davittbarry.dev/contact</loc>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/yhteystiedot" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/contact" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/privacy</loc>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/tietosuoja" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/privacy" />
+        <loc>https://davittbarry.dev/privacy</loc>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/tietosuoja" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/privacy" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -53,49 +53,49 @@
     
     <!-- Finnish Pages -->
     <url>
-        <loc>https://davittbarry.com/fi/</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/" />
+        <loc>https://davittbarry.dev/fi/</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/" />
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/fi/dev</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/dev" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/dev" />
+        <loc>https://davittbarry.dev/fi/dev</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/dev" />
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/dev" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/fi/musiikki</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/music" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/musiikki" />
+        <loc>https://davittbarry.dev/fi/musiikki</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/music" />
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/musiikki" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/fi/audiopalvelut</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/audio-services" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/audiopalvelut" />
+        <loc>https://davittbarry.dev/fi/audiopalvelut</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/audio-services" />
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/audiopalvelut" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/fi/yhteystiedot</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/contact" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/fi/yhteystiedot" />
+        <loc>https://davittbarry.dev/fi/yhteystiedot</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/contact" />
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/fi/yhteystiedot" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://davittbarry.com/tietosuoja</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.com/privacy" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.com/tietosuoja" />
+        <loc>https://davittbarry.dev/tietosuoja</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://davittbarry.dev/privacy" />
+        <xhtml:link rel="alternate" hreflang="fi" href="https://davittbarry.dev/tietosuoja" />
         <lastmod>2025-01-01</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
