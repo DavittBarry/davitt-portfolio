@@ -131,7 +131,7 @@ const toLocalePaginationHref = (url: string | undefined) => {
       ▸ {page.currentPage === 1 ? t.recent : t.page(page.currentPage, page.lastPage)}
     </span>
     <span>
-      {String(rangeStart).padStart(2, '0')}–{String(rangeEnd).padStart(2, '0')} / {String(total).padStart(2, '0')}
+      {String(rangeStart).padStart(2, '0')}-{String(rangeEnd).padStart(2, '0')} / {String(total).padStart(2, '0')}
     </span>
   </div>
 

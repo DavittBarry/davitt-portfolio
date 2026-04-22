@@ -21,7 +21,7 @@ const labels = {
     headA: 'Compositions, covers ',
     headEm: '& live shows.',
     lede:
-      'Original compositions and productions across multiple genres. From initial concept to final master, bringing artistic vision to life through sound — and performing it live across Finland.',
+      'Original compositions and productions across multiple genres. From initial concept to final master, bringing artistic vision to life through sound - and performing it live across Finland.',
     socialsLabel: 'Follow · live clips & updates',
     playLabel: 'Play',
     pauseLabel: 'Pause',
@@ -61,7 +61,7 @@ const labels = {
     headA: 'Sävellyksiä, covereita ',
     headEm: '& live-keikkoja.',
     lede:
-      'Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Konseptista masterointiin, taiteellisen vision toteuttaminen äänen kautta — ja livenä ympäri Suomen.',
+      'Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Konseptista masterointiin, taiteellisen vision toteuttaminen äänen kautta - ja livenä ympäri Suomen.',
     socialsLabel: 'Seuraa · live-klippejä & päivityksiä',
     playLabel: 'Toista',
     pauseLabel: 'Tauko',
@@ -168,10 +168,14 @@ const p = t.preview.original;
   const wave = document.getElementById('np-wave');
   if (wave && !wave.childElementCount) {
     const frag = document.createDocumentFragment();
-    for (let i = 0; i < 28; i++) {
+    const N = 72;
+    for (let i = 0; i < N; i++) {
       const s = document.createElement('span');
-      s.style.animationDelay = `${(i * 0.07).toFixed(2)}s`;
-      s.style.height = `${(20 + Math.random() * 70).toFixed(1)}%`;
+      const env = Math.sin((i / N) * Math.PI);
+      const noise = 0.4 + 0.5 * Math.abs(Math.sin(i * 0.45)) + 0.1 * Math.sin(i * 1.3);
+      const h = Math.max(18, env * noise * 100);
+      s.style.animationDelay = `${((i * 0.05) % 1.2).toFixed(2)}s`;
+      s.style.height = `${h.toFixed(1)}%`;
       frag.appendChild(s);
     }
     wave.appendChild(frag);
@@ -260,12 +264,6 @@ const p = t.preview.original;
   .now-playing.is-hidden {
     display: none;
   }
-  .now-playing.is-playing .np-wave :global(span) {
-    animation-play-state: running;
-  }
-  .now-playing:not(.is-playing) .np-wave :global(span) {
-    animation-play-state: paused;
-  }
   .now-playing__lbl {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -293,15 +291,21 @@ const p = t.preview.original;
   .np-wave {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 2px;
-    height: 28px;
+    height: 32px;
+    width: 100%;
+    min-width: 0;
   }
   .np-wave :global(span) {
     display: block;
-    width: 2px;
+    flex: 1 1 0;
+    min-width: 2px;
+    max-width: 5px;
     background: var(--color-accent);
     border-radius: 1px;
-    box-shadow: 0 0 3px var(--color-accent);
+    box-shadow: 0 0 4px var(--color-accent);
+    opacity: 0.9;
     animation: np-bounce 1.2s ease-in-out infinite;
   }
   @keyframes np-bounce {

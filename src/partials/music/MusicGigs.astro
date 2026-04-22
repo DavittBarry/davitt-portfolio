@@ -18,7 +18,7 @@ const yearRange = (list: LocalizedGig[]) => {
   const years = list.map((g) => g.year);
   const min = years.reduce((a, b) => (a < b ? a : b));
   const max = years.reduce((a, b) => (a > b ? a : b));
-  return min === max ? min : `${min}–${max}`;
+  return min === max ? min : `${min}-${max}`;
 };
 
 const labels = {
@@ -27,7 +27,7 @@ const labels = {
     subPast: '▸ PAST SHOWS',
     countShows: (n: number) => `${String(n).padStart(2, '0')} ${n === 1 ? 'SHOW' : 'SHOWS'}`,
     emptyTitle: 'No gigs on the calendar right now.',
-    emptyBody: 'I\'m actively taking bookings — acoustic, duo, or full band.',
+    emptyBody: 'I\'m actively taking bookings - acoustic, duo, or full band.',
     emptyCta: 'Book a date',
     doors: 'Doors / Show',
     setTime: 'Set time',
@@ -40,7 +40,7 @@ const labels = {
     directions: 'Get directions',
     ctaTitle: 'Don\'t see your venue on the list?',
     ctaBody:
-      'Booking across Finland — private parties, corporate events, weddings, restaurant evenings, bar gigs. Solo, duo, or full band.',
+      'Booking across Finland - private parties, corporate events, weddings, restaurant evenings, bar gigs. Solo, duo, or full band.',
     ctaBtn: 'Book a date',
     ctaHref: '/contact',
     finland: 'Finland',
@@ -50,7 +50,7 @@ const labels = {
     subPast: '▸ MENNEET KEIKAT',
     countShows: (n: number) => `${String(n).padStart(2, '0')} ${n === 1 ? 'KEIKKA' : 'KEIKKAA'}`,
     emptyTitle: 'Kalenterissa ei ole tällä hetkellä keikkoja.',
-    emptyBody: 'Otan aktiivisesti varauksia — soolo, akustinen, duo tai täysi bändi.',
+    emptyBody: 'Otan aktiivisesti varauksia - soolo, akustinen, duo tai täysi bändi.',
     emptyCta: 'Varaa keikka',
     doors: 'Ovet / Esitys',
     setTime: 'Setin kesto',
@@ -63,7 +63,7 @@ const labels = {
     directions: 'Reittiohjeet',
     ctaTitle: 'Etkö näe paikkaasi listalla?',
     ctaBody:
-      'Otan varauksia ympäri Suomen — yksityisjuhlat, yritystapahtumat, häät, ravintolaillat, baarikeikat. Soolo, duo tai bändi.',
+      'Otan varauksia ympäri Suomen - yksityisjuhlat, yritystapahtumat, häät, ravintolaillat, baarikeikat. Soolo, duo tai bändi.',
     ctaBtn: 'Varaa keikka',
     ctaHref: '/fi/yhteystiedot',
     finland: 'Suomi',
