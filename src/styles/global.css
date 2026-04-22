@@ -2,14 +2,14 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  /* Tweakable design tokens — drive the accent palette + glow intensity */
+  /* Tweakable design tokens - drive the accent palette + glow intensity */
   --accent-h: 215;
   --accent-c: 0.14;
   --accent-l: 0.82;
   --glow: 0.55;
   --logo-amp: 1;
 
-  /* Accent palette — baby blue */
+  /* Accent palette - baby blue */
   --color-accent: oklch(var(--accent-l) var(--accent-c) var(--accent-h));
   --color-accent-dim: oklch(
     calc(var(--accent-l) - 0.15) calc(var(--accent-c) * 0.8) var(--accent-h)
@@ -18,7 +18,7 @@
     var(--accent-l) var(--accent-c) var(--accent-h) / 0.14
   );
 
-  /* Legacy dark palette — kept for backward compat during the redesign */
+  /* Legacy dark palette - kept for backward compat during the redesign */
   --color-dark: #0a0a0a;
   --color-dark-100: #1a1a1a;
   --color-dark-200: #262626;
@@ -265,7 +265,7 @@ body::before {
   text-shadow: 0 1px 8px oklch(from var(--color-bg) l c h / 0.9);
 }
 
-/* Italic serif dB monogram (Attempt B — plan §4) */
+/* Italic serif dB monogram (Attempt B - plan §4) */
 .db-mark {
   display: inline-flex;
   align-items: baseline;
