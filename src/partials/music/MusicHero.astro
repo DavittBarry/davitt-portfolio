@@ -7,107 +7,48 @@ export interface Props {
 
 const { locale } = Astro.props;
 
-const SC_TRACK =
-  'https://soundcloud.com/davittbarry/if-i-ever-lose-my-faith-in-you-by-sting-davitt-barry-band-cover-live';
-const SC_WIDGET_URL = `https://w.soundcloud.com/player/?url=${encodeURIComponent(SC_TRACK)}&color=%235ec9ef&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`;
-
 const labels = {
   en: {
     kicker: '● 03 / MUSIC',
-    midOrig: 'ORIGINALS',
-    midCovers: 'COVERS',
-    midGigs: 'GIGS',
     right: 'EST. 2005',
-    headA: 'Compositions, covers ',
-    headEm: '& live shows.',
+    headA: 'Original compositions ',
+    headEm: '& productions.',
     lede:
-      'Original compositions and productions across multiple genres. From initial concept to final master, bringing artistic vision to life through sound - and performing it live across Finland.',
-    socialsLabel: 'Follow · live clips & updates',
-    playLabel: 'Play',
-    pauseLabel: 'Pause',
-    preview: {
-      original: {
-        mode: 'link',
-        label: 'Featured',
-        title: 'Aliud Phantasma · Turquoise Wash Away',
-        meta: 'Davitt Barry · 2025 · Music video',
-        href: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
-        cta: 'Watch',
-      },
-      covers: {
-        mode: 'audio',
-        label: 'Now playing',
-        title: 'If I Ever Lose My Faith In You · Sting (cover)',
-        meta: 'Davitt Barry Band · live · audio',
-        href: '',
-        cta: 'Play',
-      },
-      gigs: {
-        mode: 'audio',
-        label: 'Now playing',
-        title: 'If I Ever Lose My Faith In You · Sting (cover)',
-        meta: 'Davitt Barry Band · live · audio',
-        href: '',
-        cta: 'Play',
-      },
+      'Original compositions and productions across multiple genres. From initial concept to final master, bringing artistic vision to life through sound.',
+    socialsLabel: 'Follow · clips & updates',
+    featured: {
+      label: 'Featured',
+      title: 'Aliud Phantasma · Turquoise Wash Away',
+      meta: 'Davitt Barry · 2025 · Music video',
+      href: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
+      cta: 'Watch',
     },
   },
   fi: {
     kicker: '● 03 / MUSIIKKI',
-    midOrig: 'ALKUPERÄISET',
-    midCovers: 'COVERIT',
-    midGigs: 'KEIKAT',
     right: 'PERUSTETTU 2005',
-    headA: 'Sävellyksiä, covereita ',
-    headEm: '& live-keikkoja.',
+    headA: 'Alkuperäisiä sävellyksiä ',
+    headEm: '& tuotantoja.',
     lede:
-      'Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Konseptista masterointiin, taiteellisen vision toteuttaminen äänen kautta - ja livenä ympäri Suomen.',
-    socialsLabel: 'Seuraa · live-klippejä & päivityksiä',
-    playLabel: 'Toista',
-    pauseLabel: 'Tauko',
-    preview: {
-      original: {
-        mode: 'link',
-        label: 'Kohokohta',
-        title: 'Aliud Phantasma · Turquoise Wash Away',
-        meta: 'Davitt Barry · 2025 · Musiikkivideo',
-        href: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
-        cta: 'Katso',
-      },
-      covers: {
-        mode: 'audio',
-        label: 'Soi nyt',
-        title: 'If I Ever Lose My Faith In You · Sting (cover)',
-        meta: 'Davitt Barry Band · live · audio',
-        href: '',
-        cta: 'Toista',
-      },
-      gigs: {
-        mode: 'audio',
-        label: 'Soi nyt',
-        title: 'If I Ever Lose My Faith In You · Sting (cover)',
-        meta: 'Davitt Barry Band · live · audio',
-        href: '',
-        cta: 'Toista',
-      },
+      'Alkuperäisiä sävellyksiä ja tuotantoja eri genreissä. Konseptista masterointiin, taiteellisen vision toteuttaminen äänen kautta.',
+    socialsLabel: 'Seuraa · klippejä & päivityksiä',
+    featured: {
+      label: 'Kohokohta',
+      title: 'Aliud Phantasma · Turquoise Wash Away',
+      meta: 'Davitt Barry · 2025 · Musiikkivideo',
+      href: 'https://www.youtube.com/watch?v=zYJyVhUtR-4',
+      cta: 'Katso',
     },
   },
 } as const;
 
 const t = labels[locale];
-const p = t.preview.original;
+const p = t.featured;
 ---
 
 <section class="shell page-hero music-hero">
   <div class="page-hero__top">
     <span class="accent">{t.kicker}</span>
-    <nav class="page-hero__nav" aria-label="Music section shortcuts">
-      <a href="#original" data-mid="original">{t.midOrig}</a>
-      <span aria-hidden="true">·</span>
-      <a href="#covers" data-mid="covers">{t.midCovers}</a>
-      <span aria-hidden="true">·</span>
-      <a href="#gigs" data-mid="gigs">{t.midGigs}</a>
-    </nav>
     <span>{t.right}</span>
   </div>
 
@@ -116,33 +57,18 @@ const p = t.preview.original;
   </h1>
   <p class="page-hero__lede">{t.lede}</p>
 
-  <div
-    class="now-playing"
-    id="np-panel"
-    data-preview={JSON.stringify(t.preview)}
-    data-play-label={t.playLabel}
-    data-pause-label={t.pauseLabel}
-  >
+  <div class="now-playing">
     <div>
-      <div class="now-playing__lbl" id="np-lbl">{p.label}</div>
-      <div class="now-playing__title" id="np-title">{p.title}</div>
-      <div class="now-playing__meta" id="np-meta">{p.meta}</div>
+      <div class="now-playing__lbl">{p.label}</div>
+      <div class="now-playing__title">{p.title}</div>
+      <div class="now-playing__meta">{p.meta}</div>
     </div>
     <div class="np-wave" id="np-wave"></div>
-    <button type="button" class="btn np-btn" id="np-cta" data-mode={p.mode}>
-      <span class="np-icon" id="np-icon" aria-hidden="true">↗</span>
-      <span id="np-cta-label">{p.cta}</span>
-    </button>
+    <a class="btn np-btn" href={p.href} target="_blank" rel="noopener noreferrer">
+      <span class="np-icon" aria-hidden="true">↗</span>
+      <span>{p.cta}</span>
+    </a>
   </div>
-
-  <iframe
-    id="sc-widget"
-    title="SoundCloud player"
-    src={SC_WIDGET_URL}
-    allow="autoplay"
-    aria-hidden="true"
-    tabindex="-1"
-  ></iframe>
 
   <div class="music-socials" aria-label="Davitt Barry on social platforms">
     <span class="music-socials__lbl">{t.socialsLabel}</span>
@@ -163,7 +89,6 @@ const p = t.preview.original;
   </div>
 </section>
 
-<script is:inline src="https://w.soundcloud.com/player/api.js"></script>
 <script>
   const wave = document.getElementById('np-wave');
   if (wave && !wave.childElementCount) {
@@ -203,30 +128,6 @@ const p = t.preview.original;
   .page-hero__top .accent {
     color: var(--color-accent);
   }
-  .page-hero__nav {
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .page-hero__nav a {
-    color: var(--color-text-dim);
-    text-decoration: none;
-    border-bottom: 1px dashed transparent;
-    padding: 2px 0;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .page-hero__nav a:hover,
-  .page-hero__nav a:focus-visible {
-    color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-    outline: none;
-  }
-  .page-hero__nav a.is-current {
-    color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-  }
   .page-hero__title {
     font-family: var(--font-serif);
     font-style: italic;
@@ -260,9 +161,6 @@ const p = t.preview.original;
     gap: 20px;
     align-items: center;
     background: var(--color-bg-1);
-  }
-  .now-playing.is-hidden {
-    display: none;
   }
   .now-playing__lbl {
     font-family: var(--font-mono);
@@ -327,17 +225,6 @@ const p = t.preview.original;
   .np-icon {
     font-size: 12px;
     line-height: 1;
-  }
-
-  #sc-widget {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-    border: 0;
-    left: -9999px;
-    top: -9999px;
   }
 
   .music-socials {
